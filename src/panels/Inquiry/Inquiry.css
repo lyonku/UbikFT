@@ -1,0 +1,100 @@
+.inquiry {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #0a0a0a;
+}
+
+.inquiry__body {
+  max-width: 490px;
+
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  padding: 66px 16px 16px 16px;
+}
+
+.inquiry__title {
+  margin-bottom: 24px;
+}
+
+.inquiry__btn {
+  bottom: 24px;
+}
+
+.inquiry__form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.inquiry__inputWrap {
+  box-sizing: border-box;
+  margin-bottom: 8px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 72px;
+  padding: 24px 16px;
+  background: #2f2f2f;
+  border-radius: 16px;
+}
+
+div.inquiry__inputExample {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+
+  display: flex;
+  align-items: center;
+  font-feature-settings: "tnum" on, "lnum" on;
+
+  color: #ffffff;
+}
+
+.inquiry__inputExample_underline {
+  cursor: pointer;
+  margin-left: 8px;
+  border-bottom: 1px solid #a0df46;
+  line-height: 14px;
+}
+
+.inquiry__input {
+  width: 100%;
+  background: #2f2f2f;
+  outline: none;
+  font-family: "MacPaw Fixel";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 23px;
+  height: 60px;
+
+  /* width: 361px; */
+
+  border: 0;
+}
+
+.inquiry__wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inquiry__input:active {
+  border: 0;
+}

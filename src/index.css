@@ -1,0 +1,89 @@
+@font-face {
+  font-family: "MacPaw Fixel";
+  src: url("./fonts/MacPawFixel-VF.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* --------------------------- */
+
+.title {
+  font-family: "MacPaw Fixel";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 100%;
+  font-feature-settings: "pnum" on, "lnum" on, "ss04" on;
+
+  color: #ffffff;
+}
+
+.mini-title {
+  font-family: "MacPaw Fixel";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 23px;
+  font-feature-settings: "tnum" on, "lnum" on;
+
+  color: #ffffff;
+}
+
+.text {
+  font-family: "MacPaw Fixel";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  font-feature-settings: "tnum" on, "lnum" on;
+
+  color: #787878;
+}
+
+.gradient-round {
+  position: absolute;
+  width: 395px;
+  height: 395px;
+  top: -213px;
+  /* left: 50%; */
+  background: linear-gradient(109.37deg, #fcc63a 0%, #8bf54d 100%);
+  opacity: 0.3;
+  filter: blur(200px);
+}
+
+.btn {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 54px;
+  background: linear-gradient(
+      0deg,
+      rgba(33, 33, 33, 0.05),
+      rgba(33, 33, 33, 0.05)
+    ),
+    linear-gradient(109.37deg, #fcc63a 0%, #8bf54d 100%);
+  border-radius: 16px;
+
+  font-family: "MacPaw Fixel";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 23px;
+  text-align: center;
+  font-feature-settings: "tnum" on, "lnum" on;
+
+  color: #ffffff;
+}
+
+.btn:hover {
+  transition: 1s;
+  background: linear-gradient(
+      0deg,
+      rgba(33, 33, 33, 0.05),
+      rgba(33, 33, 33, 0.05)
+    ),
+    linear-gradient(109.37deg, #cc9f2c 0%, #79d842 100%);
+}

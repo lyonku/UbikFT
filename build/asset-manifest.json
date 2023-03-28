@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.27703735.css",
+    "main.js": "/static/js/main.47f3f818.js",
+    "static/media/home__vintedois_background.png": "/static/media/home__vintedois_background.948bef45381f3ab86f40.png",
+    "static/media/home__anything_background.png": "/static/media/home__anything_background.cb94723d48b3d79f7baa.png",
+    "static/media/home__protogen_background.png": "/static/media/home__protogen_background.83d45839390a482d8573.png",
+    "static/media/MacPawFixel-VF.ttf": "/static/media/MacPawFixel-VF.6264c98396cd6cd78380.ttf",
+    "index.html": "/index.html",
+    "main.27703735.css.map": "/static/css/main.27703735.css.map",
+    "main.47f3f818.js.map": "/static/js/main.47f3f818.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.27703735.css",
+    "static/js/main.47f3f818.js"
+  ]
+}
