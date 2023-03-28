@@ -8,6 +8,8 @@ import data from "data.json";
 import StylesItem from "./components/StylesItem";
 
 const StyleSelection = ({ id, go, inputValue }) => {
+  const [chosenStyles, setChosenStyles] = useState({});
+  console.log(chosenStyles);
   return (
     <div className="styleSelection">
       <div className="gradient-round"></div>
@@ -30,11 +32,19 @@ const StyleSelection = ({ id, go, inputValue }) => {
         <div className="styleSelection__body">
           {data.map((category, categoryIndex) => {
             return (
-              <div className="styleСategory__wrap" id={category.title}>
+              <div className="styleСategory__wrap" key={category.title}>
                 <div className="styleСategory__title">{category.name}</div>
                 <div className="styles">
                   {category.array.map((style, styleIndex) => {
-                    return <StylesItem style={style} id={category.sub_name} />;
+                    return (
+                      <StylesItem
+                        style={style}
+                        category={category.title}
+                        key={style.sub_name}
+                        setChosenStyles={setChosenStyles}
+                        chosenStyles={chosenStyles}
+                      />
+                    );
                   })}
                 </div>
               </div>
