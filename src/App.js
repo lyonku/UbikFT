@@ -14,6 +14,7 @@ import "@vkontakte/vkui/dist/vkui.css";
 import Home from "./panels/Home";
 import Inquiry from "./panels/Inquiry";
 import Main from "./panels/Main";
+import PayEnergy from "./panels/PayEnergy";
 
 const App = () => {
   const [activePanel, setActivePanel] = useState("home");
@@ -80,6 +81,7 @@ const App = () => {
                   setInputValue={setInputValue}
                 />
                 <Main id="main" inputValue={inputValue} go={goToPage} />
+                <PayEnergy id="payEnergy" />
               </View>
             </SplitCol>
           </SplitLayout>

@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.27703735.css",
-    "main.js": "/static/js/main.47f3f818.js",
+    "main.css": "/static/css/main.05858fd8.css",
+    "main.js": "/static/js/main.3e75d811.js",
     "static/media/home__vintedois_background.png": "/static/media/home__vintedois_background.948bef45381f3ab86f40.png",
     "static/media/home__anything_background.png": "/static/media/home__anything_background.cb94723d48b3d79f7baa.png",
     "static/media/home__protogen_background.png": "/static/media/home__protogen_background.83d45839390a482d8573.png",
     "static/media/MacPawFixel-VF.ttf": "/static/media/MacPawFixel-VF.6264c98396cd6cd78380.ttf",
+    "static/media/payEnergy__background.png": "/static/media/payEnergy__background.8181e14cf152d3bb4fe9.png",
+    "static/media/payEnergy__energyImg.png": "/static/media/payEnergy__energyImg.061d8ca5da4b4d8541a5.png",
     "index.html": "/index.html",
-    "main.27703735.css.map": "/static/css/main.27703735.css.map",
-    "main.47f3f818.js.map": "/static/js/main.47f3f818.js.map"
+    "main.05858fd8.css.map": "/static/css/main.05858fd8.css.map",
+    "main.3e75d811.js.map": "/static/js/main.3e75d811.js.map"
   },
   "entrypoints": [
-    "static/css/main.27703735.css",
-    "static/js/main.47f3f818.js"
+    "static/css/main.05858fd8.css",
+    "static/js/main.3e75d811.js"
   ]
 }

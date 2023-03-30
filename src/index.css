@@ -87,3 +87,15 @@
     ),
     linear-gradient(109.37deg, #cc9f2c 0%, #79d842 100%);
 }
+
+.closeBtn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 39px;
+  height: 39px;
+
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 360.75px;
+}

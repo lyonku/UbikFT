@@ -23,7 +23,10 @@ const StyleSelection = ({ id, go, inputValue }) => {
             <img src={modelSelection} />
             Выбрать модель
           </div>
-          <div className="styleSelection__energy smallBtn-text">
+          <div
+            className="styleSelection__energy smallBtn-text"
+            onClick={() => go("payEnergy")}
+          >
             <img src={energy} />
             12345
           </div>
