@@ -9,7 +9,6 @@ import StylesItem from "./components/StylesItem";
 
 const StyleSelection = ({ id, go, inputValue }) => {
   const [chosenStyles, setChosenStyles] = useState({});
-  console.log(chosenStyles);
   return (
     <div className="styleSelection">
       <div className="gradient-round"></div>

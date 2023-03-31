@@ -16,6 +16,12 @@ import Inquiry from "./panels/Inquiry";
 import Main from "./panels/Main";
 import PayEnergy from "./panels/PayEnergy";
 
+import payEnergy__benefits from "./img/payEnergy__benefitsImg.png";
+import payEnergy__energyImg from "./img/payEnergy__energyImg.png";
+import vintedois_background from "./img/home__vintedois_background.png";
+import anything_background from "./img/home__anything_background.png";
+import protogen_background from "./img/home__protogen_background.png";
+
 const App = () => {
   const [activePanel, setActivePanel] = useState("home");
   const [fetchedUser, setUser] = useState(null);
@@ -33,6 +39,31 @@ const App = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    console.log("start");
+    const images = [
+      payEnergy__benefits,
+      payEnergy__energyImg,
+      vintedois_background,
+      anything_background,
+      protogen_background,
+    ];
+
+    const loadImages = () => {
+      images.forEach((image) => {
+        const img = new Image();
+        console.log(img);
+
+        img.src = image;
+        img.onload = () => {
+          console.log("load");
+        };
+      });
+    };
+
+    loadImages();
+  }, []);
+
   const go = (e) => {
     setActivePanel(e.currentTarget.dataset.to);
   };
@@ -45,7 +76,6 @@ const App = () => {
     if (history[history.length - 1] != name) {
       // В качестве аргумента принимаем id панели для перехода
       window.history.pushState({ panel: name }, name); // Создаём новую запись в истории браузера
-      console.log(window.history);
       setActivePanel(name); // Меняем активную панель
       history.push(name); // Добавляем панель в историю
     }

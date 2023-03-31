@@ -31,7 +31,6 @@ function StylesItem({ style, category, setChosenStyles, chosenStyles }) {
     } else {
       setState("");
       if (category != "genre") {
-        console.log(copy[category]);
         for (let i = 0; i < copy[category].length; i++) {
           if (copy[category][i].sub_name == style.sub_name) {
             copy[category].splice(i, 1);

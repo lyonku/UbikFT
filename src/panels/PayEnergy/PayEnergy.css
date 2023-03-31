@@ -89,6 +89,9 @@ div.benefits__title {
 }
 
 .tariffsItem__price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: "MacPaw Fixel";
   font-style: normal;
   font-weight: 600;
@@ -130,4 +133,22 @@ div.benefits__title {
   font-feature-settings: "tnum" on, "lnum" on;
   color: #ffffff;
   opacity: 0.5;
+}
+
+.tariffsItem__discount {
+  height: 25px;
+  box-sizing: border-box;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 21px;
+  text-align: center;
+  margin-top: -3px;
+  background: linear-gradient(
+      0deg,
+      rgba(33, 33, 33, 0.05),
+      rgba(33, 33, 33, 0.05)
+    ),
+    linear-gradient(109.37deg, #fcc63a 0%, #8bf54d 100%);
+  border-radius: 9999px;
+  padding: 2px 9px;
 }

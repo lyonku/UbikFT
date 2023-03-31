@@ -24,7 +24,7 @@ const PayEnergy = ({}) => {
     <div
       className="payEnergy"
       style={{
-        background: `linear-gradient(180deg, rgba(0, 0, 0, 0.44) 0%, #000000 100%), no-repeat center/cover url(${background})`,
+        background: `linear-gradient(180deg, rgba(0, 0, 0, 0.45) 60%, #000000 100%), no-repeat center/cover url(${background})`,
       }}
     >
       <div className="gradient-round"></div>
@@ -95,11 +95,18 @@ const PayEnergy = ({}) => {
               <div className="tariffsItem__title mini-title">
                 <div className="tariffsItem__img"></div>1 месяц
               </div>
-              <div className="tariffsItem__price ">400 ₽</div>
+              <div className="tariffsItem__price ">
+                <div className="tariffsItem__discount">скидка 15%</div>
+                400 ₽
+              </div>
             </div>
           </div>
           <div className="payEnergy__btn btn">
-            Начать бесплатную пробную версию
+            {activeTariff == "first"
+              ? "Начать бесплатную пробную версию"
+              : activeTariff == "second"
+              ? "Приобрести подписку на 1 неделю"
+              : "Приобрести подписку на 1 месяц"}
           </div>
           <div className="payEnergy__info">подписка с автопродлением.</div>
         </div>
