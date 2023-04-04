@@ -28,6 +28,7 @@ const App = () => {
   const [popout, setPopout] = useState(<ScreenSpinner size="large" />);
   const [history, setHistory] = useState(["home"]); // Заносим начальную панель в массив историй.
   const [inputValue, setInputValue] = useState("");
+  const [currentNavItem, setCurrentNavItem] = useState("StyleSelection");
 
   useEffect(() => {
     async function fetchData() {
@@ -40,7 +41,6 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    console.log("start");
     const images = [
       payEnergy__benefits,
       payEnergy__energyImg,
@@ -52,12 +52,11 @@ const App = () => {
     const loadImages = () => {
       images.forEach((image) => {
         const img = new Image();
-        console.log(img);
 
         img.src = image;
-        img.onload = () => {
-          console.log("load");
-        };
+        // img.onload = () => {
+        //   console.log("load");
+        // };
       });
     };
 
@@ -110,8 +109,14 @@ const App = () => {
                   inputValue={inputValue}
                   setInputValue={setInputValue}
                 />
-                <Main id="main" inputValue={inputValue} go={goToPage} />
-                <PayEnergy id="payEnergy" />
+                <Main
+                  id="main"
+                  inputValue={inputValue}
+                  go={goToPage}
+                  currentNavItem={currentNavItem}
+                  setCurrentNavItem={setCurrentNavItem}
+                />
+                <PayEnergy id="payEnergy" go={goToPage} />
               </View>
             </SplitCol>
           </SplitLayout>

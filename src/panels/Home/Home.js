@@ -37,7 +37,7 @@ const Home = ({ id, go }) => {
         <div className="gradient-round"></div>
         <div className="home__body">
           <div className="home__title title">
-            Выберите модель <span className="home__title_accented">ИИ</span>, с
+            Выберите модель <span className="title_accented">ИИ</span>, с
             которой вы хотите работать
           </div>
           <div className="home__row">

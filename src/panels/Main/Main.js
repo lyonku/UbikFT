@@ -7,11 +7,11 @@ import GallerySvg from "components/gallerySvg";
 import ArtistsSvg from "components/artistsSvg";
 import ProfileSvg from "components/profileSvg";
 import Artists from "panels/Artists";
+import Gallery from "panels/Gallery";
 import StyleSelection from "panels/StyleSelection";
 
-const Main = ({ id, go, inputValue }) => {
-  const [currentNavItem, setCurrentNavItem] = useState("StyleSelection");
-
+const Main = ({ id, go, inputValue, setCurrentNavItem, currentNavItem }) => {
+  console.log(currentNavItem);
   const handleNav = (event) => {
     setCurrentNavItem(event.target.id);
   };
@@ -23,9 +23,9 @@ const Main = ({ id, go, inputValue }) => {
           {currentNavItem == "StyleSelection" ? (
             <StyleSelection inputValue={inputValue} go={go} />
           ) : currentNavItem == "Gallery" ? (
-            ""
+            <Gallery go={go} />
           ) : currentNavItem == "Artists" ? (
-            <Artists />
+            <Artists go={go} />
           ) : (
             ""
           )}
