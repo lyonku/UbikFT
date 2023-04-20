@@ -1,0 +1,259 @@
+.Profile {
+  display: flex;
+  overflow-y: auto;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  background-color: black;
+}
+
+.Profile__wrap {
+  z-index: 3;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 50px 16px 16px 16px;
+  max-width: 490px;
+}
+
+.Profile__controls {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Profile__title {
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 48px;
+}
+
+.Profile__items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.ProfileItem {
+  padding: 16px;
+  box-sizing: border-box;
+  max-height: 490px;
+  border-radius: 24px;
+  width: 100%;
+  display: flex;
+  aspect-ratio: 1 / 1;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ProfileItem__leftSide {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ProfileItem__personalInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ProfileItem__name {
+  font-weight: 600;
+  font-size: 17px;
+  font-feature-settings: "tnum" on, "lnum" on;
+
+  color: #ffffff;
+}
+
+.ProfileItem__likeControls {
+  box-sizing: border-box;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(2px);
+  /* Note: backdrop-filter has minimal browser support */
+
+  border-radius: 24px;
+}
+
+.ProfileItem__delimetr {
+  width: 0px;
+  height: 24px;
+  opacity: 0.1;
+  border: 1px solid #ffffff;
+  border-radius: 1px;
+}
+
+.ProfileItem__energy {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  font-size: 17px;
+  text-align: center;
+  font-feature-settings: "tnum" on, "lnum" on;
+
+  color: #b0e822;
+}
+
+.ProfileItem__coursera {
+  cursor: pointer;
+}
+
+.Profile::-webkit-scrollbar {
+  width: 5px;
+  background-color: #00000000;
+}
+
+.Profile::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #b0e822;
+}
+
+.Profile::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #00000000;
+}
+
+.Profile__title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.Profile__avatar img {
+  width: 80px;
+  border-radius: 100px;
+}
+
+.Profile__info {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.Profile__name {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  color: #ffffff;
+}
+
+.Profile__rating {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  color: #b0e822;
+}
+
+.Profile__links {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 4px;
+}
+
+.Profile__link {
+  box-sizing: border-box;
+  word-break: break-all;
+  text-decoration: none;
+  display: flex;
+  gap: 4px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: auto;
+  display: flex;
+  align-items: center;
+  font-feature-settings: "tnum" on, "lnum" on;
+  color: #ffffff;
+}
+
+.Profile__link img {
+  width: 22px;
+}
+
+.ProfileArts__title {
+  margin-bottom: 16px;
+}
+
+.ProfileArts__item {
+  border-radius: 24px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.ProfileArts__item_empty {
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  background: #101010;
+}
+
+.ProfileArt {
+  padding: 16px;
+  box-sizing: border-box;
+  max-height: 490px;
+  border-radius: 24px;
+  width: 100%;
+  display: flex;
+  aspect-ratio: 1 / 1;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ProfileArt__leftSide {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ProfileArt__rightSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ProfileArt__shareControls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.ProfileArt__coursera {
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.ProfileArt__shareControls_up {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ProfileArts__items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

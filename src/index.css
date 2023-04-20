@@ -1,6 +1,6 @@
 @font-face {
   font-family: "MacPaw Fixel";
-  src: url("./fonts/MacPawFixel-VF.ttf") format("truetype");
+  src: url("./assets/fonts/MacPawFixel-VF.ttf") format("truetype");
   font-style: normal;
   font-weight: normal;
 }
@@ -93,6 +93,7 @@
 }
 
 .closeBtn {
+  z-index: 2;
   cursor: pointer;
   display: flex;
   align-items: center;

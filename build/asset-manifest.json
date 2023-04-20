@@ -1,19 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.05858fd8.css",
-    "main.js": "/static/js/main.3e75d811.js",
+    "main.css": "/static/css/main.1c284afc.css",
+    "main.js": "/static/js/main.ea2face7.js",
+    "static/media/loading__background.png": "/static/media/loading__background.49109e9d56e729739ac7.png",
     "static/media/home__vintedois_background.png": "/static/media/home__vintedois_background.948bef45381f3ab86f40.png",
     "static/media/home__anything_background.png": "/static/media/home__anything_background.cb94723d48b3d79f7baa.png",
     "static/media/home__protogen_background.png": "/static/media/home__protogen_background.83d45839390a482d8573.png",
     "static/media/MacPawFixel-VF.ttf": "/static/media/MacPawFixel-VF.6264c98396cd6cd78380.ttf",
+    "static/media/galleryItem__background.png": "/static/media/galleryItem__background.cf37e1f92da836f6c8bd.png",
+    "static/media/artSelection__img.png": "/static/media/artSelection__img.b23247f257180420fc5a.png",
     "static/media/payEnergy__background.png": "/static/media/payEnergy__background.8181e14cf152d3bb4fe9.png",
+    "static/media/vk__logo.png": "/static/media/vk__logo.5fb75fcb04f9e947385b.png",
     "static/media/payEnergy__energyImg.png": "/static/media/payEnergy__energyImg.061d8ca5da4b4d8541a5.png",
     "index.html": "/index.html",
-    "main.05858fd8.css.map": "/static/css/main.05858fd8.css.map",
-    "main.3e75d811.js.map": "/static/js/main.3e75d811.js.map"
+    "main.1c284afc.css.map": "/static/css/main.1c284afc.css.map",
+    "main.ea2face7.js.map": "/static/js/main.ea2face7.js.map"
   },
   "entrypoints": [
-    "static/css/main.05858fd8.css",
-    "static/js/main.3e75d811.js"
+    "static/css/main.1c284afc.css",
+    "static/js/main.ea2face7.js"
   ]
 }
