@@ -16,9 +16,13 @@ const Gallery = ({ id, go }) => {
   const ref = useRef(null);
   const [showShareAlert, setShowShareAlert] = useState(false);
 
-  useClickAway(ref, () => {
-    setOpenHint(false);
-  });
+  useClickAway(
+    ref,
+    () => {
+      setOpenHint(false);
+    },
+    ["mousedown"]
+  );
 
   const handleCopyPromptAlert = () => {
     setCopyPromptAlert(true);

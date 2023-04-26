@@ -22,36 +22,21 @@ import generatePrompts from "components/App/features/generatePrompts";
 
 const App = () => {
   const [activePanel, setActivePanel] = useState("home");
-  const [fetchedUser, setUser] = useState(null);
   const [history, setHistory] = useState(["home"]);
-  const [inputValue, setInputValue] = useState("");
   const [currentNavItem, setCurrentNavItem] = useState("StyleSelection");
-  const [currentModel, setCurrentModel] = useState("Protogen");
-  const [currentImg, setCurrentImg] = useState();
-  const [error, setError] = useState();
-  const [chosenStyles, setChosenStyles] = useState({});
-  const [param, setParam] = useState();
 
-  const [alertClose, setAlertClose] = useState(false);
-  const [showNotificationDelete, setShowNotificationDelete] = useState(false);
+  const [currentModel, setCurrentModel] = useState("Protogen");
+  const [chosenStyles, setChosenStyles] = useState({});
+  const [inputValue, setInputValue] = useState("");
+  const [currentImg, setCurrentImg] = useState();
+
+  const [fetchedUser, setUser] = useState(null);
+  const [error, setError] = useState();
 
   const userList = useMemo(() => imagesPreload(), []);
 
   // Отправляет событие инициализации нативному клиенту
   bridge.send("VKWebAppInit");
-
-  useEffect(() => {
-    bridge
-      .send("VKWebAppGetLaunchParams")
-      .then((data) => {
-        if (data.vk_app_id) {
-          setParam(data);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -68,23 +53,7 @@ const App = () => {
     return () => {
       window.removeEventListener("popstate", handlePopstate);
     };
-  }, [alertClose, activePanel]);
-
-  const handleSwipeBackStartForPreventIfNeeded = useCallback(
-    (count) => {
-      if (activePanel === "artSelection") {
-        window.history.pushState(null, null, window.location.pathname);
-        if (alertClose) {
-          setShowNotificationDelete(false);
-          setAlertClose();
-          return;
-        }
-        setShowNotificationDelete(true);
-        return "prevent";
-      }
-    },
-    [alertClose, activePanel]
-  );
+  }, []);
 
   function goToPage(name) {
     if (history[history.length - 1] != name) {
@@ -102,22 +71,17 @@ const App = () => {
     }
   }
 
-  const goBack = (count, resultClose) => {
-    let result = handleSwipeBackStartForPreventIfNeeded(count);
-
-    if (result != "prevent") {
-      setAlertClose();
-      if (history.length == 1) {
-        // Если в массиве одно значение:
-        bridge.send("VKWebAppClose", { status: "success" }); // Отправляем bridge на закрытие сервиса.
-      } else if (history.length > 1) {
-        if (count) {
-          history.splice(-count);
-          setActivePanel(history[history.length - 1]);
-        } else {
-          history.pop(); // удаляем последний элемент в массиве.
-          setActivePanel(history[history.length - 1]); // Изменяем массив с иторией и меняем активную панель.
-        }
+  const goBack = (count) => {
+    if (history.length == 1) {
+      // Если в массиве одно значение:
+      bridge.send("VKWebAppClose", { status: "success" }); // Отправляем bridge на закрытие сервиса.
+    } else if (history.length > 1) {
+      if (count) {
+        history.splice(-count);
+        setActivePanel(history[history.length - 1]);
+      } else {
+        history.pop(); // удаляем последний элемент в массиве.
+        setActivePanel(history[history.length - 1]); // Изменяем массив с иторией и меняем активную панель.
       }
     }
   };
@@ -176,8 +140,13 @@ const App = () => {
         console.log(data);
       })
       .catch((e) => {
-        console.log(error); // Ошибка
+        console.log(error);
       });
+  };
+
+  const handleClearPrompt = () => {
+    setChosenStyles({});
+    setInputValue("");
   };
 
   return (
@@ -190,7 +159,6 @@ const App = () => {
                 activePanel={activePanel}
                 history={history}
                 onSwipeBack={goBack}
-                onSwipeBackStart={handleSwipeBackStartForPreventIfNeeded}
               >
                 <Home
                   id="home"
@@ -226,10 +194,7 @@ const App = () => {
                   go={goToPage}
                   currentImg={currentImg}
                   goBack={goBack}
-                  setShowNotificationDelete={setShowNotificationDelete}
-                  showNotificationDelete={showNotificationDelete}
-                  setAlertClose={setAlertClose}
-                  alertClose={alertClose}
+                  handleClearPrompt={handleClearPrompt}
                 />
                 <Loading
                   id="loading"

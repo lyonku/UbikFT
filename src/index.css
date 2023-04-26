@@ -143,9 +143,11 @@
   height: 40px;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(2px);
-  /* Note: backdrop-filter has minimal browser support */
-
   border-radius: 24px;
+}
+
+.roundBtn:hover {
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .Notification {

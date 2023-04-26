@@ -22,6 +22,7 @@
 }
 
 .Loading__circle {
+  max-width: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,22 +158,12 @@ div.Loading__desc {
   z-index: 999 !important;
 }
 
-@media screen and (max-height: 750px) {
+@media screen and (max-height: 650px) {
   .Loading__wrap {
     gap: 10px;
   }
 
   .Loading__circle {
-    width: 400px;
-  }
-}
-
-@media screen and (max-height: 650px) {
-  .Loading__wrap {
-    gap: 0px;
-  }
-
-  .Loading__circle {
-    width: 330px;
+    max-width: 250px;
   }
 }

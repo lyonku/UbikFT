@@ -13,9 +13,13 @@ function ShareWorkAlert({
 }) {
   const ref = useRef(null);
 
-  useClickAway(ref, () => {
-    setShowShareAlert(false);
-  });
+  useClickAway(
+    ref,
+    () => {
+      setShowShareAlert(false);
+    },
+    ["mousedown"]
+  );
 
   return (
     <div

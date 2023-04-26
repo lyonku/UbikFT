@@ -44,7 +44,7 @@
 
 .GalleryItem__wrap {
   position: relative;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
   padding: 16px;
   box-sizing: border-box;
   max-height: 490px;
@@ -78,6 +78,7 @@
 }
 
 .GalleryItem__likeControls {
+  text-decoration: none;
   bottom: 16px;
   right: 16px;
   position: absolute;
@@ -91,6 +92,10 @@
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(2px);
   border-radius: 24px;
+}
+
+.GalleryItem__likeControls:hover {
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .GalleryItem__delimetr {
@@ -370,4 +375,42 @@ div.PayConfirm__title {
 .notification__wrap .Notification {
   top: auto;
   position: relative;
+}
+
+.Gallery__shareBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.Gallery__shareBtn:hover {
+  border-radius: 100%;
+  background-color: #ffffff1a;
+}
+
+.GalleryItem__like {
+  padding: 0 5px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.GalleryItem__like:hover {
+  border-radius: 100px;
+  background-color: #ffffff1a;
+}
+
+.Gallery__promptInfo {
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+}
+
+.Gallery__promptInfo:hover {
+  border-radius: 100px;
+  background-color: #ffffff1a;
 }

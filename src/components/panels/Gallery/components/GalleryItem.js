@@ -49,27 +49,28 @@ function GalleryItem({
             </div>
           </div>
         </div>
-        <div className="GalleryItem__likeControls">
-          OpenSeaNFT
+        <a
+          className="GalleryItem__likeControls"
+          href={"https://polygonscan.com/"}
+          target="_blank"
+        >
+          OpenSea
           <img className="GalleryItem__openSea" src={galleryItem__openSea} />
-          <a
-            className="GalleryItem__nft"
-            href={"https://polygonscan.com/"}
-            target="_blank"
-          >
+          <div className="GalleryItem__nft">
             <NftLogoSvg color="#fff" width="16px" height="16px" />
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
 
       <div className="Gallery__prompt">
         <div className="Gallery__promptInfo" onClick={handleCopyPrompt}>
-          Сave demons attack humanity Сave demons attack humanity Сave demons
-          sdf sdfs dfs attack humanity sdf sdfsas idfopias opdfiapo sidfpoa
-          aspidf paosidaosi fdpasidf s
+          Сave demons attack humanity
         </div>
         <div className="Gallery__promptControls">
-          <ShareSvg color={"#fff"} onClick={setShowShareAlert} />
+          <div className="Gallery__shareBtn">
+            <ShareSvg color={"#fff"} onClick={setShowShareAlert} />
+          </div>
+
           <div className="GalleryItem__like" onClick={() => setOpenHint(true)}>
             <img src={galleryItem__like} />
             <span>1321</span>
