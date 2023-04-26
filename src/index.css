@@ -147,3 +147,68 @@
 
   border-radius: 24px;
 }
+
+.Notification {
+  box-sizing: border-box;
+  z-index: -1;
+  transition: 0.2s;
+  bottom: 80px;
+  position: absolute;
+  padding: 16px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 56px;
+  background: #131313;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #ffffff;
+  opacity: 0;
+}
+
+.Notification.open {
+  z-index: 155;
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.Notification__btn {
+  user-select: none;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  height: 55px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 16px;
+}
+
+.Notification__btn img {
+  max-width: 25px;
+}
+
+div.Notification__btn span {
+  margin-bottom: -3px;
+  display: flex;
+  font-weight: 600;
+  font-size: 17px;
+  font-feature-settings: "tnum" on, "lnum" on;
+
+  color: #ffffff;
+}
+
+.Notification__btn_addHistory {
+  background: #a82be2;
+}
+
+.Notification__btn_addWall {
+  background: #3375f6;
+}
+
+.Notification__btn_sendMessage {
+  background: #454545;
+}

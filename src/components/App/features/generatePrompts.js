@@ -7,7 +7,6 @@ async function generatedPrompts(chosenStyles, currentModel, inputValue) {
   const selectedValues = Object.values(chosenStyles);
   let totalPositiveText = [];
   let totalNegativeText = [];
-
   const apiModels = {
     Protogen: "protogen-3.4",
     Anything: "anything-v3",
@@ -98,7 +97,6 @@ async function generatedPrompts(chosenStyles, currentModel, inputValue) {
   // Записываем тексты в конфигурационный объект
   config.prompt = uniquePositiveText.join(", ");
   config.negative_prompt = uniqueNegativeText2.join(", ");
-
   return config;
 }
 

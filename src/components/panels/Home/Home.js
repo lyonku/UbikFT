@@ -6,7 +6,7 @@ import backgroundProtogen from "assets/img/home__protogen_background.png";
 import backgroundAnything from "assets/img/home__anything_background.png";
 import backgroundVintedois from "assets/img/home__vintedois_background.png";
 
-const Home = ({ id, go, currentModel, setCurrentModel }) => {
+const Home = ({ id, go, currentModel, setCurrentModel, handleTranslate }) => {
   const handleModel = (event) => {
     if (event.target.id) {
       setCurrentModel(event.target.id);

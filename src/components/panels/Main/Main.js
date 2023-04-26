@@ -19,6 +19,9 @@ const Main = ({
   currentNavItem,
   fetchedUser,
   handleArtGenerate,
+  chosenStyles,
+  setChosenStyles,
+  goBack,
 }) => {
   const handleNav = (event) => {
     setCurrentNavItem(event.target.id);
@@ -33,6 +36,9 @@ const Main = ({
               inputValue={inputValue}
               go={go}
               handleArtGenerate={handleArtGenerate}
+              chosenStyles={chosenStyles}
+              setChosenStyles={setChosenStyles}
+              goBack={goBack}
             />
           ) : currentNavItem == "Gallery" ? (
             <Gallery go={go} />

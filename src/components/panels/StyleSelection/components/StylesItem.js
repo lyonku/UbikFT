@@ -12,6 +12,14 @@ function StylesItem({ style, category, setChosenStyles, chosenStyles }) {
       } else {
         setState("");
       }
+    } else {
+      if (chosenStyles[category]) {
+        for (const item of chosenStyles[category]) {
+          if (item.sub_name == style.sub_name) {
+            setState("styles__item_active");
+          }
+        }
+      }
     }
   }, [chosenStyles]);
 

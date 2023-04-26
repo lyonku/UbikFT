@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import "./Profile.css";
 import ProfileArt from "./components/ProfileArt";
 
-import editBtn from "assets/img/artSelection__edit.svg";
 import vkLogo from "assets/img/vk__logo.png";
 import nftLogo from "assets/img/nft__logo.svg";
 
@@ -22,9 +21,6 @@ const Profile = ({ id, go, fetchedUser }) => {
       <div className="gradient-round"></div>
       <div className="Profile__wrap">
         <div className="Profile__controls">
-          <div className="Profile__backBtn backBtn">
-            <img src={editBtn} />
-          </div>
           <div
             className="Profile__energy smallBtn-text"
             onClick={() => go("payEnergy")}
@@ -52,16 +48,20 @@ const Profile = ({ id, go, fetchedUser }) => {
                   <img src={vkLogo} />
                   {"@" + fetchedUser?.id}
                 </a>
-                <div className="Profile__link">
+                <a
+                  className="Profile__link"
+                  href={"https://polygonscan.com/"}
+                  target="_blank"
+                >
                   <img src={nftLogo} />
                   0xbd3afb0bb76683ecb4225f9dbc91f998713c3b01
-                </div>
+                </a>
               </div>
             </div>
           </div>
           <div className="ProfileArts">
             <div className="ProfileArts__title title">
-              Последние <span className="title_accented">работы</span>
+              Ваши <span className="title_accented">работы</span>
             </div>
             {array.length < 1 ? (
               <div className="ProfileArts__item_empty ProfileArts__item">
@@ -70,8 +70,8 @@ const Profile = ({ id, go, fetchedUser }) => {
               </div>
             ) : (
               <div className="ProfileArts__items">
-                {array.map((item) => {
-                  return <ProfileArt img={item} />;
+                {array.map((item, index) => {
+                  return <ProfileArt img={item} key={index} />;
                 })}
               </div>
             )}

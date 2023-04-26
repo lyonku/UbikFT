@@ -141,3 +141,38 @@ div.Loading__desc {
     linear-gradient(109.37deg, #fcc63a 0%, #8bf54d 100%);
   border-radius: 16px;
 }
+
+.roundLoader {
+  transition: stroke-dasharray 0.2s ease-in-out;
+}
+
+.roundLoaderPath {
+  transition: stroke-dasharray 0.2s ease-in-out;
+}
+
+.Loading__close {
+  align-self: flex-start;
+  width: 100%;
+  cursor: pointer;
+  z-index: 999 !important;
+}
+
+@media screen and (max-height: 750px) {
+  .Loading__wrap {
+    gap: 10px;
+  }
+
+  .Loading__circle {
+    width: 400px;
+  }
+}
+
+@media screen and (max-height: 650px) {
+  .Loading__wrap {
+    gap: 0px;
+  }
+
+  .Loading__circle {
+    width: 330px;
+  }
+}

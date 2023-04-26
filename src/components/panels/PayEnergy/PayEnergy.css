@@ -4,6 +4,8 @@
   position: relative;
   display: flex;
   justify-content: center;
+  background-color: black !important;
+
   /* transition: 1s; */
 }
 
@@ -160,4 +162,13 @@ div.benefits__title {
 
 .payEnergy .gradient-round {
   z-index: 0;
+}
+
+@media screen and (max-height: 680px) {
+  .benefits__img {
+    margin-top: -70px;
+  }
+  .benefits__body {
+    gap: 10px;
+  }
 }

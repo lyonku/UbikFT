@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import galleryItem__openSea from "assets/img/galleryItem__openSea.svg";
 import galleryItem__edit from "assets/img/galleryItem__edit.svg";
-import galleryItem__share from "assets/img/galleryItem__share.svg";
 import profile__delete from "assets/img/profile__delete.svg";
+import ShareSvg from "components/common/shareSvg";
 
 function ProfileArt({ img }) {
   return (
@@ -24,11 +24,11 @@ function ProfileArt({ img }) {
             </div>
           </div>
           <div className="ProfileArt__share roundBtn">
-            <img src={galleryItem__share} />
+            <ShareSvg />
           </div>
         </div>
         <img
-          className="ProfileArt__opegalleryItem__openSea"
+          className="ProfileArt__openSea galleryItem__openSea"
           src={galleryItem__openSea}
         />
       </div>

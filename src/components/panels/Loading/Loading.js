@@ -2,43 +2,18 @@ import React, { useState, useEffect } from "react";
 import "./Loading.css";
 import { Panel } from "@vkontakte/vkui";
 import "animate.css";
-
 import RoundLoader from "components/common/roundLoader";
 import background from "assets/img/loading__background.png";
+import closeBtn from "assets/img/close-btn.svg";
 
-const Loading = ({ id, go, currentImg, error }) => {
-  const [percent, setPercent] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(true);
-
+const Loading = ({ id, go, currentImg, error, handleArtGenerate }) => {
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setPercent((prevPercent) => {
-        let counter = prevPercent < 100 && prevPercent + 1;
-        if (counter == 100) {
-          clearInterval(intervalId);
-        }
-
-        return counter;
-      });
-    }, 100);
-    return () => clearInterval(intervalId);
-  }, []);
-
-  useEffect(() => {
-    if (percent >= 99 && !currentImg) {
-      setPercent(99);
-      setIsAnimating(false);
-    }
     if (currentImg) {
-      setPercent(100);
-    }
-
-    if (percent >= 100 && currentImg) {
       const img = new Image();
       img.src = currentImg;
       go("artSelection");
     }
-  }, [percent, currentImg]);
+  }, [currentImg]);
 
   return (
     <Panel id={id}>
@@ -53,14 +28,24 @@ const Loading = ({ id, go, currentImg, error }) => {
         <div className="Loading__background_glow"></div>
         {error ? (
           <div className="Loading__wrap">
+            <div
+              className="payEnergy__closeBtn closeBtn Loading__close"
+              onClick={() => {
+                window.history.back();
+              }}
+            >
+              <img src={closeBtn} />
+            </div>
             <div className="Loading__title title">
               При генерации возникла ошибка !
             </div>
             <div
               className="Loading__errorBtn"
-              onClick={() => window.history.back()}
+              onClick={() => {
+                handleArtGenerate();
+              }}
             >
-              Назад
+              Повторить попытку
             </div>
           </div>
         ) : (
@@ -69,10 +54,8 @@ const Loading = ({ id, go, currentImg, error }) => {
               Ваш арт <span className="title_accented">генерируется</span>
             </div>
             <div className="Loading__circle">
-              <RoundLoader percent={percent} />
-              <div id="count" className="Loading__percent">
-                {percent + "%"}
-              </div>
+              <RoundLoader />
+
               <div className="Loading__roundBack"></div>
             </div>
             <div className="Loading__desc text">

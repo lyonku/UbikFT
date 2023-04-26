@@ -13,14 +13,14 @@ const ArtSelection = ({
   return (
     <div className="ArtSelection__body">
       <div className="ArtSelection__title title nft">
-        Хотите ли вы создать <span className="title_accented">NFT?</span>
+        Хотите создать <span className="title_accented">NFT?</span>
       </div>
       <div className="ArtSelection__img nft">
         <img src={currentImg} />
       </div>
       <div className="ArtSelection__btns nft">
         <div className="ArtSelection__nftBtn btn" onClick={() => go("loading")}>
-          Создать арт <div className="createBtn__delimetr"></div>
+          Создать NFT <div className="createBtn__delimetr"></div>
           <EnergySvg width={"18px"} height={"18px"} color="#FFFFFF" /> 15
         </div>
         <div className="ArtSelection__links">

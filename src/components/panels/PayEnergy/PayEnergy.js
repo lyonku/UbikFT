@@ -5,7 +5,7 @@ import energyImg from "assets/img/payEnergy__energyImg.svg";
 import benefitsImg from "assets/img/payEnergy__benefitsImg.svg";
 import background from "assets/img/payEnergy__background.png";
 
-const PayEnergy = ({}) => {
+const PayEnergy = ({ buySubscribe }) => {
   const [activeTariff, setActiveTariff] = useState("first");
 
   const handleTariff = (e) => {
@@ -103,7 +103,7 @@ const PayEnergy = ({}) => {
               </div>
             </div>
           </div>
-          <div className="payEnergy__btn btn">
+          <div className="payEnergy__btn btn" onClick={buySubscribe}>
             {activeTariff == "first"
               ? "Начать бесплатную пробную версию"
               : activeTariff == "second"
