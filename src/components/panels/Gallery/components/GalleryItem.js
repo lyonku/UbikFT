@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import bridge from "@vkontakte/vk-bridge";
+
 import galleryItem__avatar from "assets/img/galleryItem__avatar.png";
 import galleryItem__openSea from "assets/img/galleryItem__openSea.svg";
 import galleryItem__edit from "assets/img/galleryItem__edit.svg";
@@ -13,15 +15,23 @@ function GalleryItem({
   handleCopyPromptAlert,
   setShowShareAlert,
 }) {
-  const handleCopyPrompt = (e) => {
-    console.log(e.target.innerText);
-    navigator.clipboard
-      .writeText(e.target.innerText)
-      .then(() => {
-        handleCopyPromptAlert();
+  const text = "Пещерные демоны атакуют человечество";
+
+  const handleCopyPrompt = () => {
+    bridge
+      .send("VKWebAppCopyText", {
+        text: text,
       })
-      .catch((err) => {
-        console.error("Ошибка при копировании текста: ", err);
+      .then((data) => {
+        if (data.result) {
+          handleCopyPromptAlert();
+        } else {
+          // Ошибка
+        }
+      })
+      .catch((error) => {
+        // Ошибка
+        console.log(error);
       });
   };
 
@@ -64,7 +74,7 @@ function GalleryItem({
 
       <div className="Gallery__prompt">
         <div className="Gallery__promptInfo" onClick={handleCopyPrompt}>
-          Сave demons attack humanity
+          {text}
         </div>
         <div className="Gallery__promptControls">
           <div className="Gallery__shareBtn">

@@ -69,13 +69,20 @@ div.ArtSelection__title {
   margin-bottom: -5px;
 }
 
+.ArtSelection__imgControls {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  gap: 4px;
+}
+
 .ArtSelection__shareBtn {
   z-index: 19;
   user-select: none;
   cursor: pointer;
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,6 +109,14 @@ div.ArtSelection__title {
   line-height: 23px;
   font-feature-settings: "tnum" on, "lnum" on;
   color: #ffffff;
+}
+
+div.ArtSelection__edit img {
+  width: 26px;
+}
+
+.ArtSelection__refreshBtn svg {
+  width: 26px;
 }
 
 .ArtSelection__btns {

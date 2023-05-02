@@ -9,7 +9,14 @@ import ShareWorkAlert from "components/common/ShareWorkAlert";
 import wallPostBox from "components/App/features/wallPostBox";
 import storiesPostBox from "components/App/features/storiesPostBox";
 
-const ArtSelection = ({ id, go, currentImg, goBack, handleClearPrompt }) => {
+const ArtSelection = ({
+  id,
+  go,
+  currentImg,
+  goBack,
+  handleClearPrompt,
+  handleArtGenerate,
+}) => {
   const [showShareAlert, setShowShareAlert] = useState(false);
 
   const handleShareWallPost = () => {
@@ -33,6 +40,8 @@ const ArtSelection = ({ id, go, currentImg, goBack, handleClearPrompt }) => {
           currentImg={currentImg}
           go={go}
           setShowShareAlert={setShowShareAlert}
+          handleArtGenerate={handleArtGenerate}
+          goBack={goBack}
         />
         <ShareWorkAlert
           showShareAlert={showShareAlert}

@@ -2,8 +2,15 @@ import React, { useState, useEffect } from "react";
 import EnergySvg from "components/common/energySvg";
 import ShareSvg from "components/common/shareSvg";
 import NftLogoSvg from "components/common/nftLogoSvg";
+import editBtn from "assets/img/artSelection__edit.svg";
+import RefreshBtn from "components/common/refreshSvg";
 
-const ArtSelection = ({ currentImg, setShowShareAlert }) => {
+const ArtSelection = ({
+  currentImg,
+  setShowShareAlert,
+  handleArtGenerate,
+  goBack,
+}) => {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -26,11 +33,29 @@ const ArtSelection = ({ currentImg, setShowShareAlert }) => {
       </div>
       <div className="ArtSelection__img">
         <img src={currentImg} />
-        <div
-          className="ArtSelection__shareBtn"
-          onClick={() => setShowShareAlert(true)}
-        >
-          <ShareSvg />
+
+        <div className="ArtSelection__imgControls ">
+          <div
+            className="ArtSelection__edit ArtSelection__shareBtn"
+            onClick={() => goBack(1)}
+          >
+            <img src={editBtn} />
+          </div>
+          <div
+            className="ArtSelection__refreshBtn ArtSelection__shareBtn"
+            onClick={() => {
+              goBack(1);
+              handleArtGenerate();
+            }}
+          >
+            <RefreshBtn color="#b0e822" />
+          </div>
+          <div
+            className="ArtSelection__shareBtn "
+            onClick={() => setShowShareAlert(true)}
+          >
+            <ShareSvg />
+          </div>
         </div>
       </div>
       <div className="ArtSelection__glow"></div>

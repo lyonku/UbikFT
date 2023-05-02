@@ -3,7 +3,6 @@ import checkMark from "assets/img/check-mark.svg";
 
 function StylesItem({ style, category, setChosenStyles, chosenStyles }) {
   const [state, setState] = useState("");
-
   // Function to select only one genre
   useEffect(() => {
     if (category == "genre" && chosenStyles?.genre) {
@@ -14,10 +13,13 @@ function StylesItem({ style, category, setChosenStyles, chosenStyles }) {
       }
     } else {
       if (chosenStyles[category]) {
-        for (const item of chosenStyles[category]) {
-          if (item.sub_name == style.sub_name) {
-            setState("styles__item_active");
-          }
+        var cityId = chosenStyles[category].filter(
+          (val) => val.sub_name == style.sub_name
+        );
+        if (cityId.length >= 1) {
+          setState("styles__item_active");
+        } else {
+          setState("");
         }
       }
     }

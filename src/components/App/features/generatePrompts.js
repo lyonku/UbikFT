@@ -29,17 +29,19 @@ async function generatedPrompts(chosenStyles, currentModel, inputValue) {
     track_id: null,
   };
 
-  // Проходим по каждому элементу в chosenStyles и формируем текст для prompt и negative_prompt
   for (const [key, value] of Object.entries(chosenStyles)) {
     if (key === "genre") {
       totalPositiveText.push(`(${value[0].sub_name}) of ((${inputValue}))`);
-    } else if (key !== "artist") {
+    }
+  }
+  // Проходим по каждому элементу в chosenStyles и формируем текст для prompt и negative_prompt
+  for (const [key, value] of Object.entries(chosenStyles)) {
+    if (key !== "artist" && key !== "genre") {
       for (const item of value) {
         totalPositiveText.push(`${item.sub_name} ${key}`);
       }
     }
   }
-
   for (const [key, value] of Object.entries(chosenStyles)) {
     if (key !== "artist") {
       for (const item of value) {

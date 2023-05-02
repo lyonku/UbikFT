@@ -195,6 +195,7 @@ const App = () => {
                   currentImg={currentImg}
                   goBack={goBack}
                   handleClearPrompt={handleClearPrompt}
+                  handleArtGenerate={handleArtGenerate}
                 />
                 <Loading
                   id="loading"

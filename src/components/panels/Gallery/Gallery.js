@@ -1,15 +1,17 @@
 import React, { useState, useRef } from "react";
-import "./Gallery.css";
-import GalleryItem from "./components/GalleryItem";
 import { useClickAway } from "react-use";
+
+import "./Gallery.css";
+
+import GalleryItem from "./components/GalleryItem";
 import EnergySvg from "components/common/energySvg";
-import benefitsImg from "assets/img/payEnergy__benefitsImg.svg";
 import ShareWorkAlert from "components/common/ShareWorkAlert";
 import wallPostBox from "components/App/features/wallPostBox";
+
 import galleryItem__background from "assets/img/galleryItem__background.png";
+import benefitsImg from "assets/img/payEnergy__benefitsImg.svg";
 
 const Gallery = ({ id, go }) => {
-  // delete
   const count = [1, 2, 3, 4];
   const [openHint, setOpenHint] = useState(false);
   const [copyPromptAlert, setCopyPromptAlert] = useState(false);
@@ -50,6 +52,7 @@ const Gallery = ({ id, go }) => {
           <div className="Gallery__title title">
             Популярные <span className="title_accented">арты</span>
           </div>
+
           <div className="Gallery__items">
             {count.map((item) => {
               return (

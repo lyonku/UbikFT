@@ -1,11 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./StyleSelection.css";
 import { Panel } from "@vkontakte/vkui";
-import modelSelection from "assets/img/back-btn.svg";
 
 import data from "data.json";
 import StylesItem from "./components/StylesItem";
+import backBtn from "assets/img/back-btn.svg";
+import closeBtn from "assets/img/close-btn.svg";
 import EnergySvg from "components/common/energySvg";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Mousewheel } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import { HorizontalScroll, HorizontalCell } from "@vkontakte/vkui";
 
 const StyleSelection = ({
   id,
@@ -17,6 +24,8 @@ const StyleSelection = ({
   goBack,
 }) => {
   const [error, setError] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+  const scrollToTopRef = useRef(null); // создаем ref
 
   useEffect(() => {
     const textareaTwo = document.getElementById("textareaTwo");
@@ -28,8 +37,24 @@ const StyleSelection = ({
     textareaTwo.style.height = textareaTwo.scrollHeight + "px";
   };
 
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleClearStyles = (category) => {
+    let copy = Object.assign({}, chosenStyles);
+    copy[category] = [];
+    setChosenStyles(copy);
+  };
+
+  function handleScrollToTop() {
+    scrollToTopRef.current.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
-    <div className="styleSelection">
+    <div className="styleSelection" ref={scrollToTopRef}>
       <div className="gradient-round"></div>
 
       <div className="styleSelection__wrap">
@@ -40,7 +65,7 @@ const StyleSelection = ({
               goBack(2);
             }}
           >
-            <img src={modelSelection} />
+            <img src={backBtn} />
             Изменить модель
           </div>
           <div
@@ -64,41 +89,87 @@ const StyleSelection = ({
             />
           </div>
         </div>
-
-        <div
-          className={`styleSelection__body ${
-            error && "animate__animated animate__shakeX"
-          }`}
-        >
+        <div className={`styleSelection__body`}>
           {data.map((category, categoryIndex) => {
-            if (chosenStyles.genre || category.title == "genre") {
-              return (
-                <div className="styleСategory__wrap" key={category.title}>
-                  <div className="styleСategory__title">{category.name}</div>
-                  <div className="styles">
-                    {category.array.map((style, styleIndex) => {
+            return (
+              <div
+                className={`styleСategory__wrap ${
+                  error &&
+                  category.title == "genre" &&
+                  "animate__animated animate__shakeX"
+                }`}
+                key={category.title}
+              >
+                <div className="styleСategory__title">
+                  <span>{category.name}</span>
+                  {chosenStyles[category.title]?.length >= 1 &&
+                    category.title != "genre" && (
+                      <div className="styleСategory__chips">
+                        <span>{chosenStyles[category.title]?.length}</span>
+                        <img
+                          src={closeBtn}
+                          onClick={() => handleClearStyles(category.title)}
+                        />
+                      </div>
+                    )}
+                </div>
+                <HorizontalScroll
+                  showArrows
+                  getScrollToLeft={(i) => i - 220}
+                  getScrollToRight={(i) => i + 220}
+                >
+                  <div className="styleСategory__row">
+                    {category.array.map((style) => {
                       return (
                         <StylesItem
+                          key={style.title}
                           style={style}
                           category={category.title}
-                          key={style.sub_name}
                           setChosenStyles={setChosenStyles}
                           chosenStyles={chosenStyles}
                         />
                       );
                     })}
                   </div>
-                </div>
-              );
-            }
+                </HorizontalScroll>
+                {/* <Swiper
+                  style={{
+                    "--swiper-navigation-color": "#b0e822",
+                    "--swiper-pagination-color": "#b0e822",
+                  }}
+                  className="styles"
+                  spaceBetween={10}
+                  slidesPerView={width >= 620 ? 3 : 3.3}
+                  navigation={width >= 630}
+                  modules={[Mousewheel, Navigation]}
+                  grabCursor={true}
+                  slidesPerGroup={3}
+                  mousewheel={true}
+                >
+                  {category.array.map((style, styleIndex) => {
+                    return (
+                      <SwiperSlide key={style.sub_name}>
+                        <StylesItem
+                          style={style}
+                          category={category.title}
+                          setChosenStyles={setChosenStyles}
+                          chosenStyles={chosenStyles}
+                        />
+                      </SwiperSlide>
+                    );
+                  })}
+                </Swiper> */}
+              </div>
+            );
           })}
         </div>
         <div
           className="createBtn btn"
           onClick={
-            chosenStyles.genre
+            chosenStyles?.genre?.length >= 1
               ? () => handleArtGenerate()
               : () => {
+                  handleScrollToTop();
                   setError(true);
                   setTimeout(() => {
                     setError(false);
