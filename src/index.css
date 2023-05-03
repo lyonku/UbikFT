@@ -51,8 +51,12 @@
   top: -213px;
   /* left: 50%; */
   background: linear-gradient(109.37deg, #fcc63a 0%, #8bf54d 100%);
-  opacity: 0.3;
+  opacity: 0.4;
   filter: blur(200px);
+  -webkit-filter: blur(200px);
+  -moz-filter: blur(200px);
+  -o-filter: blur(200px);
+  -ms-filter: blur(200px);
 }
 
 .btn {

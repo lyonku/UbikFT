@@ -119,10 +119,10 @@ const StyleSelection = ({
                   getScrollToRight={(i) => i + 220}
                 >
                   <div className="styleСategory__row">
-                    {category.array.map((style) => {
+                    {category.array.map((style, styleIndex) => {
                       return (
                         <StylesItem
-                          key={style.title}
+                          key={styleIndex}
                           style={style}
                           category={category.title}
                           setChosenStyles={setChosenStyles}
@@ -132,33 +132,6 @@ const StyleSelection = ({
                     })}
                   </div>
                 </HorizontalScroll>
-                {/* <Swiper
-                  style={{
-                    "--swiper-navigation-color": "#b0e822",
-                    "--swiper-pagination-color": "#b0e822",
-                  }}
-                  className="styles"
-                  spaceBetween={10}
-                  slidesPerView={width >= 620 ? 3 : 3.3}
-                  navigation={width >= 630}
-                  modules={[Mousewheel, Navigation]}
-                  grabCursor={true}
-                  slidesPerGroup={3}
-                  mousewheel={true}
-                >
-                  {category.array.map((style, styleIndex) => {
-                    return (
-                      <SwiperSlide key={style.sub_name}>
-                        <StylesItem
-                          style={style}
-                          category={category.title}
-                          setChosenStyles={setChosenStyles}
-                          chosenStyles={chosenStyles}
-                        />
-                      </SwiperSlide>
-                    );
-                  })}
-                </Swiper> */}
               </div>
             );
           })}

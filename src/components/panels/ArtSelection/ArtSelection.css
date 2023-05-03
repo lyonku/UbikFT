@@ -70,11 +70,16 @@ div.ArtSelection__title {
 }
 
 .ArtSelection__imgControls {
+  padding: 16px;
+  box-sizing: border-box;
+  height: 100%;
   display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   flex-direction: column;
   position: absolute;
-  bottom: 16px;
-  right: 16px;
+  bottom: 0;
+  right: 0;
   gap: 4px;
 }
 
@@ -111,12 +116,53 @@ div.ArtSelection__title {
   color: #ffffff;
 }
 
+.ArtSelection__edit {
+  border-radius: 100px;
+}
+
 div.ArtSelection__edit img {
   width: 26px;
 }
 
+.ArtSelection__refreshBtn {
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(2px);
+}
+
+.ArtSelection__refreshBtn:hover {
+  background: rgba(0, 0, 0, 0.582);
+  backdrop-filter: blur(2px);
+}
+
+.ArtSelection__refreshBtn:active {
+  background: rgba(0, 0, 0, 0.534);
+  backdrop-filter: blur(2px);
+}
+
 .ArtSelection__refreshBtn svg {
   width: 26px;
+}
+
+.ArtSelection__refreshBtn_delimetr {
+  margin: 0 10px;
+  opacity: 0.1;
+  border-left: 1px solid #ffffff;
+  border-radius: 1px;
+  height: 24px;
+}
+
+.ArtSelection__refreshBtn span {
+  font-weight: 600;
+  font-size: 17px;
+  text-align: center;
+  font-feature-settings: "tnum" on, "lnum" on;
+  color: #b0e822;
 }
 
 .ArtSelection__btns {
@@ -325,6 +371,10 @@ div.ArtSelection__notification span {
   .ArtSelection__title {
     font-size: 46px;
   }
+  .ArtSelection__imgControls {
+    padding: 5px;
+    padding-bottom: 10px;
+  }
 }
 
 @media screen and (max-width: 420px) {
@@ -336,5 +386,9 @@ div.ArtSelection__notification span {
 @media screen and (max-width: 484px) {
   .ArtSelection__btns {
     padding: 0;
+  }
+
+  .ArtSelection__notification-btns_header {
+    flex-wrap: wrap;
   }
 }

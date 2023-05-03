@@ -4,6 +4,7 @@ import closeBtn from "assets/img/close-btn.svg";
 import energyImg from "assets/img/payEnergy__energyImg.svg";
 import benefitsImg from "assets/img/payEnergy__benefitsImg.svg";
 import background from "assets/img/payEnergy__background.png";
+import EnergySvg from "components/common/energySvg";
 
 const PayEnergy = ({ buySubscribe }) => {
   const [activeTariff, setActiveTariff] = useState("first");
@@ -47,7 +48,7 @@ const PayEnergy = ({ buySubscribe }) => {
             <div className="benefits__body">
               <div className="benefits__item">
                 <img className="benefits__itemImg" src={benefitsImg} />
-                Бесконечная энергия
+                Показательные результаты
               </div>
               <div className="benefits__item">
                 <img className="benefits__itemImg" src={benefitsImg} />
@@ -71,9 +72,10 @@ const PayEnergy = ({ buySubscribe }) => {
               id="first"
             >
               <div className="tariffsItem__title mini-title">
-                <div className="tariffsItem__img"></div>Пробные период
+                <div className="tariffsItem__img"></div>600{" "}
+                <EnergySvg width="18px" height="18px" />
               </div>
-              <div className="tariffsItem__price">Бесплатно</div>
+              <div className="tariffsItem__price">28 голосов</div>
             </div>
             <div
               className={`tariffsItem ${
@@ -83,9 +85,10 @@ const PayEnergy = ({ buySubscribe }) => {
               id="second"
             >
               <div className="tariffsItem__title mini-title">
-                <div className="tariffsItem__img"></div>1 неделя
+                <div className="tariffsItem__img"></div>1500{" "}
+                <EnergySvg width="18px" height="18px" />
               </div>
-              <div className="tariffsItem__price">150 ₽</div>
+              <div className="tariffsItem__price">70 голосов</div>
             </div>
             <div
               className={`tariffsItem ${
@@ -95,22 +98,22 @@ const PayEnergy = ({ buySubscribe }) => {
               id="third"
             >
               <div className="tariffsItem__title mini-title">
-                <div className="tariffsItem__img"></div>1 месяц
+                <div className="tariffsItem__img"></div>7500
+                <EnergySvg width="18px" height="18px" />
               </div>
               <div className="tariffsItem__price ">
-                <div className="tariffsItem__discount">скидка 15%</div>
-                400 ₽
+                <div className="tariffsItem__discount">скидка 10%</div>
+                328 голосов
               </div>
             </div>
           </div>
           <div className="payEnergy__btn btn" onClick={buySubscribe}>
             {activeTariff == "first"
-              ? "Начать бесплатную пробную версию"
+              ? "Приобрести 600 энергии"
               : activeTariff == "second"
-              ? "Приобрести подписку на 1 неделю"
-              : "Приобрести подписку на 1 месяц"}
+              ? "Приобрести 1500 энергии"
+              : "Приобрести 7500 энергии"}
           </div>
-          <div className="payEnergy__info">подписка с автопродлением.</div>
         </div>
       </div>
     </div>

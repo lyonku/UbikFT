@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import EnergySvg from "components/common/energySvg";
 import ShareSvg from "components/common/shareSvg";
 import NftLogoSvg from "components/common/nftLogoSvg";
-import editBtn from "assets/img/artSelection__edit.svg";
 import RefreshBtn from "components/common/refreshSvg";
 
 const ArtSelection = ({
@@ -36,19 +35,16 @@ const ArtSelection = ({
 
         <div className="ArtSelection__imgControls ">
           <div
-            className="ArtSelection__edit ArtSelection__shareBtn"
-            onClick={() => goBack(1)}
-          >
-            <img src={editBtn} />
-          </div>
-          <div
-            className="ArtSelection__refreshBtn ArtSelection__shareBtn"
+            className="ArtSelection__refreshBtn "
             onClick={() => {
               goBack(1);
               handleArtGenerate();
             }}
           >
             <RefreshBtn color="#b0e822" />
+            <div className="ArtSelection__refreshBtn_delimetr"></div>
+            <span>1</span>
+            <EnergySvg width={"18px"} height={"18px"} />
           </div>
           <div
             className="ArtSelection__shareBtn "

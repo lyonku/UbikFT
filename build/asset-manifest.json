@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.51283c5d.css",
-    "main.js": "/static/js/main.c6b774a2.js",
+    "main.css": "/static/css/main.db93baa8.css",
+    "main.js": "/static/js/main.e1430dc6.js",
     "static/media/loading__background.png": "/static/media/loading__background.8db84f724ce51633a0dd.png",
     "static/media/home__vintedois_background.png": "/static/media/home__vintedois_background.bc5a1b9e340e3002c8e0.png",
     "static/media/home__anything_background.png": "/static/media/home__anything_background.acc717ab366fcabff584.png",
@@ -30,11 +30,11 @@
     "static/media/checkbox.svg": "/static/media/checkbox.2b248af312540f2b56ec.svg",
     "index.html": "/index.html",
     "static/media/addToWall.svg": "/static/media/addToWall.90f6d605243e9961da8297afc39653a2.svg",
-    "main.51283c5d.css.map": "/static/css/main.51283c5d.css.map",
-    "main.c6b774a2.js.map": "/static/js/main.c6b774a2.js.map"
+    "main.db93baa8.css.map": "/static/css/main.db93baa8.css.map",
+    "main.e1430dc6.js.map": "/static/js/main.e1430dc6.js.map"
   },
   "entrypoints": [
-    "static/css/main.51283c5d.css",
-    "static/js/main.c6b774a2.js"
+    "static/css/main.db93baa8.css",
+    "static/js/main.e1430dc6.js"
   ]
 }

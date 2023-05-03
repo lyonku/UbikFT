@@ -57,11 +57,6 @@ function ShareWorkAlert({
             <span>На стену</span>
           </div>
         </div>
-
-        <div className="Notification__btn Notification__btn_sendMessage">
-          <img src={sendMessage} />
-          <span>В сообщении</span>
-        </div>
       </div>
     </div>
   );

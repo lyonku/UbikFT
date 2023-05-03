@@ -132,15 +132,15 @@ const App = () => {
 
   const buySubscribe = () => {
     bridge
-      .send("VKWebAppShowSubscriptionBox", {
-        action: "create",
-        item: "subscription_in-app_id",
+      .send("VKWebAppShowOrderBox", {
+        action: "item",
+        item: "item_id_123456",
       })
       .then((data) => {
         console.log(data);
       })
       .catch((e) => {
-        console.log(error);
+        console.log(e);
       });
   };
 

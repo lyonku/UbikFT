@@ -36,9 +36,7 @@ const Loading = ({ id, go, currentImg, error, handleArtGenerate }) => {
             >
               <img src={closeBtn} />
             </div>
-            <div className="Loading__title title">
-              При генерации возникла ошибка !
-            </div>
+            <div className="Loading__title title">Сервер перегружен</div>
             <div
               className="Loading__errorBtn"
               onClick={() => {

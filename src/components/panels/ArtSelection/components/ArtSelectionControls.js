@@ -1,6 +1,7 @@
 import closeBtn from "assets/img/close-btn.svg";
 
 import EnergySvg from "components/common/energySvg";
+import editBtn from "assets/img/artSelection__edit.svg";
 
 function ArtSelectionControls({ go, goBack, handleClearPrompt }) {
   return (
@@ -14,6 +15,12 @@ function ArtSelectionControls({ go, goBack, handleClearPrompt }) {
           }}
         >
           <img src={closeBtn} />
+        </div>
+        <div
+          className="ArtSelection__edit smallBtn-text"
+          onClick={() => goBack(1)}
+        >
+          <img src={editBtn} />
         </div>
       </div>
       <div
