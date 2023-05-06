@@ -18,7 +18,6 @@ const Profile = ({ id, go, fetchedUser }) => {
 
   return (
     <div className="Profile">
-      <div className="gradient-round"></div>
       <div className="Profile__wrap">
         <div className="Profile__controls">
           <div
@@ -26,7 +25,7 @@ const Profile = ({ id, go, fetchedUser }) => {
             onClick={() => go("payEnergy")}
           >
             <EnergySvg width={"20px"} height={"20px"} />
-            12345
+            100
           </div>
         </div>
         <div className="Profile__body">

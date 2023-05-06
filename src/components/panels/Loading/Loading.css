@@ -22,6 +22,7 @@
 }
 
 .Loading__circle {
+  transform: translate3d(0, 0, 0);
   max-width: 300px;
   display: flex;
   align-items: center;
@@ -30,13 +31,8 @@
   width: 100%;
 }
 
-.Loading__circle svg {
-  z-index: 5;
-  position: relative;
-}
-
 .Loading__title {
-  margin-top: 80px;
+  margin-top: 20px;
   font-weight: 700;
   font-size: 42px;
   line-height: 100%;
@@ -46,9 +42,23 @@
   z-index: 5;
 }
 
+div.Loading__text {
+  z-index: 5;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 300;
+  text-align: center;
+  font-feature-settings: "pnum" on, "lnum" on, "ss04" on;
+  color: #ffffff;
+}
+
+.Loading__text a {
+  color: #ffffff;
+}
+
 .Loading__wrap {
   box-sizing: border-box;
-  padding: 16px;
+  padding: 50px 16px 16px 16px;
   max-width: 490px;
   display: flex;
   align-items: center;
@@ -57,26 +67,26 @@
 }
 
 div.Loading__desc {
+  opacity: 0.3;
   max-width: 200px;
   position: absolute;
   bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   text-align: center;
   font-weight: 600;
   font-size: 13px;
   line-height: 18px;
-  display: flex;
-  align-items: center;
-  text-align: center;
   margin-bottom: 25px;
   color: #ffffff;
-  z-index: 1;
+  z-index: 7;
+}
+
+.Loading__desc a {
+  color: #ffffff;
 }
 
 .Loading__roundBack {
+  transform: translate3d(0, 0, 0);
   width: 100%;
   height: 100%;
   position: absolute;
@@ -92,6 +102,7 @@ div.Loading__desc {
 }
 
 .Loading__background_glow {
+  transform: translate3d(0, 0, 0);
   z-index: 2;
   position: absolute;
   width: 100%;
@@ -108,6 +119,7 @@ div.Loading__desc {
 }
 
 .Loading__background_blackoutdown {
+  transform: translate3d(0, 0, 0);
   z-index: 2;
   position: absolute;
   width: 100%;
@@ -118,6 +130,7 @@ div.Loading__desc {
 }
 
 .Loading__background_blackoutup {
+  transform: translate3d(0, 0, 0);
   z-index: 3;
   position: absolute;
   width: 100%;
@@ -144,22 +157,25 @@ div.Loading__desc {
 }
 
 .roundLoader {
+  max-width: 300px;
+  transform: translate3d(0, 0, 0);
   z-index: 99;
   transition: stroke-dasharray 0.2s ease-in-out;
 }
 
 .roundLoaderPath {
+  transform: translate3d(0, 0, 0);
   transition: stroke-dasharray 0.2s ease-in-out;
 }
 
 .Loading__close {
   align-self: flex-start;
-  width: 100%;
   cursor: pointer;
   z-index: 999 !important;
 }
 
 .roundLoaderPath {
+  transform: translate3d(0, 0, 0);
   stroke-dasharray: 62.8, 188.4;
   stroke-dashoffset: 188.4;
   animation: roundLoaderAnimation 2s linear infinite;
@@ -171,6 +187,56 @@ div.Loading__desc {
   }
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+.dot-flashing {
+  margin-left: 20px;
+  display: inline-block;
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #b0e822;
+  color: #b0e822;
+  animation: dot-flashing 1s infinite linear alternate;
+  animation-delay: 0.5s;
+}
+.dot-flashing::before,
+.dot-flashing::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+.dot-flashing::before {
+  left: -15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #b0e822;
+  color: #b0e822;
+  animation: dot-flashing 1s infinite alternate;
+  animation-delay: 0s;
+}
+.dot-flashing::after {
+  left: 15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #b0e822;
+  color: #b0e822;
+  animation: dot-flashing 1s infinite alternate;
+  animation-delay: 1s;
+}
+
+@keyframes dot-flashing {
+  0% {
+    background-color: #b0e822;
+  }
+  50%,
+  100% {
+    background-color: rgba(255, 255, 255, 0.158);
   }
 }
 

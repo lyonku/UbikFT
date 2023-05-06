@@ -36,6 +36,7 @@
 }
 
 .smallBtn-text {
+  user-select: none;
   cursor: pointer;
   max-height: 40px;
   box-sizing: border-box;

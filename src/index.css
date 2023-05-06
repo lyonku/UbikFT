@@ -1,9 +1,14 @@
+/* Webfont: MacPawFixelText-Regular */
 @font-face {
   font-family: "MacPaw Fixel";
-  src: url("./assets/fonts/MacPawFixel-VF.ttf") format("truetype");
+  src: url("./assets/fonts/MacPawFixelText-Regular.woff2") format("woff2"),
+    /* Modern Browsers */ url("./assets/fonts/MacPawFixelText-Regular.otf")
+      format("opentype"); /* Safari, Android, iOS */
   font-style: normal;
   font-weight: normal;
+  text-rendering: optimizeLegibility;
 }
+
 * {
   font-family: "MacPaw Fixel";
   font-style: normal;
@@ -40,7 +45,6 @@
   font-size: 13px;
   line-height: 18px;
   font-feature-settings: "tnum" on, "lnum" on;
-
   color: #787878;
 }
 
@@ -49,10 +53,11 @@
   width: 395px;
   height: 395px;
   top: -213px;
-  /* left: 50%; */
   background: linear-gradient(109.37deg, #fcc63a 0%, #8bf54d 100%);
+  background-color: #79d842;
   opacity: 0.4;
   filter: blur(200px);
+  transform: translate3d(0, 0, 0);
   -webkit-filter: blur(200px);
   -moz-filter: blur(200px);
   -o-filter: blur(200px);
@@ -107,6 +112,21 @@
 
   background: rgba(255, 255, 255, 0.05);
   border-radius: 360.75px;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.096);
+}
+
+.closeBtn:active {
+  background: rgba(255, 255, 255, 0.205);
+}
+
+.Header__controls {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .backBtn {

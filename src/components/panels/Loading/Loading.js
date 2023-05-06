@@ -28,15 +28,27 @@ const Loading = ({ id, go, currentImg, error, handleArtGenerate }) => {
         <div className="Loading__background_glow"></div>
         {error ? (
           <div className="Loading__wrap">
-            <div
-              className="payEnergy__closeBtn closeBtn Loading__close"
-              onClick={() => {
-                window.history.back();
-              }}
-            >
-              <img src={closeBtn} />
+            <div className="Header__controls">
+              <div
+                className="payEnergy__closeBtn closeBtn Loading__close"
+                onClick={() => {
+                  window.history.back();
+                }}
+              >
+                <img src={closeBtn} />
+              </div>
             </div>
+
             <div className="Loading__title title">Сервер перегружен</div>
+            <div className="Loading__text text">
+              Вы можете помочь написав, в сообщество <br />
+              <a href="https://vk.com/vkappsdev" target="_blank">
+                VK Mini apps
+              </a>{" "}
+              примерно следующее:
+              <br /> Выделите мощный сервер Убик 🚀
+            </div>
+
             <div
               className="Loading__errorBtn"
               onClick={() => {
@@ -49,15 +61,18 @@ const Loading = ({ id, go, currentImg, error, handleArtGenerate }) => {
         ) : (
           <div className="Loading__wrap">
             <div className="Loading__title title">
-              Ваш арт <span className="title_accented">генерируется</span>
+              Ваш арт <br />
+              <span className="title_accented">генерируется</span>
+              <div className="dot-flashing"></div>
             </div>
-            <div className="Loading__circle">
-              <RoundLoader />
 
-              <div className="Loading__roundBack"></div>
-            </div>
+            <RoundLoader />
             <div className="Loading__desc text">
-              Обычно это не занимает больше 15 секунд
+              Обычно это занимает 15 секунд, но вы можете написать команде{" "}
+              <a href="https://vk.com/vkappsdev" target="_blank">
+                VK Mini apps
+              </a>{" "}
+              и попросить мощный сервер для нашего проекта. Спасибо :)
             </div>
           </div>
         )}

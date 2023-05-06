@@ -208,7 +208,7 @@
   background: #101010;
 }
 
-.ProfileArt {
+.ProfileArt__body {
   padding: 16px;
   box-sizing: border-box;
   max-height: 490px;
@@ -218,6 +218,7 @@
   aspect-ratio: 1 / 1;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 6px;
 }
 
 .ProfileArt__leftSide {
@@ -231,7 +232,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+}
+
+.ProfileArt__rightSide .GalleryItem__likeControls {
+  position: static !important;
 }
 
 .ProfileArt__shareControls {
@@ -260,4 +265,14 @@
 
 .ProfileArt__openSea {
   align-self: flex-end;
+}
+
+.ProfileArt .Gallery__promptInfo:hover {
+  background-color: #00000000;
+}
+.ProfileArt .Gallery__shareBtn:hover {
+  background-color: #00000000;
+}
+.ProfileArt .GalleryItem__like:hover {
+  background-color: #00000000;
 }

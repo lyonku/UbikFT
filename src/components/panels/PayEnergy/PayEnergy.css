@@ -5,67 +5,79 @@
   display: flex;
   justify-content: center;
   background-color: black !important;
-
-  /* transition: 1s; */
 }
 
 .payEnergy__body {
+  user-select: none;
+  overflow: auto;
   z-index: 1;
   max-width: 490px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 16px;
-  /* transition: 1s; */
+  padding: 50px 16px;
 }
 
 div.benefits__title {
+  text-align: center;
   font-size: 28px;
-  margin-bottom: 24px;
   line-height: 100%;
+  margin-top: 100px;
 }
 
 .benefits {
+  height: 50%;
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .benefits__img {
-  width: 155px;
-  height: 165px;
+  position: absolute;
+  max-width: 175px;
+  max-height: 200px;
   align-self: center;
   margin-top: -34px;
   margin-bottom: -29px;
 }
 
 .benefits__body {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: 24px;
 }
 
 .benefits__item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 
   font-family: "MacPaw Fixel";
   font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 25px;
+  font-weight: 500;
+  font-size: 22px;
   color: #ffffff;
 }
 
 .benefits__itemImg {
   margin-top: -5px;
+  width: 34px;
+}
+
+.payEnergy__section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .tariffs {
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -81,9 +93,9 @@ div.benefits__title {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
   background: #161616;
   border-radius: 16px;
+  gap: 10px;
 }
 
 .tariffsItem__active {
@@ -92,6 +104,7 @@ div.benefits__title {
 
 .tariffsItem__active .tariffsItem__img {
   background: #b0e822;
+  opacity: 1;
 }
 
 .tariffsItem__price {
@@ -102,11 +115,11 @@ div.benefits__title {
   font-style: normal;
   font-weight: 600;
   font-size: 22px;
-  line-height: 33px;
   text-align: center;
   font-feature-settings: "ss04" on;
 
   color: #ffffff;
+  justify-content: flex-end;
 }
 
 .tariffsItem__title {
@@ -114,7 +127,7 @@ div.benefits__title {
   align-items: center;
 }
 .tariffsItem__title svg {
-  margin-left: 5px;
+  margin-right: 5px;
   margin-top: -2px;
 }
 
@@ -133,7 +146,12 @@ div.benefits__title {
 }
 
 .payEnergy__btn {
-  margin-bottom: 8px;
+  min-height: 54px;
+}
+
+.payEnergy__btn svg {
+  margin-left: 10px;
+  margin-top: -2px;
 }
 
 .payEnergy__info {
@@ -171,20 +189,58 @@ div.benefits__title {
   z-index: 0;
 }
 
-@media screen and (max-height: 680px) {
+@media screen and (max-height: 800px) {
   .benefits__img {
-    margin-top: -70px;
+    margin-top: -50px;
   }
-  .benefits__body {
-    gap: 10px;
+
+  div.benefits__title {
+    margin-top: 70px;
   }
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-height: 750px) {
   .benefits__img {
-    margin-top: -70px;
+    margin-top: -60px;
+  }
+
+  div.benefits__title {
+    margin-top: 60px;
+  }
+
+  .payEnergy__body {
+    padding: 50px 16px 16px 16px;
   }
   .benefits__body {
     gap: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .benefits__img {
+    margin-top: -70px;
+  }
+
+  div.benefits__title {
+    margin-top: 50px;
+  }
+
+  .benefits__item {
+    font-size: 20px;
+  }
+
+  .tariffsItem__price {
+    font-size: 20px;
+  }
+
+  .tariffsItem__price {
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+  }
+
+  .tariffsItem__discount {
+    order: 2;
   }
 }

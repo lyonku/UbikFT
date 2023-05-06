@@ -3,8 +3,9 @@ import "./Inquiry.css";
 import { Panel } from "@vkontakte/vkui";
 import "animate.css";
 import InquiryForm from "./components/InquiryForm";
+import backBtn from "assets/img/back-btn.svg";
 
-const Home = ({ id, go, inputValue, setInputValue }) => {
+const Inquiry = ({ id, go, inputValue, setInputValue }) => {
   const [example, setExample] = useState(false);
 
   const examples = [
@@ -51,6 +52,16 @@ const Home = ({ id, go, inputValue, setInputValue }) => {
       <div className="inquiry">
         <div className="gradient-round"></div>
         <div className="inquiry__body">
+          <div className="inquiry__controls Header__controls">
+            <div
+              className="inquiry__controls_closeBtn backBtn"
+              onClick={() => {
+                window.history.back();
+              }}
+            >
+              <img src={backBtn} />
+            </div>
+          </div>
           <div className="inquiry__title title">
             Напишите запрос для создания{" "}
             <span className="title_accented">арта</span>
@@ -70,4 +81,4 @@ const Home = ({ id, go, inputValue, setInputValue }) => {
   );
 };
 
-export default Home;
+export default Inquiry;

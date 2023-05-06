@@ -31,7 +31,7 @@ const PayEnergy = ({ buySubscribe }) => {
       <div className="gradient-round"></div>
 
       <div className="payEnergy__body">
-        <div className="payEnergy__section">
+        <div className="payEnergy__controls">
           <div
             className="payEnergy__closeBtn closeBtn"
             onClick={() => {
@@ -40,29 +40,28 @@ const PayEnergy = ({ buySubscribe }) => {
           >
             <img src={closeBtn} />
           </div>
+        </div>
+        <div className="payEnergy__section">
           <div className="benefits">
             <img className="benefits__img" src={energyImg} />
             <div className="benefits__title title">
-              Раскройте весь потенциал нейронных сетей
+              Создавайте шедевры без ограничений
             </div>
             <div className="benefits__body">
               <div className="benefits__item">
                 <img className="benefits__itemImg" src={benefitsImg} />
-                Показательные результаты
+                Создавайте арт
               </div>
               <div className="benefits__item">
                 <img className="benefits__itemImg" src={benefitsImg} />
-                Быстрая генерация
+                Выводите в топ лучшие работы
               </div>
               <div className="benefits__item">
                 <img className="benefits__itemImg" src={benefitsImg} />
-                Нет рекламы
+                Выпускайте свои NFT
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="payEnergy__section">
           <div className="tariffs">
             <div
               className={`tariffsItem ${
@@ -72,10 +71,11 @@ const PayEnergy = ({ buySubscribe }) => {
               id="first"
             >
               <div className="tariffsItem__title mini-title">
-                <div className="tariffsItem__img"></div>600{" "}
-                <EnergySvg width="18px" height="18px" />
+                <div className="tariffsItem__img"></div>
+                <EnergySvg width="20px" height="20px" />
+                500{" "}
               </div>
-              <div className="tariffsItem__price">28 голосов</div>
+              <div className="tariffsItem__price">25 голосов</div>
             </div>
             <div
               className={`tariffsItem ${
@@ -85,10 +85,11 @@ const PayEnergy = ({ buySubscribe }) => {
               id="second"
             >
               <div className="tariffsItem__title mini-title">
-                <div className="tariffsItem__img"></div>1500{" "}
-                <EnergySvg width="18px" height="18px" />
+                <div className="tariffsItem__img"></div>
+                <EnergySvg width="20px" height="20px" />
+                2000{" "}
               </div>
-              <div className="tariffsItem__price">70 голосов</div>
+              <div className="tariffsItem__price">80 голосов</div>
             </div>
             <div
               className={`tariffsItem ${
@@ -98,21 +99,24 @@ const PayEnergy = ({ buySubscribe }) => {
               id="third"
             >
               <div className="tariffsItem__title mini-title">
-                <div className="tariffsItem__img"></div>7500
-                <EnergySvg width="18px" height="18px" />
+                <div className="tariffsItem__img"></div>
+                <EnergySvg width="20px" height="20px" />
+                10000
               </div>
               <div className="tariffsItem__price ">
                 <div className="tariffsItem__discount">скидка 10%</div>
-                328 голосов
+                350 голосов
               </div>
             </div>
           </div>
           <div className="payEnergy__btn btn" onClick={buySubscribe}>
+            Купить
+            <EnergySvg width="18px" height="18px" color="#fff" />
             {activeTariff == "first"
-              ? "Приобрести 600 энергии"
+              ? " 500"
               : activeTariff == "second"
-              ? "Приобрести 1500 энергии"
-              : "Приобрести 7500 энергии"}
+              ? " 2000"
+              : " 10000 "}
           </div>
         </div>
       </div>

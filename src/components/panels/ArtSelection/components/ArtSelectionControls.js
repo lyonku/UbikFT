@@ -28,7 +28,7 @@ function ArtSelectionControls({ go, goBack, handleClearPrompt }) {
         onClick={() => go("payEnergy")}
       >
         <EnergySvg width={"20px"} height={"20px"} />
-        12345
+        100
       </div>
     </div>
   );

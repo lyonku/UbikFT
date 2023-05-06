@@ -49,16 +49,7 @@ function GalleryItem({
             <div className="GalleryItem__name">KlypKlypik</div>
           </div>
         </div>
-        <div className="GalleryItem__rightSide">
-          <div className="GalleryItem__shareControls">
-            <div
-              className="GalleryItem__edit roundBtn"
-              onClick={handleCopyPrompt}
-            >
-              <img src={galleryItem__edit} />
-            </div>
-          </div>
-        </div>
+
         <a
           className="GalleryItem__likeControls"
           href={"https://polygonscan.com/"}

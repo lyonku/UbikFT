@@ -20,8 +20,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-
-  padding: 66px 16px 56px 16px;
+  padding: 50px 16px 56px 16px;
 }
 
 .inquiry__title {
@@ -143,4 +142,8 @@ div.inquiry__inputExample {
 
 .inquiry__input:active {
   border: 0;
+}
+
+.inquiry__controls {
+  margin-bottom: 30px;
 }

@@ -148,7 +148,7 @@ const App = () => {
     setChosenStyles({});
     setInputValue("");
   };
-
+  console.log(history);
   return (
     <ConfigProvider isWebView>
       <AdaptivityProvider>
@@ -165,6 +165,9 @@ const App = () => {
                   go={goToPage}
                   currentModel={currentModel}
                   setCurrentModel={setCurrentModel}
+                  inputValue={inputValue}
+                  currentNavItem={currentNavItem}
+                  setCurrentNavItem={setCurrentNavItem}
                 />
                 <Inquiry
                   id="inquiry"
@@ -183,6 +186,7 @@ const App = () => {
                   chosenStyles={chosenStyles}
                   setChosenStyles={setChosenStyles}
                   goBack={goBack}
+                  history={history}
                 />
                 <PayEnergy
                   id="payEnergy"

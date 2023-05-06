@@ -59,7 +59,7 @@ const ArtSelection = ({
       <div className="ArtSelection__btns">
         <div className="ArtSelection__nftBtn btn">
           Создать NFT <div className="createBtn__delimetr"></div>
-          <EnergySvg width={"18px"} height={"18px"} color="#FFFFFF" /> 1
+          <EnergySvg width={"18px"} height={"18px"} color="#FFFFFF" /> 250
         </div>
       </div>
     </div>

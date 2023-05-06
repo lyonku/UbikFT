@@ -5,8 +5,18 @@ import { Panel } from "@vkontakte/vkui";
 import backgroundProtogen from "assets/img/home__protogen_background.png";
 import backgroundAnything from "assets/img/home__anything_background.png";
 import backgroundVintedois from "assets/img/home__vintedois_background.png";
+import HomeBody from "./components/HomeBody";
+import MainNavFooter from "components/panels/Main/components/MainNavFooter";
 
-const Home = ({ id, go, currentModel, setCurrentModel, handleTranslate }) => {
+const Home = ({
+  id,
+  go,
+  currentModel,
+  setCurrentModel,
+  inputValue,
+  setCurrentNavItem,
+  currentNavItem,
+}) => {
   const handleModel = (event) => {
     if (event.target.id) {
       setCurrentModel(event.target.id);
@@ -15,6 +25,13 @@ const Home = ({ id, go, currentModel, setCurrentModel, handleTranslate }) => {
         setCurrentModel(event.target.children[0]?.id);
         event.target.children[0].checked = true;
       }
+    }
+  };
+
+  const goTo = () => {
+    go("inquiry");
+    if (inputValue.length >= 1) {
+      go("main");
     }
   };
 
@@ -33,70 +50,17 @@ const Home = ({ id, go, currentModel, setCurrentModel, handleTranslate }) => {
         }}
       >
         <div className="gradient-round"></div>
-        <div className="home__body">
-          <div className="home__title title">
-            Выберите модель <span className="title_accented">ИИ</span>, с
-            которой вы хотите работать
-          </div>
-          <div className="home__row">
-            <div
-              className={`models-item ${
-                currentModel == "Protogen" && "models-item_active"
-              }`}
-              onClick={handleModel}
-            >
-              <input
-                type="radio"
-                id="Protogen"
-                name="models"
-                className="models-item__radio"
-                defaultChecked
-              ></input>
-              <label htmlFor="Protogen">
-                <div className="models-item__title mini-title">Protogen</div>
-                <div className="models-item__text text">Люди</div>
-              </label>
-            </div>
-            <div
-              className={`models-item ${
-                currentModel == "Anything" && "models-item_active"
-              }`}
-              onClick={handleModel}
-            >
-              <input
-                type="radio"
-                id="Anything"
-                name="models"
-                className="models-item__radio"
-              ></input>
-              <label htmlFor="Anything">
-                <div className="models-item__title mini-title">Anything</div>
-                <div className="models-item__text text">Аниме</div>
-              </label>
-            </div>
-            <div
-              className={`models-item ${
-                currentModel == "Vintedois" && "models-item_active"
-              }`}
-              onClick={handleModel}
-            >
-              <input
-                type="radio"
-                id="Vintedois"
-                name="models"
-                className="models-item__radio"
-              ></input>
-              <label htmlFor="Vintedois">
-                <div className="models-item__title mini-title">Vintedois</div>
-                <div className="models-item__text text">Общий</div>
-              </label>
-            </div>
-          </div>
-          <div
-            className="home__btn btn"
-            onClick={() => go("inquiry")}
-          >{`Выбрать ${currentModel}`}</div>
-        </div>
+        <HomeBody
+          currentModel={currentModel}
+          handleModel={handleModel}
+          go={goTo}
+        />
+        <MainNavFooter
+          currentNavItem={currentNavItem}
+          setCurrentNavItem={setCurrentNavItem}
+          go={go}
+          id={id}
+        />
       </div>
     </Panel>
   );

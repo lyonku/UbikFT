@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import stylesData from "data.json";
-
 async function generatedPrompts(chosenStyles, currentModel, inputValue) {
   // Объявляем константы
   const selectedValues = Object.values(chosenStyles);
