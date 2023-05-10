@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./ArtSelection.css";
 
 import GeneratedArt from "./components/GeneratedArt";
@@ -9,14 +9,11 @@ import ShareWorkAlert from "components/common/ShareWorkAlert";
 import wallPostBox from "components/App/features/wallPostBox";
 import storiesPostBox from "components/App/features/storiesPostBox";
 
-const ArtSelection = ({
-  id,
-  go,
-  currentImg,
-  goBack,
-  handleClearPrompt,
-  handleArtGenerate,
-}) => {
+import { MainContext } from "components/shared/providers/MainProvider";
+
+const ArtSelection = ({ id }) => {
+  const { currentImg, goBack, handleArtGenerate, goToPage, handleClearPrompt } =
+    useContext(MainContext);
   const [showShareAlert, setShowShareAlert] = useState(false);
 
   const handleShareWallPost = () => {
@@ -32,13 +29,13 @@ const ArtSelection = ({
       <div className="gradient-round"></div>
       <div className="ArtSelection__wrap">
         <ArtSelectionControls
-          go={go}
+          go={goToPage}
           goBack={goBack}
           handleClearPrompt={handleClearPrompt}
         />
         <GeneratedArt
           currentImg={currentImg}
-          go={go}
+          go={goToPage}
           setShowShareAlert={setShowShareAlert}
           handleArtGenerate={handleArtGenerate}
           goBack={goBack}

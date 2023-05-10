@@ -1,20 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Inquiry.css";
 import { Panel } from "@vkontakte/vkui";
 import "animate.css";
 import InquiryForm from "./components/InquiryForm";
 import backBtn from "assets/img/back-btn.svg";
+import { MainContext } from "components/shared/providers/MainProvider";
+import examples from "./inputExamples.json";
 
-const Inquiry = ({ id, go, inputValue, setInputValue }) => {
+const Inquiry = ({ id }) => {
+  const { inputValue, setInputValue, goToPage } = useContext(MainContext);
+
   const [example, setExample] = useState(false);
-
-  const examples = [
-    "корги с зелёным яблоком на голове",
-    "коты играют в баскетбол с космонавтами",
-    "космонавт скачет на лошади по луне",
-    "рыжая лиса отдыхает в кустах",
-    "умные коты играют в шахматы",
-  ];
 
   const handleInputValue = (event) => {
     setInputValue(event.target.value);
@@ -24,17 +20,17 @@ const Inquiry = ({ id, go, inputValue, setInputValue }) => {
     setInputValue(event.target.innerText);
   };
 
-  const randomExample = () => {
+  const randomizeExample = () => {
     const randomIndex = Math.floor(Math.random() * examples.length);
     if (example == examples[randomIndex]) {
-      randomExample();
+      randomizeExample();
       return;
     }
     setExample(examples[randomIndex]);
   };
 
   useEffect(() => {
-    randomExample();
+    randomizeExample();
   }, []);
 
   useEffect(() => {
@@ -56,7 +52,7 @@ const Inquiry = ({ id, go, inputValue, setInputValue }) => {
             <div
               className="inquiry__controls_closeBtn backBtn"
               onClick={() => {
-                window.history.back();
+                goToPage("main.home");
               }}
             >
               <img src={backBtn} />
@@ -72,8 +68,8 @@ const Inquiry = ({ id, go, inputValue, setInputValue }) => {
             setInputValue={setInputValue}
             handleExample={handleExample}
             example={example}
-            randomExample={randomExample}
-            go={go}
+            randomizeExample={randomizeExample}
+            go={goToPage}
           />
         </div>
       </div>

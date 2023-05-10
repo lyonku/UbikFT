@@ -14,6 +14,10 @@
   font-style: normal;
 }
 
+body {
+  overflow: hidden;
+}
+
 /* --------------------------- */
 
 .title {
@@ -237,4 +241,29 @@ div.Notification__btn span {
 
 .Notification__btn_sendMessage {
   background: #454545;
+}
+
+.Tabbar {
+  box-sizing: border-box;
+  height: 72px;
+  padding: 8px;
+  background-color: #1c1c1c;
+  backdrop-filter: blur(8px);
+  border-radius: 16px 16px 0px 0px;
+}
+
+.vkuiTabbar__in {
+  height: 100%;
+  gap: 4px;
+}
+
+.vkuiTabbarItem {
+  max-width: 150px !important;
+  height: 100%;
+  cursor: pointer;
+}
+
+.vkuiTabbarItem--selected {
+  background: #ffffff;
+  border-radius: 16px !important;
 }

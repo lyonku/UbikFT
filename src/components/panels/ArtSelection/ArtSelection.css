@@ -7,7 +7,7 @@
   height: 100vh;
   background-color: black;
   box-sizing: border-box;
-  padding: 50px 32px;
+  padding: 50px 32px 100px 32px;
 }
 
 .ArtSelection::-webkit-scrollbar {
@@ -178,7 +178,7 @@ div.ArtSelection__edit img {
 
 .ArtSelection__img {
   position: relative;
-  width: 100%;
+  width: 45vh;
   box-sizing: border-box;
   max-width: 360px;
   max-height: 360px;
@@ -354,14 +354,14 @@ div.ArtSelection__notification span {
   display: flex;
   gap: 10px;
 }
-
+/* 
 @media screen and (max-height: 690px) {
   .ArtSelection__img {
     max-width: 300px;
   }
 }
 
-@media screen and (max-height: 660px) {
+@media screen and (max-height: 670px) {
   .ArtSelection__img {
     max-width: 250px;
   }
@@ -390,5 +390,23 @@ div.ArtSelection__notification span {
 
   .ArtSelection__notification-btns_header {
     flex-wrap: wrap;
+  }
+} */
+
+@media screen and (max-height: 670px) {
+  div.ArtSelection__title {
+    font-size: 26px;
+  }
+
+  div.ArtSelection__title {
+    margin: 0;
+  }
+
+  .ArtSelection__img {
+    margin: 0;
+  }
+
+  .ArtSelection__title svg {
+    margin-bottom: -10px;
   }
 }

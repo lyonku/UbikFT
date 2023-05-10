@@ -1,20 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.0c8db8a6.css",
-    "main.js": "/static/js/main.c0a479e9.js",
+    "main.css": "/static/css/main.ef727d37.css",
+    "main.js": "/static/js/main.a1bc4985.js",
     "static/media/loading__background.png": "/static/media/loading__background.8db84f724ce51633a0dd.png",
     "static/media/home__vintedois_background.png": "/static/media/home__vintedois_background.bc5a1b9e340e3002c8e0.png",
     "static/media/home__anything_background.png": "/static/media/home__anything_background.acc717ab366fcabff584.png",
-    "static/media/home__protogen_background.png": "/static/media/home__protogen_background.27f852c96bb32ffd00f1.png",
+    "static/media/home__protogen_background.png": "/static/media/home__protogen_background.0260a16bbf1c7a76196a.png",
     "static/media/galleryItem__background.png": "/static/media/galleryItem__background.ab3f2b6543e0f5d8cccd.png",
     "static/media/payEnergy__background.png": "/static/media/payEnergy__background.47326c0d69d909a6cecb.png",
     "static/media/MacPawFixelText-Regular.otf": "/static/media/MacPawFixelText-Regular.75d44f06aa78a75b45a2.otf",
     "static/media/vk__logo.png": "/static/media/vk__logo.5fb75fcb04f9e947385b.png",
     "static/media/MacPawFixelText-Regular.woff2": "/static/media/MacPawFixelText-Regular.615b696311567a1434b9.woff2",
-    "static/media/artists-img3.png": "/static/media/artists-img3.fe0e7615563e534de1ac.png",
-    "static/media/artists-img2.png": "/static/media/artists-img2.248a005d8a7d219e2b7e.png",
-    "static/media/artists-img4.png": "/static/media/artists-img4.7f92bd510b8e04cc206a.png",
-    "static/media/artists-img.png": "/static/media/artists-img.c314b1ef3a32c3916aac.png",
     "static/media/profile__emptyImg.svg": "/static/media/profile__emptyImg.66feaa14079716411da37455739e3280.svg",
     "static/media/payEnergy__energyImg.svg": "/static/media/payEnergy__energyImg.f3c7f465941b07620186acdc2f1ab4e6.svg",
     "static/media/galleryItem__openSea.svg": "/static/media/galleryItem__openSea.44a0931a951a997720c78e13e010420a.svg",
@@ -35,11 +31,11 @@
     "static/media/checkbox.svg": "/static/media/checkbox.2b248af312540f2b56ec.svg",
     "index.html": "/index.html",
     "static/media/addToWall.svg": "/static/media/addToWall.90f6d605243e9961da8297afc39653a2.svg",
-    "main.0c8db8a6.css.map": "/static/css/main.0c8db8a6.css.map",
-    "main.c0a479e9.js.map": "/static/js/main.c0a479e9.js.map"
+    "main.ef727d37.css.map": "/static/css/main.ef727d37.css.map",
+    "main.a1bc4985.js.map": "/static/js/main.a1bc4985.js.map"
   },
   "entrypoints": [
-    "static/css/main.0c8db8a6.css",
-    "static/js/main.c0a479e9.js"
+    "static/css/main.ef727d37.css",
+    "static/js/main.a1bc4985.js"
   ]
 }

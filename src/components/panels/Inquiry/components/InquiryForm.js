@@ -8,7 +8,7 @@ function InquiryForm({
   setInputValue,
   handleExample,
   example,
-  randomExample,
+  randomizeExample,
   go,
 }) {
   const [error, setError] = useState(false);
@@ -42,7 +42,10 @@ function InquiryForm({
           />
           <img
             src={deleteBtn}
-            onClick={() => setInputValue("")}
+            onClick={() => {
+              setInputValue("");
+              textareaRef.current.focus();
+            }}
             className={`inquiry__clearBtn ${
               inputValue.length >= 1 && "displayed"
             }`}
@@ -57,14 +60,14 @@ function InquiryForm({
           >
             {example}
           </span>
-          <img src={refresh} onClick={randomExample} />
+          <img src={refresh} onClick={randomizeExample} />
         </div>
       </div>
       <div
         className="inquiry__btn btn"
         onClick={
           inputValue.length >= 1
-            ? () => go("main")
+            ? () => go("main.styleSelection")
             : () => {
                 setError(true);
                 setTimeout(() => {

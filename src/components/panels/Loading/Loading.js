@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Loading.css";
 import { Panel } from "@vkontakte/vkui";
 import "animate.css";
-import RoundLoader from "components/common/roundLoader";
 import background from "assets/img/loading__background.png";
-import closeBtn from "assets/img/close-btn.svg";
+import { MainContext } from "components/shared/providers/MainProvider";
+import LoadingMain from "./components/LoadingMain";
 
-const Loading = ({ id, go, currentImg, error, handleArtGenerate }) => {
+const Loading = ({ id }) => {
+  const { currentImg, error, handleArtGenerate, goToPage } =
+    useContext(MainContext);
+
   useEffect(() => {
     if (currentImg) {
       const img = new Image();
       img.src = currentImg;
-      go("artSelection");
+      goToPage("main.artSelection");
     }
   }, [currentImg]);
 
@@ -27,54 +30,9 @@ const Loading = ({ id, go, currentImg, error, handleArtGenerate }) => {
         <div className="Loading__background_blackoutup"></div>
         <div className="Loading__background_glow"></div>
         {error ? (
-          <div className="Loading__wrap">
-            <div className="Header__controls">
-              <div
-                className="payEnergy__closeBtn closeBtn Loading__close"
-                onClick={() => {
-                  window.history.back();
-                }}
-              >
-                <img src={closeBtn} />
-              </div>
-            </div>
-
-            <div className="Loading__title title">Сервер перегружен</div>
-            <div className="Loading__text text">
-              Вы можете помочь написав, в сообщество <br />
-              <a href="https://vk.com/vkappsdev" target="_blank">
-                VK Mini apps
-              </a>{" "}
-              примерно следующее:
-              <br /> Выделите мощный сервер Убик 🚀
-            </div>
-
-            <div
-              className="Loading__errorBtn"
-              onClick={() => {
-                handleArtGenerate();
-              }}
-            >
-              Повторить попытку
-            </div>
-          </div>
+          <LoadingError handleArtGenerate={handleArtGenerate} />
         ) : (
-          <div className="Loading__wrap">
-            <div className="Loading__title title">
-              Ваш арт <br />
-              <span className="title_accented">генерируется</span>
-              <div className="dot-flashing"></div>
-            </div>
-
-            <RoundLoader />
-            <div className="Loading__desc text">
-              Обычно это занимает 15 секунд, но вы можете написать команде{" "}
-              <a href="https://vk.com/vkappsdev" target="_blank">
-                VK Mini apps
-              </a>{" "}
-              и попросить мощный сервер для нашего проекта. Спасибо :)
-            </div>
-          </div>
+          <LoadingMain />
         )}
       </div>
     </Panel>

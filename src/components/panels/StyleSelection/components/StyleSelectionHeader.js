@@ -7,7 +7,7 @@ function StyleSelectionHeader({ go, goBack, history }) {
       <div
         className="styleSelection__modelSwitch smallBtn-text"
         onClick={() => {
-          goBack(history.length - 1);
+          go("main.home");
         }}
       >
         <img src={backBtn} />

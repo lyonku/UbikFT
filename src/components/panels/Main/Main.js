@@ -1,57 +1,27 @@
-import React, { useState, useRef } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useContext, useRef, useEffect } from "react";
+import { MainContext } from "components/shared/providers/MainProvider";
+import { Panel, View } from "@vkontakte/vkui";
+import PayEnergy from "components/panels/PayEnergy/PayEnergy";
+
 import "./Main.css";
-import { Panel } from "@vkontakte/vkui";
 
-import Artists from "components/panels/Artists";
-import Gallery from "components/panels/Gallery";
-import Profile from "components/panels/Profile";
-import StyleSelection from "components/panels/StyleSelection";
+import Home from "../Home";
+import Inquiry from "../Inquiry";
+import StyleSelection from "../StyleSelection";
+import Loading from "../Loading";
+import ArtSelection from "../ArtSelection/ArtSelection";
 
-import MainNavFooter from "./components/MainNavFooter";
-
-const Main = ({
-  id,
-  go,
-  inputValue,
-  setCurrentNavItem,
-  currentNavItem,
-  fetchedUser,
-  handleArtGenerate,
-  chosenStyles,
-  setChosenStyles,
-  goBack,
-  history,
-}) => {
+const Main = ({ id }) => {
+  const { inputValue, styleSelectionActivePanel, goBack } =
+    useContext(MainContext);
   return (
-    <Panel id={id}>
-      <div className="mainNav">
-        <div className="gradient-round"></div>
-        <div className="mainNav__body">
-          {currentNavItem == "StyleSelection" ? (
-            <StyleSelection
-              inputValue={inputValue}
-              go={go}
-              handleArtGenerate={handleArtGenerate}
-              chosenStyles={chosenStyles}
-              setChosenStyles={setChosenStyles}
-              goBack={goBack}
-              history={history}
-            />
-          ) : currentNavItem == "Gallery" ? (
-            <Gallery go={go} />
-          ) : (
-            // ) : currentNavItem == "Artists" ? (
-            // <Artists go={go} />
-            <Profile go={go} fetchedUser={fetchedUser} />
-          )}
-        </div>
-        <MainNavFooter
-          currentNavItem={currentNavItem}
-          setCurrentNavItem={setCurrentNavItem}
-        />
-      </div>
-    </Panel>
+    <View id={id} activePanel={styleSelectionActivePanel} onSwipeBack={goBack}>
+      <Home id="home" />
+      <Inquiry id="inquiry" />
+      <StyleSelection id="styleSelection" />
+      <Loading id="loading" />
+      <ArtSelection id={"artSelection"} />
+    </View>
   );
 };
 

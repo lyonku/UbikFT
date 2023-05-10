@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 const GallerySvg = (props) => {
-  const [currentState, setCurrentState] = useState("");
-
-  useEffect(() => {
-    if (props.currentnavitem == "Gallery") {
-      setCurrentState("#B0E822");
-    } else {
-      setCurrentState("#ffffff");
-    }
-  }, [props]);
-
   return (
     <svg
       width={28}
@@ -26,7 +16,7 @@ const GallerySvg = (props) => {
         width={10.35}
         height={10.952}
         rx={2}
-        fill={currentState}
+        fill={props.color ?? "#fff"}
         id="Gallery"
       />
       <rect
@@ -35,7 +25,7 @@ const GallerySvg = (props) => {
         width={10.35}
         height={6.571}
         rx={2}
-        fill={currentState}
+        fill={props.color ?? "#fff"}
         id="Gallery"
       />
       <rect
@@ -44,7 +34,7 @@ const GallerySvg = (props) => {
         width={10.35}
         height={19.714}
         rx={2}
-        fill={currentState}
+        fill={props.color ?? "#fff"}
         id="Gallery"
       />
     </svg>

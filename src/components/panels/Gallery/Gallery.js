@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { View, Panel } from "@vkontakte/vkui";
 
 import "./Gallery.css";
 
@@ -27,56 +28,59 @@ const Gallery = ({ id, go }) => {
   };
 
   return (
-    <div className="Gallery">
-      <div className="Gallery__wrap">
-        <div className="Gallery__controls">
-          <div
-            className="Gallery__energy smallBtn-text"
-            onClick={() => go("payEnergy")}
-          >
-            <EnergySvg width={"20px"} height={"20px"} />
-            100
-          </div>
-        </div>
-        <div className="Gallery__body">
-          <div className="Gallery__title title">
-            Популярные <span className="title_accented">арты</span>
-          </div>
+    <View id="gallery" activePanel="galleryHome">
+      <Panel id="galleryHome">galleryHome</Panel>
+    </View>
+    // <div className="Gallery">
+    //   <div className="Gallery__wrap">
+    //     <div className="Gallery__controls">
+    //       <div
+    //         className="Gallery__energy smallBtn-text"
+    //         onClick={() => go("payEnergy")}
+    //       >
+    //         <EnergySvg width={"20px"} height={"20px"} />
+    //         100
+    //       </div>
+    //     </div>
+    //     <div className="Gallery__body">
+    //       <div className="Gallery__title title">
+    //         Популярные <span className="title_accented">арты</span>
+    //       </div>
 
-          <div className="Gallery__items">
-            {count.map((item) => {
-              return (
-                <GalleryItem
-                  key={item}
-                  setOpenHint={setOpenHint}
-                  handleCopyPromptAlert={handleCopyPromptAlert}
-                  showShareAlert={showShareAlert}
-                  setShowShareAlert={setShowShareAlert}
-                />
-              );
-            })}
-          </div>
-        </div>
-      </div>
-      <div className="notification__wrap">
-        <ShareWorkAlert
-          showShareAlert={showShareAlert}
-          setShowShareAlert={setShowShareAlert}
-          handleShareWallPost={handleShareWallPost}
-        />
-      </div>
+    //       <div className="Gallery__items">
+    //         {count.map((item) => {
+    //           return (
+    //             <GalleryItem
+    //               key={item}
+    //               setOpenHint={setOpenHint}
+    //               handleCopyPromptAlert={handleCopyPromptAlert}
+    //               showShareAlert={showShareAlert}
+    //               setShowShareAlert={setShowShareAlert}
+    //             />
+    //           );
+    //         })}
+    //       </div>
+    //     </div>
+    //   </div>
+    //   <div className="notification__wrap">
+    //     <ShareWorkAlert
+    //       showShareAlert={showShareAlert}
+    //       setShowShareAlert={setShowShareAlert}
+    //       handleShareWallPost={handleShareWallPost}
+    //     />
+    //   </div>
 
-      <div className={`Notification ${copyPromptAlert && "open"}`}>
-        <img src={benefitsImg} />
-        Промт скопирован
-      </div>
-      <div
-        className={`PayConfirm__background ${
-          (openHint || showShareAlert) && "open"
-        }`}
-      ></div>
-      <PayConfirm openHint={openHint} setOpenHint={setOpenHint} />
-    </div>
+    //   <div className={`Notification ${copyPromptAlert && "open"}`}>
+    //     <img src={benefitsImg} />
+    //     Промт скопирован
+    //   </div>
+    //   <div
+    //     className={`PayConfirm__background ${
+    //       (openHint || showShareAlert) && "open"
+    //     }`}
+    //   ></div>
+    //   <PayConfirm openHint={openHint} setOpenHint={setOpenHint} />
+    // </div>
   );
 };
 

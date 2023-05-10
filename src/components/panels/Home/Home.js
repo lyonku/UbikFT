@@ -1,22 +1,17 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
 import "./Home.css";
 import { Panel } from "@vkontakte/vkui";
 import backgroundProtogen from "assets/img/home__protogen_background.png";
 import backgroundAnything from "assets/img/home__anything_background.png";
 import backgroundVintedois from "assets/img/home__vintedois_background.png";
 import HomeBody from "./components/HomeBody";
-import MainNavFooter from "components/panels/Main/components/MainNavFooter";
 
-const Home = ({
-  id,
-  go,
-  currentModel,
-  setCurrentModel,
-  inputValue,
-  setCurrentNavItem,
-  currentNavItem,
-}) => {
+import { MainContext } from "components/shared/providers/MainProvider";
+
+const Home = ({ id }) => {
+  const { currentModel, setCurrentModel, inputValue, goToPage } =
+    useContext(MainContext);
+
   const handleModel = (event) => {
     if (event.target.id) {
       setCurrentModel(event.target.id);
@@ -29,9 +24,9 @@ const Home = ({
   };
 
   const goTo = () => {
-    go("inquiry");
+    goToPage("main.inquiry");
     if (inputValue.length >= 1) {
-      go("main");
+      goToPage("main.styleSelection");
     }
   };
 
@@ -54,12 +49,6 @@ const Home = ({
           currentModel={currentModel}
           handleModel={handleModel}
           go={goTo}
-        />
-        <MainNavFooter
-          currentNavItem={currentNavItem}
-          setCurrentNavItem={setCurrentNavItem}
-          go={go}
-          id={id}
         />
       </div>
     </Panel>

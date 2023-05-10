@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { Panel, View } from "@vkontakte/vkui";
+import { useModalRootContext } from "@vkontakte/vkui";
 import "./PayEnergy.css";
+
 import closeBtn from "assets/img/close-btn.svg";
 import energyImg from "assets/img/payEnergy__energyImg.svg";
 import benefitsImg from "assets/img/payEnergy__benefitsImg.svg";
 import background from "assets/img/payEnergy__background.png";
 import EnergySvg from "components/common/energySvg";
 
-const PayEnergy = ({ buySubscribe }) => {
+const PayEnergy = ({ id, buySubscribe }) => {
   const [activeTariff, setActiveTariff] = useState("first");
 
   const handleTariff = (e) => {

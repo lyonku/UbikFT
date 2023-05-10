@@ -1,15 +1,16 @@
 .styleSelection {
-  overflow-y: auto;
+  background-color: #000000;
+  overflow: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 .styleSelection::-webkit-scrollbar {
   width: 5px;
-  background-color: #00000000;
+  background-color: #000000;
 }
 
 .styleSelection::-webkit-scrollbar-thumb {
@@ -24,6 +25,7 @@
 }
 
 .styleSelection__wrap {
+  position: relative;
   z-index: 2;
   max-width: 490px;
   box-sizing: border-box;
@@ -144,7 +146,7 @@
   align-items: flex-start;
   flex-direction: column;
   gap: 20px;
-  padding-bottom: 170px;
+  padding-bottom: 200px;
 }
 
 .styleСategory__wrap {
@@ -242,7 +244,7 @@
   cursor: pointer;
   text-align: center;
   max-width: 256px;
-  position: absolute;
+  position: fixed;
   bottom: 95px;
   height: 55px;
 }

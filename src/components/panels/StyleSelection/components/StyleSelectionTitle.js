@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import router from "components/shared/router";
 
 function StyleSelectionTitle({ go, inputValue, history }) {
   useEffect(() => {
@@ -15,10 +16,10 @@ function StyleSelectionTitle({ go, inputValue, history }) {
     <div
       className="styleSelection__title"
       onClick={() => {
-        if (history.length == 3) {
+        if (router.history[router.history.length - 2].page == "main.inquiry") {
           window.history.back();
         } else {
-          go("inquiry");
+          go("main.inquiry");
         }
       }}
     >

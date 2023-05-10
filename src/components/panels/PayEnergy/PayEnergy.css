@@ -1,4 +1,5 @@
 .payEnergy {
+  z-index: 999;
   width: 100%;
   height: 100vh;
   position: relative;
@@ -209,7 +210,7 @@ div.benefits__title {
   }
 
   .payEnergy__body {
-    padding: 50px 16px 16px 16px;
+    padding: 50px 16px 36px 16px;
   }
   .benefits__body {
     gap: 10px;
