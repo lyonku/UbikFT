@@ -8,7 +8,7 @@ import { MainContext } from "components/shared/providers/MainProvider";
 import examples from "./inputExamples.json";
 
 const Inquiry = ({ id }) => {
-  const { inputValue, setInputValue, goToPage } = useContext(MainContext);
+  const { inputValue, setInputValue, router } = useContext(MainContext);
 
   const [example, setExample] = useState(false);
 
@@ -52,7 +52,7 @@ const Inquiry = ({ id }) => {
             <div
               className="inquiry__controls_closeBtn backBtn"
               onClick={() => {
-                goToPage("main.home");
+                router.toBack();
               }}
             >
               <img src={backBtn} />
@@ -60,7 +60,7 @@ const Inquiry = ({ id }) => {
           </div>
           <div className="inquiry__title title">
             Напишите запрос для создания{" "}
-            <span className="title_accented">арта</span>
+            <span className="text_accented">арта</span>
           </div>
           <InquiryForm
             inputValue={inputValue}
@@ -69,7 +69,7 @@ const Inquiry = ({ id }) => {
             handleExample={handleExample}
             example={example}
             randomizeExample={randomizeExample}
-            go={goToPage}
+            router={router}
           />
         </div>
       </div>

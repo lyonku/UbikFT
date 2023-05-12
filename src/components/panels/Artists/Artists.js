@@ -25,7 +25,7 @@ const Artists = ({ id, go }) => {
         </div>
         <div className="Artists__body">
           <div className="Artists__title title">
-            Популярные <span className="title_accented">художники</span>
+            Популярные <span className="text_accented">художники</span>
           </div>
           <div className="Artists__items">
             {count.map((item, index) => {

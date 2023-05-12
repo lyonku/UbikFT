@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import router from "components/shared/router";
 
-function StyleSelectionTitle({ go, inputValue, history }) {
+function StyleSelectionTitle({ inputValue, router }) {
   useEffect(() => {
     const textareaTwo = document.getElementById("textareaTwo");
     autoResize(textareaTwo);
@@ -13,16 +12,7 @@ function StyleSelectionTitle({ go, inputValue, history }) {
   };
 
   return (
-    <div
-      className="styleSelection__title"
-      onClick={() => {
-        if (router.history[router.history.length - 2].page == "main.inquiry") {
-          window.history.back();
-        } else {
-          go("main.inquiry");
-        }
-      }}
-    >
+    <div className="styleSelection__title" onClick={() => router.toBack()}>
       <div className="inquiry__inputWrap">
         <textarea
           id="textareaTwo"

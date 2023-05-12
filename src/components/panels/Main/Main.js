@@ -11,11 +11,11 @@ import StyleSelection from "../StyleSelection";
 import Loading from "../Loading";
 import ArtSelection from "../ArtSelection/ArtSelection";
 
-const Main = ({ id }) => {
-  const { inputValue, styleSelectionActivePanel, goBack } =
-    useContext(MainContext);
+const Main = ({ id, activePanel }) => {
+  const { router } = useContext(MainContext);
+
   return (
-    <View id={id} activePanel={styleSelectionActivePanel} onSwipeBack={goBack}>
+    <View id={id} activePanel={router.activePanel}>
       <Home id="home" />
       <Inquiry id="inquiry" />
       <StyleSelection id="styleSelection" />

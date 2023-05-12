@@ -2,17 +2,19 @@ import React from "react";
 import ReactDOM from "react-dom";
 import bridge from "@vkontakte/vk-bridge";
 import App from "./components/App/App";
-import "./index.css";
 
-import { MainContextProvider } from "components/shared/providers/MainProvider";
+import Router from "@reyzitwo/react-router-vkminiapps";
+import structure from "components/App/routerStructure";
+
+import "./index.css";
 
 // Init VK  Mini App
 bridge.send("VKWebAppInit");
 
 ReactDOM.render(
-  <MainContextProvider>
+  <Router structure={structure}>
     <App />
-  </MainContextProvider>,
+  </Router>,
   document.getElementById("root")
 );
 if (process.env.NODE_ENV === "development") {

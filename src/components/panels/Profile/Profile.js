@@ -4,7 +4,7 @@ import ProfileArt from "./components/ProfileArt";
 import { View, Panel } from "@vkontakte/vkui";
 
 import vkLogo from "assets/img/vk__logo.png";
-import nftLogo from "assets/img/nft__logo.svg";
+import NftLogoSvg from "components/common/nftLogoSvg";
 
 import galleryItem__background from "assets/img/galleryItem__background.png";
 import profile__emptyImg from "assets/img/profile__emptyImg.svg";
@@ -13,7 +13,7 @@ import EnergySvg from "components/common/energySvg";
 import { MainContext } from "components/shared/providers/MainProvider";
 
 const Profile = ({ id }) => {
-  const { goToPage, fetchedUser } = useContext(MainContext);
+  const { fetchedUser, router } = useContext(MainContext);
 
   const array = [
     galleryItem__background,
@@ -22,15 +22,15 @@ const Profile = ({ id }) => {
   ];
 
   return (
-    <View id="profile" activePanel="profileHome">
-      <Panel id="profileHome">
+    <View id={id} activePanel={router.activePanel}>
+      <Panel id="profile">
         <div className="Profile">
           <div className="gradient-round"></div>
           <div className="Profile__wrap">
             <div className="Profile__controls">
               <div
                 className="Profile__energy smallBtn-text"
-                onClick={() => goToPage("payEnergy")}
+                onClick={() => router.toView("payEnergy")}
               >
                 <EnergySvg width={"20px"} height={"20px"} />
                 100
@@ -60,7 +60,7 @@ const Profile = ({ id }) => {
                       href={"https://polygonscan.com/"}
                       target="_blank"
                     >
-                      <img src={nftLogo} />
+                      <NftLogoSvg />
                       0xbd3afb0bb76683ecb4225f9dbc91f998713c3b01
                     </a>
                   </div>
@@ -68,7 +68,7 @@ const Profile = ({ id }) => {
               </div>
               <div className="ProfileArts">
                 <div className="ProfileArts__title title">
-                  Ваши <span className="title_accented">работы</span>
+                  Ваши <span className="text_accented">работы</span>
                 </div>
                 {array.length < 1 ? (
                   <div className="ProfileArts__item_empty ProfileArts__item">

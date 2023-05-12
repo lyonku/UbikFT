@@ -10,15 +10,91 @@
 }
 
 * {
+  font-weight: 600;
   font-family: "MacPaw Fixel";
   font-style: normal;
+  color: #ffffff;
 }
 
 body {
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+
+.vkuiEpic .vkuiPanel__in {
+  padding-bottom: 0 !important;
 }
 
 /* --------------------------- */
+
+.title_h1-42px {
+  font-weight: 700;
+  font-size: 42px;
+  font-feature-settings: "pnum" on, "lnum" on, "ss04" on;
+}
+
+.title_h2-32px {
+  font-size: 32px;
+  font-feature-settings: "pnum" on, "lnum" on, "ss04" on;
+}
+
+.title_h3-24px {
+  font-size: 24px;
+  font-feature-settings: "tnum" on, "lnum" on;
+}
+
+.title_h4-18px {
+  font-size: 18px;
+  font-feature-settings: "tnum" on, "lnum" on;
+}
+
+.text_gray {
+  font-weight: 500;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.text_white {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.transparentBlock {
+  padding: 4px 16px;
+
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 99px;
+
+  font-size: 13px;
+  font-feature-settings: "tnum" on, "lnum" on;
+}
+
+.transparentBlock_blur {
+  padding: 8px;
+  gap: 8px;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
+
+  display: flex;
+  cursor: pointer;
+
+  font-weight: 500;
+  font-size: 17px;
+  font-feature-settings: "tnum" on, "lnum" on;
+}
+
+.transparentBlock_blur:hover {
+  background: rgba(255, 255, 255, 0.116);
+}
+
+.roundedBlock_greenBroder {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid #b0e822;
+  border-radius: 16px;
+}
+
+/* OLD -> */
 
 .title {
   font-family: "MacPaw Fixel";
@@ -32,8 +108,6 @@ body {
 }
 
 .mini-title {
-  font-family: "MacPaw Fixel";
-  font-style: normal;
   font-weight: 600;
   font-size: 17px;
   line-height: 23px;
@@ -43,8 +117,6 @@ body {
 }
 
 .text {
-  font-family: "MacPaw Fixel";
-  font-style: normal;
   font-weight: 500;
   font-size: 13px;
   line-height: 18px;
@@ -158,7 +230,7 @@ body {
   margin-left: -2px;
 }
 
-.title_accented {
+.text_accented {
   color: #b0e822;
 }
 
@@ -266,4 +338,137 @@ div.Notification__btn span {
 .vkuiTabbarItem--selected {
   background: #ffffff;
   border-radius: 16px !important;
+}
+
+/* Изменить !! */
+
+.Gallery__prompt {
+  margin-bottom: 8px;
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Gallery__promptControls {
+  display: flex;
+  gap: 4px;
+}
+
+.Gallery__promptInfo {
+  cursor: pointer;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  font-feature-settings: "tnum" on, "lnum" on;
+  color: #ffffff;
+}
+
+.Gallery__promptControls svg {
+  cursor: pointer;
+}
+
+.GalleryItem__likeControls {
+  font-weight: 500;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  font-feature-settings: "tnum" on, "lnum" on;
+  color: #ffffff;
+}
+
+.GalleryItem__likeControls img {
+  width: 24px;
+}
+
+.GalleryItem__nft {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 99px;
+  background: linear-gradient(230.77deg, #6434b8 2.6%, #84219d 96.25%);
+}
+.Gallery__shareBtn {
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.Gallery__shareBtn:hover {
+  border-radius: 100%;
+  background-color: #ffffff1a;
+}
+
+.GalleryItem__like {
+  padding: 2px 8px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.GalleryItem__like:hover {
+  border-radius: 100px;
+  background-color: #ffffff1a;
+}
+
+.Gallery__promptInfo {
+  padding: 2px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+}
+
+.Gallery__promptInfo:hover {
+  border-radius: 100px;
+  background-color: #ffffff1a;
+}
+
+.GalleryItem__likeControls {
+  text-decoration: none;
+  bottom: 16px;
+  right: 16px;
+  position: absolute;
+  box-sizing: border-box;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(2px);
+  border-radius: 24px;
+}
+
+.GalleryItem__likeControls:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.GalleryItem__like {
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.GalleryItem__like span {
+  font-weight: 500;
+  font-size: 17px;
+  color: #ffffff;
+  font-weight: 500;
+  font-feature-settings: "tnum" on, "lnum" on;
+  line-height: 26px;
 }

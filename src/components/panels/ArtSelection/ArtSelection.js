@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import "./ArtSelection.css";
+import { PopoutWrapper } from "@vkontakte/vkui";
 
 import GeneratedArt from "./components/GeneratedArt";
 import ArtSelectionControls from "./components/ArtSelectionControls";
@@ -11,10 +12,20 @@ import storiesPostBox from "components/App/features/storiesPostBox";
 
 import { MainContext } from "components/shared/providers/MainProvider";
 
-const ArtSelection = ({ id }) => {
-  const { currentImg, goBack, handleArtGenerate, goToPage, handleClearPrompt } =
+const ArtSelection = () => {
+  const { currentImg, handleArtGenerate, router, handleClearPrompt } =
     useContext(MainContext);
-  const [showShareAlert, setShowShareAlert] = useState(false);
+
+  const handleShowSharePopout = () => {
+    router.toPopout(
+      <PopoutWrapper alignY="center" alignX="center">
+        <ShareWorkAlert
+          handleShareWallPost={handleShareWallPost}
+          handleShareStoriesPost={handleShareStoriesPost}
+        />
+      </PopoutWrapper>
+    );
+  };
 
   const handleShareWallPost = () => {
     wallPostBox(currentImg);
@@ -29,24 +40,17 @@ const ArtSelection = ({ id }) => {
       <div className="gradient-round"></div>
       <div className="ArtSelection__wrap">
         <ArtSelectionControls
-          go={goToPage}
-          goBack={goBack}
+          router={router}
           handleClearPrompt={handleClearPrompt}
         />
         <GeneratedArt
           currentImg={currentImg}
-          go={goToPage}
-          setShowShareAlert={setShowShareAlert}
+          router={router}
           handleArtGenerate={handleArtGenerate}
-          goBack={goBack}
+          handleShowSharePopout={handleShowSharePopout}
         />
-        <ShareWorkAlert
-          showShareAlert={showShareAlert}
-          setShowShareAlert={setShowShareAlert}
-          handleShareWallPost={handleShareWallPost}
-          handleShareStoriesPost={handleShareStoriesPost}
-        />
-        <div className={`overlay ${showShareAlert && "open"}`}></div>
+
+        <div className={`overlay ${router.popout && "open"}`}></div>
       </div>
     </div>
   );

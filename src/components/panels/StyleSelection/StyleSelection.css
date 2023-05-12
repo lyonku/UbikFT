@@ -339,6 +339,7 @@ div.swiper .swiper-button-disabled {
 }
 
 .vkuiHorizontalScrollArrow__icon svg {
+  color: #b0e822;
   width: 40px !important;
   height: 50px !important;
 }

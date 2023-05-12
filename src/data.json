@@ -12,7 +12,7 @@
       {
         "sub_name": "Digital painting",
         "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
-        "negativePrompt": "  render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "3d  render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_154244_966421-Digital+painting+of+small+villa+trending+on+pinterest-1012436400.png"
       },
       {

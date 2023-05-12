@@ -14,10 +14,8 @@ const StyleSelection = ({ id }) => {
     inputValue,
     chosenStyles,
     setChosenStyles,
-    goBack,
-    history,
-    goToPage,
-    onStoryChange,
+    router,
+    go,
     handleArtGenerate,
   } = useContext(MainContext);
 
@@ -33,16 +31,8 @@ const StyleSelection = ({ id }) => {
       <div className="styleSelection" ref={scrollToTopRef}>
         <div className="gradient-round"></div>
         <div className="styleSelection__wrap">
-          <StyleSelectionHeader
-            go={goToPage}
-            goBack={goBack}
-            history={history}
-          />
-          <StyleSelectionTitle
-            go={goToPage}
-            inputValue={inputValue}
-            history={history}
-          />
+          <StyleSelectionHeader router={router} />
+          <StyleSelectionTitle inputValue={inputValue} router={router} />
           <StyleSelectionBody
             chosenStyles={chosenStyles}
             error={error}

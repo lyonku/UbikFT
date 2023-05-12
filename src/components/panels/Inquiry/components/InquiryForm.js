@@ -9,7 +9,7 @@ function InquiryForm({
   handleExample,
   example,
   randomizeExample,
-  go,
+  router,
 }) {
   const [error, setError] = useState(false);
   const textareaRef = useRef(null);
@@ -38,7 +38,7 @@ function InquiryForm({
             onChange={handleInputValue}
             rows={1}
             ref={textareaRef}
-            maxLength={200}
+            maxLength={400}
           />
           <img
             src={deleteBtn}
@@ -67,7 +67,7 @@ function InquiryForm({
         className="inquiry__btn btn"
         onClick={
           inputValue.length >= 1
-            ? () => go("main.styleSelection")
+            ? () => router.toPanel("styleSelection")
             : () => {
                 setError(true);
                 setTimeout(() => {

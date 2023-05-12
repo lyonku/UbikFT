@@ -58,9 +58,9 @@
 div.ArtSelection__title {
   text-align: center;
   z-index: 2;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   font-weight: 700;
-  font-size: calc(25.8px + 1vw);
+  font-size: 37px;
   line-height: 100%;
   font-feature-settings: "pnum" on, "lnum" on, "ss04" on;
 }
@@ -93,8 +93,8 @@ div.ArtSelection__title {
   justify-content: center;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(2px);
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: 99px;
 }
 
@@ -125,53 +125,55 @@ div.ArtSelection__edit img {
 }
 
 .ArtSelection__refreshBtn {
-  cursor: pointer;
-  padding: 4px 10px;
-  border-radius: 30px;
   display: flex;
   align-items: center;
+  box-sizing: border-box;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 30px;
   color: #ffffff;
   background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(2px);
+  border-radius: 99px;
 }
 
 .ArtSelection__refreshBtn:hover {
-  background: rgba(0, 0, 0, 0.582);
-  backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .ArtSelection__refreshBtn:active {
-  background: rgba(0, 0, 0, 0.534);
-  backdrop-filter: blur(2px);
-}
-
-.ArtSelection__refreshBtn svg {
-  width: 26px;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .ArtSelection__refreshBtn_delimetr {
-  margin: 0 10px;
+  margin: 0 8px;
   opacity: 0.1;
   border-left: 1px solid #ffffff;
   border-radius: 1px;
-  height: 24px;
+  height: 16px;
 }
 
 .ArtSelection__refreshBtn span {
-  font-weight: 600;
-  font-size: 17px;
-  text-align: center;
+  margin-bottom: -3px;
+  margin-left: 4px;
+  font-weight: 500;
+  font-size: 13px;
   font-feature-settings: "tnum" on, "lnum" on;
   color: #b0e822;
 }
 
+.ArtSelection__refreshBtn .count {
+  margin-left: 0;
+  margin-right: 4px;
+  font-weight: 600;
+}
+
 .ArtSelection__btns {
+  margin-top: 10px;
   align-items: center;
   flex-direction: column;
-  gap: 28px;
+  gap: 8px;
   width: 100%;
   box-sizing: border-box;
-  padding: 0 30px;
   display: flex;
   justify-content: center;
 }
@@ -180,9 +182,8 @@ div.ArtSelection__edit img {
   position: relative;
   width: 45vh;
   box-sizing: border-box;
-  max-width: 360px;
-  max-height: 360px;
-  margin-bottom: 16px;
+  max-width: 430px;
+  max-height: 430px;
   z-index: 2;
 }
 
@@ -219,7 +220,7 @@ div.ArtSelection__notification {
   z-index: -1;
   transition: 0.2s;
   max-width: 488px;
-  width: 100%;
+  width: 90vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -354,59 +355,60 @@ div.ArtSelection__notification span {
   display: flex;
   gap: 10px;
 }
-/* 
-@media screen and (max-height: 690px) {
+
+.ArtSelection__desc {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: center;
+  font-feature-settings: "tnum" on, "lnum" on;
+
+  color: #ffffff;
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 500px) {
+  div.ArtSelection__title {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 460px) {
   .ArtSelection__img {
     max-width: 300px;
   }
 }
 
-@media screen and (max-height: 670px) {
+@media screen and (max-height: 725px) {
   .ArtSelection__img {
-    max-width: 250px;
+    max-width: 260px;
   }
 }
-
-@media screen and (max-width: 360px) {
-  .ArtSelection__title {
-    font-size: 46px;
-  }
-  .ArtSelection__imgControls {
-    padding: 5px;
-    padding-bottom: 10px;
-  }
-}
-
-@media screen and (max-width: 420px) {
-  .ArtSelection__notification-btns {
-    flex-wrap: wrap;
-  }
-}
-
-@media screen and (max-width: 484px) {
-  .ArtSelection__btns {
-    padding: 0;
-  }
-
-  .ArtSelection__notification-btns_header {
-    flex-wrap: wrap;
-  }
-} */
 
 @media screen and (max-height: 670px) {
+  div.ArtSelection__title {
+    font-size: 30px;
+  }
+
+  .ArtSelection__btns {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-height: 670px) and (max-width: 460px) {
+  .ArtSelection__img {
+    max-width: 240px;
+  }
+}
+
+@media screen and (max-height: 700px) and (max-width: 460px) {
   div.ArtSelection__title {
     font-size: 26px;
   }
+}
 
-  div.ArtSelection__title {
-    margin: 0;
-  }
-
-  .ArtSelection__img {
-    margin: 0;
-  }
-
-  .ArtSelection__title svg {
-    margin-bottom: -10px;
+@media screen and (max-width: 520px) {
+  .ArtSelection__notification-btns_header {
+    flex-wrap: wrap;
   }
 }

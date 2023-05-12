@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useContext } from "react";
 import { View, Panel } from "@vkontakte/vkui";
 
 import "./Gallery.css";
@@ -12,11 +12,14 @@ import galleryItem__background from "assets/img/galleryItem__background.png";
 import benefitsImg from "assets/img/payEnergy__benefitsImg.svg";
 import PayConfirm from "./components/PayConfirm";
 
-const Gallery = ({ id, go }) => {
+import { MainContext } from "components/shared/providers/MainProvider";
+
+const Gallery = ({ id, activePanel }) => {
   const count = [1, 2, 3, 4];
   const [openHint, setOpenHint] = useState(false);
   const [copyPromptAlert, setCopyPromptAlert] = useState(false);
   const [showShareAlert, setShowShareAlert] = useState(false);
+  const { router } = useContext(MainContext);
 
   const handleCopyPromptAlert = () => {
     setCopyPromptAlert(true);
@@ -28,8 +31,8 @@ const Gallery = ({ id, go }) => {
   };
 
   return (
-    <View id="gallery" activePanel="galleryHome">
-      <Panel id="galleryHome">galleryHome</Panel>
+    <View id={id} activePanel={router.activePanel}>
+      <Panel id="gallery">galleryHome</Panel>
     </View>
     // <div className="Gallery">
     //   <div className="Gallery__wrap">
@@ -44,7 +47,7 @@ const Gallery = ({ id, go }) => {
     //     </div>
     //     <div className="Gallery__body">
     //       <div className="Gallery__title title">
-    //         Популярные <span className="title_accented">арты</span>
+    //         Популярные <span className="text_accented">арты</span>
     //       </div>
 
     //       <div className="Gallery__items">

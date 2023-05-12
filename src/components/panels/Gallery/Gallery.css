@@ -77,27 +77,6 @@
   color: #ffffff;
 }
 
-.GalleryItem__likeControls {
-  text-decoration: none;
-  bottom: 16px;
-  right: 16px;
-  position: absolute;
-  box-sizing: border-box;
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  height: 40px;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(2px);
-  border-radius: 24px;
-}
-
-.GalleryItem__likeControls:hover {
-  background: rgba(0, 0, 0, 0.6);
-}
-
 .GalleryItem__delimetr {
   width: 0px;
   height: 24px;
@@ -120,41 +99,6 @@
   color: #b0e822;
 }
 
-.GalleryItem__like {
-  user-select: none;
-  cursor: pointer;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
-
-.GalleryItem__like span {
-  font-weight: 500;
-  font-size: 17px;
-  color: #ffffff;
-  font-weight: 500;
-  font-feature-settings: "tnum" on, "lnum" on;
-  line-height: 26px;
-}
-
-.GalleryItem__rightSide {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.GalleryItem__shareControls {
-  align-self: flex-end;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.GalleryItem__openSea {
-  cursor: pointer;
-}
-
 .Gallery::-webkit-scrollbar {
   width: 5px;
   background-color: #00000000;
@@ -169,61 +113,6 @@
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   background-color: #00000000;
-}
-
-.Gallery__prompt {
-  margin-bottom: 8px;
-  gap: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.Gallery__promptControls {
-  display: flex;
-  gap: 4px;
-}
-
-.Gallery__promptInfo {
-  cursor: pointer;
-  -webkit-line-clamp: 2;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 18px;
-  font-feature-settings: "tnum" on, "lnum" on;
-  color: #ffffff;
-}
-
-.Gallery__promptControls svg {
-  cursor: pointer;
-}
-
-.GalleryItem__likeControls {
-  font-weight: 500;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  font-feature-settings: "tnum" on, "lnum" on;
-  color: #ffffff;
-}
-
-.GalleryItem__likeControls img {
-  width: 24px;
-}
-
-.GalleryItem__nft {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 99px;
-  background: linear-gradient(230.77deg, #6434b8 2.6%, #84219d 96.25%);
 }
 
 .PayConfirm {
@@ -390,43 +279,4 @@ div.PayConfirm__title {
 .notification__wrap .Notification {
   top: auto;
   position: relative;
-}
-
-.Gallery__shareBtn {
-  padding: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-}
-
-.Gallery__shareBtn:hover {
-  border-radius: 100%;
-  background-color: #ffffff1a;
-}
-
-.GalleryItem__like {
-  padding: 2px 8px;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
-}
-
-.GalleryItem__like:hover {
-  border-radius: 100px;
-  background-color: #ffffff1a;
-}
-
-.Gallery__promptInfo {
-  padding: 2px 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 30px;
-}
-
-.Gallery__promptInfo:hover {
-  border-radius: 100px;
-  background-color: #ffffff1a;
 }

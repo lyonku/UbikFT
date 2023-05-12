@@ -1,31 +1,25 @@
-import React, { useState, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { useClickAway } from "react-use";
 import closeBtn from "assets/img/close-btn.svg";
 import addToHistory from "assets/img/addToHistory.svg";
 import addToWall from "assets/img/addToWall.svg";
-import sendMessage from "assets/img/sendMessage.svg";
+import { MainContext } from "components/shared/providers/MainProvider";
 
-function ShareWorkAlert({
-  showShareAlert,
-  setShowShareAlert,
-  handleShareWallPost,
-  handleShareStoriesPost,
-}) {
+function ShareWorkAlert({ handleShareWallPost, handleShareStoriesPost }) {
   const ref = useRef(null);
+  const { router } = useContext(MainContext);
 
   useClickAway(
     ref,
     () => {
-      setShowShareAlert(false);
+      router.toPopout();
     },
     ["mousedown"]
   );
 
   return (
     <div
-      className={`ArtSelection__notification Notification ${
-        showShareAlert && "open"
-      }`}
+      className={`ArtSelection__notification Notification ${"open"}`}
       ref={ref}
     >
       <div className="ArtSelection__notification-header">
@@ -33,7 +27,7 @@ function ShareWorkAlert({
         <div
           className="ArtSelection__close smallBtn-text"
           onClick={() => {
-            setShowShareAlert(false);
+            router.toPopout();
           }}
         >
           <img src={closeBtn} />

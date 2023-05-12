@@ -1,10 +1,14 @@
+import React, { useContext } from "react";
 import { Tabbar, TabbarItem } from "@vkontakte/vkui";
 import EnergySvg from "components/common/energySvg";
 import GallerySvg from "components/common/gallerySvg";
 import ArtistsSvg from "components/common/artistsSvg";
 import ProfileSvg from "components/common/profileSvg";
+import { MainContext } from "components/shared/providers/MainProvider";
 
-function MainTabbar({ onStoryChange, activeStory }) {
+function MainTabbar({ activeStory }) {
+  const { onStoryChange } = useContext(MainContext);
+
   return (
     <Tabbar className="Tabbar">
       <TabbarItem
@@ -17,10 +21,10 @@ function MainTabbar({ onStoryChange, activeStory }) {
       </TabbarItem>
       <TabbarItem
         onClick={onStoryChange}
-        selected={activeStory === "gallery"}
-        data-story="gallery"
+        selected={activeStory === "contests"}
+        data-story="contests"
       >
-        <GallerySvg color={activeStory === "gallery" ? "#B0E822" : "#fff"} />
+        <GallerySvg color={activeStory === "contests" ? "#B0E822" : "#fff"} />
       </TabbarItem>
       <TabbarItem
         onClick={onStoryChange}

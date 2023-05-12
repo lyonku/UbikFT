@@ -9,7 +9,7 @@ import HomeBody from "./components/HomeBody";
 import { MainContext } from "components/shared/providers/MainProvider";
 
 const Home = ({ id }) => {
-  const { currentModel, setCurrentModel, inputValue, goToPage } =
+  const { currentModel, setCurrentModel, inputValue, router } =
     useContext(MainContext);
 
   const handleModel = (event) => {
@@ -24,9 +24,9 @@ const Home = ({ id }) => {
   };
 
   const goTo = () => {
-    goToPage("main.inquiry");
+    router.toPanel("inquiry");
     if (inputValue.length >= 1) {
-      goToPage("main.styleSelection");
+      router.toPanel("styleSelection");
     }
   };
 

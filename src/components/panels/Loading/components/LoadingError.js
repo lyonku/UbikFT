@@ -1,13 +1,13 @@
 import closeBtn from "assets/img/close-btn.svg";
 
-function LoadingError({ handleArtGenerate }) {
+function LoadingError({ handleArtGenerate, router }) {
   return (
     <div className="Loading__wrap">
       <div className="Header__controls">
         <div
           className="payEnergy__closeBtn closeBtn Loading__close"
           onClick={() => {
-            window.history.back();
+            router.toBack();
           }}
         >
           <img src={closeBtn} />

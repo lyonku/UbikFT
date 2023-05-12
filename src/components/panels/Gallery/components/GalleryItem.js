@@ -3,7 +3,6 @@ import bridge from "@vkontakte/vk-bridge";
 
 import galleryItem__avatar from "assets/img/galleryItem__avatar.png";
 import galleryItem__openSea from "assets/img/galleryItem__openSea.svg";
-import galleryItem__edit from "assets/img/galleryItem__edit.svg";
 import galleryItem__background from "assets/img/galleryItem__background.png";
 import galleryItem__like from "assets/img/galleryItem__like.svg";
 

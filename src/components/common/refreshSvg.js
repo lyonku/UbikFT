@@ -2,24 +2,28 @@ import * as React from "react";
 const refreshSvg = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={32}
-    height={32}
-    viewBox="0 0 256 256"
+    width={props.width ?? "16px"}
+    height={props.height ?? "16px"}
+    viewBox="0 0 16 16"
+    fill="none"
     {...props}
   >
-    <path
-      fill={props.color ?? "#fff"}
-      strokeMiterlimit={10}
-      d="M16 4c-5.113 0-9.383 3.16-11.125 7.625l1.844.75C8.176 8.641 11.71 6 16 6c3.242 0 6.133 1.59 7.938 4H20v2h7V5h-2v3.094A11.938 11.938 0 0 0 16 4zm9.281 15.625C23.824 23.359 20.29 26 16 26c-3.277 0-6.156-1.613-7.969-4H12v-2H5v7h2v-3.094C9.188 26.386 12.395 28 16 28c5.113 0 9.383-3.16 11.125-7.625z"
-      fontFamily="none"
-      fontSize="none"
-      fontWeight="none"
-      style={{
-        mixBlendMode: "normal",
-      }}
-      textAnchor="none"
-      transform="scale(8)"
-    />
+    <g
+      stroke={props.color ?? "#B0E822"}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      clipPath="url(#a)"
+    >
+      <path d="M14.112 5.333a6.669 6.669 0 0 0-12.745 2" />
+      <path d="M11.333 5.333h2.934a.4.4 0 0 0 .4-.4V2M1.92 10.667a6.67 6.67 0 0 0 12.746-2" />
+      <path d="M4.7 10.667H1.767a.4.4 0 0 0-.4.4V14" />
+    </g>
+    <defs>
+      <clipPath id="a">
+        <path fill="#fff" d="M0 0h16v16H0z" />
+      </clipPath>
+    </defs>
   </svg>
 );
 export default refreshSvg;

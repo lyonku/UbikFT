@@ -13,7 +13,7 @@ const ArtSelection = ({
   return (
     <div className="ArtSelection__body">
       <div className="ArtSelection__title title nft">
-        Хотите создать <span className="title_accented">NFT?</span>
+        Хотите создать <span className="text_accented">NFT?</span>
       </div>
       <div className="ArtSelection__img nft">
         <img src={currentImg} />

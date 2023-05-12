@@ -20,7 +20,7 @@ function PayConfirm({ openHint, setOpenHint }) {
       ></div>
       <div className="PayConfirm__title mini-title">
         Чтобы поставить лайк нужно потратить{" "}
-        <span className="title_accented">единицу энергии.</span>
+        <span className="text_accented">единицу энергии.</span>
       </div>
       <div className="PayConfirm__check">
         <input

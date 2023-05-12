@@ -5,16 +5,18 @@ import "animate.css";
 import background from "assets/img/loading__background.png";
 import { MainContext } from "components/shared/providers/MainProvider";
 import LoadingMain from "./components/LoadingMain";
+import LoadingError from "./components/LoadingError";
 
 const Loading = ({ id }) => {
-  const { currentImg, error, handleArtGenerate, goToPage } =
+  const { currentImg, error, handleArtGenerate, router } =
     useContext(MainContext);
 
   useEffect(() => {
     if (currentImg) {
       const img = new Image();
       img.src = currentImg;
-      goToPage("main.artSelection");
+      router.toBack();
+      router.toPanel("artSelection");
     }
   }, [currentImg]);
 
@@ -30,7 +32,7 @@ const Loading = ({ id }) => {
         <div className="Loading__background_blackoutup"></div>
         <div className="Loading__background_glow"></div>
         {error ? (
-          <LoadingError handleArtGenerate={handleArtGenerate} />
+          <LoadingError handleArtGenerate={handleArtGenerate} router={router} />
         ) : (
           <LoadingMain />
         )}

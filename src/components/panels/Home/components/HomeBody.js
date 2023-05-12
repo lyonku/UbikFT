@@ -2,7 +2,7 @@ function HomeBody({ currentModel, handleModel, go }) {
   return (
     <div className="home__body">
       <div className="home__title title">
-        Выберите модель <span className="title_accented">ИИ</span>
+        Выберите модель <span className="text_accented">ИИ</span>
       </div>
       <div className="home__row">
         <div

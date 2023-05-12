@@ -5,7 +5,7 @@ function LoadingMain() {
     <div className="Loading__wrap">
       <div className="Loading__title title">
         Ваш арт <br />
-        <span className="title_accented">генерируется</span>
+        <span className="text_accented">генерируется</span>
         <div className="dot-flashing"></div>
       </div>
 

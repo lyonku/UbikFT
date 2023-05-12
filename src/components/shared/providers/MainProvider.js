@@ -1,17 +1,11 @@
 import { createContext, useState, useEffect } from "react";
 import bridge from "@vkontakte/vk-bridge";
 
-import generatePrompts from "components/App/features/generatePrompts";
-
-import router from "../router.js";
+import createPrompts from "components/App/features/createPrompts";
 
 export const MainContext = createContext();
 
-export const MainContextProvider = ({ children }) => {
-  const [activeStory, setActiveStory] = useState("main");
-  const [styleSelectionActivePanel, setStyleSelectionActivePanel] =
-    useState("home");
-
+export const MainContextProvider = ({ children, router }) => {
   const [currentModel, setCurrentModel] = useState("Protogen");
   const [inputValue, setInputValue] = useState("");
   const [chosenStyles, setChosenStyles] = useState({});
@@ -22,79 +16,72 @@ export const MainContextProvider = ({ children }) => {
   bridge.send("VKWebAppInit");
 
   // Navigation in mini app start
+
   const onStoryChange = (e) => {
-    goToPage(e.currentTarget?.dataset?.story ?? e, "setActiveStory");
+    router.toView(e.currentTarget.dataset.story);
   };
-
-  function goToPage(name) {
-    const totalName = name.split(".");
-
-    router.go(name);
-    setActiveStory(totalName[0]);
-    if (totalName[1]) {
-      setStyleSelectionActivePanel(totalName[1]);
-    }
-  }
-
-  const goBack = (count) => {
-    if (count) {
-      let currentCount = 0;
-      while (currentCount < count) {
-        router.back();
-        currentCount++;
-      }
-    }
-    const totalName = router.state.page.split(".");
-    // if (activeStory == router.state.page) {
-    //   router.back();
-    // }
-    setActiveStory(totalName[0]);
-    if (totalName[1]) {
-      setStyleSelectionActivePanel(totalName[1]);
-    }
-  };
-
-  useEffect(() => {
-    const handlePopstate = () => goBack();
-    window.addEventListener("popstate", handlePopstate);
-
-    return () => {
-      window.removeEventListener("popstate", handlePopstate);
-    };
-  }, []);
-  console.log(router.history);
 
   // Navigation in mini app end
 
+  // Generate art start
+
   const handleArtGenerate = async () => {
-    setCurrentImg();
+    if (!inputValue) {
+      setError(true);
+      router.toBack();
+      router.toBack();
+      router.toBack();
+      return;
+    }
     setError();
-    setStyleSelectionActivePanel("loading");
+    setCurrentImg();
+    router.toPanel("loading");
 
-    const response = await fetch("https://eoyzdwqi9mrkca4.m.pipedream.net", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ text: inputValue }),
-    });
+    const translateData = await getTranslate(inputValue);
 
-    const responseData = await response.json();
-    const translateData = responseData.translations[0].text;
-    generatePrompts(chosenStyles, currentModel, translateData).then(
-      (result) => {
-        postData(result).then((data) => {
-          if (data.status == "failed" || !data.output) {
-            setError(true);
-          } else {
-            setCurrentImg(data.output[0]);
-          }
-        });
+    if (translateData !== null) {
+      const result = await createPrompts(
+        chosenStyles,
+        currentModel,
+        translateData
+      );
+      const data = await generateArt(result);
+
+      if (data.status === "failed" || !data.output) {
+        console.log("Результат генерации: ", data);
+        console.log("==================================================");
+
+        setError(true);
+      } else {
+        console.log("Результат генерации: ", data);
+        console.log("==================================================");
+        setCurrentImg(data.output[0]);
       }
-    );
+    }
   };
 
-  async function postData(data = {}) {
+  async function getTranslate(inputValue) {
+    try {
+      const response = await fetch("https://eoyzdwqi9mrkca4.m.pipedream.net", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: inputValue }),
+      });
+
+      const responseData = await response.json();
+      const translateData = responseData.translations[0].text;
+
+      console.log("==================================================");
+      console.log("Результат перевода: ", translateData);
+      return translateData;
+    } catch (error) {
+      setError(true);
+    }
+  }
+
+  async function generateArt(data = {}) {
     try {
       const response = await fetch("https://eo6n4spi6rkan06.m.pipedream.net", {
         method: "POST",
@@ -106,9 +93,10 @@ export const MainContextProvider = ({ children }) => {
       return await response.json();
     } catch {
       setError(true);
-      console.log("err");
     }
   }
+
+  // Generate art end
 
   useEffect(() => {
     async function fetchData() {
@@ -130,10 +118,6 @@ export const MainContextProvider = ({ children }) => {
         setCurrentModel,
         inputValue,
         setInputValue,
-        goToPage,
-        styleSelectionActivePanel,
-        setStyleSelectionActivePanel,
-        goBack,
         chosenStyles,
         setChosenStyles,
         handleArtGenerate,
@@ -142,7 +126,7 @@ export const MainContextProvider = ({ children }) => {
         handleClearPrompt,
         fetchedUser,
         onStoryChange,
-        activeStory,
+        router,
       }}
     >
       {children}
