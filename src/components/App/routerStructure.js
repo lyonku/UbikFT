@@ -33,6 +33,10 @@ const structure = [
         id: "contests",
         hash: "",
       },
+      {
+        id: "contest",
+        hash: "",
+      },
     ],
   },
   {

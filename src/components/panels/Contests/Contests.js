@@ -7,7 +7,8 @@ import { MainContext } from "components/shared/providers/MainProvider";
 import EnergySvg from "components/common/energySvg";
 
 import contestImg1 from "assets/img/ContestImg1.png";
-import OzonLogo from "assets/img/OzonLogo.png";
+import OzonLogo from "assets/img/OzonLogo.svg";
+import Contest from "../Contest/Contest";
 
 const Contests = ({ id }) => {
   const { router } = useContext(MainContext);
@@ -80,6 +81,7 @@ const Contests = ({ id }) => {
                   style={{
                     background: `no-repeat center/cover url(${contestImg1})`,
                   }}
+                  onClick={() => router.toPanel("contest")}
                 >
                   <div className="ContestsItem__wrap">
                     <div className="ContestsItem__header">
@@ -154,6 +156,7 @@ const Contests = ({ id }) => {
           </div>
         </div>
       </Panel>
+      <Contest id={"contest"} />
     </View>
   );
 };

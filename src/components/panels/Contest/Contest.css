@@ -1,0 +1,270 @@
+.Contest {
+  display: flex;
+  overflow-y: auto;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  background-color: black !important;
+}
+
+.Contest::-webkit-scrollbar {
+  width: 5px;
+  background-color: #00000000;
+}
+
+.Contest::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #b0e822;
+}
+
+.Contest::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #00000000;
+}
+
+.Contest__wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 50px 16px 100px 16px;
+  max-width: 490px;
+}
+
+div.Contest__controls {
+  margin-bottom: 70px;
+}
+
+.Contest__filters {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.Contest__energy {
+  align-self: flex-start;
+}
+
+.Contest__img {
+  z-index: -1;
+  position: absolute;
+  border-radius: 0;
+  box-sizing: border-box;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.Contest__img img {
+  width: 100%;
+}
+
+.ContestItem__body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ContestItem__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ContestItem__title {
+  margin-bottom: 8px;
+}
+
+.ContestItem__date {
+  margin-bottom: 16px;
+}
+
+.ContestItem__desc {
+  max-width: 300px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.ContestPrize {
+  box-sizing: border-box;
+  padding: 16px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.ContestPrize__title {
+  margin-bottom: 16px;
+}
+
+.ContestPrize__fullDelimetr {
+  width: 100%;
+  opacity: 0.2;
+  border-top: 1px solid #ffffff;
+  margin: 16px 0;
+}
+
+.ContestPrize__voting {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 8px;
+}
+
+.Contest__filters {
+  width: 100%;
+  border-radius: 9px;
+  padding: 4px;
+  background: #2f2f2f;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 4px;
+}
+
+.Contest__filter {
+  width: 100%;
+  background: #2f2f2f;
+  border-radius: 8px;
+  padding: 8px 0;
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+  font-feature-settings: "tnum" on, "lnum" on;
+
+  color: #ffffff;
+}
+
+.Contest__filter .active {
+  background: #b0e822;
+}
+
+.ContestPrizes__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ContestPrize__logo {
+  width: 48px;
+  height: 48px;
+}
+
+.ContestPrize__name {
+  font-size: 15px;
+}
+
+.ContestPrizes {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ContestPrizes__delimetr {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ContestPrizes__delimetr .row {
+  width: 100%;
+  opacity: 0.2;
+  border-top: 1px solid #ffffff;
+}
+
+.ContestPrizes__delimetr img {
+  margin: 0 16px;
+}
+
+.ContestPrize__rules {
+  font-weight: 500;
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.ContestPrize__rules a {
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.Contest__btn {
+  margin-bottom: 24px;
+}
+
+.ContestWorks__count {
+  opacity: 0.4;
+}
+
+.ContestWorks__title {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  justify-content: flex-start;
+}
+
+.ContestWorks {
+  width: 100%;
+}
+
+.ContestWork__img {
+  border-radius: 24px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.ContestWork__footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.ContestWork__profile {
+  display: flex;
+  gap: 8px;
+  margin-right: 24px;
+}
+
+.ContestWork__profile_name {
+  font-weight: 600;
+  font-size: 17px;
+  font-feature-settings: "tnum" on, "lnum" on;
+}
+
+.ContestWork__profile_prompt {
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ContestWork__controls {
+  box-sizing: border-box;
+  max-height: 24px;
+  display: flex;
+  gap: 8px;
+}
+
+.ContestWork__like {
+  box-sizing: border-box;
+  gap: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.ContestWork__like span {
+  font-weight: 500;
+  font-size: 17px;
+  font-feature-settings: "tnum" on, "lnum" on;
+}
+
+.ContestWork__shareBtn {
+  cursor: pointer;
+}

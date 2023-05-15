@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import EnergySvg from "components/common/energySvg";
 import ShareSvg from "components/common/shareSvg";
-import NftLogoSvg from "components/common/nftLogoSvg";
 import RefreshBtn from "components/common/refreshSvg";
 
 const ArtSelection = ({
   currentImg,
-  setShowShareAlert,
   handleArtGenerate,
   router,
   handleShowSharePopout,

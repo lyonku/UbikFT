@@ -98,6 +98,22 @@ export const MainContextProvider = ({ children, router }) => {
 
   // Generate art end
 
+  const handleSendLikePopout = () => {
+    router.toPopout(
+      <PopoutWrapper alignY="center" alignX="center">
+        <PayConfirm />
+      </PopoutWrapper>
+    );
+  };
+
+  const handleShowSharePopout = (img) => {
+    router.toPopout(
+      <PopoutWrapper alignY="center" alignX="center">
+        <ShareWorkAlert img={img} />
+      </PopoutWrapper>
+    );
+  };
+
   useEffect(() => {
     async function fetchData() {
       const user = await bridge.send("VKWebAppGetUserInfo");
@@ -127,6 +143,8 @@ export const MainContextProvider = ({ children, router }) => {
         fetchedUser,
         onStoryChange,
         router,
+        handleSendLikePopout,
+        handleShowSharePopout,
       }}
     >
       {children}

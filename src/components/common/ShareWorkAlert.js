@@ -5,17 +5,28 @@ import addToHistory from "assets/img/addToHistory.svg";
 import addToWall from "assets/img/addToWall.svg";
 import { MainContext } from "components/shared/providers/MainProvider";
 
-function ShareWorkAlert({ handleShareWallPost, handleShareStoriesPost }) {
+import wallPostBox from "components/App/features/wallPostBox";
+import storiesPostBox from "components/App/features/storiesPostBox";
+
+function ShareWorkAlert({ img }) {
   const ref = useRef(null);
   const { router } = useContext(MainContext);
 
   useClickAway(
     ref,
     () => {
-      router.toPopout();
+      router.toPopout(null);
     },
     ["mousedown"]
   );
+
+  const handleShareWallPost = () => {
+    wallPostBox(img);
+  };
+
+  const handleShareStoriesPost = () => {
+    storiesPostBox(img);
+  };
 
   return (
     <div
@@ -27,7 +38,7 @@ function ShareWorkAlert({ handleShareWallPost, handleShareStoriesPost }) {
         <div
           className="ArtSelection__close smallBtn-text"
           onClick={() => {
-            router.toPopout();
+            router.toPopout(null);
           }}
         >
           <img src={closeBtn} />

@@ -25,36 +25,36 @@ function HomeBody({ currentModel, handleModel, go }) {
         </div>
         <div
           className={`models-item ${
-            currentModel == "Anything" && "models-item_active"
+            currentModel == "Counterfeit" && "models-item_active"
           }`}
           onClick={handleModel}
         >
           <input
             type="radio"
-            id="Anything"
+            id="Counterfeit"
             name="models"
             className="models-item__radio"
           ></input>
-          <label htmlFor="Anything">
+          <label htmlFor="Counterfeit">
             <div className="models-item__title mini-title">Аниме</div>
-            <div className="models-item__text text">Anything</div>
+            <div className="models-item__text text">Counterfeit</div>
           </label>
         </div>
         <div
           className={`models-item ${
-            currentModel == "Vintedois" && "models-item_active"
+            currentModel == "Rev anim" && "models-item_active"
           }`}
           onClick={handleModel}
         >
           <input
             type="radio"
-            id="Vintedois"
+            id="Rev anim"
             name="models"
             className="models-item__radio"
           ></input>
-          <label htmlFor="Vintedois">
+          <label htmlFor="Rev anim">
             <div className="models-item__title mini-title">Общий</div>
-            <div className="models-item__text text">Vintedois</div>
+            <div className="models-item__text text">Rev Anim</div>
           </label>
         </div>
       </div>

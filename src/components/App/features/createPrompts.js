@@ -7,8 +7,8 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
   let totalNegativeText = [];
   const apiModels = {
     Protogen: "protogen-3.4",
-    Anything: "anything-v3",
-    Vintedois: "vintedois-diffusion",
+    Counterfeit: "counterfeit-v30",
+    "Rev anim": "rev-anim",
   };
 
   const config = {
@@ -29,7 +29,9 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
 
   for (const [key, value] of Object.entries(chosenStyles)) {
     if (key === "genre") {
-      totalPositiveText.push(`(${value[0].sub_name}) of ((${inputValue}))`);
+      totalPositiveText.push(
+        `[[[${value[0].sub_name}]]] of ((((${inputValue}))))`
+      );
     }
   }
   // Проходим по каждому элементу в chosenStyles и формируем текст для prompt и negative_prompt
@@ -56,12 +58,11 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
   }
 
   // Добавляем специальные тексты для модели anything-v3
-  if (currentModel === "Anything") {
+  if (currentModel === "Counterfeit") {
     const anythingNegative =
       "nsfw, lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, artist name".split(
         ", "
       );
-
     totalPositiveText.unshift("((masterpiece))", "((best quality))");
     totalNegativeText = [...totalNegativeText, ...anythingNegative];
   }
@@ -93,6 +94,13 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
         return positiveItem.includes(item);
       })
   );
+  if (currentModel === "Counterfeit") {
+    uniquePositiveText[3] = "[[" + uniquePositiveText[3];
+  } else {
+    uniquePositiveText[1] = "[[" + uniquePositiveText[1];
+  }
+  uniquePositiveText[uniquePositiveText.length - 1] =
+    uniquePositiveText[uniquePositiveText.length - 1] + "]]";
 
   // Записываем тексты в конфигурационный объект
   config.prompt = uniquePositiveText.join(", ");

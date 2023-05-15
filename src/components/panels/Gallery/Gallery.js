@@ -17,8 +17,8 @@ import { MainContext } from "components/shared/providers/MainProvider";
 const Gallery = ({ id, activePanel }) => {
   const count = [1, 2, 3, 4];
   const [openHint, setOpenHint] = useState(false);
-  const [copyPromptAlert, setCopyPromptAlert] = useState(false);
   const [showShareAlert, setShowShareAlert] = useState(false);
+  const [copyPromptAlert, setCopyPromptAlert] = useState(false);
   const { router } = useContext(MainContext);
 
   const handleCopyPromptAlert = () => {

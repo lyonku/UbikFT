@@ -7,9 +7,6 @@ import ArtSelectionControls from "./components/ArtSelectionControls";
 
 import ShareWorkAlert from "components/common/ShareWorkAlert";
 
-import wallPostBox from "components/App/features/wallPostBox";
-import storiesPostBox from "components/App/features/storiesPostBox";
-
 import { MainContext } from "components/shared/providers/MainProvider";
 
 const ArtSelection = () => {
@@ -19,20 +16,9 @@ const ArtSelection = () => {
   const handleShowSharePopout = () => {
     router.toPopout(
       <PopoutWrapper alignY="center" alignX="center">
-        <ShareWorkAlert
-          handleShareWallPost={handleShareWallPost}
-          handleShareStoriesPost={handleShareStoriesPost}
-        />
+        <ShareWorkAlert img={currentImg} />
       </PopoutWrapper>
     );
-  };
-
-  const handleShareWallPost = () => {
-    wallPostBox(currentImg);
-  };
-
-  const handleShareStoriesPost = () => {
-    storiesPostBox(currentImg);
   };
 
   return (

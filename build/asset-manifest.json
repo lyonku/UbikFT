@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.e87b96e1.css",
-    "main.js": "/static/js/main.e0753665.js",
+    "main.css": "/static/css/main.d1ab5a8f.css",
+    "main.js": "/static/js/main.6b4aba7d.js",
     "static/media/loading__background.png": "/static/media/loading__background.8db84f724ce51633a0dd.png",
     "static/media/home__vintedois_background.png": "/static/media/home__vintedois_background.bc5a1b9e340e3002c8e0.png",
     "static/media/home__anything_background.png": "/static/media/home__anything_background.6d0b4491ff03b91e2626.png",
@@ -9,27 +9,33 @@
     "static/media/galleryItem__background.png": "/static/media/galleryItem__background.ab3f2b6543e0f5d8cccd.png",
     "static/media/ContestImg1.png": "/static/media/ContestImg1.ea4979e2c3253564150d.png",
     "static/media/payEnergy__background.png": "/static/media/payEnergy__background.47326c0d69d909a6cecb.png",
+    "static/media/contestHouse.png": "/static/media/contestHouse.01291adf5e2bd8502b27.png",
+    "static/media/OzonLogo.svg": "/static/media/OzonLogo.21478ac16d901f317dacaac7fcde58bf.svg",
     "static/media/MacPawFixelText-Regular.otf": "/static/media/MacPawFixelText-Regular.75d44f06aa78a75b45a2.otf",
     "static/media/vk__logo.png": "/static/media/vk__logo.5fb75fcb04f9e947385b.png",
     "static/media/MacPawFixelText-Regular.woff2": "/static/media/MacPawFixelText-Regular.615b696311567a1434b9.woff2",
     "static/media/profile__emptyImg.svg": "/static/media/profile__emptyImg.66feaa14079716411da37455739e3280.svg",
     "static/media/payEnergy__energyImg.svg": "/static/media/payEnergy__energyImg.f3c7f465941b07620186acdc2f1ab4e6.svg",
     "static/media/galleryItem__openSea.svg": "/static/media/galleryItem__openSea.44a0931a951a997720c78e13e010420a.svg",
+    "static/media/NftCreate.svg": "/static/media/NftCreate.f793c72166a2f75674fcf10abd1f5095.svg",
     "static/media/galleryItem__like.svg": "/static/media/galleryItem__like.4cd0a67f25a3d68990179ba80c519ce2.svg",
     "static/media/profile__delete.svg": "/static/media/profile__delete.e002cf31e8a6a739a28e970367f2bff0.svg",
     "static/media/check-mark.svg": "/static/media/check-mark.d937859bc01476d79b8c80dfe67109b0.svg",
     "static/media/prompt-refresh.svg": "/static/media/prompt-refresh.dc380e261bd0f999d40aeab02459c4e2.svg",
     "static/media/addToHistory.svg": "/static/media/addToHistory.71cd7e8ee20f7131df1d7a9eb467abc3.svg",
+    "static/media/checkbox_chosen.svg": "/static/media/checkbox_chosen.7926dbaae98f2620398d.svg",
     "static/media/payEnergy__benefitsImg.svg": "/static/media/payEnergy__benefitsImg.3d3002b7b30e8fa06942ef21ee268671.svg",
+    "static/media/plus.svg": "/static/media/plus.53550a936027651c0a536b174759f495.svg",
     "static/media/close-btn.svg": "/static/media/close-btn.8fa2bcbb6bb0af2c6379a85d112e8b45.svg",
     "static/media/back-btn.svg": "/static/media/back-btn.fcc8b585c016ff5270690561fccf41e0.svg",
+    "static/media/checkbox.svg": "/static/media/checkbox.2b248af312540f2b56ec.svg",
     "index.html": "/index.html",
     "static/media/addToWall.svg": "/static/media/addToWall.90f6d605243e9961da8297afc39653a2.svg",
-    "main.e87b96e1.css.map": "/static/css/main.e87b96e1.css.map",
-    "main.e0753665.js.map": "/static/js/main.e0753665.js.map"
+    "main.d1ab5a8f.css.map": "/static/css/main.d1ab5a8f.css.map",
+    "main.6b4aba7d.js.map": "/static/js/main.6b4aba7d.js.map"
   },
   "entrypoints": [
-    "static/css/main.e87b96e1.css",
-    "static/js/main.e0753665.js"
+    "static/css/main.d1ab5a8f.css",
+    "static/js/main.6b4aba7d.js"
   ]
 }
