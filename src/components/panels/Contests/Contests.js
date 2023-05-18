@@ -119,6 +119,7 @@ const Contests = ({ id }) => {
                   style={{
                     background: `no-repeat center/cover url(${contestImg1})`,
                   }}
+                  onClick={() => router.toPanel("contest")}
                 >
                   <div className="ContestsItem__wrap">
                     <div className="ContestsItem__header">

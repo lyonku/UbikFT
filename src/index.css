@@ -13,6 +13,9 @@
   font-weight: 600;
   font-family: "MacPaw Fixel";
   font-style: normal;
+}
+
+div {
   color: #ffffff;
 }
 
@@ -93,6 +96,7 @@ body {
 }
 
 .roundBtn_blur {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -284,8 +288,8 @@ body {
   box-sizing: border-box;
   z-index: -1;
   transition: 0.2s;
-  bottom: 80px;
-  position: absolute;
+  bottom: 100px;
+  position: fixed;
   padding: 16px;
   display: flex;
   align-items: flex-end;
@@ -504,9 +508,7 @@ div.Notification__btn span {
 }
 
 .PayConfirm {
-  transform: translateY(300px);
-  transition: 0.5s;
-  z-index: -1;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -520,75 +522,125 @@ div.Notification__btn span {
   border-radius: 32px 32px 0px 0px;
 }
 
-.PayConfirm.open {
-  transform: translateY(0px);
-  z-index: 101;
-  transition: 0.5s;
-}
-
-.PayConfirm__background {
-  transition: 0.5s;
-  z-index: -1;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(9, 9, 9, 0.7);
-  backdrop-filter: blur(6px);
-}
-
 .PayConfirm__background.open {
   transition: 0.5s;
   opacity: 1;
   z-index: 28;
 }
 
+.LikeCouter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.LikeCouter__block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  width: 56px;
+  height: 56px;
+  background: #181915;
+  border-radius: 16px;
+}
+
+.LikeCouter__block:hover {
+  background: #1f201c;
+}
+
+.LikeCouter__minus div {
+  height: 2px;
+  width: 14px;
+  background: #ffffff;
+}
+
+.LikeCouter__plus div {
+  width: 14px;
+  height: 14px;
+  position: relative;
+}
+
+.LikeCouter__plus::before,
+.LikeCouter__plus::after {
+  content: "";
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.LikeCouter__plus::before {
+  width: 14px;
+  height: 2px;
+}
+
+.LikeCouter__plus::after {
+  width: 2px;
+  height: 14px;
+}
+
+.LikeCouter__total {
+  cursor: text;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  height: 59px;
+  width: 240px;
+  border-radius: 16px;
+  background: #181915;
+}
+
+.LikeCouter__total input {
+  padding: 0;
+  margin-bottom: -6px;
+  text-align: right;
+  outline: none;
+  width: 1ch;
+  border: 0;
+  font-weight: 500;
+  font-size: 24px;
+  font-feature-settings: "ss04" on;
+  color: #ffffff;
+  background: #181915;
+  z-index: 99;
+}
+
+.LikeCouter__total span {
+  height: 28px;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.LikeCouter__total::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(
+      0deg,
+      rgba(33, 33, 33, 0.05),
+      rgba(33, 33, 33, 0.05)
+    ),
+    linear-gradient(109.37deg, #fcc63a 0%, #8bf54d 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
 div.PayConfirm__title {
+  text-align: center;
   font-weight: 700;
   font-size: 24px;
   line-height: 114.5%;
   font-feature-settings: "ss04" on;
   color: #ffffff;
-  margin-bottom: 24px;
-}
-
-.PayConfirm__checkbox {
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-}
-
-.PayConfirm__checkbox + label {
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  user-select: none;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 18px;
-  font-feature-settings: "tnum" on, "lnum" on;
-  color: #ffffff;
-}
-
-.PayConfirm__checkbox + label::before {
-  content: "";
-  display: inline-block;
-  width: 24px;
-  margin-right: 8px;
-  height: 24px;
-  background-image: url("/src/assets/img/checkbox.svg");
-}
-
-.PayConfirm__checkbox:checked + label::before {
-  border-color: #343a41;
-  background-color: #00000000;
-  background-image: url("/src/assets/img/checkbox_chosen.svg");
-}
-
-.PayConfirm__check {
-  display: flex;
-  align-items: flex-end;
   margin-bottom: 24px;
 }
 

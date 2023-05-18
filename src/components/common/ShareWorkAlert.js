@@ -15,7 +15,7 @@ function ShareWorkAlert({ img }) {
   useClickAway(
     ref,
     () => {
-      router.toPopout(null);
+      router.toBack();
     },
     ["mousedown"]
   );
@@ -38,7 +38,7 @@ function ShareWorkAlert({ img }) {
         <div
           className="ArtSelection__close smallBtn-text"
           onClick={() => {
-            router.toPopout(null);
+            router.toBack();
           }}
         >
           <img src={closeBtn} />

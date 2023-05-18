@@ -35,14 +35,14 @@ function ContestPrizes({ participation }) {
         </div>
       </div>
       <div className="ContestPrize__rules">
-        Участие в конкурсе бесплатное.
+        Участие в творческом конкурсе бесплатное.
         <br />
         <a>Читайте Полные условия конкурса</a>
       </div>
       {participation && <div className="ContestPrize__fullDelimetr"></div>}
       {participation && (
         <div className="ContestPrize__voting">
-          <LikeSvg full />
+          <LikeSvg full="true" />
           <span className="ContestPrize__voting">
             Голосуйте за лучшую работу
           </span>

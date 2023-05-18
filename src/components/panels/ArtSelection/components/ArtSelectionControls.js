@@ -2,8 +2,9 @@ import closeBtn from "assets/img/close-btn.svg";
 
 import EnergySvg from "components/common/energySvg";
 import EditSvg from "components/common/editSvg";
+import RefreshBtn from "components/common/refreshSvg";
 
-function ArtSelectionControls({ router }) {
+function ArtSelectionControls({ router, handleArtGenerate }) {
   return (
     <div className="ArtSelection__controls">
       <div className="ArtSelection__firstControls">
@@ -22,6 +23,19 @@ function ArtSelectionControls({ router }) {
           onClick={() => router.toBack()}
         >
           <EditSvg color="#b2e723" />
+        </div>
+        <div
+          className="ArtSelection__refreshBtn transparentBlock_blur"
+          onClick={() => {
+            router.toBack();
+            handleArtGenerate();
+          }}
+        >
+          <RefreshBtn color="#b0e822" />
+
+          <div className="ArtSelection__refreshBtn_delimetr"></div>
+          <span className="count">1</span>
+          <EnergySvg width="16px" height="16px" color="#b0e822" />
         </div>
       </div>
       <div

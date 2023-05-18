@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import EnergySvg from "components/common/energySvg";
-import ShareSvg from "components/common/shareSvg";
-import RefreshBtn from "components/common/refreshSvg";
 
-const ArtSelection = ({
+import ShareSvg from "components/common/shareSvg";
+
+const GeneratedArt = ({
   currentImg,
-  handleArtGenerate,
   router,
   handleShowSharePopout,
+  handleContestSelectPopout,
 }) => {
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -30,20 +29,6 @@ const ArtSelection = ({
 
         <div className="ArtSelection__imgControls ">
           <div
-            className="ArtSelection__refreshBtn "
-            onClick={() => {
-              router.toBack();
-              handleArtGenerate();
-            }}
-          >
-            <RefreshBtn color="#b0e822" />
-            {width >= 465 && <span>Повторить</span>}
-
-            <div className="ArtSelection__refreshBtn_delimetr"></div>
-            <span className="count">1</span>
-            <EnergySvg width="16px" height="16px" color="#b0e822" />
-          </div>
-          <div
             className="ArtSelection__shareBtn "
             onClick={() => handleShowSharePopout()}
           >
@@ -54,13 +39,15 @@ const ArtSelection = ({
       <div className="ArtSelection__glow"></div>
 
       <div className="ArtSelection__btns">
-        <div className="ArtSelection__nftBtn btn">Отправить на конкурс</div>
-        <div className="ArtSelection__desc">
-          Один автор может отправить только одну работу на конкурс
+        <div
+          className="ArtSelection__nftBtn btn"
+          onClick={handleContestSelectPopout}
+        >
+          Отправить на конкурс
         </div>
       </div>
     </div>
   );
 };
 
-export default ArtSelection;
+export default GeneratedArt;

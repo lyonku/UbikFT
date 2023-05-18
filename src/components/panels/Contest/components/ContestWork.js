@@ -7,8 +7,10 @@ import LikeSvg from "components/common/LikeSvg";
 function ContestWork({
   handleShowSharePopout,
   handleSendLikePopout,
+  handleCopyPromptAlert,
   participation,
 }) {
+  const Name = "Дом с каскадной крышей в стиле ван гога";
   return (
     <div className="ContestWork">
       <img src={contestHouse} className="ContestWork__img" />
@@ -20,8 +22,11 @@ function ContestWork({
           <div className="ContestWork__profile_text">
             <div className="ContestWork__profile_name">KlypKlypik</div>
             {participation && (
-              <div className="ContestWork__profile_prompt text_gray">
-                Дом с каскадной крышей в стиле ван гога
+              <div
+                className="ContestWork__profile_prompt text_gray"
+                onClick={() => handleCopyPromptAlert(Name)}
+              >
+                {Name}
               </div>
             )}
           </div>

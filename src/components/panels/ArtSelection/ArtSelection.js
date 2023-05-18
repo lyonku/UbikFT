@@ -10,8 +10,13 @@ import ShareWorkAlert from "components/common/ShareWorkAlert";
 import { MainContext } from "components/shared/providers/MainProvider";
 
 const ArtSelection = () => {
-  const { currentImg, handleArtGenerate, router, handleClearPrompt } =
-    useContext(MainContext);
+  const {
+    currentImg,
+    handleArtGenerate,
+    router,
+    handleClearPrompt,
+    handleContestSelectPopout,
+  } = useContext(MainContext);
 
   const handleShowSharePopout = () => {
     router.toPopout(
@@ -28,12 +33,13 @@ const ArtSelection = () => {
         <ArtSelectionControls
           router={router}
           handleClearPrompt={handleClearPrompt}
+          handleArtGenerate={handleArtGenerate}
         />
         <GeneratedArt
           currentImg={currentImg}
           router={router}
-          handleArtGenerate={handleArtGenerate}
           handleShowSharePopout={handleShowSharePopout}
+          handleContestSelectPopout={handleContestSelectPopout}
         />
 
         <div className={`overlay ${router.popout && "open"}`}></div>

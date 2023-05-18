@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.d1ab5a8f.css",
-    "main.js": "/static/js/main.6b4aba7d.js",
+    "main.css": "/static/css/main.ad5685a8.css",
+    "main.js": "/static/js/main.b1353a25.js",
     "static/media/loading__background.png": "/static/media/loading__background.8db84f724ce51633a0dd.png",
     "static/media/home__vintedois_background.png": "/static/media/home__vintedois_background.bc5a1b9e340e3002c8e0.png",
     "static/media/home__anything_background.png": "/static/media/home__anything_background.6d0b4491ff03b91e2626.png",
@@ -21,21 +21,20 @@
     "static/media/galleryItem__like.svg": "/static/media/galleryItem__like.4cd0a67f25a3d68990179ba80c519ce2.svg",
     "static/media/profile__delete.svg": "/static/media/profile__delete.e002cf31e8a6a739a28e970367f2bff0.svg",
     "static/media/check-mark.svg": "/static/media/check-mark.d937859bc01476d79b8c80dfe67109b0.svg",
+    "static/media/twoArrow.svg": "/static/media/twoArrow.165ba6a1c463dc22296df7b591d1bc95.svg",
     "static/media/prompt-refresh.svg": "/static/media/prompt-refresh.dc380e261bd0f999d40aeab02459c4e2.svg",
     "static/media/addToHistory.svg": "/static/media/addToHistory.71cd7e8ee20f7131df1d7a9eb467abc3.svg",
-    "static/media/checkbox_chosen.svg": "/static/media/checkbox_chosen.7926dbaae98f2620398d.svg",
     "static/media/payEnergy__benefitsImg.svg": "/static/media/payEnergy__benefitsImg.3d3002b7b30e8fa06942ef21ee268671.svg",
     "static/media/plus.svg": "/static/media/plus.53550a936027651c0a536b174759f495.svg",
     "static/media/close-btn.svg": "/static/media/close-btn.8fa2bcbb6bb0af2c6379a85d112e8b45.svg",
     "static/media/back-btn.svg": "/static/media/back-btn.fcc8b585c016ff5270690561fccf41e0.svg",
-    "static/media/checkbox.svg": "/static/media/checkbox.2b248af312540f2b56ec.svg",
     "index.html": "/index.html",
     "static/media/addToWall.svg": "/static/media/addToWall.90f6d605243e9961da8297afc39653a2.svg",
-    "main.d1ab5a8f.css.map": "/static/css/main.d1ab5a8f.css.map",
-    "main.6b4aba7d.js.map": "/static/js/main.6b4aba7d.js.map"
+    "main.ad5685a8.css.map": "/static/css/main.ad5685a8.css.map",
+    "main.b1353a25.js.map": "/static/js/main.b1353a25.js.map"
   },
   "entrypoints": [
-    "static/css/main.d1ab5a8f.css",
-    "static/js/main.6b4aba7d.js"
+    "static/css/main.ad5685a8.css",
+    "static/js/main.b1353a25.js"
   ]
 }

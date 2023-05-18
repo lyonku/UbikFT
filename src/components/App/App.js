@@ -21,7 +21,6 @@ import PayEnergy from "components/panels/PayEnergy/PayEnergy";
 
 const App = (props) => {
   const userList = useMemo(() => imagesPreload(), []);
-
   return (
     <MainContextProvider router={props.router}>
       <ConfigProvider isWebView>

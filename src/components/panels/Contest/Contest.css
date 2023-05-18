@@ -62,6 +62,7 @@ div.Contest__controls {
 }
 
 .ContestItem__body {
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -125,6 +126,7 @@ div.Contest__controls {
 }
 
 .Contest__filter {
+  cursor: pointer;
   width: 100%;
   background: #2f2f2f;
   border-radius: 8px;
@@ -137,7 +139,7 @@ div.Contest__controls {
   color: #ffffff;
 }
 
-.Contest__filter .active {
+.Contest__filter.active {
   background: #b0e822;
 }
 
@@ -228,10 +230,11 @@ div.Contest__controls {
 .ContestWork__profile {
   display: flex;
   gap: 8px;
-  margin-right: 24px;
+  margin-right: 12px;
 }
 
 .ContestWork__profile_name {
+  padding: 0 8px;
   font-weight: 600;
   font-size: 17px;
   font-feature-settings: "tnum" on, "lnum" on;
@@ -248,15 +251,21 @@ div.Contest__controls {
   box-sizing: border-box;
   max-height: 24px;
   display: flex;
-  gap: 8px;
 }
 
 .ContestWork__like {
-  box-sizing: border-box;
   gap: 8px;
+  height: 36px;
+  box-sizing: border-box;
   cursor: pointer;
   display: flex;
   align-items: center;
+  padding: 0 8px;
+  border-radius: 24px;
+}
+
+.ContestWork__like:hover {
+  background-color: #1a1a1a;
 }
 
 .ContestWork__like span {
@@ -266,5 +275,26 @@ div.Contest__controls {
 }
 
 .ContestWork__shareBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
   cursor: pointer;
+  border-radius: 100px;
+}
+
+.ContestWork__shareBtn:hover {
+  background-color: #1a1a1a;
+}
+
+.ContestWork__profile_prompt {
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+.ContestWork__profile_prompt:hover {
+  opacity: 1;
+  border-radius: 12px;
+  background-color: #1a1a1a;
 }

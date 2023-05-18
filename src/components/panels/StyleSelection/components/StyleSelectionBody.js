@@ -39,6 +39,7 @@ function StyleSelectionBody({ chosenStyles, error, setChosenStyles }) {
               showArrows
               getScrollToLeft={(i) => i - 220}
               getScrollToRight={(i) => i + 220}
+              color="#b0e822"
             >
               <div className="styleСategory__row">
                 {category.array.map((style, styleIndex) => {

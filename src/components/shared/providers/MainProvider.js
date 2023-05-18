@@ -1,7 +1,11 @@
 import { createContext, useState, useEffect } from "react";
 import bridge from "@vkontakte/vk-bridge";
+import { PopoutWrapper } from "@vkontakte/vkui";
 
 import createPrompts from "components/App/features/createPrompts";
+import ContestSelect from "components/panels/ArtSelection/components/ContestSelect";
+import PayConfirm from "components/panels/Contest/components/PayConfirm";
+import ShareWorkAlert from "components/common/ShareWorkAlert";
 
 export const MainContext = createContext();
 
@@ -34,8 +38,8 @@ export const MainContextProvider = ({ children, router }) => {
       return;
     }
     setError();
-    setCurrentImg();
     router.toPanel("loading");
+    setCurrentImg();
 
     const translateData = await getTranslate(inputValue);
 
@@ -114,6 +118,14 @@ export const MainContextProvider = ({ children, router }) => {
     );
   };
 
+  const handleContestSelectPopout = () => {
+    router.toPopout(
+      <PopoutWrapper alignY="center" alignX="center">
+        <ContestSelect />
+      </PopoutWrapper>
+    );
+  };
+
   useEffect(() => {
     async function fetchData() {
       const user = await bridge.send("VKWebAppGetUserInfo");
@@ -125,6 +137,12 @@ export const MainContextProvider = ({ children, router }) => {
   const handleClearPrompt = () => {
     setChosenStyles({});
     setInputValue("");
+  };
+
+  const handleCopyPrompt = (text) => {
+    bridge.send("VKWebAppCopyText", {
+      text: text,
+    });
   };
 
   return (
@@ -145,6 +163,8 @@ export const MainContextProvider = ({ children, router }) => {
         router,
         handleSendLikePopout,
         handleShowSharePopout,
+        handleContestSelectPopout,
+        handleCopyPrompt,
       }}
     >
       {children}
