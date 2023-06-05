@@ -1,14 +1,20 @@
-function ContestItemHeader() {
+function ContestItemHeader({ activeContest, time }) {
   return (
     <div className="ContestItem__header">
-      <div className="ContestItem__title title_h2-32px">Дом мечты</div>
+      <div className="ContestItem__title title_h2-32px">
+        {activeContest.name}
+      </div>
       <div className="ContestItem__date transparentBlock">
-        Прием работ <span className="text_accented"> до 31 мая</span>
+        {activeContest.type == "workAcceptance"
+          ? "Прием работ"
+          : activeContest.type == "vote"
+          ? "Голосование"
+          : "Конкурс"}
+        <span className="text_accented">
+          {activeContest.type == "ended" ? " закончился" : time}
+        </span>
       </div>
-      <div className="ContestItem__desc text_gray">
-        Создайте дом мечты и покажите насколько комфортным и удобным он может
-        быть.
-      </div>
+      <div className="ContestItem__desc text_gray">{activeContest.desc}</div>
     </div>
   );
 }

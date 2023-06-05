@@ -27,6 +27,7 @@ function LoadingError({ handleArtGenerate, router }) {
       <div
         className="Loading__errorBtn"
         onClick={() => {
+          router.toBack();
           handleArtGenerate();
         }}
       >

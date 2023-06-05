@@ -8,7 +8,7 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
   const apiModels = {
     Protogen: "protogen-3.4",
     Counterfeit: "counterfeit-v30",
-    "Rev anim": "rev-anim",
+    "Rev Anim": "rev-anim",
   };
 
   const config = {
@@ -30,18 +30,23 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
   for (const [key, value] of Object.entries(chosenStyles)) {
     if (key === "genre") {
       totalPositiveText.push(
-        `[[[${value[0].sub_name}]]] of ((((${inputValue}))))`
+        `[[${value[0].sub_title}]] of (((${inputValue})))`
       );
     }
   }
+
   // Проходим по каждому элементу в chosenStyles и формируем текст для prompt и negative_prompt
   for (const [key, value] of Object.entries(chosenStyles)) {
     if (key !== "artist" && key !== "genre") {
       for (const item of value) {
-        totalPositiveText.push(`${item.sub_name} ${key}`);
+        totalPositiveText.push(`[[${item.sub_title}]] ${key}`);
+        if (key == "setting") {
+          totalPositiveText.push(`[[${item.sub_title}]] background`);
+        }
       }
     }
   }
+
   for (const [key, value] of Object.entries(chosenStyles)) {
     if (key !== "artist") {
       for (const item of value) {
@@ -59,12 +64,29 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
 
   // Добавляем специальные тексты для модели anything-v3
   if (currentModel === "Counterfeit") {
-    const anythingNegative =
-      "nsfw, lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, artist name".split(
-        ", "
-      );
-    totalPositiveText.unshift("((masterpiece))", "((best quality))");
-    totalNegativeText = [...totalNegativeText, ...anythingNegative];
+    const anythingNegative = [
+      "(((nsfw)))",
+      "((((((1girl))))))",
+      "(((nudity)))",
+      "((blurry))",
+      "(((lowres)))",
+      "(((noise)))",
+      "(((low quality)))",
+    ];
+    totalNegativeText = [...anythingNegative, ...totalNegativeText];
+  }
+
+  if (currentModel === "Rev Anim") {
+    const anythingNegative = [
+      "(((nsfw)))",
+      "((((((1girl))))))",
+      "(((nudity)))",
+      "((girl))",
+      "(((woman)))",
+      "(((erotic)))",
+      "(((sexy)))",
+    ];
+    totalNegativeText = [...anythingNegative, ...totalNegativeText];
   }
 
   for (const [key, value] of Object.entries(chosenStyles)) {
@@ -72,6 +94,7 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
       for (const item of value) {
         totalPositiveText = [
           ...totalPositiveText,
+          `in style of [[${item.sub_title}]]`,
           ...item.positivePrompt.split(", "),
         ];
         totalNegativeText = [
@@ -94,16 +117,17 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
         return positiveItem.includes(item);
       })
   );
-  if (currentModel === "Counterfeit") {
-    uniquePositiveText[3] = "[[" + uniquePositiveText[3];
-  } else {
-    uniquePositiveText[1] = "[[" + uniquePositiveText[1];
-  }
-  uniquePositiveText[uniquePositiveText.length - 1] =
-    uniquePositiveText[uniquePositiveText.length - 1] + "]]";
+
+  const result = uniquePositiveText.map((element) => {
+    if (!element.includes("[[") && !element.includes("]]")) {
+      return `[[${element}]]`;
+    } else {
+      return element;
+    }
+  });
 
   // Записываем тексты в конфигурационный объект
-  config.prompt = uniquePositiveText.join(", ");
+  config.prompt = result.join(", ");
   config.negative_prompt = uniqueNegativeText2.join(", ");
   console.log("Отправленный конфиг: ", config);
   return config;

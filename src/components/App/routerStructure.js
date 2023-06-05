@@ -30,7 +30,7 @@ const structure = [
     hash: "contests",
     panels: [
       {
-        id: "contests",
+        id: "contestsHome",
         hash: "",
       },
       {
@@ -55,6 +55,20 @@ const structure = [
     panels: [
       {
         id: "payEnergy",
+        hash: "",
+      },
+    ],
+  },
+  {
+    id: "debug",
+    hash: "debug",
+    panels: [
+      {
+        id: "debug",
+        hash: "",
+      },
+      {
+        id: "img",
         hash: "",
       },
     ],

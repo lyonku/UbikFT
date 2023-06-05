@@ -1,11 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Panel } from "@vkontakte/vkui";
 
 import "./Contest.css";
 
 import { MainContext } from "components/shared/providers/MainProvider";
-
-import contestImg1 from "assets/img/ContestImg1.png";
 
 import ContestWork from "./components/ContestWork";
 import ContestPrizes from "./components/ContestPrizes";
@@ -14,7 +12,6 @@ import ContestItemHeader from "./components/ContestItemHeader";
 import benefitsImg from "assets/img/payEnergy__benefitsImg.svg";
 
 const Contest = ({ id }) => {
-  const [participation, setParticipation] = useState(false);
   const [contestFilters, setContestFilters] = useState("New");
   const [copyPromptAlert, setCopyPromptAlert] = useState(false);
   const {
@@ -22,6 +19,8 @@ const Contest = ({ id }) => {
     handleSendLikePopout,
     handleShowSharePopout,
     handleCopyPrompt,
+    activeContest,
+    getTimeUntilDate,
   } = useContext(MainContext);
 
   const handleCopyPromptAlert = (text) => {
@@ -29,13 +28,35 @@ const Contest = ({ id }) => {
     setCopyPromptAlert(true);
     setTimeout(() => setCopyPromptAlert(false), 2000);
   };
+  const [time, setTime] = useState("");
+  const date = new Date(+activeContest.date);
+  var currentDate = new Date();
+
+  var options = {
+    month: "long",
+    day: "numeric",
+    timezone: "UTC",
+  };
+
+  useEffect(() => {
+    var oneDay = 24 * 60 * 60 * 1000; // количество миллисекунд в одном дне
+    var timeDiff = date.getTime() - currentDate.getTime();
+
+    if (timeDiff < oneDay) {
+      setTime(` осталось ${getTimeUntilDate(date)}`);
+    } else {
+      setTime(` до ${date.toLocaleString("ru", options)}`);
+    }
+  }, []);
 
   return (
     <Panel id={id}>
       <div
         className="Contest"
         style={{
-          background: `linear-gradient(180deg, rgba(10, 10, 10, 0) 0%, #0A0A0A 50%), url(${contestImg1}) center top ${-50}px / contain no-repeat`,
+          background: `linear-gradient(180deg, rgba(10, 10, 10, 0) 0%, #0A0A0A 50%), url(${
+            activeContest.img
+          }) center top ${-50}px / contain no-repeat`,
         }}
       >
         <div className={`overlay ${router.popout && "open"}`}></div>
@@ -45,9 +66,20 @@ const Contest = ({ id }) => {
           <div className="Contest__body">
             <div className="ContestItem__wrap">
               <div className="ContestItem__body">
-                <ContestItemHeader />
-                <ContestPrizes participation={participation} />
-                {participation ? (
+                <ContestItemHeader activeContest={activeContest} time={time} />
+                <ContestPrizes activeContest={activeContest} />
+                {activeContest.type == "workAcceptance" && (
+                  <div
+                    className="Contest__btn btn"
+                    onClick={() => {
+                      router.toView("main");
+                    }}
+                  >
+                    Принять участие в конкурсе
+                  </div>
+                )}
+                {(activeContest.type == "vote" ||
+                  activeContest.type == "workAcceptance") && (
                   <div className="Contest__filters">
                     <div
                       onClick={() => setContestFilters("New")}
@@ -55,7 +87,7 @@ const Contest = ({ id }) => {
                         contestFilters == "New" && "active"
                       }`}
                     >
-                      По новизне
+                      Все работы
                     </div>
                     <div
                       onClick={() => setContestFilters("Popular")}
@@ -63,19 +95,11 @@ const Contest = ({ id }) => {
                         contestFilters == "Popular" && "active"
                       }`}
                     >
-                      По популярности
+                      Мои работы
                     </div>
                   </div>
-                ) : (
-                  <div
-                    className="Contest__btn btn"
-                    onClick={() => {
-                      setParticipation(true);
-                    }}
-                  >
-                    Принять участие в конкурсе
-                  </div>
                 )}
+
                 <div className="ContestWorks">
                   <div className="ContestWorks__title title_h3-24px">
                     <span className="title_h3-24px">Работы</span>
@@ -88,19 +112,19 @@ const Contest = ({ id }) => {
                       handleSendLikePopout={handleSendLikePopout}
                       handleShowSharePopout={handleShowSharePopout}
                       handleCopyPromptAlert={handleCopyPromptAlert}
-                      participation={participation}
+                      activeContest={activeContest}
                     />
                     <ContestWork
                       handleSendLikePopout={handleSendLikePopout}
                       handleShowSharePopout={handleShowSharePopout}
                       handleCopyPromptAlert={handleCopyPromptAlert}
-                      participation={participation}
+                      activeContest={activeContest}
                     />
                     <ContestWork
                       handleSendLikePopout={handleSendLikePopout}
                       handleShowSharePopout={handleShowSharePopout}
                       handleCopyPromptAlert={handleCopyPromptAlert}
-                      participation={participation}
+                      activeContest={activeContest}
                     />
                   </div>
                 </div>
