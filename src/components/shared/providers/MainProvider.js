@@ -10,12 +10,13 @@ import ShareWorkAlert from "components/common/ShareWorkAlert";
 export const MainContext = createContext();
 
 export const MainContextProvider = ({ children, router }) => {
-  const [currentModel, setCurrentModel] = useState("Protogen");
+  const [currentModel, setCurrentModel] = useState("Rev Anim");
   const [inputValue, setInputValue] = useState("");
   const [chosenStyles, setChosenStyles] = useState({});
   const [currentImg, setCurrentImg] = useState();
   const [error, setError] = useState();
   const [fetchedUser, setUser] = useState(null);
+  const [activeContest, setActiveContest] = useState({});
 
   bridge.send("VKWebAppInit");
 
@@ -37,6 +38,7 @@ export const MainContextProvider = ({ children, router }) => {
       router.toBack();
       return;
     }
+
     setError();
     router.toPanel("loading");
     setCurrentImg();
@@ -145,6 +147,16 @@ export const MainContextProvider = ({ children, router }) => {
     });
   };
 
+  function getTimeUntilDate(targetDate) {
+    var currentDate = new Date();
+    var timeDiff = targetDate.getTime() - currentDate.getTime();
+    var hours = Math.floor(
+      (timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    return `${hours}:${minutes}`;
+  }
+
   return (
     <MainContext.Provider
       value={{
@@ -165,6 +177,12 @@ export const MainContextProvider = ({ children, router }) => {
         handleShowSharePopout,
         handleContestSelectPopout,
         handleCopyPrompt,
+        setActiveContest,
+        activeContest,
+        getTimeUntilDate,
+        generateArt,
+        setError,
+        setCurrentImg,
       }}
     >
       {children}

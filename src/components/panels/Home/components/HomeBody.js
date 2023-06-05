@@ -7,20 +7,20 @@ function HomeBody({ currentModel, handleModel, go }) {
       <div className="home__row">
         <div
           className={`models-item ${
-            currentModel == "Protogen" && "models-item_active"
+            currentModel == "Rev Anim" && "models-item_active"
           }`}
           onClick={handleModel}
         >
           <input
             type="radio"
-            id="Protogen"
+            id="Rev Anim"
             name="models"
             className="models-item__radio"
             defaultChecked
           ></input>
-          <label htmlFor="Protogen">
-            <div className="models-item__title mini-title">Люди</div>
-            <div className="models-item__text text">Protogen</div>
+          <label htmlFor="Rev Anim">
+            <div className="models-item__title mini-title">Общий</div>
+            <div className="models-item__text text">Rev Anim</div>
           </label>
         </div>
         <div
@@ -38,23 +38,6 @@ function HomeBody({ currentModel, handleModel, go }) {
           <label htmlFor="Counterfeit">
             <div className="models-item__title mini-title">Аниме</div>
             <div className="models-item__text text">Counterfeit</div>
-          </label>
-        </div>
-        <div
-          className={`models-item ${
-            currentModel == "Rev anim" && "models-item_active"
-          }`}
-          onClick={handleModel}
-        >
-          <input
-            type="radio"
-            id="Rev anim"
-            name="models"
-            className="models-item__radio"
-          ></input>
-          <label htmlFor="Rev anim">
-            <div className="models-item__title mini-title">Общий</div>
-            <div className="models-item__text text">Rev Anim</div>
           </label>
         </div>
       </div>

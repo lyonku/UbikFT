@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import "./Home.css";
 import { Panel } from "@vkontakte/vkui";
-import backgroundProtogen from "assets/img/home__protogen_background.png";
 import backgroundAnything from "assets/img/home__anything_background.png";
 import backgroundVintedois from "assets/img/home__vintedois_background.png";
 import HomeBody from "./components/HomeBody";
@@ -36,11 +35,9 @@ const Home = ({ id }) => {
         className="home"
         style={{
           background: `linear-gradient(180deg, rgba(0, 0, 0, 0) -19.13%, #000000 100%), no-repeat center/cover url(${
-            currentModel == "Protogen"
-              ? backgroundProtogen
-              : currentModel == "Anything"
-              ? backgroundAnything
-              : backgroundVintedois
+            currentModel == "Rev Anim"
+              ? backgroundVintedois
+              : backgroundAnything
           })`,
         }}
       >

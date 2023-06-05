@@ -192,6 +192,10 @@
   align-items: center;
 }
 
+.styleСategory__block .styles__item {
+  max-width: 130px;
+}
+
 .styles__item_active .styles__img {
   box-sizing: border-box;
   padding: 4px;
@@ -357,6 +361,13 @@ div.swiper .swiper-button-disabled {
 
 .styles__item:last-child {
   z-index: 99;
+}
+
+.styleСategory__block {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 @media screen and (max-width: 610px) {

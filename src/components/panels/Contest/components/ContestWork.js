@@ -8,7 +8,7 @@ function ContestWork({
   handleShowSharePopout,
   handleSendLikePopout,
   handleCopyPromptAlert,
-  participation,
+  activeContest,
 }) {
   const Name = "Дом с каскадной крышей в стиле ван гога";
   return (
@@ -21,7 +21,8 @@ function ContestWork({
           </div>
           <div className="ContestWork__profile_text">
             <div className="ContestWork__profile_name">KlypKlypik</div>
-            {participation && (
+            {(activeContest.type == "vote" ||
+              activeContest.type == "ended") && (
               <div
                 className="ContestWork__profile_prompt text_gray"
                 onClick={() => handleCopyPromptAlert(Name)}
@@ -35,8 +36,13 @@ function ContestWork({
           <div className="ContestWork__shareBtn">
             <ShareSvg color={"#fff"} onClick={handleShowSharePopout} />
           </div>
-          {participation && (
-            <div className="ContestWork__like" onClick={handleSendLikePopout}>
+          {(activeContest.type == "vote" || activeContest.type == "ended") && (
+            <div
+              className="ContestWork__like"
+              onClick={() =>
+                activeContest.type === "vote" && handleSendLikePopout()
+              }
+            >
               <LikeSvg />
               <span>1321</span>
             </div>
