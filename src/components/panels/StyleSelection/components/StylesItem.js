@@ -31,13 +31,13 @@ function StylesItem({ style, category, setChosenStyles, chosenStyles }) {
 
     if (!state) {
       setState("styles__item_active");
-      if (category == "genre" || category == "setting") {
-        copy[category] = [style];
-      } else {
-        let mass = copy[category] ? copy[category] : [];
-        mass.push(style);
-        copy[category] = mass;
-      }
+      // if (category == "genre" || category == "setting") {
+      copy[category] = [style];
+      // } else {
+      //   let mass = copy[category] ? copy[category] : [];
+      //   mass.push(style);
+      //   copy[category] = mass;
+      // }
     } else {
       setState("");
       if (category != "genre" || category != "setting") {

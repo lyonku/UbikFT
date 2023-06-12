@@ -3,10 +3,10 @@ const structure = [
     id: "main",
     hash: "main",
     panels: [
-      {
-        id: "home",
-        hash: "/home",
-      },
+      // {
+      //   id: "home",
+      //   hash: "/home",
+      // },
       {
         id: "inquiry",
         hash: "/inquiry",
@@ -55,20 +55,6 @@ const structure = [
     panels: [
       {
         id: "payEnergy",
-        hash: "",
-      },
-    ],
-  },
-  {
-    id: "debug",
-    hash: "debug",
-    panels: [
-      {
-        id: "debug",
-        hash: "",
-      },
-      {
-        id: "img",
         hash: "",
       },
     ],

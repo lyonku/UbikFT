@@ -254,7 +254,7 @@
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_121450_162869-picture+of+small+villa+trending+on+artstation+masterpiece-1012436400.png"
       },
       {
-        "sub_name": "Славянский",
+        "sub_name": "artgerm",
         "sub_title": "artgerm",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest,  raytracing, fit, stylized, highly detailed, oil painting, dark fantasy",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
@@ -275,8 +275,8 @@
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_122208_167804-picture+of+small+villa+masterpiece+trending+on+pinterest-1012436400.png"
       },
       {
-        "sub_name": "Славянский",
-        "sub_title": "Пикассо",
+        "sub_name": "Пикассо",
+        "sub_title": "picasso",
         "positivePrompt": "masterpiece, trending on pinterest, bright, simple shapes, bright colors",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_122318_431849-picture+of+small+villa+masterpiece+trending+on+pinterest-1012436400.png"
@@ -359,7 +359,7 @@
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_132039_364521_picture_of_small_villa_masterpiece_dim_colors.png"
       },
       {
-        "sub_name": "Славянский",
+        "sub_name": "Адонна Харе",
         "sub_title": "adonna khare",
         "positivePrompt": "masterpiece, accurate hatching, insane hatching, realistic",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",

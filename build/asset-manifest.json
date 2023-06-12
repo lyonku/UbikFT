@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.829e7f55.css",
-    "main.js": "/static/js/main.c0287403.js",
+    "main.css": "/static/css/main.f56970ae.css",
+    "main.js": "/static/js/main.943d3e81.js",
     "static/media/loading__background.png": "/static/media/loading__background.8db84f724ce51633a0dd.png",
     "static/media/home__vintedois_background.png": "/static/media/home__vintedois_background.bc5a1b9e340e3002c8e0.png",
     "static/media/home__anything_background.png": "/static/media/home__anything_background.6d0b4491ff03b91e2626.png",
@@ -30,11 +30,11 @@
     "static/media/back-btn.svg": "/static/media/back-btn.fcc8b585c016ff5270690561fccf41e0.svg",
     "index.html": "/index.html",
     "static/media/addToWall.svg": "/static/media/addToWall.90f6d605243e9961da8297afc39653a2.svg",
-    "main.829e7f55.css.map": "/static/css/main.829e7f55.css.map",
-    "main.c0287403.js.map": "/static/js/main.c0287403.js.map"
+    "main.f56970ae.css.map": "/static/css/main.f56970ae.css.map",
+    "main.943d3e81.js.map": "/static/js/main.943d3e81.js.map"
   },
   "entrypoints": [
-    "static/css/main.829e7f55.css",
-    "static/js/main.c0287403.js"
+    "static/css/main.f56970ae.css",
+    "static/js/main.943d3e81.js"
   ]
 }

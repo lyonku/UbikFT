@@ -18,7 +18,6 @@ import MainTabbar from "components/common/MainTabbar";
 
 import imagesPreload from "components/App/features/images__preload";
 import PayEnergy from "components/panels/PayEnergy/";
-import Debug from "components/panels/Debug";
 
 const App = (props) => {
   const userList = useMemo(() => imagesPreload(), []);
@@ -37,7 +36,6 @@ const App = (props) => {
                 <Contests id="contests" />
                 <Profile id="profile" />
                 <PayEnergy id="payEnergy" />
-                <Debug id="debug" />
               </Epic>
             </AppRoot>
           </SplitCol>

@@ -1,26 +1,44 @@
 .inquiry {
   display: flex;
   justify-content: center;
-  position: relative;
   width: 100%;
   height: 100vh;
-  margin: 0;
-  padding: 0;
   background-color: #0a0a0a;
+  overflow-y: auto;
+}
+
+.inquiry::-webkit-scrollbar {
+  width: 5px;
+  background-color: #000000;
+}
+
+.inquiry::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #b0e822;
+}
+
+.inquiry::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #00000000;
 }
 
 .inquiry__body {
   max-width: 490px;
-
   position: relative;
   box-sizing: border-box;
-  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
   padding: 50px 16px 100px 16px;
+}
+
+.modePro .inquiry__body {
+  height: 850px;
+  display: block;
+  padding-bottom: 0;
 }
 
 .inquiry__title {
@@ -41,6 +59,11 @@
   flex-direction: column;
 }
 
+.modePro .inquiry__form {
+  justify-content: flex-start;
+  height: auto;
+}
+
 .inquiry__inputWrap {
   box-sizing: border-box;
   margin-bottom: 8px;
@@ -51,6 +74,10 @@
   padding: 24px 16px;
   background: #2f2f2f;
   border-radius: 16px;
+}
+
+.inquiry__inputWrap-pro {
+  margin-bottom: 30px;
 }
 
 .inquiry__inputWrap textarea {
@@ -146,4 +173,40 @@ div.inquiry__inputExample {
 
 .inquiry__controls {
   margin-bottom: 30px;
+}
+
+.inquiry__inputTitle {
+  width: 100%;
+}
+
+.inquiryPrompt__wrap {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.vkuiSlider__dragger:before {
+  background: linear-gradient(
+      0deg,
+      rgba(33, 33, 33, 0.05),
+      rgba(33, 33, 33, 0.05)
+    ),
+    linear-gradient(109.37deg, #fcc63a 0%, #8bf54d 100%) !important;
+}
+
+.inquiryPrompt__slider {
+  cursor: pointer;
+}
+
+.styleSelection__pro {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.styleSelection__pro span {
+  font-size: 14px;
+}
+
+.styleSelection__pro .vkuiSwitch {
+  --vkui--color_icon_accent: #b0e822;
 }

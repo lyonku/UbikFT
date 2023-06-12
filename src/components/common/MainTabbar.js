@@ -33,15 +33,6 @@ function MainTabbar({ activeStory }) {
       >
         <ProfileSvg color={activeStory === "profile" ? "#B0E822" : "#fff"} />
       </TabbarItem>
-      <TabbarItem
-        onClick={onStoryChange}
-        selected={activeStory === "debug"}
-        data-story="debug"
-      >
-        <div style={{ color: activeStory === "debug" ? "#B0E822" : "#fff" }}>
-          DEBUG
-        </div>
-      </TabbarItem>
     </Tabbar>
   );
 }
