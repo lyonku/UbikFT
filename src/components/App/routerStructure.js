@@ -7,10 +7,10 @@ const structure = [
       //   id: "home",
       //   hash: "/home",
       // },
-      {
-        id: "inquiry",
-        hash: "/inquiry",
-      },
+      // {
+      //   id: "inquiry",
+      //   hash: "/inquiry",
+      // },
       {
         id: "styleSelection",
         hash: "/styleSelection",

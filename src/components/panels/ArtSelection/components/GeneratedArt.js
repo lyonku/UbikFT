@@ -1,22 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 
 import ShareSvg from "components/common/shareSvg";
+import benefitsImg from "assets/img/payEnergy__benefitsImg.svg";
+import { MainContext } from "components/shared/providers/MainProvider";
 
-const GeneratedArt = ({
-  currentImg,
-  router,
-  handleShowSharePopout,
-  handleContestSelectPopout,
-}) => {
-  const [width, setWidth] = useState(window.innerWidth);
+const GeneratedArt = () => {
+  const [copyPromptAlert, setCopyPromptAlert] = useState(false);
+  const {
+    currentImg,
+    handleCopy,
+    handleContestSelectPopout,
+    handleShowSharePopout,
+  } = useContext(MainContext);
 
-  // This hook is used to resize the image when the window is resized.
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const handleCopyAlert = (text) => {
+    handleCopy(text);
+    setCopyPromptAlert(true);
+    setTimeout(() => setCopyPromptAlert(false), 2000);
+  };
 
   return (
     <div className="ArtSelection__body">
@@ -24,9 +25,9 @@ const GeneratedArt = ({
         Получился шедевр? <br />
         <span className="text_accented">Отправь работу на конкурс</span>
       </div>
-      <div className="ArtSelection__img">
-        <img src={currentImg} />
 
+      <div className="ArtSelection__img">
+        <img src={currentImg?.img} />
         <div className="ArtSelection__imgControls ">
           <div
             className="ArtSelection__shareBtn "
@@ -34,8 +35,12 @@ const GeneratedArt = ({
           >
             <ShareSvg width="16px" height="16px" />
           </div>
+          <div className="ArtSelection__seed" onClick={handleCopyAlert}>
+            Seed: {currentImg?.seed}
+          </div>
         </div>
       </div>
+
       <div className="ArtSelection__glow"></div>
 
       <div className="ArtSelection__btns">
@@ -45,6 +50,10 @@ const GeneratedArt = ({
         >
           Отправить на конкурс
         </div>
+      </div>
+      <div className={`Notification ${copyPromptAlert && "open"}`}>
+        <img src={benefitsImg} />
+        Seed скопирован
       </div>
     </div>
   );

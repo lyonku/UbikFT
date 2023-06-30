@@ -6,6 +6,7 @@ import createPrompts from "components/App/features/createPrompts";
 import ContestSelect from "components/panels/ArtSelection/components/ContestSelect";
 import PayConfirm from "components/panels/Contest/components/PayConfirm";
 import ShareWorkAlert from "components/common/ShareWorkAlert";
+import WalletConnect from "components/panels/ArtSelection/components/WalletConnect";
 
 export const MainContext = createContext();
 
@@ -16,7 +17,7 @@ export const MainContextProvider = ({ children, router }) => {
   const [inputValueNegative, setInputValueNegative] = useState("");
   const [inputValueSeed, setInputValueSeed] = useState("");
   const [chosenStyles, setChosenStyles] = useState({});
-  const [currentImg, setCurrentImg] = useState();
+  const [currentImg, setCurrentImg] = useState({ img: "", seed: "" });
   const [error, setError] = useState();
   const [fetchedUser, setUser] = useState(null);
   const [activeContest, setActiveContest] = useState({});
@@ -97,27 +98,30 @@ export const MainContextProvider = ({ children, router }) => {
       };
 
       const data = await generateArt(config);
-      console.log(data);
-      if (data.artifacts[0].finishReason != "SUCCESS") {
-        setError(true);
+      if (data.artifacts[0]?.finishReason == "SUCCESS") {
+        setCurrentImg({
+          img: `data:image/jpeg;base64,${data.artifacts[0].base64}`,
+          seed: data.artifacts[0].seed,
+        });
       } else {
-        setCurrentImg(`data:image/jpeg;base64,${data.artifacts[0].base64}`);
+        setError(true);
       }
     } else {
       const translateData = await getTranslate(inputValue);
       if (translateData !== null) {
-        console.log(1);
         const result = await createPrompts(
           chosenStyles,
           currentModel,
           translateData
         );
         const data = await generateArt(result);
-
-        if (data.artifacts[0].finishReason != "SUCCESS") {
-          setError(true);
+        if (data.artifacts && data.artifacts[0]?.finishReason == "SUCCESS") {
+          setCurrentImg({
+            img: `data:image/jpeg;base64,${data.artifacts[0].base64}`,
+            seed: data.artifacts[0].seed,
+          });
         } else {
-          setCurrentImg(`data:image/jpeg;base64,${data.artifacts[0].base64}`);
+          setError(true);
         }
       }
     }
@@ -178,10 +182,17 @@ export const MainContextProvider = ({ children, router }) => {
     );
   };
 
-  const handleContestSelectPopout = () => {
+  const handleContestSelectPopout = (props) => {
     router.toPopout(
       <PopoutWrapper alignY="center" alignX="center">
-        <ContestSelect />
+        <ContestSelect accept={props} />
+      </PopoutWrapper>
+    );
+  };
+  const handleWalletConnectPopout = () => {
+    router.toPopout(
+      <PopoutWrapper alignY="center" alignX="center">
+        <WalletConnect />
       </PopoutWrapper>
     );
   };
@@ -199,10 +210,17 @@ export const MainContextProvider = ({ children, router }) => {
     setInputValue("");
   };
 
-  const handleCopyPrompt = (text) => {
+  const handleCopy = (text) => {
     bridge.send("VKWebAppCopyText", {
       text: text,
     });
+  };
+
+  const handleCopyPrompt = (text, style, pro) => {
+    setModePro(pro ? true : false);
+    setChosenStyles(style);
+    setInputValue(text);
+    router.toView("main");
   };
 
   const handleChangeModePro = () => {
@@ -239,7 +257,7 @@ export const MainContextProvider = ({ children, router }) => {
         handleSendLikePopout,
         handleShowSharePopout,
         handleContestSelectPopout,
-        handleCopyPrompt,
+        handleCopy,
         setActiveContest,
         activeContest,
         getTimeUntilDate,
@@ -247,9 +265,12 @@ export const MainContextProvider = ({ children, router }) => {
         setError,
         setCurrentImg,
         modePro,
+        setModePro,
         handleChangeModePro,
         setGuidanceScale,
         guidanceScale,
+        handleCopyPrompt,
+        handleWalletConnectPopout,
       }}
     >
       {children}

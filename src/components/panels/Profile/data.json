@@ -1,0 +1,117 @@
+[
+  {
+    "img": "https://i.ibb.co/fp5JT3Y/image.png",
+    "prompt": "Космический корабль в океане",
+    "styles": {
+      "genre": [
+        {
+          "sub_name": "Цифровой-арт",
+          "sub_title": "Digital painting",
+          "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
+          "negativePrompt": "3d  render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+          "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_154244_966421-Digital+painting+of+small+villa+trending+on+pinterest-1012436400.png",
+          "blurHash": "LMGIJz~AK4M|.S%1?Gt6KQNHWYxa"
+        }
+      ]
+    },
+    "pro": false,
+    "contest": {
+      "name": "Космогонка",
+      "desc": "Отправляйся в захватывающее путешествие сквозь бескрайние галактики и создай свой собственный космический мир!",
+      "type": "vote",
+      "img": "https://i.ibb.co/0GjRttD/be42d35b-a67c-495f-b042-386d69b6c0b0-0.png",
+      "date": "1689735513000",
+      "works": [
+        {
+          "prompt": "Космический корабль в океане",
+          "img": "https://i.ibb.co/sPfQ9K0/6fef37c8-13f2-44a8-a2d2-0f0acf6dcc5c.png",
+          "pro": false,
+          "styles": {
+            "genre": [
+              {
+                "sub_name": "Цифровой-арт",
+                "sub_title": "Digital painting",
+                "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
+                "negativePrompt": "3d  render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+                "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_154244_966421-Digital+painting+of+small+villa+trending+on+pinterest-1012436400.png",
+                "blurHash": "LMGIJz~AK4M|.S%1?Gt6KQNHWYxa"
+              }
+            ]
+          }
+        },
+        {
+          "img": "https://i.ibb.co/JcNcQsN/64da26c1-1392-be91-9c47-10a1f517972f.png",
+          "prompt": "A spaceship in the ocean",
+          "styles": {},
+          "pro": true
+        }
+      ]
+    }
+  },
+  {
+    "img": "https://i.ibb.co/pLs5tR0/961e4257-37b7-8515-44bc-bf3c1feceda0.png",
+    "prompt": "Пещерные демоны атакуют человечество",
+    "styles": {
+      "genre": [
+        {
+          "sub_name": "Цифровой-арт",
+          "sub_title": "Digital painting",
+          "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
+          "negativePrompt": "3d  render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+          "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_154244_966421-Digital+painting+of+small+villa+trending+on+pinterest-1012436400.png",
+          "blurHash": "LMGIJz~AK4M|.S%1?Gt6KQNHWYxa"
+        }
+      ],
+      "style": [
+        {
+          "sub_name": "Концепт",
+          "sub_title": "concept art",
+          "positivePrompt": "trending on artstation, 8k, ultra hd, highly detailed",
+          "negativePrompt": "3d render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+          "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_180854_189762-concept+art+of+small+villa+trending+on+artstation-1012436400.png",
+          "blurHash": "LKD+-#~W.8t7~q-;?a%2x]X8RkbI"
+        }
+      ]
+    },
+    "pro": false,
+    "contest": ""
+  },
+  {
+    "img": "https://i.ibb.co/JcNcQsN/64da26c1-1392-be91-9c47-10a1f517972f.png",
+    "prompt": "A spaceship in the ocean",
+    "styles": {},
+    "pro": true,
+    "contest": {
+      "name": "Космогонка",
+      "desc": "Отправляйся в захватывающее путешествие сквозь бескрайние галактики и создай свой собственный космический мир!",
+      "type": "vote",
+      "img": "https://i.ibb.co/0GjRttD/be42d35b-a67c-495f-b042-386d69b6c0b0-0.png",
+      "date": "1689735513000",
+      "works": [
+        {
+          "prompt": "Космический корабль в океане",
+          "img": "https://i.ibb.co/sPfQ9K0/6fef37c8-13f2-44a8-a2d2-0f0acf6dcc5c.png",
+          "pro": false,
+          "styles": {
+            "genre": [
+              {
+                "sub_name": "Цифровой-арт",
+                "sub_title": "Digital painting",
+                "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
+                "negativePrompt": "3d  render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+                "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_154244_966421-Digital+painting+of+small+villa+trending+on+pinterest-1012436400.png",
+                "blurHash": "LMGIJz~AK4M|.S%1?Gt6KQNHWYxa"
+              }
+            ]
+          }
+        },
+        {
+          "img": "https://i.ibb.co/JcNcQsN/64da26c1-1392-be91-9c47-10a1f517972f.png",
+          "prompt": "A spaceship in the ocean",
+          "styles": {},
+          "pro": true
+        }
+      ]
+    }
+  }
+]

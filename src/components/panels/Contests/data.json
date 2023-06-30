@@ -1,0 +1,173 @@
+[
+  {
+    "name": "Дом мечты",
+    "desc": "Создайте дом мечты и покажите насколько комфортным и удобным он может быть.",
+    "type": "workAcceptance",
+    "img": "https://i.ibb.co/SPkzjv2/Contest-Img1.png",
+    "date": "1689122847000",
+    "works": [
+      {
+        "prompt": "Дом на острове в облаках, с деревом во дворе",
+        "img": "https://i.ibb.co/4TgRWBS/a3b0bee5-0e36-484d-afed-0673088a023c.png",
+        "pro": false,
+        "styles": {
+          "genre": [
+            {
+              "sub_name": "Цифровой-арт",
+              "sub_title": "Digital painting",
+              "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
+              "negativePrompt": "3d  render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+              "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_154244_966421-Digital+painting+of+small+villa+trending+on+pinterest-1012436400.png",
+              "blurHash": "LMGIJz~AK4M|.S%1?Gt6KQNHWYxa"
+            }
+          ]
+        }
+      },
+      {
+        "img": "https://i.ibb.co/QfZ7JcV/ac84cedd-82a9-4e79-9d8e-83941958cfc2.png",
+        "prompt": "Dream House",
+        "styles": {},
+        "pro": true
+      }
+    ]
+  },
+  {
+    "name": "Космогонка",
+    "desc": "Отправляйся в захватывающее путешествие сквозь бескрайние галактики и создай свой собственный космический мир!",
+    "type": "vote",
+    "img": "https://i.ibb.co/0GjRttD/be42d35b-a67c-495f-b042-386d69b6c0b0-0.png",
+    "date": "1689735513000",
+    "works": [
+      {
+        "prompt": "Космический корабль в океане",
+        "img": "https://i.ibb.co/sPfQ9K0/6fef37c8-13f2-44a8-a2d2-0f0acf6dcc5c.png",
+        "pro": false,
+        "likes": 543,
+        "styles": {
+          "genre": [
+            {
+              "sub_name": "Цифровой-арт",
+              "sub_title": "Digital painting",
+              "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
+              "negativePrompt": "3d  render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+              "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_154244_966421-Digital+painting+of+small+villa+trending+on+pinterest-1012436400.png",
+              "blurHash": "LMGIJz~AK4M|.S%1?Gt6KQNHWYxa"
+            }
+          ]
+        }
+      },
+      {
+        "img": "https://i.ibb.co/JcNcQsN/64da26c1-1392-be91-9c47-10a1f517972f.png",
+        "prompt": "A spaceship in the ocean",
+        "likes": 88,
+        "my": true,
+        "styles": {},
+        "pro": true
+      },
+      {
+        "img": "https://i.ibb.co/fp5JT3Y/image.png",
+        "prompt": "Космический корабль в океане",
+        "likes": 31,
+        "pro": false,
+        "my": true,
+        "styles": {
+          "genre": [
+            {
+              "sub_name": "Цифровой-арт",
+              "sub_title": "Digital painting",
+              "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
+              "negativePrompt": "3d  render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+              "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_154244_966421-Digital+painting+of+small+villa+trending+on+pinterest-1012436400.png",
+              "blurHash": "LMGIJz~AK4M|.S%1?Gt6KQNHWYxa"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Средневековый воин",
+    "desc": "Вступи в ряды средневековых воинов и оживи дух этой эпохи.",
+    "type": "ended",
+    "img": "https://i.ibb.co/pR6czHq/e1effeb5-ce93-4712-9be4-139f62bed96d-0.png",
+    "date": "1673039647000",
+    "works": [
+      {
+        "prompt": "Средневековый воин ",
+        "img": "https://i.ibb.co/ScNCMcx/1dcfad85-b0d3-4b24-9626-13ae1b2d021c.png",
+        "pro": false,
+        "winner": true,
+        "likes": 2341,
+        "styles": {
+          "genre": [
+            {
+              "sub_name": "Цифровой-арт",
+              "sub_title": "Digital painting",
+              "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
+              "negativePrompt": "3d  render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+              "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_154244_966421-Digital+painting+of+small+villa+trending+on+pinterest-1012436400.png",
+              "blurHash": "LMGIJz~AK4M|.S%1?Gt6KQNHWYxa"
+            }
+          ]
+        }
+      },
+      {
+        "img": "https://i.ibb.co/2nJgcvX/627017c4-ccd8-478a-930c-2cd754ce02bf.png",
+        "prompt": "Medieval Warrior",
+        "likes": 2100,
+        "styles": {},
+        "pro": true
+      },
+      {
+        "img": "https://i.ibb.co/w4x3nG3/3e5df5b1-7da6-49ff-bf10-68f33829c2ad.png",
+        "prompt": "Medieval Warrior",
+        "likes": 800,
+        "styles": {},
+        "pro": true
+      }
+    ]
+  },
+  {
+    "name": "Маинкрафт моя жизнь",
+    "desc": "Покажите всю красоту вашей виртуальной жизни.",
+    "type": "ended",
+    "img": "https://i.ibb.co/C7Rkhwz/fc035572-fd81-45cd-a844-5b1b76cfe46c.png",
+    "price": "235",
+    "date": "1673039647000",
+    "works": [
+      {
+        "prompt": "Пейзаж, от которого захватывает дух, в стиле minecraft",
+        "img": "https://i.ibb.co/fqYhGMK/6e74e23b-4718-48e6-960f-e1a15a198d94.png",
+        "pro": false,
+        "winner": true,
+        "likes": 678,
+        "styles": {
+          "genre": [
+            {
+              "sub_name": "Цифровой-арт",
+              "sub_title": "Digital painting",
+              "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
+              "negativePrompt": "3d  render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+              "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_154244_966421-Digital+painting+of+small+villa+trending+on+pinterest-1012436400.png",
+              "blurHash": "LMGIJz~AK4M|.S%1?Gt6KQNHWYxa"
+            }
+          ]
+        }
+      },
+      {
+        "img": "https://i.ibb.co/VHw6nV7/835e7c9a-d570-f84b-b7d5-d64d4a285b72.png",
+        "prompt": "Minecraft beautiful town",
+        "likes": 456,
+        "styles": {},
+        "pro": true
+      },
+      {
+        "img": "https://i.ibb.co/WBDMjwL/38cb9888-b714-a69a-afa1-643b5205d851.png",
+        "prompt": "Minecraft beautiful town with background sun",
+        "likes": 388,
+        "styles": {},
+        "pro": true
+      }
+    ]
+  }
+]

@@ -16,12 +16,9 @@ import Contests from "components/panels/Contests";
 import Profile from "components/panels/Profile";
 import MainTabbar from "components/common/MainTabbar";
 
-import imagesPreload from "components/App/features/images__preload";
 import PayEnergy from "components/panels/PayEnergy/";
 
 const App = (props) => {
-  const userList = useMemo(() => imagesPreload(), []);
-
   return (
     <MainContextProvider router={props.router}>
       <ConfigProvider isWebView>

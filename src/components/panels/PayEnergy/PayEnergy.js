@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Panel, View } from "@vkontakte/vkui";
-import { useModalRootContext } from "@vkontakte/vkui";
+import React, { useState, useContext } from "react";
 import "./PayEnergy.css";
 
 import closeBtn from "assets/img/close-btn.svg";
@@ -9,8 +7,11 @@ import benefitsImg from "assets/img/payEnergy__benefitsImg.svg";
 import background from "assets/img/payEnergy__background.png";
 import EnergySvg from "components/common/energySvg";
 
+import { MainContext } from "components/shared/providers/MainProvider";
+
 const PayEnergy = ({ id, buySubscribe }) => {
   const [activeTariff, setActiveTariff] = useState("first");
+  const { router } = useContext(MainContext);
 
   const handleTariff = (e) => {
     if (!e.target.id) {
@@ -38,7 +39,7 @@ const PayEnergy = ({ id, buySubscribe }) => {
           <div
             className="payEnergy__closeBtn closeBtn"
             onClick={() => {
-              window.history.back();
+              router.toBack();
             }}
           >
             <img src={closeBtn} />
@@ -61,7 +62,7 @@ const PayEnergy = ({ id, buySubscribe }) => {
               </div>
               <div className="benefits__item">
                 <img className="benefits__itemImg" src={benefitsImg} />
-                Выпускайте свои NFT
+                Без рекламы
               </div>
             </div>
           </div>

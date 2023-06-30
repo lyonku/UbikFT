@@ -57,6 +57,7 @@ div.Loading__text {
 }
 
 .Loading__wrap {
+  z-index: 999;
   box-sizing: border-box;
   padding: 50px 16px 16px 16px;
   max-width: 490px;
@@ -64,8 +65,16 @@ div.Loading__text {
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  /* gap: 50px; */
   height: calc(100% - 72px);
+}
+
+.Loading__body {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
 }
 
 div.Loading__desc {

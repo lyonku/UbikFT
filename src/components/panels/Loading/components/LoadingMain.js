@@ -11,11 +11,7 @@ function LoadingMain() {
 
       <RoundLoader />
       <div className="Loading__desc text">
-        Обычно это занимает 15 секунд, но вы можете написать команде{" "}
-        <a href="https://vk.com/vkappsdev" target="_blank">
-          VK Mini apps
-        </a>{" "}
-        и попросить мощный сервер для нашего проекта. Спасибо :)
+        Обычно генерация занимает 7 секунд
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ import ContestPrizes from "./components/ContestPrizes";
 import ContestControls from "./components/ContestControls";
 import ContestItemHeader from "./components/ContestItemHeader";
 import benefitsImg from "assets/img/payEnergy__benefitsImg.svg";
+import profile__emptyImg from "assets/img/profile__emptyImg.svg";
 
 const Contest = ({ id }) => {
   const [contestFilters, setContestFilters] = useState("New");
@@ -18,16 +19,11 @@ const Contest = ({ id }) => {
     router,
     handleSendLikePopout,
     handleShowSharePopout,
-    handleCopyPrompt,
     activeContest,
     getTimeUntilDate,
+    handleCopyPrompt,
   } = useContext(MainContext);
 
-  const handleCopyPromptAlert = (text) => {
-    handleCopyPrompt(text);
-    setCopyPromptAlert(true);
-    setTimeout(() => setCopyPromptAlert(false), 2000);
-  };
   const [time, setTime] = useState("");
   const date = new Date(+activeContest.date);
   var currentDate = new Date();
@@ -39,7 +35,7 @@ const Contest = ({ id }) => {
   };
 
   useEffect(() => {
-    var oneDay = 24 * 60 * 60 * 1000; // количество миллисекунд в одном дне
+    var oneDay = 24 * 60 * 60 * 1000;
     var timeDiff = date.getTime() - currentDate.getTime();
 
     if (timeDiff < oneDay) {
@@ -67,7 +63,6 @@ const Contest = ({ id }) => {
             <div className="ContestItem__wrap">
               <div className="ContestItem__body">
                 <ContestItemHeader activeContest={activeContest} time={time} />
-                <ContestPrizes activeContest={activeContest} />
                 {activeContest.type == "workAcceptance" && (
                   <div
                     className="Contest__btn btn"
@@ -78,6 +73,8 @@ const Contest = ({ id }) => {
                     Принять участие в конкурсе
                   </div>
                 )}
+                <ContestPrizes activeContest={activeContest} />
+
                 {(activeContest.type == "vote" ||
                   activeContest.type == "workAcceptance") && (
                   <div className="Contest__filters">
@@ -90,16 +87,15 @@ const Contest = ({ id }) => {
                       Все работы
                     </div>
                     <div
-                      onClick={() => setContestFilters("Popular")}
+                      onClick={() => setContestFilters("My")}
                       className={`Contest__filter ${
-                        contestFilters == "Popular" && "active"
+                        contestFilters == "My" && "active"
                       }`}
                     >
                       Мои работы
                     </div>
                   </div>
                 )}
-
                 <div className="ContestWorks">
                   <div className="ContestWorks__title title_h3-24px">
                     <span className="title_h3-24px">Работы</span>
@@ -108,24 +104,28 @@ const Contest = ({ id }) => {
                     </span>
                   </div>
                   <div className="ContestWorks__body">
-                    <ContestWork
-                      handleSendLikePopout={handleSendLikePopout}
-                      handleShowSharePopout={handleShowSharePopout}
-                      handleCopyPromptAlert={handleCopyPromptAlert}
-                      activeContest={activeContest}
-                    />
-                    <ContestWork
-                      handleSendLikePopout={handleSendLikePopout}
-                      handleShowSharePopout={handleShowSharePopout}
-                      handleCopyPromptAlert={handleCopyPromptAlert}
-                      activeContest={activeContest}
-                    />
-                    <ContestWork
-                      handleSendLikePopout={handleSendLikePopout}
-                      handleShowSharePopout={handleShowSharePopout}
-                      handleCopyPromptAlert={handleCopyPromptAlert}
-                      activeContest={activeContest}
-                    />
+                    {activeContest.works.map((data, index) => {
+                      if (contestFilters != "My" || data.my) {
+                        return (
+                          <ContestWork
+                            key={index}
+                            handleSendLikePopout={handleSendLikePopout}
+                            handleShowSharePopout={handleShowSharePopout}
+                            handleCopyPrompt={handleCopyPrompt}
+                            data={data}
+                            activeContest={activeContest}
+                          />
+                        );
+                      }
+                    })}
+                    {activeContest.works.filter(
+                      (data) => contestFilters !== "My" || data.my
+                    ).length < 1 && (
+                      <div className="ProfileArts__item_empty ProfileArts__item">
+                        <img src={profile__emptyImg} />
+                        Вы ещё не отправляли <br /> арты на конкурс
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className={`Notification ${copyPromptAlert && "open"}`}>
