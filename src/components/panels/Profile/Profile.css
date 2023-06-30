@@ -284,3 +284,40 @@
 .ProfileArt .GalleryItem__like:hover {
   background-color: #00000000;
 }
+
+div.ProfileArt__delete {
+  user-select: none;
+  background-color: #00000000;
+}
+
+div.shareBtn {
+  user-select: none;
+  background-color: #00000000;
+}
+
+.ProfileArt__delete:hover {
+  border-radius: 100px !important;
+  background-color: #1a1a1a !important;
+}
+
+.shareBtn:hover {
+  border-radius: 100px !important;
+  background-color: #1a1a1a !important;
+}
+
+.promptControls {
+  gap: 5px;
+  display: flex;
+}
+
+.ProfileArt__participation {
+  user-select: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 12px;
+}
+
+.ProfileArt__participation img {
+  max-width: 50px;
+}

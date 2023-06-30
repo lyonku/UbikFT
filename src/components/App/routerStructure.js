@@ -3,14 +3,14 @@ const structure = [
     id: "main",
     hash: "main",
     panels: [
-      {
-        id: "home",
-        hash: "/home",
-      },
-      {
-        id: "inquiry",
-        hash: "/inquiry",
-      },
+      // {
+      //   id: "home",
+      //   hash: "/home",
+      // },
+      // {
+      //   id: "inquiry",
+      //   hash: "/inquiry",
+      // },
       {
         id: "styleSelection",
         hash: "/styleSelection",

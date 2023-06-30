@@ -8,7 +8,7 @@ function ArtSelectionControls({ router, handleArtGenerate }) {
   return (
     <div className="ArtSelection__controls">
       <div className="ArtSelection__firstControls">
-        <div
+        {/* <div
           className="ArtSelection__close smallBtn-text"
           onClick={() => {
             router.toBack();
@@ -17,7 +17,7 @@ function ArtSelectionControls({ router, handleArtGenerate }) {
           }}
         >
           <img src={closeBtn} />
-        </div>
+        </div> */}
         <div
           className="ArtSelection__edit smallBtn-text"
           onClick={() => router.toBack()}

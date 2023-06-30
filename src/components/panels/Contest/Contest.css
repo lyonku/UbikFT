@@ -80,6 +80,7 @@ div.Contest__controls {
 }
 
 .ContestItem__date {
+  text-align: center;
   margin-bottom: 16px;
 }
 
@@ -108,10 +109,20 @@ div.Contest__controls {
 }
 
 .ContestPrize__voting {
+  box-sizing: border-box;
+  text-align: center;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   gap: 8px;
+}
+
+.ContestPrize__voting_text {
+  max-width: 100%;
+}
+
+.ContestPrize__voting svg {
+  flex-shrink: 0;
 }
 
 .Contest__filters {
@@ -154,12 +165,21 @@ div.Contest__controls {
   height: 48px;
 }
 
+.ContestPrize__logo img {
+  width: 48px;
+  height: 48px;
+}
+
+.underline {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .ContestPrize__name {
   font-size: 15px;
 }
 
 .ContestPrizes {
-  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -184,8 +204,13 @@ div.Contest__controls {
 
 .ContestPrize__rules {
   font-weight: 500;
+  margin-left: 65px;
   font-size: 11px;
   opacity: 0.8;
+}
+
+.ContestPrize__rules span {
+  font-weight: 600;
 }
 
 .ContestPrize__rules a {
@@ -241,6 +266,7 @@ div.Contest__controls {
 }
 
 .ContestWork__profile_prompt {
+  padding: 2px;
   -webkit-line-clamp: 2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -249,8 +275,10 @@ div.Contest__controls {
 
 .ContestWork__controls {
   box-sizing: border-box;
-  max-height: 24px;
+  gap: 5px;
+  max-height: 40px;
   display: flex;
+  align-items: center;
 }
 
 .ContestWork__like {
@@ -289,7 +317,7 @@ div.Contest__controls {
 }
 
 .ContestWork__profile_prompt {
-  padding: 0 8px;
+  padding: 4px 8px;
   cursor: pointer;
 }
 
@@ -297,4 +325,26 @@ div.Contest__controls {
   opacity: 1;
   border-radius: 12px;
   background-color: #1a1a1a;
+}
+
+.ContestWork__profile_text {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
+
+.ContestWork__winner {
+  right: 16px;
+  top: 16px;
+  position: absolute;
+  width: 50px;
+}
+
+.ContestWork {
+  position: relative;
+}
+
+.ContestsItemPrize__title img {
+  width: 17px;
+  margin-bottom: -2px;
 }

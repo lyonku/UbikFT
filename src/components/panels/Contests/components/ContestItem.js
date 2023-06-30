@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import OzonLogo from "assets/img/OzonLogo.svg";
+import TonLogo from "assets/img/TonLogo.svg";
 
 function ContestItem({ data, router, setActiveContest, getTimeUntilDate }) {
   const date = new Date(+data.date);
@@ -54,12 +54,12 @@ function ContestItem({ data, router, setActiveContest, getTimeUntilDate }) {
           <div className="ContestsItem__desc text_gray">{data.desc}</div>
           <div className="ContestsItemPrize roundedBlock_greenBroder">
             <div className="ContestsItemPrize__logo">
-              <img src={OzonLogo} />
+              <img src={TonLogo} />
             </div>
             <div className="ContestsItemPrize__title title_h4-18px">
               Приз <span className="text_accented"> за 1 место</span>
               <br />
-              сертификат <span className="text_accented">100000₽</span>
+              Выпуск NFT на <span className="text_accented">GetGems</span>
             </div>
           </div>
         </div>

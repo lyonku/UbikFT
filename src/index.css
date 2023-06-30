@@ -374,6 +374,17 @@ div.Notification__btn span {
   border-radius: 16px !important;
 }
 
+.modeProHint {
+  margin-right: 5px;
+  padding: 2px 8px;
+  box-sizing: border-box;
+  display: inline;
+  background: #5e5e5e;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  border-radius: 12px;
+}
+
 /* Изменить !! */
 
 .Gallery__prompt {

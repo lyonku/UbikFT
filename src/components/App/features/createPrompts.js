@@ -12,26 +12,27 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
   };
 
   const config = {
-    key: "J5e6ryPxKnOCHdITBr7M5hnvSX6nYpHvbFTSiO4i9yThzB3pBTRfeF9Zk6CG",
-    model_id: apiModels[currentModel],
-    prompt: "",
-    negative_prompt: "",
-    width: "512",
-    height: "512",
-    samples: "1",
-    num_inference_steps: "20",
-    safety_checker: "yes",
-    seed: null,
-    guidance_scale: 7.5,
-    webhook: null,
-    track_id: null,
+    client_id: "mini-app",
+    engine_id: "stable-diffusion-xl-beta-v2-2-2",
+    height: 512,
+    width: 512,
+    text_prompts: [
+      {
+        text: inputValue,
+        weight: 1,
+      },
+    ],
+    cfg_scale: 7,
+    clip_guidance_preset: "NONE",
+    sampler: "DDIM",
+    samples: 1,
+    seed: 0,
+    steps: 30,
   };
 
   for (const [key, value] of Object.entries(chosenStyles)) {
     if (key === "genre") {
-      totalPositiveText.push(
-        `[[${value[0].sub_title}]] of (((${inputValue})))`
-      );
+      totalPositiveText.push(`${value[0].sub_title} of ${inputValue}`);
     }
   }
 
@@ -39,9 +40,9 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
   for (const [key, value] of Object.entries(chosenStyles)) {
     if (key !== "artist" && key !== "genre") {
       for (const item of value) {
-        totalPositiveText.push(`[[${item.sub_title}]] ${key}`);
+        totalPositiveText.push(`${item.sub_title} ${key}`);
         if (key == "setting") {
-          totalPositiveText.push(`[[${item.sub_title}]] background`);
+          totalPositiveText.push(`${item.sub_title} background`);
         }
       }
     }
@@ -63,31 +64,31 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
   }
 
   // Добавляем специальные тексты для модели anything-v3
-  if (currentModel === "Counterfeit") {
-    const anythingNegative = [
-      "(((nsfw)))",
-      "((((((1girl))))))",
-      "(((nudity)))",
-      "((blurry))",
-      "(((lowres)))",
-      "(((noise)))",
-      "(((low quality)))",
-    ];
-    totalNegativeText = [...anythingNegative, ...totalNegativeText];
-  }
+  // if (currentModel === "Counterfeit") {
+  //   const anythingNegative = [
+  //     "(((nsfw)))",
+  //     "((((((1girl))))))",
+  //     "(((nudity)))",
+  //     "((blurry))",
+  //     "(((lowres)))",
+  //     "(((noise)))",
+  //     "(((low quality)))",
+  //   ];
+  //   totalNegativeText = [...anythingNegative, ...totalNegativeText];
+  // }
 
-  if (currentModel === "Rev Anim") {
-    const anythingNegative = [
-      "(((nsfw)))",
-      "((((((1girl))))))",
-      "(((nudity)))",
-      "((girl))",
-      "(((woman)))",
-      "(((erotic)))",
-      "(((sexy)))",
-    ];
-    totalNegativeText = [...anythingNegative, ...totalNegativeText];
-  }
+  // if (currentModel === "Rev Anim") {
+  //   const anythingNegative = [
+  //     "(((nsfw)))",
+  //     "((((((1girl))))))",
+  //     "(((nudity)))",
+  //     "((girl))",
+  //     "(((woman)))",
+  //     "(((erotic)))",
+  //     "(((sexy)))",
+  //   ];
+  //   totalNegativeText = [...anythingNegative, ...totalNegativeText];
+  // }
 
   for (const [key, value] of Object.entries(chosenStyles)) {
     if (key === "artist") {
@@ -118,17 +119,17 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
       })
   );
 
-  const result = uniquePositiveText.map((element) => {
-    if (!element.includes("[[") && !element.includes("]]")) {
-      return `[[${element}]]`;
-    } else {
-      return element;
-    }
-  });
+  // const result = uniquePositiveText.map((element) => {
+  //   if (!element.includes("[[") && !element.includes("]]")) {
+  //     return `[[${element}]]`;
+  //   } else {
+  //     return element;
+  //   }
+  // });
 
   // Записываем тексты в конфигурационный объект
-  config.prompt = result.join(", ");
-  config.negative_prompt = uniqueNegativeText2.join(", ");
+  config.text_prompts[0].text = uniquePositiveText.join(", ");
+  // config.negative_prompt = uniqueNegativeText2.join(", ");
   console.log("Отправленный конфиг: ", config);
   return config;
 }
