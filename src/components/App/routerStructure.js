@@ -59,6 +59,20 @@ const structure = [
       },
     ],
   },
+  {
+    id: "debug",
+    hash: "debug",
+    panels: [
+      {
+        id: "debug",
+        hash: "",
+      },
+      {
+        id: "img",
+        hash: "",
+      },
+    ],
+  },
 ];
 
 export default structure;

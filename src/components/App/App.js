@@ -16,9 +16,19 @@ import Contests from "components/panels/Contests";
 import Profile from "components/panels/Profile";
 import MainTabbar from "components/common/MainTabbar";
 
+<<<<<<< HEAD
 import PayEnergy from "components/panels/PayEnergy/";
 
 const App = (props) => {
+=======
+import imagesPreload from "components/App/features/images__preload";
+import PayEnergy from "components/panels/PayEnergy/";
+import Debug from "components/panels/Debug";
+
+const App = (props) => {
+  const userList = useMemo(() => imagesPreload(), []);
+
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
   return (
     <MainContextProvider router={props.router}>
       <ConfigProvider isWebView>
@@ -33,6 +43,7 @@ const App = (props) => {
                 <Contests id="contests" />
                 <Profile id="profile" />
                 <PayEnergy id="payEnergy" />
+                <Debug id="debug" />
               </Epic>
             </AppRoot>
           </SplitCol>

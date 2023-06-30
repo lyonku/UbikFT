@@ -370,10 +370,13 @@ div.swiper .swiper-button-disabled {
   justify-content: center;
 }
 
+<<<<<<< HEAD
 canvas {
   border-radius: 100%;
 }
 
+=======
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
 @media screen and (max-width: 610px) {
   .vkuiHorizontalScrollArrow--direction-left {
     padding-left: 0;

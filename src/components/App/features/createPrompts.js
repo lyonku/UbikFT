@@ -32,7 +32,13 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
 
   for (const [key, value] of Object.entries(chosenStyles)) {
     if (key === "genre") {
+<<<<<<< HEAD
       totalPositiveText.push(`${value[0].sub_title} of ${inputValue}`);
+=======
+      totalPositiveText.push(
+        `[[${value[0].sub_title}]] of (((${inputValue})))`
+      );
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
     }
   }
 
@@ -40,9 +46,15 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
   for (const [key, value] of Object.entries(chosenStyles)) {
     if (key !== "artist" && key !== "genre") {
       for (const item of value) {
+<<<<<<< HEAD
         totalPositiveText.push(`${item.sub_title} ${key}`);
         if (key == "setting") {
           totalPositiveText.push(`${item.sub_title} background`);
+=======
+        totalPositiveText.push(`[[${item.sub_title}]] ${key}`);
+        if (key == "setting") {
+          totalPositiveText.push(`[[${item.sub_title}]] background`);
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
         }
       }
     }
@@ -64,6 +76,7 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
   }
 
   // Добавляем специальные тексты для модели anything-v3
+<<<<<<< HEAD
   // if (currentModel === "Counterfeit") {
   //   const anythingNegative = [
   //     "(((nsfw)))",
@@ -89,6 +102,33 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
   //   ];
   //   totalNegativeText = [...anythingNegative, ...totalNegativeText];
   // }
+=======
+  if (currentModel === "Counterfeit") {
+    const anythingNegative = [
+      "(((nsfw)))",
+      "((((((1girl))))))",
+      "(((nudity)))",
+      "((blurry))",
+      "(((lowres)))",
+      "(((noise)))",
+      "(((low quality)))",
+    ];
+    totalNegativeText = [...anythingNegative, ...totalNegativeText];
+  }
+
+  if (currentModel === "Rev Anim") {
+    const anythingNegative = [
+      "(((nsfw)))",
+      "((((((1girl))))))",
+      "(((nudity)))",
+      "((girl))",
+      "(((woman)))",
+      "(((erotic)))",
+      "(((sexy)))",
+    ];
+    totalNegativeText = [...anythingNegative, ...totalNegativeText];
+  }
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
 
   for (const [key, value] of Object.entries(chosenStyles)) {
     if (key === "artist") {
@@ -119,6 +159,7 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
       })
   );
 
+<<<<<<< HEAD
   // const result = uniquePositiveText.map((element) => {
   //   if (!element.includes("[[") && !element.includes("]]")) {
   //     return `[[${element}]]`;
@@ -130,6 +171,19 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
   // Записываем тексты в конфигурационный объект
   config.text_prompts[0].text = uniquePositiveText.join(", ");
   // config.negative_prompt = uniqueNegativeText2.join(", ");
+=======
+  const result = uniquePositiveText.map((element) => {
+    if (!element.includes("[[") && !element.includes("]]")) {
+      return `[[${element}]]`;
+    } else {
+      return element;
+    }
+  });
+
+  // Записываем тексты в конфигурационный объект
+  config.prompt = result.join(", ");
+  config.negative_prompt = uniqueNegativeText2.join(", ");
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
   console.log("Отправленный конфиг: ", config);
   return config;
 }

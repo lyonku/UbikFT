@@ -1,7 +1,12 @@
 {
   "files": {
+<<<<<<< HEAD
     "main.css": "/static/css/main.34e26376.css",
     "main.js": "/static/js/main.b5adc1d3.js",
+=======
+    "main.css": "/static/css/main.829e7f55.css",
+    "main.js": "/static/js/main.c0287403.js",
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
     "static/media/loading__background.png": "/static/media/loading__background.8db84f724ce51633a0dd.png",
     "static/media/payEnergy__background.png": "/static/media/payEnergy__background.47326c0d69d909a6cecb.png",
     "static/media/MacPawFixelText-Regular.otf": "/static/media/MacPawFixelText-Regular.75d44f06aa78a75b45a2.otf",
@@ -21,6 +26,7 @@
     "static/media/back-btn.svg": "/static/media/back-btn.fcc8b585c016ff5270690561fccf41e0.svg",
     "index.html": "/index.html",
     "static/media/addToWall.svg": "/static/media/addToWall.90f6d605243e9961da8297afc39653a2.svg",
+<<<<<<< HEAD
     "static/media/TONlogo2.svg": "/static/media/TONlogo2.22a2981a9afc3b5979e2ecf05a64f1ea.svg",
     "main.34e26376.css.map": "/static/css/main.34e26376.css.map",
     "main.b5adc1d3.js.map": "/static/js/main.b5adc1d3.js.map"
@@ -28,5 +34,13 @@
   "entrypoints": [
     "static/css/main.34e26376.css",
     "static/js/main.b5adc1d3.js"
+=======
+    "main.829e7f55.css.map": "/static/css/main.829e7f55.css.map",
+    "main.c0287403.js.map": "/static/js/main.c0287403.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.829e7f55.css",
+    "static/js/main.c0287403.js"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
   ]
 }

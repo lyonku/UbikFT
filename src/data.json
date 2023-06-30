@@ -32,24 +32,36 @@
         "sub_title": "pencil sketch",
         "positivePrompt": "trending on pinterest, insane hatching, best quality, lead pencil, highly detailed, trending on artstation",
         "negativePrompt": "(((lowres))), (((color))), pencil on table, (((pencils))), pencils in frame, out of frame, ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_153232_017123-Pencil+sketch+of+small+villa+trending+on+pinterest-1012436400.png",
         "blurHash": "LLGIis~q%MM{_3xu%Mt7xuayM{t7"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_153232_017123-Pencil+sketch+of+small+villa+trending+on+pinterest-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       },
       {
         "sub_name": "Классическая картина",
         "sub_title": "Renaissance painting",
         "positivePrompt": "museum masterpiece, classical painting, best quality, oil panting",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_152639_488387-Renaissance+painting+of+small+villa+museum+masterpiece+classical-1012436400.png",
         "blurHash": "LOG8.T-:TJE2_Nof%Mj?ERIpM{%L"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_152639_488387-Renaissance+painting+of+small+villa+museum+masterpiece+classical-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       },
       {
         "sub_name": "Постер",
         "sub_title": "Poster",
         "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on pinterest, cel shading, vector graphics",
         "negativePrompt": "3d render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_154425_580622-Poster+of+small+villa+trending+on+pinterest+8k-1012436400.png",
         "blurHash": "L6Gbq%^j00%H=ARj~B%L00EO^9xC"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_154425_580622-Poster+of+small+villa+trending+on+pinterest+8k-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       }
   ]
     
@@ -71,8 +83,12 @@
         "sub_title": "concept art",
         "positivePrompt": "trending on artstation, 8k, ultra hd, highly detailed",
         "negativePrompt": "3d render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_180854_189762-concept+art+of+small+villa+trending+on+artstation-1012436400.png",
         "blurHash": "LKD+-#~W.8t7~q-;?a%2x]X8RkbI"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_180854_189762-concept+art+of+small+villa+trending+on+artstation-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       },
       {
         "sub_name": "Неоклассицизм",
@@ -181,64 +197,96 @@
         "sub_title": "sci-fi",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, halogen lights and metal, sharp colors, smooth shapes, high contrast",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_200509_605016-picture+of+small+villa+sci+fi+setting+trending-1012436400.png",
         "blurHash": "LXEf4#~B%gRi-;-p%1t7IVNaVst7"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_200509_605016-picture+of+small+villa+sci+fi+setting+trending-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       },
       {
         "sub_name": "Киберпанк",
         "sub_title": "cyberpunk",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, cyberpunk 2020, cyberpunk 2077, dark tone, neon lights in darkness, bright neon colors",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_190836_211583-picture+of+small+villa+cyberpunk+setting+trending+on-1012436400.png",
         "blurHash": "LRELgb{^yWq_%K$x-Bs;9YKPZ%Xl"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_190836_211583-picture+of+small+villa+cyberpunk+setting+trending+on-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       },
       {
         "sub_name": "Стимпанк",
         "sub_title": "steampunk",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, dark foggy aesthetic",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_191939_944808-picture+of+small+villa+steampunk+setting+trending+on-1012436400.png",
         "blurHash": "LUD+*t~V_2oe?a-:%1t6M{WCRjt7"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_191939_944808-picture+of+small+villa+steampunk+setting+trending+on-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       },
       {
         "sub_name": "Постапокалиптический",
         "sub_title": "post-apocalyptic",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, grim and ruined aesthetic",
         "negativePrompt": "light, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_192931_861073-picture+of+small+villa+post+apocalyptic+setting+trending-1012436400.png",
         "blurHash": "LNEyVu~p_3Ri?^?b-;xaNGS4IU%M"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_192931_861073-picture+of+small+villa+post+apocalyptic+setting+trending-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       },
       {
         "sub_name": "Средневековье",
         "sub_title": "medieval",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_191601_263919-picture+of+small+villa+medieval+setting+trending+on-1012436400.png",
         "blurHash": "LHC~^;^+%Mog~q-;-:xu?cx]j[xu"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_191601_263919-picture+of+small+villa+medieval+setting+trending+on-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       },
       {
         "sub_name": "Римский",
         "sub_title": "roman",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, high aesthetic",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_192050_335691-picture+of+small+villa+roman+setting+trending+on-1012436400.png",
         "blurHash": "LID+xe~WtRxu~W-;%M%MT0X9t7xt"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_192050_335691-picture+of+small+villa+roman+setting+trending+on-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       },
       {
         "sub_name": "Доисторический",
         "sub_title": "prehistoric",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, primitive aesthetic",
         "negativePrompt": "civilization, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_192315_014752-picture+of+small+villa+prehistoric+setting+trending+on-1012436400.png",
         "blurHash": "LECZLm~pJ9xu-;?a?b%N%gtmt7t7"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_192315_014752-picture+of+small+villa+prehistoric+setting+trending+on-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       },
       {
         "sub_name": "Дизельпанк",
         "sub_title": "dieselpunk",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, grim aesthetic, tubes and black smoke",
         "negativePrompt": "light, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_192507_463574-picture+of+small+villa+dieselpunk+setting+trending+on-1012436400.png",
         "blurHash": "LOEyJK^*~pae~p-:-pxaIoR*IU%2"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_192507_463574-picture+of+small+villa+dieselpunk+setting+trending+on-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       },
 
       {
@@ -246,32 +294,48 @@
         "sub_title": "elven",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, high fantasy aesthetic, magic and runes",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_193559_274753-picture+of+small+villa+elven+setting+trending+on-1012436400.png",
         "blurHash": "LQDJ08~V?axu^+-:-pxuoza#WBkC"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_193559_274753-picture+of+small+villa+elven+setting+trending+on-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       },
       {
         "sub_name": "Азиатский",
         "sub_title": "asian",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, high fantasy aesthetic",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_195617_160881-picture+of+small+villa+asian+setting+trending+on-1012436400.png",
         "blurHash": "LQEe[N~VyDoz?b-p%Mt8krbcWBof"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_195617_160881-picture+of+small+villa+asian+setting+trending+on-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       },
       {
         "sub_name": "Славянский",
         "sub_title": "slavic",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, light and warm aesthetic",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_195936_498585-picture+of+small+villa+slavic+setting+trending+on-1012436400.png",
         "blurHash": "LLE2wj~V%gt7~W?H-:xu%ho}ayt7"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_195936_498585-picture+of+small+villa+slavic+setting+trending+on-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       },
       {
         "sub_name": "Древний египет",
         "sub_title": "ancient egypt",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed,light and sunny aesthetic, soft colors, teal accents",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+<<<<<<< HEAD
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_200113_405369-picture+of+small+villa+anceint+egypt+setting+trending-1012436400.png",
         "blurHash": "LJGk]=~VJBoz?^-:?a%MpdS%S4tQ"
+=======
+        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_200113_405369-picture+of+small+villa+anceint+egypt+setting+trending-1012436400.png"
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
       }
    ]
 
@@ -289,7 +353,11 @@
         "blurHash": "LMCi%K~W?ux]_3-;-;xux^bbWWs:"
       },
       {
+<<<<<<< HEAD
         "sub_name": "artgerm",
+=======
+        "sub_name": "Славянский",
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
         "sub_title": "artgerm",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest,  raytracing, fit, stylized, highly detailed, oil painting, dark fantasy",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
@@ -313,8 +381,13 @@
         "blurHash": "LB9%@u-;_3D%~qxu%MM{D%RjD%of"
       },
       {
+<<<<<<< HEAD
         "sub_name": "Пикассо",
         "sub_title": "picasso",
+=======
+        "sub_name": "Славянский",
+        "sub_title": "Пикассо",
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
         "positivePrompt": "masterpiece, trending on pinterest, bright, simple shapes, bright colors",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_122318_431849-picture+of+small+villa+masterpiece+trending+on+pinterest-1012436400.png",
@@ -409,7 +482,11 @@
         "blurHash": "LVIOUt^rP3nO_Mxm-SxGOuItR7bH"
       },
       {
+<<<<<<< HEAD
         "sub_name": "Адонна Харе",
+=======
+        "sub_name": "Славянский",
+>>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
         "sub_title": "adonna khare",
         "positivePrompt": "masterpiece, accurate hatching, insane hatching, realistic",
         "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
