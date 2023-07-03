@@ -56,13 +56,6 @@ function ContestSelect({ accept }) {
                     className="ContestSelectItem__btn btn"
                     onClick={() => {
                       handleWalletConnectPopout();
-                      setTimeout(() => {
-                        handleContestSelectPopout(true);
-                      }, 5000);
-                      // setActiveContest(item);
-                      // router.toBack();
-                      // router.toView("contests");
-                      // router.toPanel("contest");
                     }}
                   >
                     Отправить на конкурс

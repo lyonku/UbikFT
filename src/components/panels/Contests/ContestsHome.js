@@ -1,16 +1,21 @@
 import React, { useState, useContext } from "react";
 import EnergySvg from "components/common/energySvg";
 
-import ContestFilters from "./components/ContestFilters";
+import ContestsFilters from "./components/ContestsFilters";
 import { View, Panel } from "@vkontakte/vkui";
 import { MainContext } from "components/shared/providers/MainProvider";
 import ContestItem from "./components/ContestItem";
 import data from "./data.json";
 
 function ContestHome({ id }) {
-  const [activeFilter, setActiveFilter] = useState("workAcceptance");
-  const { router, setActiveContest, getTimeUntilDate } =
-    useContext(MainContext);
+  const {
+    router,
+    setActiveContest,
+    getTimeUntilDate,
+    activeFilter,
+    setActiveFilter,
+    handleInfoPopout,
+  } = useContext(MainContext);
 
   const handleChangeFilter = (e) => {
     setActiveFilter(e.target.id);
@@ -20,6 +25,8 @@ function ContestHome({ id }) {
     <Panel id={id}>
       <div className="Contests">
         <div className="gradient-round"></div>
+        <div className={`overlay ${router.popout && "open"}`}></div>
+
         <div className="Contests__wrap">
           <div className="Contests__controls Header__controls">
             <span className="Contests__title title_h2-32px">Конкурсы</span>
@@ -32,7 +39,7 @@ function ContestHome({ id }) {
             </div>
           </div>
           <div className="Contests__body">
-            <ContestFilters
+            <ContestsFilters
               activeFilter={activeFilter}
               handleChangeFilter={handleChangeFilter}
             />
@@ -45,6 +52,7 @@ function ContestHome({ id }) {
                       router={router}
                       key={index}
                       setActiveContest={setActiveContest}
+                      handleInfoPopout={handleInfoPopout}
                       getTimeUntilDate={getTimeUntilDate}
                     />
                   );

@@ -1,12 +1,7 @@
 {
   "files": {
-<<<<<<< HEAD
-    "main.css": "/static/css/main.34e26376.css",
-    "main.js": "/static/js/main.b5adc1d3.js",
-=======
-    "main.css": "/static/css/main.829e7f55.css",
-    "main.js": "/static/js/main.c0287403.js",
->>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
+    "main.css": "/static/css/main.8e4fa0f6.css",
+    "main.js": "/static/js/main.1886790e.js",
     "static/media/loading__background.png": "/static/media/loading__background.8db84f724ce51633a0dd.png",
     "static/media/payEnergy__background.png": "/static/media/payEnergy__background.47326c0d69d909a6cecb.png",
     "static/media/MacPawFixelText-Regular.otf": "/static/media/MacPawFixelText-Regular.75d44f06aa78a75b45a2.otf",
@@ -15,6 +10,7 @@
     "static/media/Winner.svg": "/static/media/Winner.170fceadb6d6bb5dcffe70f6d831d91b.svg",
     "static/media/MedalSvg.svg": "/static/media/MedalSvg.de352c5aad1370afaaad857643cda4e1.svg",
     "static/media/payEnergy__energyImg.svg": "/static/media/payEnergy__energyImg.f3c7f465941b07620186acdc2f1ab4e6.svg",
+    "static/media/ton_symbol.svg": "/static/media/ton_symbol.c41f69aafbbf71c891f9abc845b79ba1.svg",
     "static/media/TonLogo.svg": "/static/media/TonLogo.bb8c18e2437c78dd3ef842bce7f6ebe8.svg",
     "static/media/profile__delete.svg": "/static/media/profile__delete.e002cf31e8a6a739a28e970367f2bff0.svg",
     "static/media/check-mark.svg": "/static/media/check-mark.d937859bc01476d79b8c80dfe67109b0.svg",
@@ -26,21 +22,12 @@
     "static/media/back-btn.svg": "/static/media/back-btn.fcc8b585c016ff5270690561fccf41e0.svg",
     "index.html": "/index.html",
     "static/media/addToWall.svg": "/static/media/addToWall.90f6d605243e9961da8297afc39653a2.svg",
-<<<<<<< HEAD
     "static/media/TONlogo2.svg": "/static/media/TONlogo2.22a2981a9afc3b5979e2ecf05a64f1ea.svg",
-    "main.34e26376.css.map": "/static/css/main.34e26376.css.map",
-    "main.b5adc1d3.js.map": "/static/js/main.b5adc1d3.js.map"
+    "main.8e4fa0f6.css.map": "/static/css/main.8e4fa0f6.css.map",
+    "main.1886790e.js.map": "/static/js/main.1886790e.js.map"
   },
   "entrypoints": [
-    "static/css/main.34e26376.css",
-    "static/js/main.b5adc1d3.js"
-=======
-    "main.829e7f55.css.map": "/static/css/main.829e7f55.css.map",
-    "main.c0287403.js.map": "/static/js/main.c0287403.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.829e7f55.css",
-    "static/js/main.c0287403.js"
->>>>>>> 5754305a7c5e0553411fae854cec52a52f8ab576
+    "static/css/main.8e4fa0f6.css",
+    "static/js/main.1886790e.js"
   ]
 }

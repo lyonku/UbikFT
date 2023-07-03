@@ -3,14 +3,6 @@ const structure = [
     id: "main",
     hash: "main",
     panels: [
-      // {
-      //   id: "home",
-      //   hash: "/home",
-      // },
-      // {
-      //   id: "inquiry",
-      //   hash: "/inquiry",
-      // },
       {
         id: "styleSelection",
         hash: "/styleSelection",
@@ -31,11 +23,11 @@ const structure = [
     panels: [
       {
         id: "contestsHome",
-        hash: "",
+        hash: "/contestsHome",
       },
       {
         id: "contest",
-        hash: "",
+        hash: "/contest",
       },
     ],
   },
@@ -45,7 +37,7 @@ const structure = [
     panels: [
       {
         id: "profile",
-        hash: "",
+        hash: "/profile",
       },
     ],
   },
@@ -55,21 +47,7 @@ const structure = [
     panels: [
       {
         id: "payEnergy",
-        hash: "",
-      },
-    ],
-  },
-  {
-    id: "debug",
-    hash: "debug",
-    panels: [
-      {
-        id: "debug",
-        hash: "",
-      },
-      {
-        id: "img",
-        hash: "",
+        hash: "/payEnergy",
       },
     ],
   },

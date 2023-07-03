@@ -82,6 +82,10 @@ div.Contests__controls {
   border-radius: 24px;
 }
 
+a.underline:hover {
+  opacity: 0.7;
+}
+
 .ContestsItem__wrap {
   height: 100%;
   display: flex;
@@ -90,6 +94,7 @@ div.Contests__controls {
   box-sizing: border-box;
 
   padding: 24px;
+  padding-bottom: 0px;
 }
 
 .ContestsItem__header {
@@ -99,23 +104,43 @@ div.Contests__controls {
 }
 
 .ContestsItem__title {
+  text-shadow: rgb(0, 0, 0) 0px 0px 6px;
   margin-bottom: 4px;
 }
 
 .ContestsItem__desc {
+  text-shadow: rgb(0, 0, 0) 0px 0px 6px;
   margin-bottom: 16px;
 }
 
 .ContestsItemPrize {
   padding: 16px;
-  gap: 16px;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+}
+
+.ContestsItemPrize__logo {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
 }
 
 .ContestsItemPrize__logo img {
   max-width: 48px;
   box-sizing: border-box;
+}
+
+.rotateImg {
+  transform: rotate(-90deg);
+}
+
+.ContestsItem__rules {
+  color: #b0e822;
+}
+.ContestsItem__rules:hover {
+  background: rgba(255, 255, 255, 0.205);
 }

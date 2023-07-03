@@ -7,15 +7,16 @@ const BORDER =
 const LikeSvg = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={24}
-    height={24}
+    width={props.width ?? 24}
+    height={props.width ?? 24}
+    viewBox="0 0 24 24"
     fill="none"
     {...props}
   >
     <path
       fill="#D73B3B"
       fillRule="evenodd"
-      d={props.full ? FULL : BORDER}
+      d={props.full == "true" ? FULL : BORDER}
       clipRule="evenodd"
     />
   </svg>

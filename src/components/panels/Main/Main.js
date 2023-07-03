@@ -14,7 +14,7 @@ const Main = ({ id }) => {
     <View id={id} activePanel={router.activePanel}>
       <StyleSelection id="styleSelection" />
       <Loading id="loading" />
-      <ArtSelection id={"artSelection"} />
+      <ArtSelection id="artSelection" />
     </View>
   );
 };

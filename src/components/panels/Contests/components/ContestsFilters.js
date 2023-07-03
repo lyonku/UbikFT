@@ -1,4 +1,4 @@
-function ContestFilters({ activeFilter, handleChangeFilter }) {
+function ContestsFilters({ activeFilter, handleChangeFilter }) {
   return (
     <div className="Contests__filters">
       <div
@@ -32,4 +32,4 @@ function ContestFilters({ activeFilter, handleChangeFilter }) {
   );
 }
 
-export default ContestFilters;
+export default ContestsFilters;

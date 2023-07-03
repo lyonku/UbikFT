@@ -5,7 +5,7 @@ function ContestItemHeader({ activeContest, time }) {
         {activeContest.name}
       </div>
       <div className="ContestItem__desc text_gray">{activeContest.desc}</div>
-      <div className="ContestItem__date transparentBlock">
+      {/* <div className="ContestItem__date transparentBlock">
         {activeContest.type == "workAcceptance"
           ? "Прием работ"
           : activeContest.type == "vote"
@@ -14,12 +14,12 @@ function ContestItemHeader({ activeContest, time }) {
         <span className="text_accented">
           {activeContest.type == "ended" ? " закончился" : time}
         </span>
-        {/* <div>
+        <div>
           {activeContest.type == "workAcceptance"
             ? "Создайте тематический арт, и отправьте его на конкурс"
             : ""}
-        </div> */}
-      </div>
+        </div>
+      </div> */}
     </div>
   );
 }

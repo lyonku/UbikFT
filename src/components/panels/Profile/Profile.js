@@ -6,6 +6,7 @@ import { View, Panel } from "@vkontakte/vkui";
 import NftLogoSvg from "components/common/nftLogoSvg";
 
 import profile__emptyImg from "assets/img/profile__emptyImg.svg";
+import TonLogo from "assets/img/TonLogo.svg";
 import EnergySvg from "components/common/energySvg";
 
 import { MainContext } from "components/shared/providers/MainProvider";
@@ -41,14 +42,13 @@ const Profile = ({ id }) => {
                     {fetchedUser?.first_name + " " + fetchedUser?.last_name}
                   </div>
                   <div className="Profile__links">
-                    <a
-                      className="Profile__link"
-                      href={"https://polygonscan.com/"}
-                      target="_blank"
-                    >
-                      <NftLogoSvg />
-                      0xbd3afb0bb76683ecb4225f9dbc91f998713c3b01
-                    </a>
+                    <img src={TonLogo} />
+                    <div className="Profile__links_body">
+                      <div className="Profile__links_title">
+                        TON кошелёк подключен
+                      </div>
+                      <div className="Profile__links_btn">Отвязать кошелёк</div>
+                    </div>
                   </div>
                 </div>
               </div>

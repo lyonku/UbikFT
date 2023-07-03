@@ -24,15 +24,6 @@ function StyleSelectionBody({ chosenStyles, error, setChosenStyles }) {
           >
             <div className="styleСategory__title">
               <span>{category.name}</span>
-              {chosenStyles[category.title]?.length >= 1 && (
-                <div className="styleСategory__chips">
-                  <span>{chosenStyles[category.title]?.length}</span>
-                  <img
-                    src={closeBtn}
-                    onClick={() => handleClearStyles(category.title)}
-                  />
-                </div>
-              )}
             </div>
             <HorizontalScroll
               showArrows

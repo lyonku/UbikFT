@@ -20,23 +20,7 @@ function ProfileArt({ item }) {
         style={{
           background: `no-repeat center/cover url(${item.img})`,
         }}
-      >
-        <div className="ProfileArt__leftSide"></div>
-        <div className="ProfileArt__rightSide">
-          {item.contest && (
-            <div
-              className="ProfileArt__participation"
-              onClick={() => {
-                setContest();
-                router.toView("contests");
-                router.toPanel("contest");
-              }}
-            >
-              <img src={MedalSvg} />
-            </div>
-          )}
-        </div>
-      </div>
+      ></div>
       <div className="Gallery__prompt">
         <div
           className="ContestWork__profile_prompt text_gray"

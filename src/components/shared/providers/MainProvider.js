@@ -7,6 +7,7 @@ import ContestSelect from "components/panels/ArtSelection/components/ContestSele
 import PayConfirm from "components/panels/Contest/components/PayConfirm";
 import ShareWorkAlert from "components/common/ShareWorkAlert";
 import WalletConnect from "components/panels/ArtSelection/components/WalletConnect";
+import InfoPopout from "components/common/infoPopout";
 
 export const MainContext = createContext();
 
@@ -22,6 +23,7 @@ export const MainContextProvider = ({ children, router }) => {
   const [fetchedUser, setUser] = useState(null);
   const [activeContest, setActiveContest] = useState({});
   const [modePro, setModePro] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("workAcceptance");
 
   const inquiryMass = [
     {
@@ -189,6 +191,7 @@ export const MainContextProvider = ({ children, router }) => {
       </PopoutWrapper>
     );
   };
+
   const handleWalletConnectPopout = () => {
     router.toPopout(
       <PopoutWrapper alignY="center" alignX="center">
@@ -197,6 +200,13 @@ export const MainContextProvider = ({ children, router }) => {
     );
   };
 
+  const handleInfoPopout = () => {
+    router.toPopout(
+      <PopoutWrapper alignY="center" alignX="center">
+        <InfoPopout />
+      </PopoutWrapper>
+    );
+  };
   useEffect(() => {
     async function fetchData() {
       const user = await bridge.send("VKWebAppGetUserInfo");
@@ -271,6 +281,9 @@ export const MainContextProvider = ({ children, router }) => {
         guidanceScale,
         handleCopyPrompt,
         handleWalletConnectPopout,
+        activeFilter,
+        setActiveFilter,
+        handleInfoPopout,
       }}
     >
       {children}

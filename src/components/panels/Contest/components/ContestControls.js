@@ -12,6 +12,7 @@ function ContestControls({ router }) {
       >
         <img src={backBtn} />
       </div>
+
       <div
         className="Contest__energy transparentBlock_blur"
         onClick={() => router.toView("payEnergy")}
