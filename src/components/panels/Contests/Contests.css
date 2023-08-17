@@ -37,6 +37,13 @@ div.Contests__controls {
   margin-bottom: 16px;
 }
 
+.Contests__energy {
+  display: flex;
+  align-items: center;
+  max-height: 48px;
+  box-sizing: border-box;
+}
+
 .Contests__filters {
   display: flex;
   flex-wrap: wrap;
@@ -143,4 +150,55 @@ a.underline:hover {
 }
 .ContestsItem__rules:hover {
   background: rgba(255, 255, 255, 0.205);
+}
+
+.addContest {
+  margin-top: -40px;
+}
+
+.addContest__item {
+  margin-bottom: 20px;
+}
+
+.addContest__btn {
+  margin-top: 20px;
+}
+
+.Contests__add {
+  margin-bottom: 20px;
+}
+
+div.addContest__date > div {
+  color: #000000 !important;
+}
+
+.ant-picker-header-view,
+.ant-picker-cell-inner {
+  color: inherit;
+}
+
+div.prize-items {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.ant-upload {
+  margin: 0 !important;
+}
+
+.addContest__item_title {
+  margin-bottom: 5px;
+}
+
+.avatar-uploader > div {
+  overflow: hidden;
+  width: 300px !important;
+  height: 300px !important;
+}
+
+.prizes-upload > div {
+  width: 50px !important;
+  height: 50px !important;
 }

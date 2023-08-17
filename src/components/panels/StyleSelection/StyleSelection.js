@@ -8,7 +8,7 @@ import StyleSelectionBody from "./components/StyleSelection/StyleSelectionBody";
 import StyleSelectionCreateBtn from "./components/StyleSelection/StyleSelectionCreateBtn";
 import { View, Panel } from "@vkontakte/vkui";
 
-import { MainContext } from "components/shared/providers/MainProvider";
+import { MainContext, PopoutContext } from "components/shared/providers";
 
 const StyleSelection = ({ id }) => {
   const {
@@ -17,10 +17,11 @@ const StyleSelection = ({ id }) => {
     setChosenStyles,
     router,
     modePro,
-    handleArtGenerate,
     handleChangeModePro,
     setInputValue,
+    userData,
   } = useContext(MainContext);
+  const { handleSetArtCountPopout } = useContext(PopoutContext);
 
   const [error, setError] = useState(false);
   const scrollToTopRef = useRef(null); // создаем ref
@@ -35,6 +36,7 @@ const StyleSelection = ({ id }) => {
         <div className="gradient-round"></div>
         <div className="styleSelection__wrap">
           <StyleSelectionHeader
+            userData={userData}
             router={router}
             modePro={modePro}
             handleChangeModePro={handleChangeModePro}
@@ -56,7 +58,7 @@ const StyleSelection = ({ id }) => {
             chosenStyles={chosenStyles}
             setError={setError}
             handleScrollToTop={handleScrollToTop}
-            handleArtGenerate={handleArtGenerate}
+            handleSetArtCountPopout={handleSetArtCountPopout}
             inputValue={inputValue}
             modePro={modePro}
           />

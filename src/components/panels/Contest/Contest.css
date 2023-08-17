@@ -37,13 +37,11 @@ div.Contest__controls {
   margin-bottom: 70px;
 }
 
-.Contest__filters {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-}
-
 .Contest__energy {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  box-sizing: border-box;
   align-self: flex-start;
 }
 
@@ -82,13 +80,12 @@ div.Contest__controls {
 .ContestItem__date {
   box-sizing: border-box;
   width: fit-content;
-
-  height: 27px;
+  align-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  margin-left: 60px;
+  margin-top: 20px;
 }
 
 .ContestItem__desc {
@@ -98,6 +95,8 @@ div.Contest__controls {
 }
 
 .ContestPrize {
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   padding: 16px;
   width: 100%;
@@ -108,6 +107,29 @@ div.Contest__controls {
   margin-bottom: 16px;
 }
 
+.ContestPrize__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ended .ContestPrize__text {
+  height: 48px;
+  margin-left: 8px;
+}
+
+.ContestPrize__profileName {
+  color: var(--main, #b0e822);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.ContestPrize__prizeName {
+  color: var(--white, #fff);
+  font-size: 15px;
+  font-weight: 600;
+}
+
 .ContestPrize__fullDelimetr {
   width: 100%;
   opacity: 0.2;
@@ -116,7 +138,6 @@ div.Contest__controls {
 }
 
 .ContestPrize__voting {
-  margin-bottom: 10px;
   box-sizing: border-box;
   text-align: center;
   display: flex;
@@ -145,36 +166,8 @@ div.Contest__controls {
   flex-shrink: 0;
 }
 
-.Contest__filters {
-  width: 100%;
-  border-radius: 9px;
-  padding: 4px;
-  background: #2f2f2f;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 4px;
-}
-
-.Contest__filter {
-  cursor: pointer;
-  width: 100%;
-  background: #2f2f2f;
-  border-radius: 8px;
-  padding: 8px 0;
-  font-weight: 500;
-  font-size: 13px;
-  text-align: center;
-  font-feature-settings: "tnum" on, "lnum" on;
-
-  color: #ffffff;
-}
-
-.Contest__filter.active {
-  background: #b0e822;
-}
-
 .ContestPrizes__item {
+  min-height: 52px;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -209,7 +202,6 @@ a.underline {
 .ContestPrizes {
   display: flex;
   flex-direction: column;
-  gap: 4px;
 }
 
 .ContestPrizes__delimetr {
@@ -255,18 +247,62 @@ a.underline {
   width: 17px;
 }
 
+.InfoPopout__controls {
+  width: 100%;
+  display: flex;
+  margin-bottom: 5px;
+  justify-content: flex-end;
+}
+
+.InfoPopout__controls img {
+  cursor: pointer;
+}
+
 .InfoPopout {
+  overflow: auto;
+  max-height: 50%;
   margin: 20px;
-  top: 30%;
+  top: 10%;
   max-width: 400px;
-  padding: 15px;
+  padding: 30px;
   position: absolute;
-  text-align: center;
   font-weight: 500;
   font-size: 16px;
   border-radius: 16px;
   background: #131313;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.InfoPopout::-webkit-scrollbar {
+  width: 5px;
+  background-color: #00000000;
+}
+
+.InfoPopout::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #b0e822;
+}
+
+.InfoPopout::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #00000000;
+}
+
+.InfoPopout__list {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.InfoPopout__item {
+  font-weight: 500;
+}
+
+.InfoPopout__title {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
 .Contest__btn {
@@ -333,14 +369,16 @@ a.underline {
 }
 
 .ContestWork__like {
+  width: 100%;
+  max-width: 40px;
   gap: 8px;
-  height: 36px;
+  height: 40px;
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
   align-items: center;
   padding: 0 8px;
-  border-radius: 24px;
+  border-radius: 100%;
 }
 
 .ContestWork__like:hover {
@@ -361,18 +399,22 @@ a.underline {
   font-feature-settings: "tnum" on, "lnum" on;
 }
 
-.ContestWork__shareBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 36px;
-  height: 36px;
+.ContestWork__likeCount {
   cursor: pointer;
-  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.06);
 }
 
-.ContestWork__shareBtn:hover {
-  background-color: #1a1a1a;
+.ContestWork__likeCount:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ContestWork__shareBtn svg {
+  max-width: 40px;
+  width: 100% !important;
 }
 
 .ContestWork__profile_prompt {
@@ -427,5 +469,128 @@ a.underline {
 }
 
 .ContestsItemPrize__title {
-  white-space: pre;
+  flex-wrap: wrap;
+  white-space: pre-wrap;
+}
+
+.ContestPrize__winner {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+}
+
+.ContestPrize__winner img {
+  width: 48px;
+  height: 48px;
+}
+
+.promptCopy {
+  z-index: 3;
+  margin: 20px;
+  max-width: 400px;
+  padding: 30px;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 16px;
+  background: #131313;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.promptCopy__controls {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.promptCopy__body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.promptCopy__item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.promptCopy__item span {
+  box-sizing: border-box;
+  margin-bottom: 8px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 24px 16px;
+  background: #2f2f2f;
+  border-radius: 16px;
+}
+
+.TonSymbol {
+  margin-left: 5px;
+}
+
+.ContestPrize__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ContestPrize__place {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ContestPrize__place_num {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ContestPrize__place_num.first {
+  color: var(--main, #b0e822);
+}
+
+.ContestPrize__place_text {
+  color: var(--white, #fff);
+  text-align: center;
+  font-size: 8px;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: lowercase;
+  opacity: 0.5;
+}
+
+.ContestPrize__img {
+  height: 34px;
+}
+
+.ended .ContestPrize__img {
+  width: 48px;
+  height: 48px;
+}
+
+.ContestPrize__img img {
+  margin-top: -18px;
+}
+.total_prize {
+  width: 48px;
+  height: 48px;
+}
+
+.ContestWork__profile_img img {
+  border-radius: 100%;
+  max-width: 42px;
+}
+
+@media screen and (max-width: 500px) {
+  .InfoPopout {
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  div.Notification__btn {
+    width: 100%;
+  }
 }

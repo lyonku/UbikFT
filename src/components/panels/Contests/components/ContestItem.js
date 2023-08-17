@@ -1,26 +1,24 @@
-import React, { useState, useEffect } from "react";
-import TonLogo from "assets/img/TonLogo.svg";
-import LikeSvg from "components/common/LikeSvg";
-import twoArrow from "assets/img/twoArrow.svg";
+import React, { useState, useEffect, useContext } from "react";
 import ContestPrizes from "components/panels/Contest/components/ContestPrizes";
+import { MainContext, PopoutContext } from "components/shared/providers";
 
-function ContestItem({
-  data,
-  router,
-  setActiveContest,
-  getTimeUntilDate,
-  handleInfoPopout,
-}) {
-  const date = new Date(+data.date);
-  var currentDate = new Date();
-
+function ContestItem({ data }) {
+  const { router, setActiveContest, updateContestTime } =
+    useContext(MainContext);
+  const { handleInfoPopout } = useContext(PopoutContext);
   const [time, setTime] = useState("");
 
-  var options = {
-    month: "long",
-    day: "numeric",
-    timezone: "UTC",
-  };
+  useEffect(() => {
+    setTime(updateContestTime(+data[data.type + "Date"]));
+
+    const intervalId = setInterval(() => {
+      setTime(updateContestTime(+data[data.type + "Date"]));
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   const handleEventInfoPopout = (event) => {
     handleInfoPopout();
@@ -31,17 +29,6 @@ function ContestItem({
     router.toPanel("contest");
     setActiveContest(data);
   };
-
-  useEffect(() => {
-    var oneDay = 24 * 60 * 60 * 1000; // количество миллисекунд в одном дне
-    var timeDiff = date.getTime() - currentDate.getTime();
-
-    if (timeDiff < oneDay) {
-      setTime(` осталось ${getTimeUntilDate(date)}`);
-    } else {
-      setTime(` до ${date.toLocaleString("ru", options)}`);
-    }
-  }, []);
 
   return (
     <div
@@ -62,11 +49,10 @@ function ContestItem({
             Правила
           </div>
         </div>
-
         <div className="ContestsItem__body">
           <div className="ContestsItem__title title_h3-24px">{data.name}</div>
           <div className="ContestsItem__desc text_gray">{data.desc}</div>
-          <ContestPrizes activeContest={data} time={false} router={router} />
+          <ContestPrizes activeContest={data} time={time} router={router} />
         </div>
       </div>
     </div>

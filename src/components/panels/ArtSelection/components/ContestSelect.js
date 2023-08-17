@@ -1,17 +1,13 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef } from "react";
 import { useClickAway } from "react-use";
 
-import { MainContext } from "components/shared/providers/MainProvider";
-import data from "components/panels/Contests/data.json";
+import { MainContext } from "components/shared/providers/";
 import checkMark from "assets/img/payEnergy__benefitsImg.svg";
-function ContestSelect({ accept }) {
+
+function ContestSelect({ accept, img }) {
   const ref = useRef(null);
-  const {
-    router,
-    setActiveContest,
-    handleWalletConnectPopout,
-    handleContestSelectPopout,
-  } = useContext(MainContext);
+  const { router, contests, setActiveContest, addArtToContest } =
+    useContext(MainContext);
 
   useClickAway(
     ref,
@@ -36,8 +32,9 @@ function ContestSelect({ accept }) {
             <img src={checkMark} />
           </div>
         ) : (
-          data.map((item, index) => {
+          contests?.map((item, index) => {
             if (item.type == "workAcceptance") {
+              console.log(item);
               return (
                 <div
                   key={index}
@@ -55,7 +52,11 @@ function ContestSelect({ accept }) {
                   <div
                     className="ContestSelectItem__btn btn"
                     onClick={() => {
-                      handleWalletConnectPopout();
+                      addArtToContest(item.id, img.art_id);
+                      router.toBack();
+                      router.toView("contests");
+                      router.toPanel("contest");
+                      setActiveContest({ ...item, from: "artGenerate" });
                     }}
                   >
                     Отправить на конкурс

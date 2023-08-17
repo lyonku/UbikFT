@@ -21,7 +21,8 @@ function ContestsFilters({ activeFilter, handleChangeFilter }) {
       </div>
       <div
         className={`Contests__filter ${
-          activeFilter == "ended" && "Contests__filter_active"
+          (activeFilter == "ended" || activeFilter == "pre-ended") &&
+          "Contests__filter_active"
         }`}
         id="ended"
         onClick={handleChangeFilter}

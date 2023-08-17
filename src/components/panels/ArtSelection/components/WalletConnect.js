@@ -1,13 +1,14 @@
 import React, { useContext, useRef } from "react";
 import { useClickAway } from "react-use";
 
-import { MainContext } from "components/shared/providers/MainProvider";
+import { MainContext, PopoutContext } from "components/shared/providers";
 import TONlogo from "assets/img/TONlogo2.svg";
 import qr from "assets/img/qr.png";
 
 function WalletConnect() {
   const ref = useRef(null);
-  const { router, handleContestSelectPopout } = useContext(MainContext);
+  const { router } = useContext(MainContext);
+  const { handleContestSelectPopout } = useContext(PopoutContext);
 
   useClickAway(
     ref,
@@ -18,8 +19,7 @@ function WalletConnect() {
   );
 
   const handleGo = () => {
-    router.toBack();
-    router.toView("contests");
+    handleContestSelectPopout();
   };
 
   return (
@@ -28,19 +28,23 @@ function WalletConnect() {
         className="ContestSelect__header"
         onClick={() => router.toBack()}
       ></div>
-      <div className="ContestSelect__title title_h3-24px">
-        Подключите свой кошелек TON для участия в конкурсе.
+      <div className="WalletConnect__title">
+        Подключите свой кошелек
+        <div className="WalletConnect__logo">
+          <img src={TONlogo} /> <span>TonKeeper</span>
+        </div>
+      </div>
+      <div className="WalletConnect__subTitle ">
+        Необходимо для получения NFT
       </div>
       <div className="WalletConnect__body ">
-        <div className="WalletConnect__wallet">
-          <img src={TONlogo} /> <div>TonKeeper</div>
-        </div>
+        <div className="WalletConnect__wallet"></div>
         <div className="WalletConnect__steps">
           <div className="WalletConnect__firstStep WalletConnect__step">
             <div className="WalletConnect__numeration">1</div>
             <span>
-              Открой приложение Tonkeeper. Если у вас нет приложения, загрузите
-              его с{" "}
+              Откройте приложение Tonkeeper. Если у вас нет приложения,
+              загрузите его с{" "}
               <a
                 href="https://tonkeeper.com/download/"
                 target="_blank"
@@ -63,7 +67,7 @@ function WalletConnect() {
       <div className="WalletConnect__qrCode">
         <img src={qr} />
       </div>
-      <div className="btn" onClick={handleGo}>
+      <div className="btn " onClick={handleGo}>
         Продолжить
       </div>
     </div>

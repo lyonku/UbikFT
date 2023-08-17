@@ -3,11 +3,11 @@ import "./ArtSelection.css";
 
 import GeneratedArt from "./components/GeneratedArt";
 import ArtSelectionControls from "./components/ArtSelectionControls";
-
-import { MainContext } from "components/shared/providers/MainProvider";
+import { MainContext, PopoutContext } from "components/shared/providers";
 
 const ArtSelection = () => {
-  const { handleArtGenerate, router } = useContext(MainContext);
+  const { router, userData } = useContext(MainContext);
+  const { handleSetArtCountPopout } = useContext(PopoutContext);
 
   return (
     <div className="ArtSelection">
@@ -15,7 +15,8 @@ const ArtSelection = () => {
       <div className="ArtSelection__wrap">
         <ArtSelectionControls
           router={router}
-          handleArtGenerate={handleArtGenerate}
+          userData={userData}
+          handleSetArtCountPopout={handleSetArtCountPopout}
         />
         <GeneratedArt />
         <div className={`overlay ${router.popout && "open"}`}></div>

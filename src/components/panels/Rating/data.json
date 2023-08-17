@@ -1,0 +1,65 @@
+[
+  {
+    "title": "Первое испытание",
+    "mass": [
+      {
+        "title": "Создай 5 артов",
+        "currentProgress": 5,
+        "maxProgress": 5,
+        "reward": "+100",
+        "complete": true
+      },
+      {
+        "title": "Опубликуй 1 арт на стену и в сторис",
+        "currentProgress": 2,
+        "maxProgress": 3,
+        "reward": "+30",
+        "complete": false
+      },
+      {
+        "title": "Отправь арт на конкурс",
+        "reward": "+10",
+        "complete": false
+      },
+      {
+        "title": "Бонус за выполнение всех задач",
+        "currentProgress": 2,
+        "maxProgress": 5,
+        "reward": "+100",
+        "rewardVal": "energy",
+        "complete": false
+      }
+    ]
+  },
+  {
+    "title": "Регулярные задачи",
+    "mass": [
+      {
+        "title": "Бонус за каждый сгенерированный арт",
+        "reward": "+10",
+        "complete": false
+      },
+      {
+        "title": "за 100 сгенерированных артов ",
+        "currentProgress": 20,
+        "maxProgress": 100,
+        "reward": "+200",
+        "complete": false
+      },
+      {
+        "title": "за 1000 сгенерированных артов ",
+        "currentProgress": 20,
+        "maxProgress": 1000,
+        "reward": "+2000",
+        "complete": false
+      },
+      {
+        "title": "за 5000 сгенерированных артов ",
+        "currentProgress": 20,
+        "maxProgress": 5000,
+        "reward": "+10 000",
+        "complete": false
+      }
+    ]
+  }
+]

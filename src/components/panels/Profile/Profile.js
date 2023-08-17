@@ -1,21 +1,30 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import "./Profile.css";
-import ProfileArt from "./components/ProfileArt";
 import { View, Panel } from "@vkontakte/vkui";
-
-import NftLogoSvg from "components/common/nftLogoSvg";
-
-import profile__emptyImg from "assets/img/profile__emptyImg.svg";
-import TonLogo from "assets/img/TonLogo.svg";
-import EnergySvg from "components/common/energySvg";
-
 import { MainContext } from "components/shared/providers/MainProvider";
 
-import data from "./data.json";
+import profile__emptyImg from "assets/img/profile__emptyImg.svg";
+
+import Filters from "components/common/Filters";
+import ProfileControls from "./components/ProfileControls";
+import ProfileArt from "./components/ProfileArt";
+import useInfiniteScroll from "components/shared/hooks/useInfiniteScroll";
 
 const Profile = ({ id }) => {
-  const { fetchedUser, router, setActiveContest, handleShowSharePopout } =
+  const { fetchedUser, router, userData, artsData, handleGetArts } =
     useContext(MainContext);
+  const [currentFilter, setCurrentFilter] = useState();
+  const filtersData = [
+    { id: "New", text: "Недавние работы" },
+    { id: "Contest", text: "Конкурсные работы" },
+  ];
+
+  useInfiniteScroll({
+    сurrentPage: 1,
+    func: handleGetArts,
+    maxPages: artsData.maxPages,
+    className: ".Profile",
+  });
 
   return (
     <View id={id} activePanel={router.activePanel}>
@@ -23,15 +32,7 @@ const Profile = ({ id }) => {
         <div className="Profile">
           <div className="gradient-round"></div>
           <div className="Profile__wrap">
-            <div className="Profile__controls">
-              <div
-                className="Profile__energy smallBtn-text"
-                onClick={() => router.toView("payEnergy")}
-              >
-                <EnergySvg width={"20px"} height={"20px"} />
-                100
-              </div>
-            </div>
+            <ProfileControls userData={userData} router={router} />
             <div className="Profile__body">
               <div className="Profile__title">
                 <div className="Profile__avatar ">
@@ -41,30 +42,42 @@ const Profile = ({ id }) => {
                   <div className="Profile__name">
                     {fetchedUser?.first_name + " " + fetchedUser?.last_name}
                   </div>
-                  <div className="Profile__links">
-                    <img src={TonLogo} />
-                    <div className="Profile__links_body">
-                      <div className="Profile__links_title">
-                        TON кошелёк подключен
-                      </div>
-                      <div className="Profile__links_btn">Отвязать кошелёк</div>
-                    </div>
-                  </div>
                 </div>
               </div>
               <div className="ProfileArts">
                 <div className="ProfileArts__title title">
                   Ваши <span className="text_accented">работы</span>
                 </div>
-                {data.length < 1 ? (
+                <Filters
+                  data={filtersData}
+                  currentFilter={currentFilter}
+                  setCurrentFilter={setCurrentFilter}
+                />
+                {currentFilter == "New" ? (
+                  <div className="inquiry__hint transparentBlock">
+                    Работы хранятся в течение{" "}
+                    <span className="text_accented">семи дней</span>, чтобы
+                    сохранить работу вы можете разместить ее у себя на стене.
+                  </div>
+                ) : (
+                  <div className="inquiry__hint transparentBlock">
+                    Работы хранятся до{" "}
+                    <span className="text_accented">завершения конкурса</span>,
+                    чтобы сохранить работу вы можете разместить ее у себя на
+                    стене.
+                  </div>
+                )}
+                {!artsData.imgs || artsData.imgs?.length < 1 ? (
                   <div className="ProfileArts__item_empty ProfileArts__item">
                     <img src={profile__emptyImg} />
                     Тут будут ваши арты
                   </div>
                 ) : (
                   <div className="ProfileArts__items">
-                    {data.map((item, index) => {
-                      return <ProfileArt item={item} key={index} />;
+                    {artsData.imgs?.map((item, index) => {
+                      if (currentFilter != "Contest" || item.contest) {
+                        return <ProfileArt item={item} key={index} />;
+                      }
                     })}
                   </div>
                 )}

@@ -29,6 +29,10 @@ const structure = [
         id: "contest",
         hash: "/contest",
       },
+      {
+        id: "newContest",
+        hash: "/newContest",
+      },
     ],
   },
   {
@@ -48,6 +52,26 @@ const structure = [
       {
         id: "payEnergy",
         hash: "/payEnergy",
+      },
+    ],
+  },
+  {
+    id: "Rating",
+    hash: "Rating",
+    panels: [
+      {
+        id: "Rating",
+        hash: "/Rating",
+      },
+    ],
+  },
+  {
+    id: "ArtVoted",
+    hash: "ArtVoted",
+    panels: [
+      {
+        id: "ArtVoted",
+        hash: "/ArtVoted",
       },
     ],
   },

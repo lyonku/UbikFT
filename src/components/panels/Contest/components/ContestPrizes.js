@@ -1,6 +1,5 @@
-import twoArrow from "assets/img/twoArrow.svg";
-import LikeSvg from "components/common/LikeSvg";
-import ContestPrizesItems from "./ContestPrizesItems";
+import ozonLogo from "assets/img/ozonLogo.svg";
+import TonLogo from "assets/img/TonLogo.svg";
 
 function ContestPrizes({ activeContest, router, time }) {
   const handleStopPropagation = (event) => {
@@ -14,49 +13,43 @@ function ContestPrizes({ activeContest, router, time }) {
 
   return (
     <div className="ContestPrize roundedBlock_greenBroder">
-      <div className="ContestPrizes">
-        <ContestPrizesItems
-          activeContest={activeContest}
-          handleStopPropagation={handleStopPropagation}
-        />
+      <div className="ContestPrize__title title_h4-18px">Призы в конкурсе</div>
+      <div className="ContestPrize__list ended">
+        {activeContest.prizes.map((item, index) => {
+          return (
+            <div key={index}>
+              <div className="ContestPrize__item">
+                <div className="ContestPrize__place">
+                  <div className="ContestPrize__place_num first">
+                    {index + 1}
+                  </div>
+                  <div className="ContestPrize__place_text">место</div>
+                </div>
+                <img src={item.img} className="ContestPrize__img" />
+                <div className="ContestPrize__text">
+                  {item.winner && (
+                    <div className="ContestPrize__profileName">
+                      {item.winner}
+                    </div>
+                  )}
+                  <div className="ContestPrize__prizeName">{item.name}</div>
+                </div>
+              </div>
+              {index + 1 != activeContest.prizes.length && (
+                <div className="ContestPrize__fullDelimetr"></div>
+              )}
+            </div>
+          );
+        })}
       </div>
-
-      {activeContest.type !== "ended" && (
-        <>
-          <div className="ContestPrize__fullDelimetr"></div>
-          <div className="ContestPrize__voting">
-            {activeContest.type == "vote" ? (
-              <>
-                <LikeSvg full="true" />
-                <span className="ContestPrize__voting_text">
-                  Ставь лайк, чтобы определить победителя
-                </span>
-              </>
-            ) : (
-              <>
-                <div className="ContestPrize__plug"></div>
-                <a
-                  className="ContestPrize__voting_text underline text_accented"
-                  onClick={handleContestParticipate}
-                >
-                  Принять участие в конкурсе
-                </a>
-              </>
-            )}
-            <img src={twoArrow} className={`${!time && "rotateImg"}`} />
-          </div>
-        </>
-      )}
-      {
-        <div className="ContestItem__date transparentBlock">
-          {activeContest.type == "workAcceptance"
-            ? "Прием работ "
-            : activeContest.type == "vote"
-            ? "Голосование "
-            : "Конкурс "}
-          {activeContest.type == "ended" ? "закончился" : "до 18 июля"}
-        </div>
-      }
+      <div className="ContestItem__date transparentBlock">
+        {activeContest.type == "workAcceptance"
+          ? "Идет прием работ: "
+          : activeContest.type == "vote"
+          ? "Идет голосование: "
+          : "Конкурс "}
+        {activeContest.type == "ended" ? "закончился" : time}
+      </div>
     </div>
   );
 }

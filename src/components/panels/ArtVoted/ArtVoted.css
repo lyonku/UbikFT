@@ -1,0 +1,108 @@
+.ArtVoted {
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  background-color: black !important;
+  position: relative;
+}
+
+.ArtVoted__body {
+  user-select: none;
+  z-index: 1;
+  max-width: 490px;
+  width: 100%;
+  padding: 50px 16px;
+}
+
+.ArtVoted::-webkit-scrollbar {
+  width: 5px;
+  background-color: #00000000;
+}
+
+.ArtVoted::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #b0e822;
+}
+
+.ArtVoted::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #00000000;
+}
+
+.ArtVoted__input input {
+  color: #ffffff;
+  width: 100%;
+  background: #2f2f2f;
+  outline: none;
+  font-family: "MacPaw Fixel";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 23px;
+  border: 0;
+}
+.ArtVoted__input input::placeholder {
+  color: #8e8e8e;
+}
+.ArtVoted__controls {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.ArtVoted__title {
+  margin-bottom: 16px;
+  color: var(--white, #fff);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.ArtVoted__profilesList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 50px;
+}
+
+.ArtVotedProfile {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 24px;
+  background: #1a1a1a;
+}
+
+.ArtVotedProfile__name {
+  width: 100%;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.ArtVotedProfile__img {
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+}
+
+.ArtVotedProfile__ArtVoted {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ArtVoted__input {
+  display: flex;
+  align-items: center;
+  border-radius: 16px;
+  padding: 16px;
+  gap: 10px;
+  background: #2f2f2f;
+  margin-bottom: 24px;
+}

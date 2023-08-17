@@ -1,10 +1,10 @@
-import EnergySvg from "components/common/energySvg";
+import EnergySvg from "components/common/svgs/energySvg";
 
 function StyleSelectionCreateBtn({
   chosenStyles,
   setError,
   handleScrollToTop,
-  handleArtGenerate,
+  handleSetArtCountPopout,
   inputValue,
   modePro,
 }) {
@@ -13,7 +13,7 @@ function StyleSelectionCreateBtn({
       className="createBtn btn"
       onClick={
         (chosenStyles?.genre?.length >= 1 || modePro) && inputValue.length >= 1
-          ? () => handleArtGenerate()
+          ? () => handleSetArtCountPopout()
           : () => {
               handleScrollToTop();
               setError(true);

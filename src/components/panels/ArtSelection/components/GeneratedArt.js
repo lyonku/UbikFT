@@ -1,23 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 
-import ShareSvg from "components/common/shareSvg";
-import benefitsImg from "assets/img/payEnergy__benefitsImg.svg";
-import { MainContext } from "components/shared/providers/MainProvider";
-
+import ShareSvg from "components/common/svgs/shareSvg";
+import { MainContext, PopoutContext } from "components/shared/providers";
+import { Carousel } from "antd";
+import { Icon12Chevron } from "@vkontakte/icons";
 const GeneratedArt = () => {
-  const [copyPromptAlert, setCopyPromptAlert] = useState(false);
-  const {
-    currentImg,
-    handleCopy,
-    handleContestSelectPopout,
-    handleShowSharePopout,
-  } = useContext(MainContext);
+  const { currentImg } = useContext(MainContext);
+  const { handleContestSelectPopout, handleShowSharePopout } =
+    useContext(PopoutContext);
+  const ref = useRef();
 
-  const handleCopyAlert = (text) => {
-    handleCopy(text);
-    setCopyPromptAlert(true);
-    setTimeout(() => setCopyPromptAlert(false), 2000);
-  };
+  const onChange = (currentSlide) => {};
 
   return (
     <div className="ArtSelection__body">
@@ -25,24 +18,60 @@ const GeneratedArt = () => {
         Получился шедевр? <br />
         <span className="text_accented">Отправь работу на конкурс</span>
       </div>
-
-      <div className="ArtSelection__img">
-        <img src={currentImg?.img} />
-        <div className="ArtSelection__imgControls ">
-          <div
-            className="ArtSelection__shareBtn "
-            onClick={() => handleShowSharePopout()}
-          >
-            <ShareSvg width="16px" height="16px" />
+      <Carousel
+        arrows
+        className="ArtSelection__carousel"
+        afterChange={onChange}
+        draggable
+        ref={ref}
+      >
+        {currentImg.length >= 1 &&
+          currentImg?.map((img, index) => {
+            return (
+              <div className="ArtSelection__imgWrap" key={index}>
+                <div className="ArtSelection__img">
+                  <img src={`data:image/jpeg;base64,${img.base64}`} />
+                  <div className="ArtSelection__imgControls ">
+                    <div
+                      className="ArtSelection__shareBtn "
+                      onClick={() =>
+                        handleShowSharePopout({ inContest: false })
+                      }
+                    >
+                      <ShareSvg width="16px" height="16px" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+      </Carousel>
+      {currentImg?.length > 1 && (
+        <>
+          <div className="Carousel__arrow Carousel__arrow_prev">
+            <Icon12Chevron
+              width={32}
+              height={32}
+              fill="#b0e822"
+              onClick={() => {
+                ref.current.prev();
+              }}
+            />
           </div>
-          <div className="ArtSelection__seed" onClick={handleCopyAlert}>
-            Seed: {currentImg?.seed}
+          <div className="Carousel__arrow Carousel__arrow_next">
+            <Icon12Chevron
+              width={32}
+              height={32}
+              fill="#b0e822"
+              onClick={() => {
+                ref.current.next();
+              }}
+            />
           </div>
-        </div>
-      </div>
+        </>
+      )}
 
       <div className="ArtSelection__glow"></div>
-
       <div className="ArtSelection__btns">
         <div
           className="ArtSelection__nftBtn btn"
@@ -50,10 +79,6 @@ const GeneratedArt = () => {
         >
           Отправить на конкурс
         </div>
-      </div>
-      <div className={`Notification ${copyPromptAlert && "open"}`}>
-        <img src={benefitsImg} />
-        Seed скопирован
       </div>
     </div>
   );

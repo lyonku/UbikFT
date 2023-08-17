@@ -10,7 +10,6 @@ import LoadingError from "./components/LoadingError";
 const Loading = ({ id }) => {
   const { currentImg, error, handleArtGenerate, router } =
     useContext(MainContext);
-
   useEffect(() => {
     if (currentImg) {
       const img = new Image();
@@ -19,7 +18,6 @@ const Loading = ({ id }) => {
       router.toPanel("artSelection");
     }
   }, [currentImg]);
-
   return (
     <Panel id={id}>
       <div

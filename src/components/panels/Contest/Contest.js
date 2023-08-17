@@ -3,43 +3,67 @@ import { Panel } from "@vkontakte/vkui";
 
 import "./Contest.css";
 
-import { MainContext } from "components/shared/providers/MainProvider";
+import useInfiniteScroll from "components/shared/hooks/useInfiniteScroll";
+import { MainContext } from "components/shared/providers";
+import benefitsImg from "assets/img/payEnergy__benefitsImg.svg";
 
 import ContestPrizes from "./components/ContestPrizes";
 import ContestControls from "./components/ContestControls";
-import ContestItemHeader from "./components/ContestItemHeader";
+import ContestItem__header from "./components/ContestItem__header";
 import ContestWorks from "./components/ContestWorks";
-import ContestFilters from "./components/ContestFilters";
-import ContestBtn from "./components/ContestBtn";
+import Filters from "components/common/Filters";
 
 const Contest = ({ id }) => {
-  const [contestFilters, setContestFilters] = useState("New");
-  const { router, activeContest, getTimeUntilDate, handleInfoPopout } =
-    useContext(MainContext);
-
+  const {
+    router,
+    activeContest,
+    updateContestTime,
+    userData,
+    handleGetContestArts,
+  } = useContext(MainContext);
+  const [artAdded, setArtAdded] = useState(false);
   const [time, setTime] = useState("");
-  const date = new Date(+activeContest.date);
-  var currentDate = new Date();
+  const [currentFilter, setCurrentFilter] = useState();
 
-  var options = {
-    month: "long",
-    day: "numeric",
-    timezone: "UTC",
-  };
+  const filtersData = [
+    { id: "New", text: "Все работы" },
+    { id: "My", text: "Мои работы" },
+  ];
 
   useEffect(() => {
-    var oneDay = 24 * 60 * 60 * 1000;
-    var timeDiff = date.getTime() - currentDate.getTime();
+    handleGetContestArts(activeContest.id);
+  }, []);
 
-    if (timeDiff < oneDay) {
-      setTime(` осталось ${getTimeUntilDate(date)}`);
-    } else {
-      setTime(` до ${date.toLocaleString("ru", options)}`);
+  useInfiniteScroll({
+    сurrentPage: 1,
+    func: handleGetContestArts,
+    maxPages: activeContest.maxPages,
+    className: ".Contest",
+  });
+
+  useEffect(() => {
+    setTime(updateContestTime(+activeContest[activeContest.type + "Date"]));
+
+    const intervalId = setInterval(() => {
+      setTime(updateContestTime(+activeContest[activeContest.type + "Date"]));
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (activeContest.from == "artGenerate") {
+      setArtAdded(true);
+      setTimeout(() => setArtAdded(false), 2000);
+      setCurrentFilter("My");
     }
   }, []);
 
   return (
     <Panel id={id}>
+      <div className={`overlay ${router.popout && "open"}`}></div>
       <div
         className="Contest"
         style={{
@@ -49,26 +73,34 @@ const Contest = ({ id }) => {
         }}
       >
         <div className="Contest__wrap">
-          <ContestControls router={router} />
+          <ContestControls router={router} userData={userData} />
           <div className="Contest__body">
             <div className="ContestItem__wrap">
               <div className="ContestItem__body">
-                <ContestItemHeader activeContest={activeContest} time={time} />
-                {/* <ContestBtn activeContest={activeContest} router={router} /> */}
+                <ContestItem__header
+                  activeContest={activeContest}
+                  time={time}
+                />
                 <ContestPrizes
                   activeContest={activeContest}
                   router={router}
                   time={time}
                 />
-                <ContestFilters
-                  activeContest={activeContest}
-                  contestFilters={contestFilters}
-                  setContestFilters={setContestFilters}
-                />
-                <ContestWorks contestFilters={contestFilters} time={time} />
+                {activeContest.type !== "ended" && (
+                  <Filters
+                    data={filtersData}
+                    currentFilter={currentFilter}
+                    setCurrentFilter={setCurrentFilter}
+                  />
+                )}
+                <ContestWorks currentFilter={currentFilter} />
               </div>
             </div>
           </div>
+        </div>
+        <div className={`Notification ${artAdded && "open"}`}>
+          <img src={benefitsImg} />
+          Арт выставлен на конкурс
         </div>
       </div>
     </Panel>

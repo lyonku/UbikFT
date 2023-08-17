@@ -1,15 +1,8 @@
 import data from "data.json";
 import { HorizontalScroll } from "@vkontakte/vkui";
 import StylesItem from "./StylesItem";
-import closeBtn from "assets/img/close-btn.svg";
 
 function StyleSelectionBody({ chosenStyles, error, setChosenStyles }) {
-  const handleClearStyles = (category) => {
-    let copy = { ...chosenStyles };
-    copy[category] = [];
-    setChosenStyles(copy);
-  };
-
   return (
     <div className={`styleSelection__body`}>
       {data.map((category, categoryIndex) => {

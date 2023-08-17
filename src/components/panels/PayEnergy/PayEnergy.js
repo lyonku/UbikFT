@@ -5,7 +5,7 @@ import closeBtn from "assets/img/close-btn.svg";
 import energyImg from "assets/img/payEnergy__energyImg.svg";
 import benefitsImg from "assets/img/payEnergy__benefitsImg.svg";
 import background from "assets/img/payEnergy__background.png";
-import EnergySvg from "components/common/energySvg";
+import EnergySvg from "components/common/svgs/energySvg";
 
 import { MainContext } from "components/shared/providers/MainProvider";
 
@@ -77,7 +77,7 @@ const PayEnergy = ({ id, buySubscribe }) => {
               <div className="tariffsItem__title mini-title">
                 <div className="tariffsItem__img"></div>
                 <EnergySvg width="20px" height="20px" />
-                500{" "}
+                525{" "}
               </div>
               <div className="tariffsItem__price">25 голосов</div>
             </div>
@@ -91,7 +91,7 @@ const PayEnergy = ({ id, buySubscribe }) => {
               <div className="tariffsItem__title mini-title">
                 <div className="tariffsItem__img"></div>
                 <EnergySvg width="20px" height="20px" />
-                2000{" "}
+                2400{" "}
               </div>
               <div className="tariffsItem__price">80 голосов</div>
             </div>
@@ -105,7 +105,7 @@ const PayEnergy = ({ id, buySubscribe }) => {
               <div className="tariffsItem__title mini-title">
                 <div className="tariffsItem__img"></div>
                 <EnergySvg width="20px" height="20px" />
-                10000
+                14700
               </div>
               <div className="tariffsItem__price ">
                 <div className="tariffsItem__discount">скидка 10%</div>

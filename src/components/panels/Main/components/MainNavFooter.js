@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import EnergySvg from "components/common/energySvg";
-import GallerySvg from "components/common/gallerySvg";
-import ArtistsSvg from "components/common/artistsSvg";
-import ProfileSvg from "components/common/profileSvg";
+import EnergySvg from "components/common/svgs/energySvg";
+import GallerySvg from "components/common/svgs/gallerySvg";
+import ArtistsSvg from "components/common/svgs/artistsSvg";
+import ProfileSvg from "components/common/svgs/profileSvg";
 
 function MainNavFooter({ currentNavItem, setCurrentNavItem, go, id }) {
   const handleNav = (event) => {

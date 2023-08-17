@@ -1,7 +1,13 @@
-import EnergySvg from "components/common/energySvg";
+import EnergySvg from "components/common/svgs/energySvg";
+import HeartSvg from "components/common/svgs/heartSvg";
 import { Switch } from "@vkontakte/vkui";
 
-function StyleSelectionHeader({ router, handleChangeModePro, modePro }) {
+function StyleSelectionHeader({
+  router,
+  handleChangeModePro,
+  modePro,
+  userData,
+}) {
   return (
     <div className="styleSelection__header">
       <div
@@ -9,14 +15,23 @@ function StyleSelectionHeader({ router, handleChangeModePro, modePro }) {
         onClick={handleChangeModePro}
       >
         <Switch checked={modePro} onChange={handleChangeModePro} />
-        <span>PRO</span>
+        <span className="styleSelection__pro_text">PRO</span>
       </div>
-      <div
-        className="styleSelection__energy smallBtn-text"
-        onClick={() => router.toView("payEnergy")}
-      >
-        <EnergySvg width={"20px"} height={"20px"} />
-        100
+      <div className="styleSelection__header_rightSide">
+        <div
+          className="styleSelection__rating smallBtn-text"
+          onClick={() => router.toView("Rating")}
+        >
+          <HeartSvg width={"32px"} height={"32px"} />
+          {userData.rating ?? "..."}
+        </div>
+        <div
+          className="styleSelection__energy smallBtn-text"
+          onClick={() => router.toView("payEnergy")}
+        >
+          <EnergySvg width={"32px"} height={"32px"} />
+          {userData.energy ?? "..."}
+        </div>
       </div>
     </div>
   );

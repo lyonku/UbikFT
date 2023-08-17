@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Tabbar, TabbarItem } from "@vkontakte/vkui";
-import EnergySvg from "components/common/energySvg";
-import GallerySvg from "components/common/gallerySvg";
-import ArtistsSvg from "components/common/artistsSvg";
-import ProfileSvg from "components/common/profileSvg";
-import { MainContext } from "components/shared/providers/MainProvider";
+import EnergySvg from "components/common/svgs/energySvg";
+import GallerySvg from "components/common/svgs/gallerySvg";
+import ArtistsSvg from "components/common/svgs/artistsSvg";
+import ProfileSvg from "components/common/svgs/profileSvg";
+import { MainContext } from "components/shared/providers";
 
 function MainTabbar({ activeStory }) {
   const { onStoryChange } = useContext(MainContext);

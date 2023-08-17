@@ -374,6 +374,30 @@ canvas {
   border-radius: 100%;
 }
 
+.styleSelection__header_rightSide {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.styleSelection__pro_text {
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: -3px;
+}
+
+.styleSelection__rating {
+  align-items: center;
+  max-height: 48px;
+}
+
+.styleSelection__energy {
+  align-items: center;
+  max-height: 48px;
+}
+
 @media screen and (max-width: 610px) {
   .vkuiHorizontalScrollArrow--direction-left {
     padding-left: 0;

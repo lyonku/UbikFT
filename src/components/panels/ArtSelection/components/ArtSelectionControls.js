@@ -1,23 +1,30 @@
 import closeBtn from "assets/img/close-btn.svg";
+import HeartSvg from "components/common/svgs/heartSvg";
 
-import EnergySvg from "components/common/energySvg";
-import EditSvg from "components/common/editSvg";
-import RefreshBtn from "components/common/refreshSvg";
+import EnergySvg from "components/common/svgs/energySvg";
+import EditSvg from "components/common/svgs/editSvg";
+import RefreshBtn from "components/common/svgs/refreshSvg";
 
-function ArtSelectionControls({ router, handleArtGenerate }) {
+function ArtSelectionControls({ router, handleSetArtCountPopout, userData }) {
   return (
     <div className="ArtSelection__controls">
-      <div className="ArtSelection__firstControls">
-        {/* <div
-          className="ArtSelection__close smallBtn-text"
-          onClick={() => {
-            router.toBack();
-            router.toBack();
-            router.toBack();
-          }}
+      <div className="styleSelection__header_rightSide">
+        <div
+          className="styleSelection__rating smallBtn-text"
+          onClick={() => router.toView("Rating")}
         >
-          <img src={closeBtn} />
-        </div> */}
+          <HeartSvg width={"32px"} height={"32px"} />
+          {userData.rating ?? "..."}
+        </div>
+        <div
+          className="ArtSelection__energy smallBtn-text"
+          onClick={() => router.toView("payEnergy")}
+        >
+          <EnergySvg width={"32px"} height={"32px"} />
+          {userData.energy ?? "..."}
+        </div>
+      </div>
+      <div className="ArtSelection__firstControls">
         <div
           className="ArtSelection__edit smallBtn-text"
           onClick={() => router.toBack()}
@@ -25,25 +32,13 @@ function ArtSelectionControls({ router, handleArtGenerate }) {
           <EditSvg color="#b2e723" />
         </div>
         <div
-          className="ArtSelection__refreshBtn transparentBlock_blur"
+          className="ArtSelection__refreshBtn smallBtn-text"
           onClick={() => {
-            router.toBack();
-            handleArtGenerate();
+            handleSetArtCountPopout();
           }}
         >
-          <RefreshBtn color="#b0e822" />
-
-          <div className="ArtSelection__refreshBtn_delimetr"></div>
-          <span className="count">1</span>
-          <EnergySvg width="16px" height="16px" color="#b0e822" />
+          <RefreshBtn />
         </div>
-      </div>
-      <div
-        className="ArtSelection__energy smallBtn-text"
-        onClick={() => router.toView("payEnergy")}
-      >
-        <EnergySvg width={"20px"} height={"20px"} />
-        100
       </div>
     </div>
   );

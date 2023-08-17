@@ -127,6 +127,39 @@ body {
   border-radius: 16px;
 }
 
+.Filters {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  width: 100%;
+  border-radius: 9px;
+  padding: 4px;
+  background: #2f2f2f;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 4px;
+}
+
+.Filter {
+  cursor: pointer;
+  width: 100%;
+  background: #2f2f2f;
+  border-radius: 8px;
+  padding: 8px 0;
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+  font-feature-settings: "tnum" on, "lnum" on;
+
+  color: #ffffff;
+}
+
+.Filter.active {
+  background: #b0e822;
+}
+
 /* OLD -> */
 
 .title {
@@ -338,15 +371,18 @@ div.Notification__btn span {
 }
 
 .Notification__btn_addHistory {
+  width: calc(50% - 4px);
   background: #a82be2;
 }
 
 .Notification__btn_addWall {
+  width: calc(50% - 4px);
   background: #3375f6;
 }
 
 .Notification__btn_sendMessage {
-  background: #454545;
+  width: 100%;
+  background: #b0e822;
 }
 
 .Tabbar {
@@ -539,7 +575,54 @@ div.Notification__btn span {
   z-index: 28;
 }
 
-.LikeCouter {
+.PayConfirm__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.PayConfirm__item {
+  width: 100%;
+  max-width: 370px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.PayConfirm__listTitle {
+  line-height: 100%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.PayConfirm__listMarker {
+  width: 8px;
+  height: 8px;
+  background-color: var(--main, #b0e822);
+  border-radius: 100%;
+}
+
+.PayConfirm__text {
+  display: flex;
+  font-weight: 500;
+  gap: 4px;
+}
+
+div.PayConfirm__title {
+  text-align: center;
+  line-height: 114.5%;
+  font-weight: 700;
+  font-size: 32px;
+  font-feature-settings: "ss04" on;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.ArtCount {
   width: 100%;
   display: flex;
   align-items: center;
@@ -548,7 +631,7 @@ div.Notification__btn span {
   margin-bottom: 24px;
 }
 
-.LikeCouter__block {
+.ArtCount__block {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -560,40 +643,49 @@ div.Notification__btn span {
   border-radius: 16px;
 }
 
-.LikeCouter__block:hover {
+.ArtCount__btn {
+  position: relative;
+}
+
+.ArtCount__btn svg {
+  margin-top: -3px;
+  margin-right: 5px;
+}
+
+.ArtCount__block:hover {
   background: #1f201c;
 }
 
-.LikeCouter__minus div {
+.ArtCount__minus div {
   height: 2px;
   width: 14px;
   background: #ffffff;
 }
 
-.LikeCouter__plus div {
+.ArtCount__plus div {
   width: 14px;
   height: 14px;
   position: relative;
 }
 
-.LikeCouter__plus::before,
-.LikeCouter__plus::after {
+.ArtCount__plus::before,
+.ArtCount__plus::after {
   content: "";
   position: absolute;
   background-color: #ffffff;
 }
 
-.LikeCouter__plus::before {
+.ArtCount__plus::before {
   width: 14px;
   height: 2px;
 }
 
-.LikeCouter__plus::after {
+.ArtCount__plus::after {
   width: 2px;
   height: 14px;
 }
 
-.LikeCouter__total {
+.ArtCount__total {
   cursor: text;
   box-sizing: border-box;
   display: flex;
@@ -607,7 +699,7 @@ div.Notification__btn span {
   background: #181915;
 }
 
-.LikeCouter__total input {
+.ArtCount__total input {
   padding: 0;
   margin-bottom: -6px;
   text-align: right;
@@ -622,13 +714,13 @@ div.Notification__btn span {
   z-index: 99;
 }
 
-.LikeCouter__total span {
+.ArtCount__total span {
   height: 28px;
   font-weight: 500;
   font-size: 24px;
 }
 
-.LikeCouter__total::before {
+.ArtCount__total::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -643,16 +735,6 @@ div.Notification__btn span {
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-}
-
-div.PayConfirm__title {
-  text-align: center;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 114.5%;
-  font-feature-settings: "ss04" on;
-  color: #ffffff;
-  margin-bottom: 24px;
 }
 
 .PayConfirm__btn {
@@ -735,4 +817,10 @@ div.PayConfirm__title {
 .notification__wrap .Notification {
   top: auto;
   position: relative;
+}
+
+@media screen and (max-width: 380px) {
+  div.Notification__btn {
+    width: 100%;
+  }
 }

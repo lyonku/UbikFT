@@ -1,16 +1,14 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
-import EnergySvg from "components/common/energySvg";
+import EnergySvg from "components/common/svgs/energySvg";
 import { useClickAway } from "react-use";
 
 import { MainContext } from "components/shared/providers/MainProvider";
-import LikeSvg from "components/common/LikeSvg";
+import LikeSvg from "components/common/svgs/LikeSvg";
+import HeartSvg from "components/common/svgs/heartSvg";
 
 function PayConfirm() {
   const ref = useRef(null);
-  const inputRef = useRef(null);
   const { router } = useContext(MainContext);
-  const [likeCount, setLikeCount] = useState(1);
-  const [width, setWidth] = useState(0);
 
   useClickAway(
     ref,
@@ -20,73 +18,30 @@ function PayConfirm() {
     ["mousedown"]
   );
 
-  const handleIncreaseCount = () => {
-    if (likeCount < 1000) {
-      setLikeCount((prevLikeCount) => (prevLikeCount += 1));
-    }
-  };
-
-  const handleDecreaseCount = () => {
-    if (likeCount > 1) {
-      setLikeCount((prevLikeCount) => (prevLikeCount -= 1));
-    }
-  };
-
-  const handleChangeLikeCount = (e) => {
-    if (
-      e.target.value < 1000 &&
-      e.target.value >= 0 &&
-      e.target.value[0] != 0
-    ) {
-      setLikeCount(e.target.value);
-    }
-  };
-
-  useEffect(() => {
-    setWidth(inputRef?.current?.value.length);
-  }, [likeCount]);
-
   return (
     <div className={`PayConfirm ${"open"}`} ref={ref}>
       <div className="PayConfirm__header" onClick={() => router.toBack()}></div>
-      <div className="PayConfirm__title mini-title">
-        Выберите количество <span className="text_accented">лайков</span>{" "}
-        которые хотите поставить
+      <div className="PayConfirm__title title_h2-32px">
+        Вы добавите <span className="text_accented">53 лайка</span>
       </div>
-      <div className="LikeCouter">
-        <div
-          className="LikeCouter__minus LikeCouter__block"
-          onClick={handleDecreaseCount}
-        >
-          <div></div>
+      <div className="PayConfirm__list">
+        <div className="PayConfirm__item">
+          <div className="PayConfirm__listMarker"></div>
+          <div className="PayConfirm__listTitle">
+            Проголосовать можно только за одну работу
+          </div>
         </div>
-        <div
-          className="LikeCouter__total"
-          onClick={() => inputRef.current.focus()}
-        >
-          <input
-            value={likeCount}
-            onChange={handleChangeLikeCount}
-            onBlur={() => likeCount == 0 && setLikeCount(1)}
-            ref={inputRef}
-            style={{ width: width + "ch" }}
-          />
-          <LikeSvg full="true" />
-        </div>
-        <div
-          className="LikeCouter__plus LikeCouter__block"
-          onClick={handleIncreaseCount}
-        >
-          <div></div>
+        <div className="PayConfirm__item">
+          <div className="PayConfirm__listMarker"></div>
+          <div className="PayConfirm__listTitle">Ваш рейтинг</div>
+          <div className="PayConfirm__text">
+            <HeartSvg width="20px" height="20px" /> 5312 = 53
+            <LikeSvg width="20px" height="20px" full={"true"} />
+          </div>
         </div>
       </div>
       <div className="PayConfirm__btn">
-        <div className="PayConfirm__btn_text">Поставить лайк</div>
-        <div className="PayConfirm__delimetr"></div>
-        <div className="PayConfirm__pay">
-          <EnergySvg color="#BCDE3B" width="24px" height="24px" />
-          <div className="PayConfirm__pay_text">{likeCount}</div>
-        </div>
+        <div className="PayConfirm__btn_text">Проголосовать</div>
       </div>
     </div>
   );
