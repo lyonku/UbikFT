@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.14a56faa.css",
+    "main.js": "/static/js/main.d16ae00f.js",
+    "static/media/loading__background.png": "/static/media/loading__background.8db84f724ce51633a0dd.png",
+    "static/media/payEnergy__background.png": "/static/media/payEnergy__background.47326c0d69d909a6cecb.png",
+    "static/media/MacPawFixelText-Regular.otf": "/static/media/MacPawFixelText-Regular.75d44f06aa78a75b45a2.otf",
+    "static/media/MacPawFixelText-Regular.woff2": "/static/media/MacPawFixelText-Regular.615b696311567a1434b9.woff2",
+    "static/media/profile__emptyImg.svg": "/static/media/profile__emptyImg.66feaa14079716411da37455739e3280.svg",
+    "static/media/payEnergy__energyImg.svg": "/static/media/payEnergy__energyImg.f3c7f465941b07620186acdc2f1ab4e6.svg",
+    "static/media/profile__delete.svg": "/static/media/profile__delete.e002cf31e8a6a739a28e970367f2bff0.svg",
+    "static/media/errorMark.svg": "/static/media/errorMark.bafe7735f1fa70b4ee4e20ad8b06efb2.svg",
+    "static/media/warningMark.svg": "/static/media/warningMark.10a3ff5094dbfc1c58994eff5142af06.svg",
+    "static/media/check-mark.svg": "/static/media/check-mark.d937859bc01476d79b8c80dfe67109b0.svg",
+    "static/media/prompt-refresh.svg": "/static/media/prompt-refresh.dc380e261bd0f999d40aeab02459c4e2.svg",
+    "static/media/addToHistory.svg": "/static/media/addToHistory.71cd7e8ee20f7131df1d7a9eb467abc3.svg",
+    "static/media/checkMark.svg": "/static/media/checkMark.3d3002b7b30e8fa06942ef21ee268671.svg",
+    "static/media/close-btn.svg": "/static/media/close-btn.8fa2bcbb6bb0af2c6379a85d112e8b45.svg",
+    "static/media/back-btn.svg": "/static/media/back-btn.fcc8b585c016ff5270690561fccf41e0.svg",
+    "index.html": "/index.html",
+    "static/media/search.svg": "/static/media/search.b51b1449979e3b8e9b1e0a21ad7718af.svg",
+    "static/media/download.svg": "/static/media/download.e6950a3253a93f4c19c5f8df661f0792.svg",
+    "static/media/addToWall.svg": "/static/media/addToWall.90f6d605243e9961da8297afc39653a2.svg",
+    "main.14a56faa.css.map": "/static/css/main.14a56faa.css.map",
+    "main.d16ae00f.js.map": "/static/js/main.d16ae00f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.14a56faa.css",
+    "static/js/main.d16ae00f.js"
+  ]
+}
