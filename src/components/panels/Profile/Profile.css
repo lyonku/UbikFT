@@ -148,7 +148,7 @@
   gap: 16px;
 }
 
-.Profile__avatar img {
+.Profile__avatar {
   width: 80px;
   border-radius: 100px;
 }

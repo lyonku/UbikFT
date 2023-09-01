@@ -4,7 +4,6 @@ function Filters({ data, currentFilter, setCurrentFilter }) {
   useEffect(() => {
     setCurrentFilter(data[0].id);
   }, []);
-
   return (
     <div className="Filters">
       {data.map((item, index) => {
@@ -12,7 +11,7 @@ function Filters({ data, currentFilter, setCurrentFilter }) {
           <div
             key={index}
             onClick={() => setCurrentFilter(item.id)}
-            className={`Filter ${currentFilter == item.id && "active"}`}
+            className={`Filter ${item.id?.includes(currentFilter) && "active"}`}
           >
             {item.text}
           </div>

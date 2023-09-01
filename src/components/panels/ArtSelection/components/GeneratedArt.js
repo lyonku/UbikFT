@@ -5,12 +5,15 @@ import { MainContext, PopoutContext } from "components/shared/providers";
 import { Carousel } from "antd";
 import { Icon12Chevron } from "@vkontakte/icons";
 const GeneratedArt = () => {
-  const { currentImg } = useContext(MainContext);
+  const { setCurrentImg, currentImg } = useContext(MainContext);
   const { handleContestSelectPopout, handleShowSharePopout } =
     useContext(PopoutContext);
   const ref = useRef();
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const onChange = (currentSlide) => {};
+  const onChange = (currentSlide) => {
+    setCurrentSlide(currentSlide);
+  };
 
   return (
     <div className="ArtSelection__body">
@@ -30,7 +33,7 @@ const GeneratedArt = () => {
             return (
               <div className="ArtSelection__imgWrap" key={index}>
                 <div className="ArtSelection__img">
-                  <img src={`data:image/jpeg;base64,${img.base64}`} />
+                  <img src={img.imagesLink} />
                   <div className="ArtSelection__imgControls ">
                     <div
                       className="ArtSelection__shareBtn "
@@ -70,12 +73,15 @@ const GeneratedArt = () => {
           </div>
         </>
       )}
-
       <div className="ArtSelection__glow"></div>
       <div className="ArtSelection__btns">
         <div
           className="ArtSelection__nftBtn btn"
-          onClick={handleContestSelectPopout}
+          onClick={() => {
+            handleContestSelectPopout({
+              art_id: currentImg[currentSlide].art_id,
+            });
+          }}
         >
           Отправить на конкурс
         </div>

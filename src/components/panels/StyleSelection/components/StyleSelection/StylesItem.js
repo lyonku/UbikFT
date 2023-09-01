@@ -60,7 +60,6 @@ function StylesItem({ style, category, setChosenStyles, chosenStyles }) {
         }
       }
     }
-    console.log(copy);
     setChosenStyles(copy);
   };
 

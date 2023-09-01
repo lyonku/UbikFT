@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { View } from "@vkontakte/vkui";
 
 import "./Contests.css";
@@ -9,7 +9,13 @@ import ContestsHome from "./ContestsHome";
 import NewContest from "./components/NewContest";
 
 const Contests = ({ id }) => {
-  const { router } = useContext(MainContext);
+  const { router, updateContest, handleInitContests } = useContext(MainContext);
+
+  useEffect(() => {
+    if (updateContest) {
+      handleInitContests();
+    }
+  }, [updateContest]);
 
   return (
     <View id={id} activePanel={router.activePanel}>

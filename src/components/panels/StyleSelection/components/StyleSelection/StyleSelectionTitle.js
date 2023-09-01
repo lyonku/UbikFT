@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import examples from "components/panels/StyleSelection/inputExamples.json";
 import InquiryForm from "../Inquiry/InquiryForm";
+import { MainContext } from "components/shared/providers";
 
-function StyleSelectionTitle({ setInputValue, error }) {
+function StyleSelectionTitle({ error }) {
+  const { setInputValue } = useContext(MainContext);
+
   const [example, setExample] = useState(false);
 
   const handleExample = (event) => {
@@ -27,6 +30,7 @@ function StyleSelectionTitle({ setInputValue, error }) {
       <div className="inquiry__title title">
         Напишите запрос для создания <span className="text_accented">арта</span>
       </div>
+
       <InquiryForm
         error={error}
         handleExample={handleExample}

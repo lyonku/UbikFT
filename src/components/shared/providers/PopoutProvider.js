@@ -3,19 +3,19 @@ import { PopoutWrapper } from "@vkontakte/vkui";
 import ContestSelect from "components/panels/ArtSelection/components/ContestSelect";
 import PayConfirm from "components/panels/Contest/components/PayConfirm";
 import ShareWorkAlert from "components/common/ShareWorkAlert";
-import WalletConnect from "components/panels/ArtSelection/components/WalletConnect";
 import PromptCopy from "components/common/promptCopy";
 import InfoPopout from "components/common/infoPopout";
 import SelectArtCount from "components/common/SelectArtCount";
-import ChestPrizes from "components/common/ChestPrizes";
+import ArtComplaint from "components/common/ArtComplaint";
+import ComplaintsList from "components/common/ComplaintsList";
 
 export const PopoutContext = createContext();
 
 export const PopoutContextProvider = ({ children, router }) => {
-  const handleSendLikePopout = () => {
+  const handleSendLikePopout = ({ art_id, vk_user_id }) => {
     router.toPopout(
       <PopoutWrapper alignY="center" alignX="center">
-        <PayConfirm />
+        <PayConfirm art_id={art_id} vk_user_id={vk_user_id} />
       </PopoutWrapper>
     );
   };
@@ -28,28 +28,18 @@ export const PopoutContextProvider = ({ children, router }) => {
     );
   };
 
-  const handleShowSharePopout = (props) => {
+  const handleShowSharePopout = (art) => {
     router.toPopout(
       <PopoutWrapper alignY="center" alignX="center">
-        <ShareWorkAlert props={props} />
+        <ShareWorkAlert art={art} />
       </PopoutWrapper>
     );
   };
 
-  const handleContestSelectPopout = (props) => {
-    console.log("props", props);
+  const handleContestSelectPopout = ({ art_id }) => {
     router.toPopout(
       <PopoutWrapper alignY="center" alignX="center">
-        <ContestSelect accept={props?.accept ?? false} img={props?.img} />
-      </PopoutWrapper>
-    );
-  };
-
-  //   Maybe delete in future
-  const handleWalletConnectPopout = () => {
-    router.toPopout(
-      <PopoutWrapper alignY="center" alignX="center">
-        <WalletConnect />
+        <ContestSelect art_id={art_id} />
       </PopoutWrapper>
     );
   };
@@ -62,18 +52,30 @@ export const PopoutContextProvider = ({ children, router }) => {
     );
   };
 
-  const handleChestPrizesPopout = () => {
+  const handlePromptCopyPopout = (prompt, styles, pro, seed) => {
     router.toPopout(
       <PopoutWrapper alignY="center" alignX="center">
-        <ChestPrizes />
+        <PromptCopy prompt={prompt} styles={styles} pro={pro} seed={seed} />
       </PopoutWrapper>
     );
   };
 
-  const handlePromptCopyPopout = (prompt, styles, pro) => {
+  const handleShowComplaints = (mass) => {
     router.toPopout(
       <PopoutWrapper alignY="center" alignX="center">
-        <PromptCopy prompt={prompt} styles={styles} pro={pro} />
+        <ComplaintsList mass={mass} />
+      </PopoutWrapper>
+    );
+  };
+
+  const handleArtComplaint = ({ art_id, contest_id, user_id }) => {
+    router.toPopout(
+      <PopoutWrapper alignY="center" alignX="center">
+        <ArtComplaint
+          art_id={art_id}
+          contest_id={contest_id}
+          user_id={user_id}
+        />
       </PopoutWrapper>
     );
   };
@@ -84,11 +86,11 @@ export const PopoutContextProvider = ({ children, router }) => {
         handleSendLikePopout,
         handleShowSharePopout,
         handleContestSelectPopout,
-        handleWalletConnectPopout,
         handleInfoPopout,
         handlePromptCopyPopout,
         handleSetArtCountPopout,
-        handleChestPrizesPopout,
+        handleArtComplaint,
+        handleShowComplaints,
       }}
     >
       {children}

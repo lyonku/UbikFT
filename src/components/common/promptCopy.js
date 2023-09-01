@@ -4,7 +4,7 @@ import { MainContext } from "components/shared/providers";
 
 import closeImg from "assets/img/close-btn.svg";
 
-function promptCopy({ prompt, styles, pro }) {
+function promptCopy({ prompt, seed, styles, pro }) {
   const ref = useRef(null);
   const { router, handleCopyPrompt } = useContext(MainContext);
 
@@ -23,15 +23,10 @@ function promptCopy({ prompt, styles, pro }) {
       </div>
       <div className={`promptCopy__body`}>
         <div className="promptCopy__item title_h4-18px">
-          Prompt:{" "}
-          <span>
-            {prompt} много текста очень, моного авв апвдапло втаьбтпв азщпзщ
-            вазщшп вазпщш зваппп зщшзщшзшщшзш взап авпв
-          </span>
+          Prompt: <span>{prompt}</span>
         </div>
-
         <div className="promptCopy__item title_h4-18px">
-          Seed: <span>2244766882</span>
+          Seed: <span>{seed}</span>
         </div>
         <div
           className="btn"

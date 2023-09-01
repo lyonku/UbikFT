@@ -1,4 +1,4 @@
-function ContestItem__header({ activeContest, time }) {
+function ContestItem__header({ activeContest }) {
   return (
     <div className="ContestItem__header">
       <div className="ContestItem__title title_h2-32px">

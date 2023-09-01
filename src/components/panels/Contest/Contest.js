@@ -5,7 +5,6 @@ import "./Contest.css";
 
 import useInfiniteScroll from "components/shared/hooks/useInfiniteScroll";
 import { MainContext } from "components/shared/providers";
-import benefitsImg from "assets/img/payEnergy__benefitsImg.svg";
 
 import ContestPrizes from "./components/ContestPrizes";
 import ContestControls from "./components/ContestControls";
@@ -17,12 +16,11 @@ const Contest = ({ id }) => {
   const {
     router,
     activeContest,
-    updateContestTime,
     userData,
     handleGetContestArts,
+    updateContest,
+    handleInitContests,
   } = useContext(MainContext);
-  const [artAdded, setArtAdded] = useState(false);
-  const [time, setTime] = useState("");
   const [currentFilter, setCurrentFilter] = useState();
 
   const filtersData = [
@@ -31,35 +29,23 @@ const Contest = ({ id }) => {
   ];
 
   useEffect(() => {
-    handleGetContestArts(activeContest.id);
-  }, []);
+    if (updateContest) {
+      handleInitContests();
+    }
+  }, [updateContest]);
+
+  useEffect(() => {
+    if (!activeContest.works) {
+      handleGetContestArts();
+    }
+  }, [updateContest]);
 
   useInfiniteScroll({
-    сurrentPage: 1,
+    сurrentPage: activeContest.currentPage ?? 1,
     func: handleGetContestArts,
     maxPages: activeContest.maxPages,
     className: ".Contest",
   });
-
-  useEffect(() => {
-    setTime(updateContestTime(+activeContest[activeContest.type + "Date"]));
-
-    const intervalId = setInterval(() => {
-      setTime(updateContestTime(+activeContest[activeContest.type + "Date"]));
-    }, 1000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (activeContest.from == "artGenerate") {
-      setArtAdded(true);
-      setTimeout(() => setArtAdded(false), 2000);
-      setCurrentFilter("My");
-    }
-  }, []);
 
   return (
     <Panel id={id}>
@@ -73,19 +59,12 @@ const Contest = ({ id }) => {
         }}
       >
         <div className="Contest__wrap">
-          <ContestControls router={router} userData={userData} />
+          <ContestControls />
           <div className="Contest__body">
             <div className="ContestItem__wrap">
               <div className="ContestItem__body">
-                <ContestItem__header
-                  activeContest={activeContest}
-                  time={time}
-                />
-                <ContestPrizes
-                  activeContest={activeContest}
-                  router={router}
-                  time={time}
-                />
+                <ContestItem__header activeContest={activeContest} />
+                <ContestPrizes activeContest={activeContest} />
                 {activeContest.type !== "ended" && (
                   <Filters
                     data={filtersData}
@@ -97,10 +76,6 @@ const Contest = ({ id }) => {
               </div>
             </div>
           </div>
-        </div>
-        <div className={`Notification ${artAdded && "open"}`}>
-          <img src={benefitsImg} />
-          Арт выставлен на конкурс
         </div>
       </div>
     </Panel>

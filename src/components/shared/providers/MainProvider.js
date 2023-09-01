@@ -4,6 +4,7 @@ import moment from "moment";
 import createPrompts from "components/App/features/createPrompts";
 import data from "components/panels/Contests/data.json";
 import plural from "plural-ru";
+import Notify from "components/common/Notify";
 
 export const MainContext = createContext();
 
@@ -24,7 +25,16 @@ export const MainContextProvider = ({ children, router }) => {
   const [contests, setContests] = useState([]);
 
   const [userData, setUserData] = useState({});
+  const [payment, setPayment] = useState([]);
+  const [usersRating, setUsersRating] = useState({});
   const [artsData, setArtsData] = useState([]);
+  const [artVoted, setArtVoted] = useState({});
+  const [updateContest, setUpdateContest] = useState(false);
+
+  const [snackbar, setSnackbar] = useState(null);
+
+  let param = window.location.href;
+  let totalParam = param.slice(param.indexOf("vk_access"));
 
   const inquiryMass = [
     {
@@ -52,9 +62,16 @@ export const MainContextProvider = ({ children, router }) => {
 
   bridge.send("VKWebAppInit");
 
+  const notify = ({ text, type }) => {
+    if (snackbar) return;
+    setSnackbar(<Notify text={text} type={type} />);
+    setTimeout(() => {
+      setSnackbar(null);
+    }, 5000);
+  };
+
   async function fetchData() {
     const user = await bridge.send("VKWebAppGetUserInfo");
-    console.log(user);
     setUser(user);
   }
 
@@ -62,7 +79,9 @@ export const MainContextProvider = ({ children, router }) => {
     fetchData();
     handleInitUser();
     handleInitContests();
+    handleInitEnergy();
   }, []);
+
   // Navigation in mini app start
 
   const onStoryChange = (e) => {
@@ -71,128 +90,115 @@ export const MainContextProvider = ({ children, router }) => {
 
   // Navigation in mini app end
 
-  // Generate art start
+  const handleInitEnergy = async () => {
+    const response = await fetch(`https://ubiq.top/initPayment?${totalParam}`, {
+      method: "GET",
+    });
+    const energyData = await response.json();
+    setPayment(energyData.payment);
+  };
 
+  // Generate art start
   const handleArtGenerate = async (count) => {
-    router.toPanel("loading");
-    if (!inputValue) {
-      setError(true);
-      router.toBack();
-      return;
-    }
-    setCurrentImg("");
     setError(false);
+    router.toPanel("loading");
+    let config = {};
+    setCurrentImg("");
 
     if (modePro) {
-      const config = {
-        client_id: "mini-app",
-        engine_id: "stable-diffusion-xl-beta-v2-2-2",
-        height: 512,
-        width: 512,
+      config = {
         text_prompts: [
           {
             text: inputValue,
             weight: 1,
           },
+          {
+            text: inputValueNegative,
+            weight: -1,
+          },
         ],
-        cfg_scale: 7,
-        clip_guidance_preset: "NONE",
-        sampler: "DDIM",
+        cfg_scale: guidanceScale,
         samples: +count,
+        style_preset: "",
         seed: +inputValueSeed ?? 0,
-        steps: 30,
+        vk_user_id: fetchedUser.id,
       };
-
-      const data = await generateArt(config);
-      if (data.artifacts[0]?.finishReason == "SUCCESS") {
-        setCurrentImg(data.artifacts);
-      } else {
-        setError(true);
-      }
     } else {
-      console.log(chosenStyles);
       const translateData = await getTranslate(inputValue);
-      if (translateData !== null) {
-        const result = await createPrompts(
-          chosenStyles,
-          currentModel,
-          translateData
-        );
-        result.samples = +count;
-        const data = await generateArt(result);
-        if (data.artifacts && data.artifacts[0]?.finishReason == "SUCCESS") {
-          setCurrentImg(data.artifacts);
-        } else {
-          setError(true);
-        }
-      }
+
+      const result = await createPrompts(
+        chosenStyles,
+        fetchedUser.id,
+        translateData
+      );
+      result.samples = +count;
+      result.rawPrompt = inputValue;
+      result.styles = chosenStyles;
+      config = result;
     }
+
+    const data = await generateArt(config);
+    if (data?.arts) {
+      setCurrentImg(data.arts);
+    }
+    return;
   };
 
+  // Function for translating text into English
   async function getTranslate(inputValue) {
     try {
-      const response = await fetch(
-        "https://postback.leadpipe.work/webhook/deepl",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "8IVn5UBDYDsFeZEZKw6vgJ",
-          },
-          body: JSON.stringify({ text: inputValue }),
-        }
-      );
+      const response = await fetch(`https://ubiq.top/translate?${totalParam}`, {
+        method: "POST",
+        body: JSON.stringify({ text: inputValue }),
+      });
 
       const responseData = await response.json();
       const translateData = responseData.translations[0].text;
-
+      if (translateData === null) {
+        throw new Error("Ошибка при переводе текста");
+      }
       return translateData;
     } catch (error) {
       setError(true);
+      notify({
+        text: error.message ?? "Сервис перевода недоступен",
+        type: "error",
+      });
     }
   }
 
+  // Function for generating images
   async function generateArt(data = {}) {
     try {
-      const response = await fetch(
-        "https://postback.leadpipe.work/webhook/stabilityai",
-        {
-          method: "POST",
-          headers: {
-            Authorization: "pyHFt6KTLUU9uJdNqA5vV7",
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch(`https://ubiq.top/generate?${totalParam}`, {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
       const imgData = await response.json();
 
-      const sendArtData = {
-        vk_user_id: fetchedUser.id,
-        cfg_scale: data.cfg_scale,
-        steps: data.steps,
-        samples: data.samples,
-        engine_id: data.engine_id,
-        prompt: inputValue,
-        isPro: modePro,
-        // styles: chosenStyles,
-        imgs: imgData.artifacts,
-      };
-
-      const sendArtResponse = await fetch("https://ubiq.top/addArt", {
-        method: "POST",
-        body: JSON.stringify(sendArtData),
-      });
-      handleGetArts();
-      handleInitUser();
+      if (imgData.arts) {
+        handleGetArts();
+        handleInitUser();
+      } else {
+        throw new Error(imgData);
+      }
       return imgData;
-    } catch {
-      setError(true);
+    } catch (error) {
+      if (error.message == "Недостаточно энергии") {
+        router.toBack();
+      } else {
+        setError(true);
+      }
+      notify({
+        text: error.message ?? "Сервис генерации недоступен",
+        type: "error",
+      });
     }
   }
 
+  // Generate art end
+
   async function fetchShare(data) {
-    console.log(data?.id);
     await bridge
       .send("VKWebAppShare", {
         link: "https://vk.com/app51573768#contests/contest/" + data?.id,
@@ -203,7 +209,7 @@ export const MainContextProvider = ({ children, router }) => {
         }
       })
       .catch((error) => {
-        // Ошибка
+        notify({ text: "Не удалось поделится", type: "error" });
         console.log(error);
       });
   }
@@ -229,114 +235,278 @@ export const MainContextProvider = ({ children, router }) => {
   }, []);
 
   const handleInitUser = async () => {
-    let param = window.location.href;
-    let totalParam = param.slice(param.indexOf("vk_access"));
+    try {
+      const response = await fetch(`https://ubiq.top/initUser?${totalParam}`, {
+        method: "GET",
+      });
 
-    const response = await fetch(`https://ubiq.top/initUser?${totalParam}`, {
-      method: "GET",
-    });
+      const responseData = await response.json();
+      setUserData(responseData);
+    } catch (error) {
+      notify({ text: "Ошибка при инициализации пользователя", type: "error" });
+    }
+  };
 
-    const responseData = await response.json();
-    setUserData(responseData);
+  const handleInitUsersRating = async (page) => {
+    try {
+      const data = {
+        currentPage: page ? page + 1 : 1,
+        vk_user_id: fetchedUser.id,
+      };
+
+      const response = await fetch(
+        `https://ubiq.top/initUsersRating?${totalParam}`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+        }
+      );
+      const responseData = await response.json();
+      let copy = Object.assign({}, usersRating);
+
+      if (page && copy.vk_user_id) {
+        copy.users = [...copy.users].concat(responseData.users);
+        copy.currentPage = responseData.currentPage;
+        copy.worksCount = responseData.worksCount;
+        copy.maxPages = responseData.maxPages;
+      } else {
+        copy = responseData;
+      }
+
+      setUsersRating(copy);
+      return responseData;
+    } catch (error) {
+      notify({
+        text: "Ошибка при получении рейтинга пользователей",
+        type: "error",
+      });
+    }
   };
 
   const handleInitContests = async () => {
-    let param = window.location.href;
-    let totalParam = param.slice(param.indexOf("vk_access"));
+    try {
+      const response = await fetch(
+        `https://ubiq.top/initContest?${totalParam}`,
+        {
+          method: "GET",
+        }
+      );
 
-    const response = await fetch(`https://ubiq.top/initContest?${totalParam}`, {
-      method: "GET",
-    });
+      const responseData = await response.json();
 
-    const responseData = await response.json();
-    setContests(responseData);
-  };
-
-  const handleGetArts = async (step) => {
-    const data = {
-      currentPage: step ? step + 1 : 1,
-      vk_user_id: fetchedUser.id,
-    };
-
-    const response = await fetch(`https://ubiq.top/getArts`, {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-    const responseData = await response.json();
-    if (responseData !== null) {
-      const copy = Object.assign({}, responseData);
-      if (step) {
-        copy.imgs = [...artsData.imgs].concat(responseData.imgs);
+      if (activeContest.id) {
+        setActiveContest(
+          responseData.find((item) => item.id === activeContest.id)
+        );
       }
-      setArtsData(copy);
+      setContests(responseData);
+    } catch (error) {
+      notify({ text: "Ошибка при инициализации конкурсов", type: "error" });
     }
-    return responseData;
   };
 
-  const handleGetContestArts = async (id, step) => {
-    const data = {
-      idContest: id,
-      currentPage: step ? step + 1 : 1,
-      vk_user_id: fetchedUser.id,
-    };
+  const addLike = async ({ art_id, vk_user_id }) => {
+    try {
+      const data = {
+        idContest: activeContest.id,
+        art_id: art_id,
+        vk_likedUser_id: fetchedUser.id,
+        vk_user_id: vk_user_id,
+      };
 
-    const response = await fetch(`https://ubiq.top/getContestWorks`, {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-
-    const responseData = await response.json();
-    if (responseData !== null) {
-      console.log(activeContest);
-      const copy = Object.assign({}, activeContest);
-
-      if (step) {
-        copy.works = [...copy.works].concat(responseData.works);
-      } else {
-        copy.works = responseData.works;
-      }
-      copy.currentPage = responseData.currentPage;
-      copy.maxPages = responseData.maxPages;
+      const response = await fetch(`https://ubiq.top/addLike?${totalParam}`, {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      const responseData = await response.json();
+      notify({ text: "Лайк выставлен", type: "standart" });
+      let copy = Object.assign(activeContest, {});
+      copy.globalLikes.push({ vk_user_id: fetchedUser.id });
       setActiveContest(copy);
+      return responseData;
+    } catch (error) {
+      notify({
+        text: "В одном конкурсе, можно проголосовать только за одну работу",
+        type: "error",
+      });
+      // notify({ text: "Ошибка при добавлении лайка", type: "error" });
     }
-    return responseData;
+  };
+
+  const handleGetArts = async (page) => {
+    try {
+      const data = {
+        currentPage: page ? page + 1 : 1,
+        vk_user_id: fetchedUser.id,
+      };
+
+      const response = await fetch(`https://ubiq.top/getArts?${totalParam}`, {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      const responseData = await response.json();
+      if (responseData !== null) {
+        const copy = Object.assign({}, responseData);
+        if (page) {
+          copy.imgs = [...artsData.imgs].concat(responseData.imgs);
+        }
+        setArtsData(copy);
+      }
+      return responseData;
+    } catch (error) {
+      notify({ text: "Ошибка при получении артов", type: "error" });
+    }
+  };
+
+  const handleGetContestArts = async (page, contestId) => {
+    try {
+      const data = {
+        idContest: activeContest.id ?? contestId,
+        currentPage: page ? page + 1 : 1,
+        vk_user_id: fetchedUser.id,
+      };
+
+      const response = await fetch(
+        `https://ubiq.top/getContestWorks?${totalParam}`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+        }
+      );
+
+      const responseData = await response.json();
+      if (responseData !== null) {
+        const copy = Object.assign({}, activeContest);
+
+        if (page) {
+          copy.works = [...copy.works].concat(responseData.works);
+        } else {
+          copy.works = responseData.works;
+        }
+        copy.currentPage = responseData.currentPage;
+        copy.worksCount = responseData.worksCount;
+        copy.myWorksCount = responseData.myWorksCount;
+        copy.maxPages = responseData.maxPages;
+
+        setActiveContest(copy);
+      }
+      return responseData;
+    } catch (error) {
+      notify({
+        text: "Ошибка при получении конкурсных работ",
+        type: "error",
+      });
+    }
   };
 
   const addArtToContest = async (contestID, artID) => {
-    const data = {
-      vk_user_id: fetchedUser.id,
-      contest_id: contestID,
-      art_id: artID,
-    };
+    try {
+      const data = {
+        vk_user_id: fetchedUser.id,
+        contest_id: contestID,
+        art_id: artID,
+      };
 
-    const response = await fetch(`https://ubiq.top/addArtToContest`, {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
+      const response = await fetch(
+        `https://ubiq.top/addArtToContest?${totalParam}`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+        }
+      );
+      const responseData = await response.json();
 
-    const responseData = await response.json();
+      notify({ text: "Арт добавлен", type: "standart" });
+
+      return responseData;
+    } catch (error) {
+      notify({
+        text: error.message ?? "Ошибка при добавлении арта",
+        type: "error",
+      });
+    }
   };
 
   const deleteArt = async (hash) => {
-    const data = {
-      hashArt: hash,
-      vk_user_id: fetchedUser.id,
-    };
+    try {
+      const data = {
+        hashArt: hash,
+        vk_user_id: fetchedUser.id,
+      };
+      const response = await fetch(`https://ubiq.top/deleteArt?${totalParam}`, {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      const copy = Object.assign({}, artsData);
+      const filteredArr = copy.imgs.filter(
+        (obj) => !obj.imagesLink.includes(hash)
+      );
+      copy.imgs = filteredArr;
 
-    const response = await fetch(`https://ubiq.top/deleteArt`, {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-    const copy = Object.assign({}, artsData);
-    console.log(copy);
-    const filteredArr = copy.imgs.filter(
-      (obj) => !obj.imagesLink.includes(hash)
-    );
-    copy.imgs = filteredArr;
+      setArtsData(copy);
+      const responseData = await response.json();
+      if (responseData == "Success!") {
+        notify({ text: "Арт удалён", type: "standart" });
+      }
 
-    setArtsData(copy);
-    const responseData = await response.json();
-    return responseData;
+      return responseData;
+    } catch (error) {
+      notify({
+        text: error.message ?? "Ошибка при удалении арта",
+        type: "error",
+      });
+    }
+  };
+
+  const sendArtComplaint = async ({ art_id, contest_id, text, user_id }) => {
+    try {
+      const data = {
+        contest_id: activeContest.id ?? contest_id,
+        art_id: art_id,
+        message: text,
+        user_complaint: user_id,
+      };
+
+      const response = await fetch(
+        `https://ubiq.top/addArtComplaint?${totalParam}`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+        }
+      );
+
+      const responseData = await response.json();
+      notify({ text: "Жалоба отправлена", type: "standart" });
+
+      return responseData;
+    } catch (error) {
+      notify({ text: "Ошибка при отправке жалобы", type: "error" });
+    }
+  };
+
+  const approveContest = async (idContest) => {
+    try {
+      const response = await fetch(
+        `https://ubiq.top/completeContest?${totalParam}&idContest=${idContest}`,
+        {
+          method: "GET",
+        }
+      );
+
+      const responseData = await response.json();
+
+      if (responseData === "Success!") {
+        notify({ text: "Конкурс завершён", type: "standart" });
+      } else {
+        throw new Error(responseData);
+      }
+      return responseData;
+    } catch (error) {
+      notify({
+        text: error.message ?? "Ошибка при завершении конкурса",
+        type: "error",
+      });
+    }
   };
 
   useEffect(() => {
@@ -368,14 +538,102 @@ export const MainContextProvider = ({ children, router }) => {
     setModePro((prevState) => !prevState);
   };
 
-  useEffect(() => {
-    bridge
+  const getAccesToken = async () => {
+    const response = await bridge
       .send("VKWebAppGetAuthToken", {
         app_id: 51573768,
-        scope: "wall, photos ",
+        scope: "wall, photos, stories ",
       })
       .then((data) => {
         if (data.access_token) {
+          return data.access_token;
+        }
+      })
+      .catch((error) => {
+        notify({ text: "Доступ не найден", type: "error" });
+      });
+    return response;
+  };
+
+  const getUploadUrl = async (access_token) => {
+    const response = await bridge
+      .send("VKWebAppCallAPIMethod", {
+        method: "photos.getWallUploadServer",
+        params: {
+          v: "5.131",
+          access_token: access_token,
+        },
+      })
+      .then((data) => {
+        if (data.response) {
+          return data.response.upload_url;
+        }
+      })
+      .catch((error) => {
+        // Ошибка
+        console.log(error);
+      });
+    return response;
+  };
+
+  const saveToWall = async (access_token, user_id, serverSaveData) => {
+    const response = await bridge
+      .send("VKWebAppCallAPIMethod", {
+        method: "photos.saveWallPhoto",
+        params: {
+          v: "5.131",
+          access_token,
+          user_id,
+          photo: serverSaveData.photo,
+          server: serverSaveData.server,
+          hash: serverSaveData.hash,
+        },
+      })
+      .then((data) => {
+        if (data.response) {
+          return data.response[0];
+        }
+      })
+      .catch((error) => {
+        // Ошибка
+        console.log(error);
+      });
+    return response;
+  };
+
+  const wallPostBox = async (vk_user_id, image_id) => {
+    const result = bridge
+      .send("VKWebAppShowWallPostBox", {
+        message:
+          "Смотрите что у меня получилось сгенерировать в приложении UbikNFT",
+        attachments: `photo${vk_user_id}_${image_id}, https://vk.com/app51573768`,
+      })
+      .then((data) => {
+        if (data.post_id) {
+          return "complete";
+        }
+      })
+      .catch((error) => {
+        return error;
+      });
+
+    return result;
+  };
+
+  const storiesPostBox = async (vk_user_id, image_id, img_url) => {
+    const result = bridge
+      .send("VKWebAppShowStoryBox", {
+        background_type: "image",
+        url: img_url,
+        attachment: {
+          text: "open",
+          type: "url",
+          url: "https://vk.com/app51573768_264304967",
+        },
+      })
+      .then((data) => {
+        if (data.code_data) {
+          // Редактор историй открыт
           console.log(data);
         }
       })
@@ -383,7 +641,62 @@ export const MainContextProvider = ({ children, router }) => {
         // Ошибка
         console.log(error);
       });
-  }, []);
+
+    return result;
+  };
+
+  const sendImgToVK = async ({ art, type }) => {
+    const access_token = await getAccesToken();
+    const upload_url = await getUploadUrl(access_token);
+
+    const serverSave = await fetch(
+      `https://ubiq.top/uploadArtToVK?${totalParam}`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          upload_url: upload_url,
+          contest_id: art.contest,
+          art_id: art.art_id,
+          vk_user_id: fetchedUser.id,
+        }),
+      }
+    );
+    const serverSaveData = await serverSave.json();
+    const saved_photo = await saveToWall(
+      access_token,
+      fetchedUser.id,
+      serverSaveData
+    );
+
+    if (type == "wall") {
+      wallPostBox(fetchedUser.id, saved_photo.id);
+    } else {
+      storiesPostBox(
+        fetchedUser.id,
+        saved_photo.id,
+        saved_photo.sizes[saved_photo.sizes.length - 1].url
+      );
+    }
+  };
+
+  const buySubscribe = (item_id) => {
+    console.log(item_id);
+    bridge
+      .send("VKWebAppShowOrderBox", {
+        type: "item",
+        item: item_id,
+      })
+      .then((data) => {
+        if (data.success) {
+          console.log(data);
+          // Оплата голосами прошла успешно
+        }
+      })
+      .catch((error) => {
+        // Ошибка
+        console.log(error);
+      });
+  };
 
   const updateContestTime = (newDate) => {
     let currentDate = moment();
@@ -396,8 +709,10 @@ export const MainContextProvider = ({ children, router }) => {
     let seconds = remainingTime.seconds();
 
     if (targetDate <= currentDate) {
-      handleInitContests();
+      setUpdateContest(true);
       return;
+    } else {
+      setUpdateContest(false);
     }
 
     // Форматирование времени с ведущими нулями
@@ -454,6 +769,20 @@ export const MainContextProvider = ({ children, router }) => {
         handleInitContests,
         addArtToContest,
         handleGetContestArts,
+        addLike,
+        artVoted,
+        setArtVoted,
+        notify,
+        snackbar,
+        setSnackbar,
+        sendArtComplaint,
+        handleInitUsersRating,
+        usersRating,
+        sendImgToVK,
+        updateContest,
+        buySubscribe,
+        payment,
+        approveContest,
       }}
     >
       {children}

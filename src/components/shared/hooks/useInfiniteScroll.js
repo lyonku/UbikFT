@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 
 const useInfiniteScroll = ({ сurrentPage, func, className, maxPages }) => {
-  const [currentStep, setCurrentStep] = useState(сurrentPage);
+  const [page, setPage] = useState(сurrentPage);
   const [fetching, setFetching] = useState(false);
 
   useEffect(() => {
     if (fetching) {
-      func(currentStep)
+      func(page)
         .then(() => {
-          setCurrentStep((prevState) => prevState + 1);
+          setPage((prevState) => prevState + 1);
         })
         .finally(() => setFetching(false));
     }
@@ -20,14 +20,13 @@ const useInfiniteScroll = ({ сurrentPage, func, className, maxPages }) => {
     return () => {
       element.removeEventListener("scroll", checkPosition);
     };
-  }, [currentStep]);
+  }, [page, maxPages]);
 
   const checkPosition = () => {
     const element = document.querySelector(className);
     const scrollPosition = element.scrollTop;
     const maxScrollHeight = element.scrollHeight - element.clientHeight;
-
-    if (maxScrollHeight - scrollPosition < 100 && currentStep < maxPages) {
+    if (maxScrollHeight - scrollPosition < 100 && page < maxPages) {
       setFetching(true);
     }
   };

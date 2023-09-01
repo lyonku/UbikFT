@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Rating.css";
 
 import closeBtn from "assets/img/close-btn.svg";
@@ -7,12 +7,11 @@ import { MainContext } from "components/shared/providers/MainProvider";
 import Filters from "components/common/Filters";
 import RatingItem from "./components/RatingItem";
 
-import data from "./data.json";
 import RatingInfo from "./components/RatingInfo";
 import RatingMain from "./components/RatingMain";
 
 const Rating = () => {
-  const { router, userData } = useContext(MainContext);
+  const { router, userData, handleInitUsersRating } = useContext(MainContext);
   const [currentFilter, setCurrentFilter] = useState();
   const [closeInfo, setCloseInfo] = useState(false);
 
@@ -20,6 +19,10 @@ const Rating = () => {
     { id: "assignment", text: "Задание" },
     { id: "rating", text: "Рейтинг" },
   ];
+
+  useEffect(() => {
+    handleInitUsersRating();
+  }, []);
 
   return (
     <div className="Rating">
@@ -44,7 +47,7 @@ const Rating = () => {
         <div className="Rating__tasksBody">
           {currentFilter == "assignment" ? (
             <>
-              {userData.ratingTasks.map((task, index) => {
+              {userData?.ratingTasks?.map((task, index) => {
                 return (
                   <div className="Rating__tasks" key={index}>
                     <div className="Rating__title title_h2-32px">

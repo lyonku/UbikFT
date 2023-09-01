@@ -4,52 +4,132 @@
     "title": "genre",
     "array": [
       {
-        "sub_name": "Цифровой-арт",
-        "sub_title": "Digital painting",
+        "sub_name": "Усиленный",
+        "sub_title": "enhance",
         "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
-        "negativePrompt": "3d  render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
-        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_154244_966421-Digital+painting+of+small+villa+trending+on+pinterest-1012436400.png",
-        "blurHash": "LMGIJz~AK4M|.S%1?Gt6KQNHWYxa"
+        "negativePrompt": "3d  render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "url": "https://i.ibb.co/Pw47BWB/9125f12c-a613-40d4-9041-3da2ee34ba4c.png",
+        "blurHash": "|KF$FX$|Sixat7NGxaM{WX~qxZxuNGxus:a#Rjf7Sixt%2xtxa%2WCaxs:.8xtM{%2adR+Iot7ae-;t7M{t7WARkM|WVaxxaxtofjYs:aef6RjWBM|oeozIVj[RjRjRkNGxuxZWBR+f5RjayayRkRjWBNGWBV@a{WVWVaz"
       },
       {
-        "sub_name": "3д-арт",
-        "sub_title": "3d render",
-        "positivePrompt": "trending on pinterest, raytracing, volumetric lighting, best quality, unreal engine, highly detailed, trending on artstation",
-        "negativePrompt": "2d art, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
-        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_153612_454152-3d+render+of+small+villa+trending+on+pinterest-1012436400.png",
-        "blurHash": "LLD]MJ~VS4R+%Mxuxut8NzW=s:t6"
+        "sub_name": "Аниме",
+        "sub_title": "anime",
+        "positivePrompt": "trending on pinterest, colorful, expressive, stylized, whimsical",
+        "negativePrompt": "3d render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, realistic, realistic eyes, realistic hair, realistic features, muted colors, subdued, natural, grounded",
+        "url": "https://i.ibb.co/Vwy3Nc8/ac558665-4682-43a4-9d7b-ad904e324085.png",
+        "blurHash": "|IGk?+?GPTM{tMQ-s8jYsm.9x[OqxB$$VXnNR%jY_MS%nNw^V?wIa0W=RjJVWVrqs:RioLxCS#WB%gSOwat7bat7oeozs.XSt6VstRS#X9j]t7s:T0NIv}bcNdozofjZjuEgax#ls:W;s.bbV@oKI@oLs:WUS4xYWrRPs."
       },
       {
-        "sub_name": "Комикс-арт",
-        "sub_title": "comics book art",
+        "sub_name": "Фотография",
+        "sub_title": "photographic",
+        "positivePrompt": "trending on pinterest, realistic, sharp, highly detailed, natural, authentic, high quality, professional",
+        "negativePrompt": "3d  render, lowres, jpeg artifacts, worst quality, low quality, normal quality,abstract, drawn, hand-drawn, anime, comic, cartoon, video game",
+        "url": "https://i.ibb.co/TLQsXZh/0e02f0f6-4e47-457d-9217-8fbe61aa4cd3.png",
+        "blurHash": "|MFFKeRjI=IUR*IVxaayNG~qazt7RjayWBWBWBoL.8tQaeofaextM|s:oL%MxaM|ofWBxtWBj[a|-;WBM{xtofa}kCazofxubHIVxtj[ayxtWVWVIoRjae%Lt7oft6RkofM{jZRkoft7R*ofjst7jZWBWCoybHRkoLj@ay"
+      },
+      {
+        "sub_name": "Цифровой арт",
+        "sub_title": "digital-art",
+        "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
+        "negativePrompt": "3d  render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "url": "https://i.ibb.co/QK2T7q4/75686905-1111-4007-9dc8-56e1dec7487a.png",
+        "blurHash": "|OFh*KnhOYIUS4IVoej[M|~poet7M{ofRjR*WVj[%hxtn%s:WBofRkt6WBxuxuRjoLV@t7WBs:WC%MNHNGxat6ofoLbHj@ozWCRPs:j[j[xaR*fkEMRjnh%2xaf6ozRks:MyjFjst7kCNHofoKkCxZWBkCR*R+WBsnoeRk"
+      },
+      {
+        "sub_name": "Комикс",
+        "sub_title": "comic-book",
         "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on pinterest, cel shading, old comics colors, 2d art, stylized",
-        "negativePrompt": "3d render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
-        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_175615_200753-comics+book+art+of+small+villa+trending+on-1012436400.png",
-        "blurHash": "LHI}kX.6lTxt.8t6~VxtENIoV_oy"
+        "negativePrompt": "3d render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "url": "https://i.ibb.co/Vw9L901/3500dfa1-281d-4bee-94f1-912353782949.png",
+        "blurHash": "|VJ7gl-;s:V@WARkogtQj[}@tR%2Rkson~WXW=of$NNHjZRjM{ozoekCWWZ#WAMyn$RjkCafofofrqV@M|oMWAs:WBW=ayi^V@NHt7xufloJaeWAWEV@t7o#ozaxWBWBoIIUV@o#t6xaWBoLWBWCnjjZozWXWCRkWBn$of"
       },
       {
-        "sub_name": "Набросок",
-        "sub_title": "pencil sketch",
-        "positivePrompt": "trending on pinterest, insane hatching, best quality, lead pencil, highly detailed, trending on artstation",
-        "negativePrompt": "(((lowres))), (((color))), pencil on table, (((pencils))), pencils in frame, out of frame, ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
-        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_153232_017123-Pencil+sketch+of+small+villa+trending+on+pinterest-1012436400.png",
-        "blurHash": "LLGIis~q%MM{_3xu%Mt7xuayM{t7"
+        "sub_name": "Фэнтези",
+        "sub_title": "fantasy-art",
+        "positivePrompt": "fantasy, magic, mythical, magical, supernatural, otherworldly, enchanted, whimsical",
+        "negativePrompt": "realistic, grounded, realistic magic, science fiction, modern, mundane, ordinary",
+        "url": "https://i.ibb.co/wdbtks0/734e3f6d-b9dc-4932-bc9f-4f83fb3f003e.png",
+        "blurHash": "|VF=XHslkWM|WVIooJofNG~Wj@xuWAoLWBWBWCs:%gj[xaj?jZxaRjays:xut6WBoKayt7WBayoe%MR*Rjs:j[ofoej[oftRWBM{s:fkoLxabHR*IpRkV@xaofs:ofR*j[M{s.aeofWqaya}WBofbHjsayWVWVWBj[ayWB"
       },
       {
-        "sub_name": "Классическая картина",
-        "sub_title": "Renaissance painting",
-        "positivePrompt": "museum masterpiece, classical painting, best quality, oil panting",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
-        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_152639_488387-Renaissance+painting+of+small+villa+museum+masterpiece+classical-1012436400.png",
-        "blurHash": "LOG8.T-:TJE2_Nof%Mj?ERIpM{%L"
+        "sub_name": "Аналоговая пленка",
+        "sub_title": "analog-film",
+        "positivePrompt": "trending on pinterest, analog, film, grain, texture, contrast, depth, atmosphere, nostalgia",
+        "negativePrompt": "digital, clean, smooth, flat, uniform, contemporary, modern",
+        "url": "https://i.ibb.co/K0QqW42/6359f5a1-2718-43cd-9264-9c424d395a40.png",
+        "blurHash": "|LFrnmRjNKD*t7IUoft7M|~pWCx[RjfQfQj[R*of?bt7aet7RjxtRjs:ay-:xaIot7Rjt7WBayay?aRjM|ayofoLayayofxuayIVofj[WBxaofWBE1M|oexuofofofRjj[RjoKNGj]ofRkfkayt7ofWBoLWVj[WBWVayaf"
       },
       {
-        "sub_name": "Постер",
-        "sub_title": "Poster",
-        "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on pinterest, cel shading, vector graphics",
-        "negativePrompt": "3d render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
-        "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_154425_580622-Poster+of+small+villa+trending+on+pinterest+8k-1012436400.png",
-        "blurHash": "L6Gbq%^j00%H=ARj~B%L00EO^9xC"
+        "sub_name": "Неоновый панк",
+        "sub_title": "neon-punk",
+        "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, cyberpunk, futuristic, urban, dystopian, gritty, neon lights, neon signs, neon colors",
+        "negativePrompt": "3d  render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "url": "https://i.ibb.co/xjcLgDh/21fedd59-27d5-4a79-a29b-17fb9a811507.png",
+        "blurHash": "|RGj~tniJ7IoR*Ios:oLNG~WkCs:afaeafR*WVjZ%fxaoLn+V[%2NGoLoL%MxaR*n*R*xaWBfQof-pR*Rjt7oLWpayofoLtQWCRPxtjZWBt6ofR*EfR*nPxtWosot7ayWVRPspR*X7ofa{bGn%s:M|ayoLazW:WBsoWCof"
+      },
+      {
+        "sub_name": "Изометрический",
+        "sub_title": "isometric",
+        "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
+        "negativePrompt": "3d  render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "url": "https://i.ibb.co/H27yFdx/880b51b2-b4d6-49fa-ae4b-f1e49642bc1c.png",
+        "blurHash": "|FHeUR5ACi?GsRoe-pM|tR#+%1OqI;w{s,s.WBR,.l$~%3NaMzWBRkt5IVOFI:w0s,f+ozI:jGxYK%obMexCw^I=OXs:xFxtNHkC$%WARkbbofs.IVt7i^IptQs:odj]afoxt7oJafS#WCwdkBR*xuR*xGWVS$xsn%WBa}"
+      },
+      {
+        "sub_name": "Низкополигональный",
+        "sub_title": "low-poly",
+        "positivePrompt": "trending on pinterest, low poly, low polygon, simple, geometric, stylized, cartoony, playful, whimsical",
+        "negativePrompt": "3d  render, lowres, jpeg artifacts, realistic, complex, detailed, realistic, naturalistic, grounded, serious, signature, watermark, username, blurry",
+        "url": "https://i.ibb.co/Yppkphd/3de00867-d597-425b-a4e7-b80368b00186.png",
+        "blurHash": "|FGb9l~AKk4;IqW=bct7s:V~M}ozocRjS4kAxZn$KNIpWF-Vs8WVn~n$ayWBt6oaj=oLoLs:NHR+XAM}jIs.ocs:kCR-R+X4t6s7aef9s:WCR*t7K7R.jFoes+aeWAaes:xWWAS5kDoMoLWCWBaenOxDs+W.bakCbbjZWB"
+      },
+      {
+        "sub_name": "Оригами",
+        "sub_title": "origami",
+        "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
+        "negativePrompt": "3d  render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "url": "https://i.ibb.co/NYtM75d/61488e3c-4e28-4c2f-9dba-49842113d1b3.png",
+        "blurHash": "|QGRk.t7NxIoR*IVofofM|~Ws:t7RjaeRjWBWBWB.8xujZt6WBofRjjsj[%Mt7WBt6jZofR*aya|-;a#V[t7ofWVbHj?jstRR*RjxtkCj?t7ayRjI;R*n$%2t7oLt6R*jsRPn$WBt7kWNHoLf6s:s:ayWBkCkCWBofj[az"
+      },
+      {
+        "sub_name": "Линейное искусство",
+        "sub_title": "line-art",
+        "positivePrompt": "trending on pinterest, insane hatching, best quality, highly detailed, trending on artstation",
+        "negativePrompt": "lowres, color, pencil on table, pencils, pencils in frame, out of frame, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "url": "https://i.ibb.co/f44L34t/bf5edd5f-b6f0-4196-af3b-5de3fd901a65.png",
+        "blurHash": "|KLz~w%M~q-;?bofxuIUt7xat7ofIUt7aeRjt7ay%2jtIUM{M{ofRjt7ofIURjjtxuRjogofRjWB%MofM{M{Rjj[jtt7ofM{ayRjxuWBoffQRjj[t7IURjxut7j[t7RjWB4nWBofxuofayt7j[t7-;ofWBayj[RjRjfQWB"
+      },
+      {
+        "sub_name": "Художественная глина",
+        "sub_title": "craft-clay",
+        "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
+        "negativePrompt": "3d  render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "url": "https://i.ibb.co/MRp2zkc/d5858efd-3985-4869-ab70-3ea936b7a31d.png",
+        "blurHash": "|BG*KOA216?HX4V|$kT0xH8#$_EJ^OIaRjslRkjtxc-rw|5R%GNaWBs8WV0f#k}?MxWGt7s+OXWV5=sroz9]Nvt7OFr?Sg]pORW,-WMxsBjFwIaK-NMyR*ozt6r;OFOXxGBpxuRTI]-TE%SdofXRRQocSK$Kf-s.WFoyaL"
+      },
+      {
+        "sub_name": "Кинематографический",
+        "sub_title": "cinematic",
+        "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
+        "negativePrompt": "3d  render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "url": "https://i.ibb.co/j8psNn9/0bc67cfb-b901-467b-8744-dd9f7e7d1804.png",
+        "blurHash": "|PF5%5j?NxIUfkIVj[WBaz~qbHt7RPj[j@f6WBoe?ct7o0s:V@t7Rjs:ax%gt7RjfkaeozWBofay-;WBayj]j[ofofWCof%MjsRQofkCWBofayfkE2WBsmxuozt6ofayj[M{s:oJW;j[jZbHoeofs.oJbHWVazaej[jsay"
+      },
+      {
+        "sub_name": "3D-модель",
+        "sub_title": "3d-model",
+        "positivePrompt": "trending on pinterest, raytracing, volumetric lighting, best quality, unreal engine, highly detailed, trending on artstation",
+        "negativePrompt": "2d  render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "url": "https://i.ibb.co/vYCRzGC/50a78210-7e54-4c0b-8039-47b159dab29d.png",
+        "blurHash": "|IFr*D_2InIoxsNGRPxaM{~q?Hxvjrj[oeoej[a|TKt7jEofM|xtt7WBxuWYj[M{NGNGt7oLoLt7t4RjM{a#ayR*ayofRjg4M{RPt7xaR*j[fPWB9EWVt8t7t7ayofWBoeXAof%1t6axRkWBa|WCM{t7xus.ayRkWBfkWB"
+      },
+      {
+        "sub_name": "Пиксель-арт",
+        "sub_title": "pixel-art",
+        "positivePrompt": "trending on pinterest, 8k, ultra hd, highly detailed, trending on artstation, loose brush strokes",
+        "negativePrompt": "3d  render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "url": "https://i.ibb.co/LzgSHwt/e9b158db-091c-4b70-9c28-735db6876bb6.png",
+        "blurHash": "|QG8ZfjZOYIUoKIpt6ofay~qaetRV@s:WBV@WBj[.8ozofs.Rjt7WBofj[-;t7V@azV@ozWBt7WCx]Rkaet7ofj[WBWVj[tSWBV@oJkCfkt7WVj[EMWBs9t7bboLofR*kCM_jajsbbW=f6oLaeofs:jsR*WqayWBj@oLWB"
       }
     ]
   },
@@ -61,7 +141,7 @@
         "sub_name": "Гиперреализм",
         "sub_title": "hyperrealism",
         "positivePrompt": "unreal engine, 8k, trending on pinterest, ultra hd, great linework",
-        "negativePrompt": "2d art, stylized, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "2d art, stylized, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_181251_769262-Picture+of+small+villa+hyperrealism+unreal+engine+8k-1012436400.png",
         "blurHash": "LIEMLE~WNFbI_4-;-;xuXAt8V@of"
       },
@@ -69,7 +149,7 @@
         "sub_name": "Концепт",
         "sub_title": "concept art",
         "positivePrompt": "trending on artstation, 8k, ultra hd, highly detailed",
-        "negativePrompt": "3d render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "3d render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_180854_189762-concept+art+of+small+villa+trending+on+artstation-1012436400.png",
         "blurHash": "LKD+-#~W.8t7~q-;?a%2x]X8RkbI"
       },
@@ -77,7 +157,7 @@
         "sub_name": "Неоклассицизм",
         "sub_title": "neoclassicism",
         "positivePrompt": "classic masterpiece, 8k, trending on pinterest, ultra hd, smooth colors",
-        "negativePrompt": "3d render, stylized, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "3d render, stylized, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_181824_807589-Picture+of+small+villa+neoclassicism+style+classic+masterpiece-1012436400.png",
         "blurHash": "LNHLez^*IqW?_Nxu-;%24;W=s-%1"
       },
@@ -85,7 +165,7 @@
         "sub_name": "Поп-арт",
         "sub_title": "pop art",
         "positivePrompt": "trending on pinterest, cel shading, great linework, bright colors, flat colors, vector graphics",
-        "negativePrompt": "3d render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "3d render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_182329_853988-picture+of+small+villa+pop+art+style+trending-1012436400.png",
         "blurHash": "L9HyT{~G0*ED~6*6}l9Q01Ac:GI;"
       },
@@ -93,7 +173,7 @@
         "sub_name": "Мультфильм",
         "sub_title": "cartoon",
         "positivePrompt": "trending on pinterest, cel shading, great linework, bright colors, flat colors",
-        "negativePrompt": "3d render, stylized, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "3d render, stylized, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_182441_394814-picture+of+small+villa+cartoon+style+trending+on-1012436400.png",
         "blurHash": "LEIiH[-P3?X3%zs*]NXA3:OZ*}J8"
       },
@@ -101,7 +181,7 @@
         "sub_name": "Импрессионизм",
         "sub_title": "impressionism",
         "positivePrompt": "trending on pinterest, trending on artstation, expressively loose brush strokes, artstaion, oil painting, dramatic lighting, raytracing, bright colors",
-        "negativePrompt": "3d render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "3d render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_183359_860331-picture+of+small+villa+impressionism+style+trending+on-1012436400.png",
         "blurHash": "LQGuEr~T9tWZ?txs-Po#FeIrxDtQ"
       },
@@ -109,7 +189,7 @@
         "sub_name": "Кубизм",
         "sub_title": "cubism",
         "positivePrompt": "trending on pinterest, trending on artstation, bright colors",
-        "negativePrompt": "3d render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "3d render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_183648_000087-picture+of+small+villa+cubism+style+trending+on-1012436400.png",
         "blurHash": "LHH2$J?R3qIc.kxp;LNfBWItiJXR"
       },
@@ -117,7 +197,7 @@
         "sub_name": "Обложки видеоигр",
         "sub_title": "videogame cover art",
         "positivePrompt": "trending on pinterest, trending on artstation, expressively loose brush strokes, artstaion, oil painting, dramatic lighting, raytracing, bright colors",
-        "negativePrompt": "3d render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "3d render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_183937_897738-picture+of+small+villa+videogame+cover+art+style-1012436400.png",
         "blurHash": "LYG[i*~7O@M{yq-T-on$F3NLnhxs"
       },
@@ -125,7 +205,7 @@
         "sub_name": "Барокко",
         "sub_title": "baroque",
         "positivePrompt": "classic masterpiece, 8k, trending on pinterest, ultra hd, smooth colors",
-        "negativePrompt": "3d render, stylized, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "3d render, stylized, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_184058_730158-picture+of+small+villa+baroque+art+style+trending-1012436400.png",
         "blurHash": "LKFh-M~UcFS5~q-:-;t7JWSiWC%1"
       },
@@ -133,7 +213,7 @@
         "sub_name": "Сюрреализм",
         "sub_title": "surrealism",
         "positivePrompt": "trending on pinterest, trending on artstation, masterpiece, 8k, trending on pinterest, ultra hd, smooth colors",
-        "negativePrompt": "3d render, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "3d render, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_184359_124810-picture+of+small+villa+surrealism+art+style+trending-1012436400.png",
         "blurHash": "LOF=:N~Uu3Ip.l%M-:t79vOXIUxu"
       },
@@ -141,7 +221,7 @@
         "sub_name": "Дисней",
         "sub_title": "old disney",
         "positivePrompt": "classic masterpiece, 8k, trending on pinterest, ultra hd, smooth colors",
-        "negativePrompt": "3d render, stylized, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "3d render, stylized, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_184811_606684-picture+of+small+villa+old+disney+art+style-1012436400.png",
         "blurHash": "LRHetB^dL1VZuixt?FxDGHOFVZ%1"
       },
@@ -149,7 +229,7 @@
         "sub_name": "pixar",
         "sub_title": "pixar",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, great linework, modern animation",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_190053_739337-picture+of+small+villa+pixar+style+trending+on-1012436400.png",
         "blurHash": "LYG9Nu}=tlRjyY%1-n%2T0S$VstQ"
       },
@@ -157,7 +237,7 @@
         "sub_name": "warcraft",
         "sub_title": "warcraft",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, video game render ",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_190448_518804-picture+of+small+villa+warcraft+style+trending+on-1012436400.png",
         "blurHash": "LDB{.W~Ctnxu%jtR-=%3x_s;WYju"
       }
@@ -171,7 +251,7 @@
         "sub_name": "Фантастика",
         "sub_title": "fantasy",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, high fantasy aesthetic",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_191746_424118-picture+of+small+villa+fantasy+setting+trending+on-1012436400.png",
         "blurHash": "LQDlvS~W?btR?b-:%MxuShR*NFof"
       },
@@ -179,7 +259,7 @@
         "sub_name": "Научная фантастика",
         "sub_title": "sci-fi",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, halogen lights and metal, sharp colors, smooth shapes, high contrast",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_200509_605016-picture+of+small+villa+sci+fi+setting+trending-1012436400.png",
         "blurHash": "LXEf4#~B%gRi-;-p%1t7IVNaVst7"
       },
@@ -187,7 +267,7 @@
         "sub_name": "Киберпанк",
         "sub_title": "cyberpunk",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, cyberpunk 2020, cyberpunk 2077, dark tone, neon lights in darkness, bright neon colors",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_190836_211583-picture+of+small+villa+cyberpunk+setting+trending+on-1012436400.png",
         "blurHash": "LRELgb{^yWq_%K$x-Bs;9YKPZ%Xl"
       },
@@ -195,7 +275,7 @@
         "sub_name": "Стимпанк",
         "sub_title": "steampunk",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, dark foggy aesthetic",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_191939_944808-picture+of+small+villa+steampunk+setting+trending+on-1012436400.png",
         "blurHash": "LUD+*t~V_2oe?a-:%1t6M{WCRjt7"
       },
@@ -203,7 +283,7 @@
         "sub_name": "Постапокалиптический",
         "sub_title": "post-apocalyptic",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, grim and ruined aesthetic",
-        "negativePrompt": "light, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "light, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_192931_861073-picture+of+small+villa+post+apocalyptic+setting+trending-1012436400.png",
         "blurHash": "LNEyVu~p_3Ri?^?b-;xaNGS4IU%M"
       },
@@ -211,7 +291,7 @@
         "sub_name": "Средневековье",
         "sub_title": "medieval",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_191601_263919-picture+of+small+villa+medieval+setting+trending+on-1012436400.png",
         "blurHash": "LHC~^;^+%Mog~q-;-:xu?cx]j[xu"
       },
@@ -219,7 +299,7 @@
         "sub_name": "Римский",
         "sub_title": "roman",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, high aesthetic",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_192050_335691-picture+of+small+villa+roman+setting+trending+on-1012436400.png",
         "blurHash": "LID+xe~WtRxu~W-;%M%MT0X9t7xt"
       },
@@ -227,7 +307,7 @@
         "sub_name": "Доисторический",
         "sub_title": "prehistoric",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, primitive aesthetic",
-        "negativePrompt": "civilization, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "civilization, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_192315_014752-picture+of+small+villa+prehistoric+setting+trending+on-1012436400.png",
         "blurHash": "LECZLm~pJ9xu-;?a?b%N%gtmt7t7"
       },
@@ -235,7 +315,7 @@
         "sub_name": "Дизельпанк",
         "sub_title": "dieselpunk",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, grim aesthetic, tubes and black smoke",
-        "negativePrompt": "light, (((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "light, lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_192507_463574-picture+of+small+villa+dieselpunk+setting+trending+on-1012436400.png",
         "blurHash": "LOEyJK^*~pae~p-:-pxaIoR*IU%2"
       },
@@ -244,7 +324,7 @@
         "sub_name": "Эльфийский",
         "sub_title": "elven",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, high fantasy aesthetic, magic and runes",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_193559_274753-picture+of+small+villa+elven+setting+trending+on-1012436400.png",
         "blurHash": "LQDJ08~V?axu^+-:-pxuoza#WBkC"
       },
@@ -252,7 +332,7 @@
         "sub_name": "Азиатский",
         "sub_title": "asian",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, high fantasy aesthetic",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_195617_160881-picture+of+small+villa+asian+setting+trending+on-1012436400.png",
         "blurHash": "LQEe[N~VyDoz?b-p%Mt8krbcWBof"
       },
@@ -260,7 +340,7 @@
         "sub_name": "Славянский",
         "sub_title": "slavic",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, light and warm aesthetic",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_195936_498585-picture+of+small+villa+slavic+setting+trending+on-1012436400.png",
         "blurHash": "LLE2wj~V%gt7~W?H-:xu%ho}ayt7"
       },
@@ -268,7 +348,7 @@
         "sub_name": "Древний египет",
         "sub_title": "ancient egypt",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed,light and sunny aesthetic, soft colors, teal accents",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230114_200113_405369-picture+of+small+villa+anceint+egypt+setting+trending-1012436400.png",
         "blurHash": "LJGk]=~VJBoz?^-:?a%MpdS%S4tQ"
       }
@@ -282,7 +362,7 @@
         "sub_name": "Грег Рутковски",
         "sub_title": "greg rutkowski",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest, raytracing, highly detailed, oil painting, dark fantasy",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_121450_162869-picture+of+small+villa+trending+on+artstation+masterpiece-1012436400.png",
         "blurHash": "LMCi%K~W?ux]_3-;-;xux^bbWWs:"
       },
@@ -290,7 +370,7 @@
         "sub_name": "artgerm",
         "sub_title": "artgerm",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, trending on pinterest,  raytracing, fit, stylized, highly detailed, oil painting, dark fantasy",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_121800_449908-picture+of+small+villa+trending+on+artstation+masterpiece-1012436400.png",
         "blurHash": "LPEL{S~WyDtR.8%g%fxupJtRoft7"
       },
@@ -298,7 +378,7 @@
         "sub_name": "да Винчи",
         "sub_title": "da vinci",
         "positivePrompt": "masterpiece, museum masterpiece, soft colors, bleak palette",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_122026_186649-picture+of+small+villa+masterpiece+museum+masterpiece+soft-1012436400.png",
         "blurHash": "LEF=jj~VEN9a~pt7xZj?9w9aMyxa"
       },
@@ -306,7 +386,7 @@
         "sub_name": "Гигер",
         "sub_title": "giger",
         "positivePrompt": "masterpiece, trending on pinterest, dark, bleak palette, extremely detailed",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_122208_167804-picture+of+small+villa+masterpiece+trending+on+pinterest-1012436400.png",
         "blurHash": "LB9%@u-;_3D%~qxu%MM{D%RjD%of"
       },
@@ -314,7 +394,7 @@
         "sub_name": "Пикассо",
         "sub_title": "picasso",
         "positivePrompt": "masterpiece, trending on pinterest, bright, simple shapes, bright colors",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_122318_431849-picture+of+small+villa+masterpiece+trending+on+pinterest-1012436400.png",
         "blurHash": "LKH3pV?27|M*.3xk{]R=NjOuVwT0"
       },
@@ -322,7 +402,7 @@
         "sub_name": "Рембрандт",
         "sub_title": "rembrandt",
         "positivePrompt": "masterpiece, museum piece, history's greatest, masterpiece, soft colors, contrast palette",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_122748_860305-picture+of+small+villa+masterpiece+museum+piece+history-1012436400.png",
         "blurHash": "LGEo9.~T9u0g^$%KRjM|9vE3xa-o"
       },
@@ -330,7 +410,7 @@
         "sub_name": "Энди Уорхол",
         "sub_title": "andy warhol",
         "positivePrompt": "masterpiece, museum piece, history's greatest, masterpiece, soft colors, contrast palette",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_125042_641807-picture+of+small+villa+masterpiece+trending+on+pinterest-1012436400.png",
         "blurHash": "LJIXsp}yBgv6ug$]=XRqN8E*eIOq"
       },
@@ -338,7 +418,7 @@
         "sub_name": "Иван Шишкин",
         "sub_title": "shishkin",
         "positivePrompt": "masterpiece, soft colors, realistic, nature",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_125213_030512-picture+of+small+villa+masterpiece+soft+colors+realistic-1012436400.png",
         "blurHash": "LQEfG]^+WUa~~p-;%1oftmtRoLt6"
       },
@@ -346,7 +426,7 @@
         "sub_name": "Гюстав Доре",
         "sub_title": "gustav dore",
         "positivePrompt": "masterpiece,accurate hatching, insane hatching, realistic",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_125604_095904-picture+of+small+villa+masterpiece+accurate+hatching+insane-1012436400.png",
         "blurHash": "LHE.@D_2?aRj~p-:^+af_2a#xuxt"
       },
@@ -354,7 +434,7 @@
         "sub_name": "Томас Моран",
         "sub_title": "thomas moran",
         "positivePrompt": "masterpiece, smooth colors, fine colorwork, watercolor effect, realistic",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_125843_242046-picture+of+small+villa+masterpiece+smooth+colors+fine-1012436400.png",
         "blurHash": "LMHL9h?E%gNG~qxt_1o#K8bwRQ%L"
       },
@@ -362,7 +442,7 @@
         "sub_name": "ван Гог",
         "sub_title": "van gogh",
         "positivePrompt": "masterpiece, bright colors, rough shapes, oil painting effect, expressively loose brush strokes",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_130122_148743-picture+of+small+villa+masterpiece+bright+colors+rough-1012436400.png",
         "blurHash": "LED,}U%CGXIY*Iw?%cR;%gV@vNWY"
       },
@@ -370,23 +450,23 @@
         "sub_name": "Клод Моне",
         "sub_title": "monet",
         "positivePrompt": "masterpiece, bright colors, rough shapes, oil painting effect, expressively loose brush strokes",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_130251_329869-picture+of+small+villa+masterpiece+bright+colors+oil-1012436400.png",
         "blurHash": "LPDwHW%GaGaf?]S1xSt8ksNMIUSh"
       },
       {
         "sub_name": "Макото Синкай",
         "sub_title": "makoto sninkai",
-        "positivePrompt": "masterpiece, realistic shapes, dim colors, insane linework, fine lines, ((beautiful sky)), cel shading",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "positivePrompt": "masterpiece, realistic shapes, dim colors, insane linework, fine lines, beautiful sky, cel shading",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_131650_457997-picture+of+small+villa+masterpiece+realistic+shapes+dim-1012436400.png",
         "blurHash": "LNI#.E};S_Dj?^xC^*-o0%NdVt?Z"
       },
       {
         "sub_name": "Хаяо Миядзаки",
         "sub_title": "hayao miyazaki",
-        "positivePrompt": "masterpiece, insane linework, fine lines, cartoon aesthetic, (( trending on pixiv)), cel shading",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "positivePrompt": "masterpiece, insane linework, fine lines, cartoon aesthetic,  trending on pixiv, cel shading",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_131829_687145-picture+of+small+villa+masterpiece+insane+linework+fine-1012436400.png",
         "blurHash": "LIHodd_1K*ER?]a$~p-;I^Myw0%M"
       },
@@ -394,7 +474,7 @@
         "sub_name": "Фрэнк Фразетта",
         "sub_title": "Frank Frazetta",
         "positivePrompt": "trending on artstation, masterpiece, 8k, ultra hd, highly detailed, oil painting, dark fantasy, high contrast, sharp shapes,classic fantasy art, fantasy book cover",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_131453_813487_picture_of_small_villa_trending_on_artstation.png",
         "blurHash": "LTEf7t~A.SWA.7-.-.xtV[WrRPxt"
       },
@@ -402,7 +482,7 @@
         "sub_name": "Нил Адамс",
         "sub_title": "neal adams",
         "positivePrompt": "picture of small villa, masterpiece, dim colors, insane linework, fine lines, beautiful sky,cel shading",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_132039_364521_picture_of_small_villa_masterpiece_dim_colors.png",
         "blurHash": "LVIOUt^rP3nO_Mxm-SxGOuItR7bH"
       },
@@ -410,7 +490,7 @@
         "sub_name": "Адонна Харе",
         "sub_title": "adonna khare",
         "positivePrompt": "masterpiece, accurate hatching, insane hatching, realistic",
-        "negativePrompt": "(((lowres))), ((jpeg artifacts))), worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
+        "negativePrompt": "lowres, jpeg artifacts, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry",
         "url": "https://ktr-images.s3.eu-central-1.amazonaws.com/nft-generations/20230115_132708_514490-picture+of+small+villa+masterpiece+accurate+hatching+insane-1012436400.png",
         "blurHash": "LHFFmZ~q%LM{%Mxu-;xuoeM{IUt7"
       }

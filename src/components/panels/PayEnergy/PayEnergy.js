@@ -3,15 +3,16 @@ import "./PayEnergy.css";
 
 import closeBtn from "assets/img/close-btn.svg";
 import energyImg from "assets/img/payEnergy__energyImg.svg";
-import benefitsImg from "assets/img/payEnergy__benefitsImg.svg";
+import benefitsImg from "assets/img/checkMark.svg";
 import background from "assets/img/payEnergy__background.png";
 import EnergySvg from "components/common/svgs/energySvg";
 
 import { MainContext } from "components/shared/providers/MainProvider";
 
-const PayEnergy = ({ id, buySubscribe }) => {
-  const [activeTariff, setActiveTariff] = useState("first");
-  const { router } = useContext(MainContext);
+const PayEnergy = () => {
+  const { router, buySubscribe, payment } = useContext(MainContext);
+  const [activeTariff, setActiveTariff] = useState(payment[0]?.item);
+  const plural = require("plural-ru");
 
   const handleTariff = (e) => {
     if (!e.target.id) {
@@ -67,60 +68,40 @@ const PayEnergy = ({ id, buySubscribe }) => {
             </div>
           </div>
           <div className="tariffs">
-            <div
-              className={`tariffsItem ${
-                activeTariff == "first" && "tariffsItem__active"
-              }`}
-              onClick={handleTariff}
-              id="first"
-            >
-              <div className="tariffsItem__title mini-title">
-                <div className="tariffsItem__img"></div>
-                <EnergySvg width="20px" height="20px" />
-                525{" "}
-              </div>
-              <div className="tariffsItem__price">25 голосов</div>
-            </div>
-            <div
-              className={`tariffsItem ${
-                activeTariff == "second" && "tariffsItem__active"
-              }`}
-              onClick={handleTariff}
-              id="second"
-            >
-              <div className="tariffsItem__title mini-title">
-                <div className="tariffsItem__img"></div>
-                <EnergySvg width="20px" height="20px" />
-                2400{" "}
-              </div>
-              <div className="tariffsItem__price">80 голосов</div>
-            </div>
-            <div
-              className={`tariffsItem ${
-                activeTariff == "third" && "tariffsItem__active"
-              }`}
-              onClick={handleTariff}
-              id="third"
-            >
-              <div className="tariffsItem__title mini-title">
-                <div className="tariffsItem__img"></div>
-                <EnergySvg width="20px" height="20px" />
-                14700
-              </div>
-              <div className="tariffsItem__price ">
-                <div className="tariffsItem__discount">скидка 10%</div>
-                350 голосов
-              </div>
-            </div>
+            {payment?.map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  className={`tariffsItem ${
+                    activeTariff == item.item && "tariffsItem__active"
+                  }`}
+                  onClick={handleTariff}
+                  id={item.item}
+                >
+                  <div className="tariffsItem__title mini-title">
+                    <div className="tariffsItem__img"></div>
+                    <EnergySvg width="20px" height="20px" />
+                    {item.countEnergy}
+                  </div>
+                  <div className="tariffsItem__price">
+                    {plural(
+                      item.countVkVote,
+                      "%d голос",
+                      "%d голоса",
+                      "%d голосов"
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
-          <div className="payEnergy__btn btn" onClick={buySubscribe}>
+          <div
+            className="payEnergy__btn btn"
+            onClick={() => buySubscribe(activeTariff)}
+          >
             Купить
             <EnergySvg width="18px" height="18px" color="#fff" />
-            {activeTariff == "first"
-              ? " 500"
-              : activeTariff == "second"
-              ? " 2000"
-              : " 10000 "}
+            {payment?.find((item) => item.item === activeTariff)?.countEnergy}
           </div>
         </div>
       </div>

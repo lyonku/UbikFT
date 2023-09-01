@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import profile__delete from "assets/img/profile__delete.svg";
 import ShareSvg from "components/common/svgs/shareSvg";
 
@@ -18,28 +18,40 @@ function ProfileArt({ item }) {
     let imageId = item.imagesLink.substring(startIndex, endIndex);
     deleteArt(imageId);
   };
+
   return (
     <div className={`ProfileArt `}>
       <div className="ProfileArt__body">
         <img className="ProfileArt__body_img" src={item.imagesLink} />
-        <div
-          className="Gallery__controls transparentBlock"
-          onClick={() => handleContestSelectPopout({ img: item })}
-        >
-          На конкурс
-        </div>
+        {!item.contest && (
+          <div
+            className="Gallery__controls transparentBlock"
+            onClick={() => handleContestSelectPopout({ art_id: item.art_id })}
+          >
+            На конкурс
+          </div>
+        )}
       </div>
 
-      <div className="Gallery__prompt">
+      <div className="Prompt__contols">
         <div
-          className="ContestWork__profile_prompt text_gray"
+          className="Prompt text_gray"
           onClick={() =>
-            handlePromptCopyPopout(item.prompt, item.styles, item.isPro)
+            handlePromptCopyPopout(
+              item.prompt,
+              item.styles,
+              item.isPro,
+              item.seed
+            )
           }
         >
-          {item.isPro && <span className="modeProHint">pro</span>}
-          {item.prompt}... <span className="text_accented">Подробнее</span>
+          <span className="Prompt__text">
+            {item.isPro && <span className="modeProHint">pro</span>}
+            {item.prompt}
+          </span>
+          {/* <span className="text_accented">Подробнее</span> */}
         </div>
+
         <div className="promptControls">
           {!item.contest && (
             <div
@@ -52,7 +64,7 @@ function ProfileArt({ item }) {
 
           <div
             className="shareBtn roundBtn"
-            onClick={() => handleShowSharePopout()}
+            onClick={() => handleShowSharePopout(item)}
           >
             <ShareSvg color={"#fff"} />
           </div>

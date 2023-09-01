@@ -1,21 +1,84 @@
-import galleryItem__avatar from "assets/img/galleryItem__avatar.png";
-
 import ShareSvg from "components/common/svgs/shareSvg";
 import LikeSvg from "components/common/svgs/LikeSvg";
+import warningMark from "assets/img/warningMark.svg";
+import deleteSvg from "assets/img/profile__delete.svg";
+import download from "assets/img/download.svg";
 import { MainContext, PopoutContext } from "components/shared/providers";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { MoreOutlined } from "@ant-design/icons";
+import { Popover } from "@vkontakte/vkui/dist/components/Popover/Popover";
 
 function ContestWorks__item({ data, index }) {
-  const { router, activeContest } = useContext(MainContext);
+  const { router, activeContest, setArtVoted, fetchedUser } =
+    useContext(MainContext);
   const {
     handleSendLikePopout,
     handleShowSharePopout,
     handlePromptCopyPopout,
+    handleArtComplaint,
+    handleShowComplaints,
   } = useContext(PopoutContext);
+  const [shown, setShown] = useState(false);
+
+  const isLiked = data?.likes?.personLikes?.find(
+    (item) => item.vk_user_id === fetchedUser.id
+  );
+  let isLikedContest = activeContest?.globalLikes?.find(
+    (item) => item.vk_user_id === fetchedUser.id
+  );
 
   return (
     <div className="ContestWork">
-      <img src={data.art.imagesLink} className="ContestWork__img" />
+      <div className="ContestWork__img_wrap">
+        <img src={data.art.imagesLink} className="ContestWork__img" />
+        {data.complaint?.length >= 1 && (
+          <div
+            className="ContestWork__complaint"
+            onClick={() => handleShowComplaints(data.complaint)}
+          >
+            <img src={warningMark} />
+            <span>Жалобы</span>
+          </div>
+        )}
+      </div>
+      <div className="ContestWork__profile_controls">
+        <Popover
+          className="ContestWork__menu"
+          action="click"
+          shown={shown}
+          onShownChange={setShown}
+          content={
+            <div className="ContestWork__menu_wrap">
+              <div
+                className="ContestWork__menu_btn"
+                onClick={() => {
+                  handleArtComplaint({
+                    user_id: data.vk_user_id,
+                    art_id: data.art.art_id,
+                    contest_id: data.art.contest,
+                  });
+                  setShown(false);
+                }}
+              >
+                <img src={warningMark} />
+                <span>Пожаловаться</span>
+              </div>
+              <div className="ContestWork__menu_btn">
+                <img src={deleteSvg} />
+                <span>Удалить</span>
+              </div>
+              <div className="ContestWork__menu_btn">
+                <img src={download} />
+                <span>Скачать</span>
+              </div>
+            </div>
+          }
+        >
+          <div className="ContestWork__menuBtn">
+            <MoreOutlined style={{ fontSize: "18px" }} />
+          </div>
+        </Popover>
+      </div>
 
       <div className="ContestWork__footer">
         <div className="ContestWork__profile">
@@ -34,18 +97,21 @@ function ContestWorks__item({ data, index }) {
               activeContest.type == "ended") && (
               <>
                 <div
-                  className="ContestWork__profile_prompt text_gray"
-                  onClick={() =>
+                  className="Prompt text_gray"
+                  onClick={() => {
                     handlePromptCopyPopout(
                       data.art.prompt,
                       data.art.styles,
-                      data.art.isPro
-                    )
-                  }
+                      data.art.isPro,
+                      data.art.seed
+                    );
+                  }}
                 >
-                  {data.art.isPro && <span className="modeProHint">pro</span>}
-                  {data.art.prompt}...{" "}
-                  <span className="text_accented"> Подробнее</span>
+                  <span className="Prompt__text">
+                    {data.art.isPro && <span className="modeProHint">pro</span>}
+                    {data.art.prompt}
+                  </span>
+                  {/* <span className="text_accented"> Подробнее</span> */}
                 </div>
               </>
             )}
@@ -54,12 +120,7 @@ function ContestWorks__item({ data, index }) {
         <div className="ContestWork__controls">
           <div
             className="shareBtn roundBtn ContestWork__shareBtn"
-            onClick={() =>
-              handleShowSharePopout({
-                inContest: activeContest,
-                img: data.img,
-              })
-            }
+            onClick={() => handleShowSharePopout(data.art)}
           >
             <ShareSvg color={"#fff"} />
           </div>
@@ -67,13 +128,24 @@ function ContestWorks__item({ data, index }) {
             <>
               <div
                 className={`ContestWork__like ${
-                  activeContest.type == "ended" && "ended"
+                  (activeContest.type == "ended" ||
+                    isLikedContest ||
+                    isLiked) &&
+                  "ended"
                 }`}
+                onClick={() => {
+                  activeContest.type === "vote" &&
+                    !isLiked &&
+                    !isLikedContest &&
+                    handleSendLikePopout({
+                      art_id: data.art.art_id,
+                      vk_user_id: data.vk_user_id,
+                    });
+                }}
               >
                 <LikeSvg
-                  full={activeContest.type == "ended" ? "true" : "false"}
-                  onClick={() =>
-                    activeContest.type === "vote" && handleSendLikePopout()
+                  full={
+                    activeContest.type == "ended" || isLiked ? "true" : "false"
                   }
                 />
               </div>
@@ -82,9 +154,12 @@ function ContestWorks__item({ data, index }) {
                 className={`ContestWork__likeCount ${
                   activeContest.type == "ended" && "ended"
                 }`}
-                onClick={() => router.toView("ArtVoted")}
+                onClick={() => {
+                  router.toView("ArtVoted");
+                  setArtVoted(data.likes);
+                }}
               >
-                <span>{data.likes}</span>
+                <span>{data.likes.total}</span>
               </div>
             </>
           )}

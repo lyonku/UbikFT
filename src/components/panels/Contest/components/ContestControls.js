@@ -1,8 +1,13 @@
 import backBtn from "assets/img/back-btn.svg";
+import checkMark from "assets/img/check-mark.svg";
 import EnergySvg from "components/common/svgs/energySvg";
 import HeartSvg from "components/common/svgs/heartSvg";
+import { MainContext } from "components/shared/providers";
+import { useContext } from "react";
 
-function ContestControls({ router, userData }) {
+function ContestControls() {
+  const { router, userData, activeContest, approveContest } =
+    useContext(MainContext);
   return (
     <div className="Contest__controls Header__controls">
       <div
@@ -14,6 +19,15 @@ function ContestControls({ router, userData }) {
         <img src={backBtn} />
       </div>
       <div className="styleSelection__header_rightSide">
+        {activeContest.type === "pre-ended" && (
+          <div
+            className="transparentBlock_blur approveContest"
+            onClick={() => approveContest(activeContest.id)}
+          >
+            <img src={checkMark} />
+          </div>
+        )}
+
         <div
           className="styleSelection__rating smallBtn-text"
           onClick={() => router.toView("Rating")}

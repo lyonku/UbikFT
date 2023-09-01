@@ -1,35 +1,61 @@
-import ozonLogo from "assets/img/ozonLogo.svg";
-import TonLogo from "assets/img/TonLogo.svg";
+import { MainContext } from "components/shared/providers";
+import { useContext, useEffect, useState } from "react";
 
-function ContestPrizes({ activeContest, router, time }) {
-  const handleStopPropagation = (event) => {
-    event.stopPropagation();
-  };
+function ContestPrizes({ activeContest }) {
+  const [time, setTime] = useState("");
+  const { updateContestTime, updateContest, handleGetContestArts } =
+    useContext(MainContext);
 
-  const handleContestParticipate = (event) => {
-    event.stopPropagation();
-    router.toView("main");
+  useEffect(() => {
+    setTime(updateContestTime(+activeContest[activeContest.type + "Date"]));
+
+    const intervalId = setInterval(() => {
+      setTime(updateContestTime(+activeContest[activeContest.type + "Date"]));
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [updateContest, activeContest]);
+
+  const getContestStatusText = (contest, time) => {
+    switch (contest.type) {
+      case "workAcceptance":
+        return `Идет прием работ: ${time}`;
+      case "vote":
+        return `Идет голосование: ${time}`;
+      case "ended":
+        return `Конкурс закончился`;
+      case "pre-ended":
+        return `Идет подсчёт работ`;
+      default:
+        break;
+    }
   };
 
   return (
     <div className="ContestPrize roundedBlock_greenBroder">
       <div className="ContestPrize__title title_h4-18px">Призы в конкурсе</div>
       <div className="ContestPrize__list ended">
-        {activeContest.prizes.map((item, index) => {
+        {activeContest?.prizes?.map((item, index) => {
           return (
             <div key={index}>
               <div className="ContestPrize__item">
                 <div className="ContestPrize__place">
-                  <div className="ContestPrize__place_num first">
+                  <div
+                    className={`ContestPrize__place_num ${
+                      index == 0 && "first"
+                    }`}
+                  >
                     {index + 1}
                   </div>
                   <div className="ContestPrize__place_text">место</div>
                 </div>
                 <img src={item.img} className="ContestPrize__img" />
                 <div className="ContestPrize__text">
-                  {item.winner && (
+                  {item.winner.vk_user_id && (
                     <div className="ContestPrize__profileName">
-                      {item.winner}
+                      {item.winner?.name + " " + item.winner?.name}
                     </div>
                   )}
                   <div className="ContestPrize__prizeName">{item.name}</div>
@@ -43,12 +69,7 @@ function ContestPrizes({ activeContest, router, time }) {
         })}
       </div>
       <div className="ContestItem__date transparentBlock">
-        {activeContest.type == "workAcceptance"
-          ? "Идет прием работ: "
-          : activeContest.type == "vote"
-          ? "Идет голосование: "
-          : "Конкурс "}
-        {activeContest.type == "ended" ? "закончился" : time}
+        {getContestStatusText(activeContest, time)}
       </div>
     </div>
   );

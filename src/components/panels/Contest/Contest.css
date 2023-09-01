@@ -130,6 +130,56 @@ div.Contest__controls {
   font-weight: 600;
 }
 
+.ContestWork__menuBtn {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+}
+
+.ContestWork__menuBtn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.ContestWork__menu_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ContestWork__menu_btn {
+  user-select: none;
+  cursor: pointer;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  max-height: 32px;
+  border-radius: 12px;
+  background-color: #3d3d3d;
+  padding: 5px 10px;
+}
+
+.ContestWork__menu_btn span {
+  font-weight: 500;
+  margin-bottom: -3px;
+}
+
+.ContestWork__menu_btn img {
+  width: 24px;
+}
+
+.ContestWork__menu {
+  z-index: 1;
+  background-color: #2f2f2f;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
 .ContestPrize__fullDelimetr {
   width: 100%;
   opacity: 0.2;
@@ -289,6 +339,10 @@ a.underline {
   background-color: #00000000;
 }
 
+.approveContest img {
+  width: 24px;
+}
+
 .InfoPopout__list {
   display: flex;
   align-items: flex-start;
@@ -327,9 +381,20 @@ a.underline {
 }
 
 .ContestWork__img {
+  user-select: none;
   border-radius: 24px;
   width: 100%;
-  margin-bottom: 12px;
+}
+
+.ContestWork__profile_controls {
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.ContestWork__profile_controls img {
+  width: 32px;
 }
 
 .ContestWork__footer {
@@ -445,6 +510,31 @@ a.underline {
   position: relative;
 }
 
+.ContestWork__img_wrap {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.ContestWork__complaint {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  border-radius: 12px;
+  background-color: #1a1a1a;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+.ContestWork__complaint span {
+  margin-bottom: -2px;
+}
+
+.ContestWork__complaint img {
+  width: 24px;
+}
+
 .ContestsItemPrize__title img {
   width: 17px;
   margin-bottom: -2px;
@@ -455,7 +545,12 @@ a.underline {
   width: 100%;
 }
 
+.ContestWork__profile_img {
+  user-select: none;
+}
+
 .numeration {
+  user-select: none;
   width: 30px;
   height: 30px;
   display: flex;
@@ -485,6 +580,7 @@ a.underline {
 }
 
 .promptCopy {
+  width: 100%;
   z-index: 3;
   margin: 20px;
   max-width: 400px;
@@ -496,7 +592,14 @@ a.underline {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+.promptCopy__title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .promptCopy__controls {
+  cursor: pointer;
+  margin-bottom: 20px;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;

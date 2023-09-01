@@ -8,10 +8,9 @@ import { Icon16MessageOutline } from "@vkontakte/icons";
 import wallPostBox from "components/App/features/wallPostBox";
 import storiesPostBox from "components/App/features/storiesPostBox";
 
-function ShareWorkAlert({ props }) {
-  console.log(props);
+function ShareWorkAlert(art) {
   const ref = useRef(null);
-  const { router, fetchShare } = useContext(MainContext);
+  const { router, fetchShare, sendImgToVK } = useContext(MainContext);
 
   useClickAway(
     ref,
@@ -22,11 +21,11 @@ function ShareWorkAlert({ props }) {
   );
 
   const handleShareWallPost = () => {
-    wallPostBox(props.img);
+    sendImgToVK({ art: art.art, type: "wall" });
   };
 
   const handleShareStoriesPost = () => {
-    storiesPostBox(props.img);
+    sendImgToVK({ art: art.art, type: "stories" });
   };
 
   return (
@@ -62,10 +61,10 @@ function ShareWorkAlert({ props }) {
             <img src={addToWall} />
             <span>На стену</span>
           </div>
-          {props?.inContest?.name && (
+          {art?.contest && (
             <div
               className="Notification__btn Notification__btn_sendMessage"
-              onClick={() => fetchShare(props.inContest ? props.inContest : "")}
+              onClick={() => fetchShare(art?.contest ?? "")}
             >
               <Icon16MessageOutline width={25} height={25} />
               <span>В сообщении</span>

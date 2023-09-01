@@ -1,38 +1,32 @@
 import React, { useState, useEffect } from "react";
 
-async function createPrompts(chosenStyles, currentModel, inputValue) {
+async function createPrompts(chosenStyles, vk_user_id, inputValue) {
   // Объявляем константы
-  const selectedValues = Object.values(chosenStyles);
   let totalPositiveText = [];
   let totalNegativeText = [];
-  const apiModels = {
-    Protogen: "protogen-3.4",
-    Counterfeit: "counterfeit-v30",
-    "Rev Anim": "rev-anim",
-  };
 
   const config = {
-    client_id: "mini-app",
-    engine_id: "stable-diffusion-xl-beta-v2-2-2",
-    height: 512,
-    width: 512,
     text_prompts: [
       {
         text: inputValue,
         weight: 1,
       },
+      {
+        text: "",
+        weight: -1,
+      },
     ],
+    style_preset: "",
     cfg_scale: 7,
-    clip_guidance_preset: "NONE",
-    sampler: "DDIM",
     samples: 1,
     seed: 0,
-    steps: 30,
+    vk_user_id: vk_user_id,
   };
+  totalPositiveText.push(inputValue);
 
   for (const [key, value] of Object.entries(chosenStyles)) {
     if (key === "genre") {
-      totalPositiveText.push(`${value[0].sub_title} of ${inputValue}`);
+      config.style_preset = value[0].sub_title;
     }
   }
 
@@ -63,33 +57,6 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
     }
   }
 
-  // Добавляем специальные тексты для модели anything-v3
-  // if (currentModel === "Counterfeit") {
-  //   const anythingNegative = [
-  //     "(((nsfw)))",
-  //     "((((((1girl))))))",
-  //     "(((nudity)))",
-  //     "((blurry))",
-  //     "(((lowres)))",
-  //     "(((noise)))",
-  //     "(((low quality)))",
-  //   ];
-  //   totalNegativeText = [...anythingNegative, ...totalNegativeText];
-  // }
-
-  // if (currentModel === "Rev Anim") {
-  //   const anythingNegative = [
-  //     "(((nsfw)))",
-  //     "((((((1girl))))))",
-  //     "(((nudity)))",
-  //     "((girl))",
-  //     "(((woman)))",
-  //     "(((erotic)))",
-  //     "(((sexy)))",
-  //   ];
-  //   totalNegativeText = [...anythingNegative, ...totalNegativeText];
-  // }
-
   for (const [key, value] of Object.entries(chosenStyles)) {
     if (key === "artist") {
       for (const item of value) {
@@ -118,19 +85,10 @@ async function createPrompts(chosenStyles, currentModel, inputValue) {
         return positiveItem.includes(item);
       })
   );
-
-  // const result = uniquePositiveText.map((element) => {
-  //   if (!element.includes("[[") && !element.includes("]]")) {
-  //     return `[[${element}]]`;
-  //   } else {
-  //     return element;
-  //   }
-  // });
-
   // Записываем тексты в конфигурационный объект
   config.text_prompts[0].text = uniquePositiveText.join(", ");
-  // config.negative_prompt = uniqueNegativeText2.join(", ");
-  console.log("Отправленный конфиг: ", config);
+  config.text_prompts[1].text = uniqueNegativeText2.join(", ");
+  config.text_prompts[1].weight = -1;
   return config;
 }
 

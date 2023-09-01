@@ -3,7 +3,6 @@ import { Panel } from "@vkontakte/vkui";
 import { MainContext } from "components/shared/providers";
 
 import ContestControls from "components/panels/Contest/components/ContestControls";
-import InquiryTextarea from "components/panels/StyleSelection/components/Inquiry/InquiryTextarea";
 import {
   MinusCircleOutlined,
   PlusOutlined,
@@ -11,8 +10,10 @@ import {
 } from "@ant-design/icons";
 import { DatePicker, Button, Form, Input, Space, Upload } from "antd";
 import TextArea from "antd/es/input/TextArea";
+
 function NewContest({ id }) {
-  const { router, userData, handleInitContests } = useContext(MainContext);
+  const { router, userData, handleInitContests, notify } =
+    useContext(MainContext);
   const [contestName, setContestName] = useState("");
   const [contestDesc, setContestDesc] = useState("");
   const [img, setImg] = useState();
@@ -61,9 +62,11 @@ function NewContest({ id }) {
     });
     router.toBack();
     if (response) {
+      notify({ text: "Конкурс создан", type: "standart" });
       handleInitContests();
     }
   };
+
   const dummyRequest = ({ file, onSuccess }) => {
     setTimeout(() => {
       onSuccess("ok");
@@ -122,7 +125,8 @@ function NewContest({ id }) {
               </div>
               <div className="addContest__item">
                 <div className="addContest__item_title">
-                  Задний фон конкурса (jpg, png):
+                  Задний фон конкурса (jpg, png)
+                  <br /> Рекомендованный размер: (512 x 512)px:
                 </div>
                 <Upload
                   listType="picture-card"
@@ -148,7 +152,7 @@ function NewContest({ id }) {
             </div>
             <div className="addContest__item">
               <div className="addContest__item_title">
-                Призы (jpg, png) Знак рубля - ₽:
+                Призы (jpg, png) <br /> Рекомендованный размер: (512 x 512)px:
               </div>
               <Form
                 name="dynamic_form_nest_item"
@@ -216,7 +220,7 @@ function NewContest({ id }) {
                           onClick={() => {
                             add();
                             let copy = [...prizes];
-                            copy.push({ name: "", img: "", winner: "" });
+                            copy.push({ name: "", img: "", winner: {} });
                             setPrizes(copy);
                           }}
                           block

@@ -7,6 +7,12 @@ function ContestsControls({ router, userData }) {
 
       <div className="styleSelection__header_rightSide">
         <div
+          className="transparentBlock_blur"
+          onClick={() => router.toPanel("newContest")}
+        >
+          +
+        </div>
+        <div
           className="styleSelection__rating smallBtn-text"
           onClick={() => router.toView("Rating")}
         >

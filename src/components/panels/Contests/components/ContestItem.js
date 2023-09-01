@@ -3,22 +3,8 @@ import ContestPrizes from "components/panels/Contest/components/ContestPrizes";
 import { MainContext, PopoutContext } from "components/shared/providers";
 
 function ContestItem({ data }) {
-  const { router, setActiveContest, updateContestTime } =
-    useContext(MainContext);
+  const { router, setActiveContest } = useContext(MainContext);
   const { handleInfoPopout } = useContext(PopoutContext);
-  const [time, setTime] = useState("");
-
-  useEffect(() => {
-    setTime(updateContestTime(+data[data.type + "Date"]));
-
-    const intervalId = setInterval(() => {
-      setTime(updateContestTime(+data[data.type + "Date"]));
-    }, 1000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
 
   const handleEventInfoPopout = (event) => {
     handleInfoPopout();
@@ -52,7 +38,7 @@ function ContestItem({ data }) {
         <div className="ContestsItem__body">
           <div className="ContestsItem__title title_h3-24px">{data.name}</div>
           <div className="ContestsItem__desc text_gray">{data.desc}</div>
-          <ContestPrizes activeContest={data} time={time} router={router} />
+          <ContestPrizes activeContest={data} />
         </div>
       </div>
     </div>

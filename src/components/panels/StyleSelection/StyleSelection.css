@@ -8,6 +8,38 @@
   height: 100vh;
 }
 
+textarea.inquiry__input {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: #2f2f2f;
+  outline: none;
+  border: 0;
+  color: #ffffff;
+  font-weight: 500;
+  font-family: MacPaw Fixel;
+  font-size: 17px;
+  max-height: none !important;
+  min-height: auto !important;
+  /* overflow: hidden !important; */
+  line-height: normal;
+}
+
+.inquiry__input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #757575;
+  opacity: 1; /* Firefox */
+}
+
+.inquiry__input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #757575;
+}
+
+.inquiry__input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #757575;
+}
+
 .styleSelection::-webkit-scrollbar {
   width: 5px;
   background-color: #000000;
@@ -397,7 +429,6 @@ canvas {
   align-items: center;
   max-height: 48px;
 }
-
 @media screen and (max-width: 610px) {
   .vkuiHorizontalScrollArrow--direction-left {
     padding-left: 0;

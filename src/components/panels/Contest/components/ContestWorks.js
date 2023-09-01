@@ -5,6 +5,7 @@ import { MainContext } from "components/shared/providers";
 
 function ContestWorks({ currentFilter }) {
   const { activeContest, fetchedUser } = useContext(MainContext);
+
   return (
     <div className="ContestWorks">
       <div className="ContestWorks__title title_h3-24px">
@@ -12,11 +13,13 @@ function ContestWorks({ currentFilter }) {
           <>
             <span className="title_h3-24px">Работы</span>
             <span className="ContestWorks__count title_h3-24px">
-              {activeContest?.works?.length}
+              {currentFilter != "My"
+                ? activeContest?.worksCount
+                : activeContest?.myWorksCount}
             </span>
           </>
         ) : (
-          <span className="title_h3-24px">Топ 100</span>
+          <span className="title_h3-24px">Топ 10</span>
         )}
       </div>
       <div className="ContestWorks__body">
@@ -32,13 +35,18 @@ function ContestWorks({ currentFilter }) {
             );
           }
         })}
-        {activeContest?.works?.filter(
-          (data) => currentFilter !== "My" || data.vk_user_id == fetchedUser.id
-        ).length < 1 && (
+        {activeContest?.myWorksCount < 1 && currentFilter == "My" ? (
           <div className="ProfileArts__item_empty ProfileArts__item">
             <img src={profile__emptyImg} />
             Вы ещё не отправляли <br /> арты на конкурс
           </div>
+        ) : (
+          activeContest?.worksCount < 1 && (
+            <div className="ProfileArts__item_empty ProfileArts__item">
+              <img src={profile__emptyImg} />
+              В конкурсе еще никто не учавствовал <br /> стань первым
+            </div>
+          )
         )}
       </div>
     </div>

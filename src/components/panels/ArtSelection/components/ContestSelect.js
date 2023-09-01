@@ -1,13 +1,20 @@
 import React, { useContext, useRef } from "react";
 import { useClickAway } from "react-use";
 
-import { MainContext } from "components/shared/providers/";
-import checkMark from "assets/img/payEnergy__benefitsImg.svg";
+import { MainContext, PopoutContext } from "components/shared/providers/";
 
-function ContestSelect({ accept, img }) {
+function ContestSelect({ art_id }) {
   const ref = useRef(null);
-  const { router, contests, setActiveContest, addArtToContest } =
-    useContext(MainContext);
+  const {
+    router,
+    contests,
+    handleGetArts,
+    addArtToContest,
+    handleGetContestArts,
+    setActiveContest,
+  } = useContext(MainContext);
+
+  const { notify } = useContext(PopoutContext);
 
   useClickAway(
     ref,
@@ -16,55 +23,59 @@ function ContestSelect({ accept, img }) {
     },
     ["mousedown"]
   );
-
+  console.log();
   return (
     <div className={`ContestSelect ${"open"}`} ref={ref}>
       <div
         className="ContestSelect__header"
         onClick={() => router.toBack()}
       ></div>
-      <div className="ContestSelect__title title_h3-24px">
-        {accept == true ? "Арт выставлен на конкурс" : "Выберите конкурс"}
-      </div>
       <div className="ContestSelect__items">
-        {accept == true ? (
-          <div className="WalletConnect__accepted">
-            <img src={checkMark} />
-          </div>
-        ) : (
-          contests?.map((item, index) => {
-            if (item.type == "workAcceptance") {
-              console.log(item);
-              return (
+        {contests?.map((item, index) => {
+          if (item.type == "workAcceptance") {
+            return (
+              <div
+                key={index}
+                className="ContestSelectItem"
+                style={{
+                  background: `no-repeat center/cover url(${item.img})`,
+                }}
+              >
+                <div className="ContestSelectItem__title title_h3-24px">
+                  {item.name}
+                </div>
+                <div className="ContestSelectItem__text text_gray">
+                  {item.desc}
+                </div>
                 <div
-                  key={index}
-                  className="ContestSelectItem"
-                  style={{
-                    background: `no-repeat center/cover url(${item.img})`,
-                  }}
-                >
-                  <div className="ContestSelectItem__title title_h3-24px">
-                    {item.name}
-                  </div>
-                  <div className="ContestSelectItem__text text_gray">
-                    {item.desc}
-                  </div>
-                  <div
-                    className="ContestSelectItem__btn btn"
-                    onClick={() => {
-                      addArtToContest(item.id, img.art_id);
+                  className="ContestSelectItem__btn btn"
+                  onClick={() => {
+                    addArtToContest(item.id, art_id).then(() => {
+                      router.toBack();
                       router.toBack();
                       router.toView("contests");
                       router.toPanel("contest");
-                      setActiveContest({ ...item, from: "artGenerate" });
-                    }}
-                  >
-                    Отправить на конкурс
-                  </div>
+                      setActiveContest(item);
+                      handleGetArts();
+                      handleGetContestArts(null, item.id);
+                    });
+                  }}
+                >
+                  Отправить на конкурс
                 </div>
-              );
-            }
-          })
+              </div>
+            );
+          }
+        })}
+        {!contests.find((item) => item.type == "workAcceptance") && (
+          <div className="ContestSelectItem">
+            <div className="ContestSelectItem__title title_h3-24px">
+              Пустовато
+            </div>
+            <div className="ContestSelectItem__text text_gray">
+              Скоро будут новые конкурсы
+            </div>
+          </div>
         )}
       </div>
     </div>

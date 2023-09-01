@@ -11,6 +11,7 @@ import "@vkontakte/vkui/dist/vkui.css";
 
 import {
   MainContextProvider,
+  PopoutContext,
   PopoutContextProvider,
 } from "components/shared/providers";
 
@@ -22,6 +23,7 @@ import MainTabbar from "components/common/MainTabbar";
 import PayEnergy from "components/panels/PayEnergy/";
 import Rating from "components/panels/Rating/";
 import ArtVoted from "components/panels/ArtVoted/ArtVoted";
+import Snackbar from "./Snackbar";
 
 const App = (props) => {
   return (
@@ -29,6 +31,7 @@ const App = (props) => {
       <PopoutContextProvider router={props.router}>
         <ConfigProvider isWebView>
           <SplitLayout popout={props.router.popout}>
+            <Snackbar />
             <SplitCol>
               <AppRoot scroll="contain">
                 <Epic

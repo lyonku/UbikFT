@@ -8,7 +8,9 @@ import search from "assets/img/search.svg";
 import LikeSvg from "components/common/svgs/LikeSvg";
 
 const ArtVoted = () => {
-  const { router } = useContext(MainContext);
+  const { router, artVoted } = useContext(MainContext);
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <div className="ArtVoted">
       <div className="gradient-round"></div>
@@ -28,26 +30,42 @@ const ArtVoted = () => {
           <div className="ArtVoted__input_img">
             <img src={search} />
           </div>
-          <input type="text" placeholder="Поиск участника" />
+          <input
+            type="text"
+            placeholder="Поиск участника"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
         <div className="ArtVoted__profilesList">
-          {personalData.map((person, index) => {
-            return (
-              <div className="ArtVotedProfile">
-                <img
-                  className="ArtVotedProfile__img"
-                  src={person.img ?? avatar}
-                />
-                <div className="ArtVotedProfile__name">{person.name}</div>
-                <div className="ArtVotedProfile__ArtVoted">
-                  <LikeSvg width={"32px"} height={"32px"} full="true" />
-                  <div className="ArtVotedProfile__ArtVotedCount">
-                    {person.rating}
+          {artVoted?.personLikes
+            ?.filter((person) =>
+              // Фильтруем профили по имени и фамилии на основе строки поиска (без учета регистра)
+              (person.name + " " + person.surname)
+                .toLowerCase()
+                .includes(searchQuery.toLowerCase())
+            )
+            .map((person, index) => {
+              return (
+                <a
+                  className="ArtVotedProfile"
+                  key={index}
+                  href={`https://vk.com/id${person.vk_user_id}`}
+                  target="_blank"
+                >
+                  <img className="ArtVotedProfile__img" src={person.photo} />
+                  <div className="ArtVotedProfile__name">
+                    {person.name + " " + person.surname}
                   </div>
-                </div>
-              </div>
-            );
-          })}
+                  <div className="ArtVotedProfile__ArtVoted">
+                    <LikeSvg width={"32px"} height={"32px"} full="true" />
+                    <div className="ArtVotedProfile__ArtVotedCount">
+                      {person.postedLike}
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
         </div>
       </div>
     </div>

@@ -20,11 +20,12 @@ const Profile = ({ id }) => {
   ];
 
   useInfiniteScroll({
-    сurrentPage: 1,
+    сurrentPage: artsData.currentPage,
     func: handleGetArts,
     maxPages: artsData.maxPages,
     className: ".Profile",
   });
+  const isContest = artsData?.imgs?.find((item) => item.contest !== "");
 
   return (
     <View id={id} activePanel={router.activePanel}>
@@ -35,9 +36,7 @@ const Profile = ({ id }) => {
             <ProfileControls userData={userData} router={router} />
             <div className="Profile__body">
               <div className="Profile__title">
-                <div className="Profile__avatar ">
-                  <img src={fetchedUser?.photo_100} />
-                </div>
+                <img src={fetchedUser?.photo_100} className="Profile__avatar" />
                 <div className="Profile__info ">
                   <div className="Profile__name">
                     {fetchedUser?.first_name + " " + fetchedUser?.last_name}
@@ -67,10 +66,14 @@ const Profile = ({ id }) => {
                     стене.
                   </div>
                 )}
-                {!artsData.imgs || artsData.imgs?.length < 1 ? (
+                {!artsData.imgs ||
+                artsData.imgs?.length < 1 ||
+                (currentFilter == "Contest" && !isContest) ? (
                   <div className="ProfileArts__item_empty ProfileArts__item">
                     <img src={profile__emptyImg} />
-                    Тут будут ваши арты
+                    {currentFilter != "Contest"
+                      ? "Тут будут ваши арты"
+                      : "Вы еще не отправляли работы на конкурс"}
                   </div>
                 ) : (
                   <div className="ProfileArts__items">
