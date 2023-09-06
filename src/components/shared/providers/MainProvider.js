@@ -1,8 +1,7 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, createRef, useRef } from "react";
 import bridge from "@vkontakte/vk-bridge";
 import moment from "moment";
 import createPrompts from "components/App/features/createPrompts";
-import data from "components/panels/Contests/data.json";
 import plural from "plural-ru";
 import Notify from "components/common/Notify";
 
@@ -15,7 +14,7 @@ export const MainContextProvider = ({ children, router }) => {
   const [inputValueNegative, setInputValueNegative] = useState("");
   const [inputValueSeed, setInputValueSeed] = useState("");
   const [chosenStyles, setChosenStyles] = useState({});
-  const [currentImg, setCurrentImg] = useState({ img: "", seed: "" });
+  const [currentImg, setCurrentImg] = useState();
   const [error, setError] = useState();
   const [fetchedUser, setUser] = useState(null);
   const [activeContest, setActiveContest] = useState({});
@@ -32,9 +31,14 @@ export const MainContextProvider = ({ children, router }) => {
   const [updateContest, setUpdateContest] = useState(false);
 
   const [snackbar, setSnackbar] = useState(null);
+  const [serverCrash, setServerCrash] = useState(false);
+
+  const [generation, setGeneration] = useState(false);
+  const [shareArtLoading, setShareArtLoading] = useState(false);
 
   let param = window.location.href;
   let totalParam = param.slice(param.indexOf("vk_access"));
+  const artRef = useRef(null);
 
   const inquiryMass = [
     {
@@ -103,7 +107,9 @@ export const MainContextProvider = ({ children, router }) => {
     setError(false);
     router.toPanel("loading");
     let config = {};
-    setCurrentImg("");
+    if (!generation) {
+      setCurrentImg("");
+    }
 
     if (modePro) {
       config = {
@@ -137,9 +143,14 @@ export const MainContextProvider = ({ children, router }) => {
       config = result;
     }
 
-    const data = await generateArt(config);
-    if (data?.arts) {
-      setCurrentImg(data.arts);
+    if (!generation) {
+      const data = await generateArt(config);
+
+      if (data?.arts) {
+        setCurrentImg(data.arts);
+      }
+    } else {
+      notify({ text: "Генерация уже идёт!", type: "error" });
     }
     return;
   };
@@ -170,11 +181,13 @@ export const MainContextProvider = ({ children, router }) => {
   // Function for generating images
   async function generateArt(data = {}) {
     try {
+      setGeneration(true);
       const response = await fetch(`https://ubiq.top/generate?${totalParam}`, {
         method: "POST",
         body: JSON.stringify(data),
       });
       const imgData = await response.json();
+      setGeneration(false);
 
       if (imgData.arts) {
         handleGetArts();
@@ -198,10 +211,10 @@ export const MainContextProvider = ({ children, router }) => {
 
   // Generate art end
 
-  async function fetchShare(data) {
+  async function fetchShare(contest_id, art_id) {
     await bridge
       .send("VKWebAppShare", {
-        link: "https://vk.com/app51573768#contests/contest/" + data?.id,
+        link: `https://vk.com/app51573768#contests/contest/${contest_id}/${art_id}`,
       })
       .then((data) => {
         if (data.result) {
@@ -213,26 +226,67 @@ export const MainContextProvider = ({ children, router }) => {
         console.log(error);
       });
   }
+  const scrollToMyRef = () => {
+    const element = artRef.current;
+
+    // Проверьте, что элемент существует
+    if (element) {
+      // Вызовите метод scrollIntoView() на элементе с параметром block: 'start'
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
 
   useEffect(() => {
-    async function fetchParams() {
-      const params = await bridge.send("VKWebAppGetLaunchParams");
+    if (contests.length >= 1) {
       if (window.location.hash) {
         if (window.location.hash.includes("contests/contest")) {
           let mass = window.location.hash.split("/");
-          for (const item of data) {
-            if (item.id == mass[2]) {
-              setActiveContest(item);
+
+          if (activeContest.works) {
+            let page = Math.floor(
+              Math.round(activeContest.currentPosition) / 10
+            );
+
+            async function getPagesToArt() {
+              for (let i = 1; i < page + 1; i++) {
+                const res = await handleGetContestArts(
+                  i,
+                  activeContest.idContest
+                );
+              }
+              scrollToMyRef();
+
+              var currentURL = window.location.href;
+              var parts = currentURL.split("#");
+              var newURL = parts[0];
+              console.log(newURL);
+              window.history.replaceState({}, document.title, newURL);
             }
+            getPagesToArt();
+            // const result = await getPagesToArt()
+            // for (const item of activeContest.works) {
+            //   if (item.art.art_id != mass.at(-1)) {
+            //     scrollToMyRef();
+            //   } else {
+            //     console.log();
+
+            //     handleGetContestArts()
+            //   }
+            // }
+          } else {
+            for (const item of contests) {
+              if (item.id == mass[2]) {
+                setActiveContest(item);
+              }
+            }
+            router.toView("contests");
+            router.toPanel("contest");
           }
-          router.toHash("contests/contest");
           return;
         }
-        router.toHash(window.location.hash.slice(1));
       }
     }
-    fetchParams();
-  }, []);
+  }, [contests, activeContest]);
 
   const handleInitUser = async () => {
     try {
@@ -241,8 +295,14 @@ export const MainContextProvider = ({ children, router }) => {
       });
 
       const responseData = await response.json();
-      setUserData(responseData);
+
+      if (responseData.isOk || responseData.vk_user_id) {
+        setUserData(responseData);
+      } else {
+        throw new Error(responseData.message);
+      }
     } catch (error) {
+      setServerCrash(true);
       notify({ text: "Ошибка при инициализации пользователя", type: "error" });
     }
   };
@@ -301,6 +361,7 @@ export const MainContextProvider = ({ children, router }) => {
       }
       setContests(responseData);
     } catch (error) {
+      setServerCrash(true);
       notify({ text: "Ошибка при инициализации конкурсов", type: "error" });
     }
   };
@@ -358,45 +419,47 @@ export const MainContextProvider = ({ children, router }) => {
     }
   };
 
-  const handleGetContestArts = async (page, contestId) => {
-    try {
-      const data = {
-        idContest: activeContest.id ?? contestId,
-        currentPage: page ? page + 1 : 1,
-        vk_user_id: fetchedUser.id,
-      };
+  const handleGetContestArts = async (page, contest_id, contest, art_id) => {
+    // try {
+    const data = {
+      idContest: activeContest.id ?? contest_id,
+      currentPage: page ? page + 1 : 1,
+      vk_user_id: fetchedUser.id,
+      art_id: art_id ?? "",
+    };
 
-      const response = await fetch(
-        `https://ubiq.top/getContestWorks?${totalParam}`,
-        {
-          method: "POST",
-          body: JSON.stringify(data),
-        }
-      );
-
-      const responseData = await response.json();
-      if (responseData !== null) {
-        const copy = Object.assign({}, activeContest);
-
-        if (page) {
-          copy.works = [...copy.works].concat(responseData.works);
-        } else {
-          copy.works = responseData.works;
-        }
-        copy.currentPage = responseData.currentPage;
-        copy.worksCount = responseData.worksCount;
-        copy.myWorksCount = responseData.myWorksCount;
-        copy.maxPages = responseData.maxPages;
-
-        setActiveContest(copy);
+    const response = await fetch(
+      `https://ubiq.top/getContestWorks?${totalParam}`,
+      {
+        method: "POST",
+        body: JSON.stringify(data),
       }
-      return responseData;
-    } catch (error) {
-      notify({
-        text: "Ошибка при получении конкурсных работ",
-        type: "error",
-      });
+    );
+
+    const responseData = await response.json();
+
+    if (responseData !== null) {
+      const copy = Object.assign({}, contest ?? activeContest);
+      if (page) {
+        copy.works = [...copy.works].concat(responseData.works);
+      } else {
+        copy.works = responseData.works;
+      }
+      copy.currentPage = responseData.currentPage;
+      copy.worksCount = responseData.worksCount;
+      copy.myWorksCount = responseData.myWorksCount;
+      copy.maxPages = responseData.maxPages;
+      copy.currentPosition = responseData.currentPosition;
+
+      setActiveContest(copy);
     }
+    return responseData;
+    // } catch (error) {
+    //   notify({
+    //     text: "Ошибка при получении конкурсных работ",
+    //     type: "error",
+    //   });
+    // }
   };
 
   const addArtToContest = async (contestID, artID) => {
@@ -415,9 +478,20 @@ export const MainContextProvider = ({ children, router }) => {
         }
       );
       const responseData = await response.json();
-
+      if (currentImg) {
+        let copy = [...currentImg];
+        for (const item of copy) {
+          if (item.art_id == artID) {
+            item.imagesLink = item.imagesLink.replace(
+              fetchedUser.id,
+              contestID
+            );
+            item.imagesLink = item.imagesLink.replace("images", "contests");
+          }
+        }
+        setCurrentImg(copy);
+      }
       notify({ text: "Арт добавлен", type: "standart" });
-
       return responseData;
     } catch (error) {
       notify({
@@ -458,6 +532,48 @@ export const MainContextProvider = ({ children, router }) => {
     }
   };
 
+  const deleteContestArt = async ({ contest_id, user_id, art_id }) => {
+    try {
+      const data = {
+        idContest: contest_id,
+        vk_user_id: user_id,
+        art_id: art_id,
+      };
+
+      const response = await fetch(
+        `https://ubiq.top/deleteContestArt?${totalParam}`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+        }
+      );
+
+      const responseData = await response.json();
+      if (responseData == "Success!") {
+        handleGetContestArts(0, contest_id);
+        notify({ text: "Арт удалён", type: "standart" });
+      } else {
+        throw new Error(responseData);
+      }
+      return responseData;
+    } catch (error) {
+      notify({
+        text: error.message ?? "Ошибка при удалении арта",
+        type: "error",
+      });
+    }
+  };
+
+  const downloadArt = async (url, name) => {
+    let totalName = name.length > 60 ? name.slice(0, 60) : name;
+    const link = document.createElement("a");
+
+    link.href = `https://ubiq.top/download?url=${url}&name=${totalName}`;
+    link.target = "_self";
+    link.download = totalName;
+    link.click();
+  };
+
   const sendArtComplaint = async ({ art_id, contest_id, text, user_id }) => {
     try {
       const data = {
@@ -487,7 +603,7 @@ export const MainContextProvider = ({ children, router }) => {
   const approveContest = async (idContest) => {
     try {
       const response = await fetch(
-        `https://ubiq.top/completeContest?${totalParam}&idContest=${idContest}`,
+        `https://ubiq.top/completeContest?idContest=${idContest}&${totalParam}`,
         {
           method: "GET",
         }
@@ -497,6 +613,8 @@ export const MainContextProvider = ({ children, router }) => {
 
       if (responseData === "Success!") {
         notify({ text: "Конкурс завершён", type: "standart" });
+        handleInitContests();
+        exitPage("contest");
       } else {
         throw new Error(responseData);
       }
@@ -646,6 +764,7 @@ export const MainContextProvider = ({ children, router }) => {
   };
 
   const sendImgToVK = async ({ art, type }) => {
+    setShareArtLoading(true);
     const access_token = await getAccesToken();
     const upload_url = await getUploadUrl(access_token);
 
@@ -667,6 +786,7 @@ export const MainContextProvider = ({ children, router }) => {
       fetchedUser.id,
       serverSaveData
     );
+    setShareArtLoading(false);
 
     if (type == "wall") {
       wallPostBox(fetchedUser.id, saved_photo.id);
@@ -710,7 +830,7 @@ export const MainContextProvider = ({ children, router }) => {
 
     if (targetDate <= currentDate) {
       setUpdateContest(true);
-      return;
+      return "";
     } else {
       setUpdateContest(false);
     }
@@ -727,6 +847,16 @@ export const MainContextProvider = ({ children, router }) => {
     return timeString;
   };
 
+  function exitPage(pageId) {
+    for (let i = router.arrPanelsView.length - 1; i >= 0; i--) {
+      if (router.arrPanelsView[i].id === pageId) {
+        router.toBack();
+      } else {
+        break;
+      }
+    }
+  }
+
   return (
     <MainContext.Provider
       value={{
@@ -735,6 +865,7 @@ export const MainContextProvider = ({ children, router }) => {
         handleInitUser,
         currentModel,
         setCurrentModel,
+        artRef,
         inputValue,
         setInputValue,
         inquiryMass,
@@ -767,6 +898,7 @@ export const MainContextProvider = ({ children, router }) => {
         fetchShare,
         contests,
         handleInitContests,
+        exitPage,
         addArtToContest,
         handleGetContestArts,
         addLike,
@@ -783,6 +915,11 @@ export const MainContextProvider = ({ children, router }) => {
         buySubscribe,
         payment,
         approveContest,
+        deleteContestArt,
+        downloadArt,
+        serverCrash,
+        generation,
+        shareArtLoading,
       }}
     >
       {children}

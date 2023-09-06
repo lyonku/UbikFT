@@ -53,10 +53,16 @@ function ContestPrizes({ activeContest }) {
                 </div>
                 <img src={item.img} className="ContestPrize__img" />
                 <div className="ContestPrize__text">
-                  {item.winner.vk_user_id && (
-                    <div className="ContestPrize__profileName">
+                  {item.winner.vk_user_id ? (
+                    <div
+                      className={`ContestPrize__profileName ${
+                        index == 0 && "first"
+                      }`}
+                    >
                       {item.winner?.name + " " + item.winner?.name}
                     </div>
+                  ) : (
+                    ""
                   )}
                   <div className="ContestPrize__prizeName">{item.name}</div>
                 </div>

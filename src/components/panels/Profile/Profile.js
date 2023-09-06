@@ -88,6 +88,7 @@ const Profile = ({ id }) => {
             </div>
           </div>
         </div>
+        <div className={`overlay ${router.popout && "open"}`}></div>
       </Panel>
     </View>
   );

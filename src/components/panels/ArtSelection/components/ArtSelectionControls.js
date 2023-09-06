@@ -4,8 +4,13 @@ import HeartSvg from "components/common/svgs/heartSvg";
 import EnergySvg from "components/common/svgs/energySvg";
 import EditSvg from "components/common/svgs/editSvg";
 import RefreshBtn from "components/common/svgs/refreshSvg";
+import { MainContext, PopoutContext } from "components/shared/providers";
+import { useContext } from "react";
 
-function ArtSelectionControls({ router, handleSetArtCountPopout, userData }) {
+function ArtSelectionControls() {
+  const { router, userData, exitPage } = useContext(MainContext);
+  const { handleSetArtCountPopout } = useContext(PopoutContext);
+
   return (
     <div className="ArtSelection__controls">
       <div className="styleSelection__header_rightSide">
@@ -27,7 +32,7 @@ function ArtSelectionControls({ router, handleSetArtCountPopout, userData }) {
       <div className="ArtSelection__firstControls">
         <div
           className="ArtSelection__edit smallBtn-text"
-          onClick={() => router.toBack()}
+          onClick={() => exitPage("artSelection")}
         >
           <EditSvg color="#b2e723" />
         </div>

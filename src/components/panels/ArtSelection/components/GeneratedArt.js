@@ -4,15 +4,22 @@ import ShareSvg from "components/common/svgs/shareSvg";
 import { MainContext, PopoutContext } from "components/shared/providers";
 import { Carousel } from "antd";
 import { Icon12Chevron } from "@vkontakte/icons";
+
 const GeneratedArt = () => {
-  const { setCurrentImg, currentImg } = useContext(MainContext);
+  const { setCurrentImg, currentImg, notify } = useContext(MainContext);
   const { handleContestSelectPopout, handleShowSharePopout } =
     useContext(PopoutContext);
   const ref = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [artInContest, setArtInContest] = useState(false);
 
   const onChange = (currentSlide) => {
     setCurrentSlide(currentSlide);
+    if (currentImg[currentSlide].imagesLink.includes("contests")) {
+      setArtInContest(true);
+    } else {
+      setArtInContest(false);
+    }
   };
 
   return (
@@ -76,11 +83,18 @@ const GeneratedArt = () => {
       <div className="ArtSelection__glow"></div>
       <div className="ArtSelection__btns">
         <div
-          className="ArtSelection__nftBtn btn"
+          className={`ArtSelection__nftBtn btn ${artInContest && "disable"}`}
           onClick={() => {
-            handleContestSelectPopout({
-              art_id: currentImg[currentSlide].art_id,
-            });
+            if (!artInContest) {
+              handleContestSelectPopout({
+                art_id: currentImg[currentSlide].art_id,
+              });
+            } else {
+              notify({
+                text: "Арт уже добавлен на конкурс",
+                type: "error",
+              });
+            }
           }}
         >
           Отправить на конкурс

@@ -19,7 +19,7 @@ function ContestWorks({ currentFilter }) {
             </span>
           </>
         ) : (
-          <span className="title_h3-24px">Топ 10</span>
+          <span className="title_h3-24px">Победители:</span>
         )}
       </div>
       <div className="ContestWorks__body">

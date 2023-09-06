@@ -8,12 +8,20 @@ function StylesItem({ style, category, setChosenStyles, chosenStyles }) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
+    let isMounted = true;
+
     const img = new Image();
     img.onload = () => {
-      setImageLoaded(true);
+      if (isMounted) {
+        setImageLoaded(true);
+      }
     };
     img.src = style.url;
-  }, []);
+
+    return () => {
+      isMounted = false;
+    };
+  }, [style.url]);
 
   // Function to select only one genre
   useEffect(() => {

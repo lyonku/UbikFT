@@ -6,14 +6,15 @@ import { MainContext } from "components/shared/providers";
 import { useContext } from "react";
 
 function ContestControls() {
-  const { router, userData, activeContest, approveContest } =
+  const { router, userData, activeContest, approveContest, exitPage } =
     useContext(MainContext);
+
   return (
     <div className="Contest__controls Header__controls">
       <div
         className="inquiry__controls_closeBtn roundBtn_blur"
         onClick={() => {
-          router.toBack();
+          exitPage("contest");
         }}
       >
         <img src={backBtn} />

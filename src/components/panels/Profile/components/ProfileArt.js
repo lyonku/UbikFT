@@ -3,6 +3,7 @@ import profile__delete from "assets/img/profile__delete.svg";
 import ShareSvg from "components/common/svgs/shareSvg";
 
 import { MainContext, PopoutContext } from "components/shared/providers";
+import ArtControls from "components/common/ArtControls";
 
 function ProfileArt({ item }) {
   const { router, deleteArt } = useContext(MainContext);
@@ -28,9 +29,10 @@ function ProfileArt({ item }) {
             className="Gallery__controls transparentBlock"
             onClick={() => handleContestSelectPopout({ art_id: item.art_id })}
           >
-            На конкурс
+            Отправить на конкурс
           </div>
         )}
+        <ArtControls art={item} isDownload={true} />
       </div>
 
       <div className="Prompt__contols">

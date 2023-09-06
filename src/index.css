@@ -205,6 +205,29 @@ body {
   background-color: #00000000;
 }
 
+.ServerCrash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #131313b6;
+  opacity: 0;
+  backdrop-filter: blur(8px);
+}
+
+.ServerCrash.active {
+  z-index: 99;
+  opacity: 1;
+}
+
+.ServerCrash__title {
+  font-weight: 700;
+  text-align: center;
+  font-size: 32px;
+}
+
 /* OLD -> */
 
 .title {
@@ -470,7 +493,19 @@ div.Notification__btn span {
 
 .Notification__btn_sendMessage {
   width: 100%;
-  background: #b0e822;
+  background: #9aca1e;
+}
+
+.Notification__btn_addHistory:hover {
+  background: #8524b3;
+}
+
+.Notification__btn_sendMessage:hover {
+  background: #79a018;
+}
+
+.Notification__btn_addWall:hover {
+  background: #2b61ce;
 }
 
 .Tabbar {
@@ -507,6 +542,11 @@ div.Notification__btn span {
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   border-radius: 12px;
+}
+
+.Notification__spinner {
+  width: auto;
+  margin-top: -2px;
 }
 
 /* Изменить !! */
@@ -907,7 +947,7 @@ div.PayConfirm__title {
   position: relative;
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 460px) {
   div.Notification__btn {
     width: 100%;
   }

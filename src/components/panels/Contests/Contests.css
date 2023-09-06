@@ -146,8 +146,10 @@ a.underline:hover {
 }
 
 .ContestsItem__rules {
-  color: #b0e822;
+  color: #ffffff;
+  font-weight: 500;
 }
+
 .ContestsItem__rules:hover {
   background: rgba(255, 255, 255, 0.205);
 }

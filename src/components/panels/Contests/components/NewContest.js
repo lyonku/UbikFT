@@ -21,6 +21,9 @@ function NewContest({ id }) {
   const [workAcceptanceDate, setWorkAcceptanceDate] = useState();
   const [voteDate, setVoteDate] = useState();
 
+  let param = window.location.href;
+  let totalParam = param.slice(param.indexOf("vk_access"));
+
   const onChoseFileHandler = (e, callback) => {
     const file = e.file.originFileObj;
     const reader = new FileReader();
@@ -56,7 +59,7 @@ function NewContest({ id }) {
       prizes: prizes,
     };
 
-    const response = await fetch("https://ubiq.top/addContest", {
+    const response = await fetch(`https://ubiq.top/addContest?${totalParam}`, {
       method: "POST",
       body: JSON.stringify(data),
     });

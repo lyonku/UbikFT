@@ -107,6 +107,10 @@ div.ArtSelection__title {
 }
 
 .ArtSelection__img {
+  border-radius: 24px;
+  background: #101010;
+  width: 100%;
+  aspect-ratio: 1/1;
   position: relative;
 }
 
@@ -489,7 +493,16 @@ div.ContestSelect__title {
 }
 
 .ArtSelection__nftBtn {
+  transition: 0.2s all;
   max-width: 250px;
+}
+
+.ArtSelection__nftBtn.disable {
+  cursor: default;
+  opacity: 0;
+}
+
+.ArtSelection__nftBtn.disable:hover {
 }
 
 @media screen and (max-width: 580px) and (max-height: 850px) {

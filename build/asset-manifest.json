@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.14a56faa.css",
-    "main.js": "/static/js/main.d16ae00f.js",
+    "main.css": "/static/css/main.20a77e9f.css",
+    "main.js": "/static/js/main.e4b15d07.js",
     "static/media/loading__background.png": "/static/media/loading__background.8db84f724ce51633a0dd.png",
     "static/media/payEnergy__background.png": "/static/media/payEnergy__background.47326c0d69d909a6cecb.png",
     "static/media/MacPawFixelText-Regular.otf": "/static/media/MacPawFixelText-Regular.75d44f06aa78a75b45a2.otf",
@@ -21,11 +21,11 @@
     "static/media/search.svg": "/static/media/search.b51b1449979e3b8e9b1e0a21ad7718af.svg",
     "static/media/download.svg": "/static/media/download.e6950a3253a93f4c19c5f8df661f0792.svg",
     "static/media/addToWall.svg": "/static/media/addToWall.90f6d605243e9961da8297afc39653a2.svg",
-    "main.14a56faa.css.map": "/static/css/main.14a56faa.css.map",
-    "main.d16ae00f.js.map": "/static/js/main.d16ae00f.js.map"
+    "main.20a77e9f.css.map": "/static/css/main.20a77e9f.css.map",
+    "main.e4b15d07.js.map": "/static/js/main.e4b15d07.js.map"
   },
   "entrypoints": [
-    "static/css/main.14a56faa.css",
-    "static/js/main.d16ae00f.js"
+    "static/css/main.20a77e9f.css",
+    "static/js/main.e4b15d07.js"
   ]
 }

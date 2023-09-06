@@ -1,16 +1,17 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useClickAway } from "react-use";
 import closeBtn from "assets/img/close-btn.svg";
 import addToHistory from "assets/img/addToHistory.svg";
 import addToWall from "assets/img/addToWall.svg";
 import { MainContext } from "components/shared/providers";
 import { Icon16MessageOutline } from "@vkontakte/icons";
-import wallPostBox from "components/App/features/wallPostBox";
-import storiesPostBox from "components/App/features/storiesPostBox";
+import { Spinner } from "@vkontakte/vkui";
 
-function ShareWorkAlert(art) {
+function ShareWorkAlert({ art }) {
   const ref = useRef(null);
-  const { router, fetchShare, sendImgToVK } = useContext(MainContext);
+  const { router, fetchShare, sendImgToVK, shareArtLoading } =
+    useContext(MainContext);
+  const [typeOfShare, setTypeOfShare] = useState("");
 
   useClickAway(
     ref,
@@ -21,11 +22,23 @@ function ShareWorkAlert(art) {
   );
 
   const handleShareWallPost = () => {
-    sendImgToVK({ art: art.art, type: "wall" });
+    if (!shareArtLoading) {
+      setTypeOfShare("wall");
+      sendImgToVK({ art: art, type: "wall" });
+    }
   };
 
   const handleShareStoriesPost = () => {
-    sendImgToVK({ art: art.art, type: "stories" });
+    if (!shareArtLoading) {
+      setTypeOfShare("stories");
+      sendImgToVK({ art: art, type: "stories" });
+    }
+  };
+
+  const handleShareMessage = () => {
+    if (!shareArtLoading) {
+      fetchShare(art?.contest ?? "", art?.art_id ?? "");
+    }
   };
 
   return (
@@ -34,7 +47,7 @@ function ShareWorkAlert(art) {
       ref={ref}
     >
       <div className="ArtSelection__notification-header">
-        <span>Поделится работой</span>
+        <span>Поделиться работой</span>
         <div
           className="ArtSelection__close smallBtn-text"
           onClick={() => {
@@ -51,20 +64,32 @@ function ShareWorkAlert(art) {
             className="Notification__btn Notification__btn_addHistory"
             onClick={handleShareStoriesPost}
           >
-            <img src={addToHistory} />
+            {shareArtLoading && typeOfShare === "stories" ? (
+              <div className="Notification__spinner">
+                <Spinner size="regular" />
+              </div>
+            ) : (
+              <img src={addToHistory} />
+            )}
             <span>В историю</span>
           </div>
           <div
             className="Notification__btn Notification__btn_addWall"
             onClick={handleShareWallPost}
           >
-            <img src={addToWall} />
+            {shareArtLoading && typeOfShare === "wall" ? (
+              <div className="Notification__spinner">
+                <Spinner size="regular" />
+              </div>
+            ) : (
+              <img src={addToWall} />
+            )}
             <span>На стену</span>
           </div>
           {art?.contest && (
             <div
               className="Notification__btn Notification__btn_sendMessage"
-              onClick={() => fetchShare(art?.contest ?? "")}
+              onClick={handleShareMessage}
             >
               <Icon16MessageOutline width={25} height={25} />
               <span>В сообщении</span>

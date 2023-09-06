@@ -23,7 +23,7 @@ function ContestSelect({ art_id }) {
     },
     ["mousedown"]
   );
-  console.log();
+
   return (
     <div className={`ContestSelect ${"open"}`} ref={ref}>
       <div
@@ -32,7 +32,7 @@ function ContestSelect({ art_id }) {
       ></div>
       <div className="ContestSelect__items">
         {contests?.map((item, index) => {
-          if (item.type == "workAcceptance") {
+          if (item?.type == "workAcceptance") {
             return (
               <div
                 key={index}
@@ -52,12 +52,12 @@ function ContestSelect({ art_id }) {
                   onClick={() => {
                     addArtToContest(item.id, art_id).then(() => {
                       router.toBack();
-                      router.toBack();
                       router.toView("contests");
                       router.toPanel("contest");
+
                       setActiveContest(item);
                       handleGetArts();
-                      handleGetContestArts(null, item.id);
+                      handleGetContestArts(null, item.id, item);
                     });
                   }}
                 >
@@ -67,7 +67,7 @@ function ContestSelect({ art_id }) {
             );
           }
         })}
-        {!contests.find((item) => item.type == "workAcceptance") && (
+        {!contests?.find((item) => item.type == "workAcceptance") && (
           <div className="ContestSelectItem">
             <div className="ContestSelectItem__title title_h3-24px">
               Пустовато

@@ -24,6 +24,7 @@ import PayEnergy from "components/panels/PayEnergy/";
 import Rating from "components/panels/Rating/";
 import ArtVoted from "components/panels/ArtVoted/ArtVoted";
 import Snackbar from "./Snackbar";
+import ServerCrash from "components/common/ServerCrash";
 
 const App = (props) => {
   return (
@@ -32,6 +33,7 @@ const App = (props) => {
         <ConfigProvider isWebView>
           <SplitLayout popout={props.router.popout}>
             <Snackbar />
+            {/* <ServerCrash /> */}
             <SplitCol>
               <AppRoot scroll="contain">
                 <Epic

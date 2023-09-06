@@ -37,6 +37,7 @@
     "swiper": "^9.2.4"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^5.0.0",
     "cross-env": "^7.0.3",
     "react-hot-loader": "^4.13.0",
     "react-scripts": "^5.0.1"

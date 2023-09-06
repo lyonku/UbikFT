@@ -16,7 +16,7 @@ const Contest = ({ id }) => {
   const {
     router,
     activeContest,
-    userData,
+    fetchedUser,
     handleGetContestArts,
     updateContest,
     handleInitContests,
@@ -35,10 +35,11 @@ const Contest = ({ id }) => {
   }, [updateContest]);
 
   useEffect(() => {
-    if (!activeContest.works) {
-      handleGetContestArts();
+    let mass = window.location.hash.split("/");
+    if (!activeContest.works && fetchedUser?.id) {
+      handleGetContestArts(null, null, null, mass.at(-1));
     }
-  }, [updateContest]);
+  }, [updateContest, fetchedUser]);
 
   useInfiniteScroll({
     сurrentPage: activeContest.currentPage ?? 1,
