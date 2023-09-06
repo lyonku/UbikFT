@@ -41,104 +41,8 @@
   font-size: 48px;
 }
 
-.Profile__items {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: center;
-}
-
-.ProfileItem {
-  padding: 16px;
-  box-sizing: border-box;
-  max-height: 490px;
-  border-radius: 24px;
-  width: 100%;
-  display: flex;
-  aspect-ratio: 1 / 1;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
 .Profile__body {
   padding-bottom: 100px;
-}
-
-.ProfileItem__leftSide {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.ProfileItem__personalInfo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.ProfileItem__name {
-  font-weight: 600;
-  font-size: 17px;
-  font-feature-settings: "tnum" on, "lnum" on;
-
-  color: #ffffff;
-}
-
-.ProfileItem__likeControls {
-  box-sizing: border-box;
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  height: 40px;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(2px);
-  /* Note: backdrop-filter has minimal browser support */
-
-  border-radius: 24px;
-}
-
-.ProfileItem__delimetr {
-  width: 0px;
-  height: 24px;
-  opacity: 0.1;
-  border: 1px solid #ffffff;
-  border-radius: 1px;
-}
-
-.ProfileItem__energy {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-weight: 600;
-  font-size: 17px;
-  text-align: center;
-  font-feature-settings: "tnum" on, "lnum" on;
-
-  color: #b0e822;
-}
-
-.ProfileItem__coursera {
-  cursor: pointer;
-}
-
-.Profile::-webkit-scrollbar {
-  width: 5px;
-  background-color: #00000000;
-}
-
-.Profile::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #b0e822;
-}
-
-.Profile::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  background-color: #00000000;
 }
 
 .Profile__title {
@@ -165,39 +69,6 @@
   font-size: 22px;
   line-height: 30px;
   color: #ffffff;
-}
-
-.Profile__rating {
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 25px;
-  color: #b0e822;
-}
-
-/* .Profile__links {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  margin-top: 4px;
-} */
-
-.Profile__link {
-  box-sizing: border-box;
-  word-break: break-all;
-  text-decoration: none;
-  display: flex;
-  gap: 4px;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: auto;
-  display: flex;
-  align-items: center;
-  font-feature-settings: "tnum" on, "lnum" on;
-  color: #ffffff;
-}
-
-.Profile__link img {
-  width: 22px;
 }
 
 .ProfileArt {
@@ -228,10 +99,6 @@
   background: #101010;
 }
 
-.deleted {
-  display: none;
-}
-
 .ProfileArt__body {
   position: relative;
   box-sizing: border-box;
@@ -244,65 +111,10 @@
   margin-bottom: 6px;
 }
 
-.ProfileArt__leftSide {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.ProfileArt__rightSide {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
-.ProfileArt__rightSide .GalleryItem__likeControls {
-  position: static !important;
-}
-
-.ProfileArt__shareControls {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-}
-
-.ProfileArt__coursera {
-  align-self: flex-end;
-  cursor: pointer;
-}
-
-.ProfileArt__shareControls_up {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
 .ProfileArts__items {
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-.ProfileArt__openSea {
-  align-self: flex-end;
-}
-
-.ProfileArt .Gallery__promptInfo:hover {
-  background-color: #00000000;
-}
-.ProfileArt .Gallery__shareBtn:hover {
-  background-color: #00000000;
-}
-.ProfileArt .GalleryItem__like:hover {
-  background-color: #00000000;
-}
-
-div.ProfileArt__delete {
-  user-select: none;
-  background-color: #00000000;
 }
 
 div.shareBtn {
@@ -325,57 +137,7 @@ div.shareBtn {
   display: flex;
 }
 
-.ProfileArt__participation {
-  user-select: none;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 400;
-  border-radius: 12px;
-}
-
-.ProfileArt__participation img {
-  max-width: 50px;
-}
-
-.Profile__links {
-  /* min-width: 300px; */
-  align-items: flex-start;
-  display: flex;
-  gap: 10px;
-  border-radius: 12px;
-  background-color: #1a1a1a;
-  padding: 10px;
-  padding-right: 20px;
-}
-
-.Profile__links img {
-  width: 30px;
-}
-
-.Profile__links_body {
-  display: flex;
-  flex-direction: column;
-}
-
-.Profile__links_title {
-  font-size: 14px;
-}
-
-.Profile__links_text {
-  font-weight: 400;
-  opacity: 0.5;
-  font-size: 14px;
-}
-
-.Profile__links_btn {
-  cursor: pointer;
-  margin-top: 5px;
-  color: #ca2323;
-  font-weight: 400;
-  font-size: 14px;
-}
-
-.Gallery__controls {
+.ProfileArt__controls {
   position: absolute;
   right: 10px;
   bottom: 10px;
@@ -385,10 +147,10 @@ div.shareBtn {
   border-radius: 24px;
 }
 
-.Gallery__controls {
+.ProfileArt__controls {
   cursor: pointer;
 }
 
-.Gallery__controls:hover {
+.ProfileArt__controls:hover {
   background: rgba(255, 255, 255, 0.185);
 }

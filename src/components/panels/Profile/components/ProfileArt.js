@@ -26,7 +26,7 @@ function ProfileArt({ item }) {
         <img className="ProfileArt__body_img" src={item.imagesLink} />
         {!item.contest && (
           <div
-            className="Gallery__controls transparentBlock"
+            className="ProfileArt__controls transparentBlock"
             onClick={() => handleContestSelectPopout({ art_id: item.art_id })}
           >
             Отправить на конкурс

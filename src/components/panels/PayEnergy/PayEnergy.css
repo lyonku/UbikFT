@@ -140,10 +140,6 @@ div.benefits__title {
   margin-top: -2px;
 }
 
-.tariffsItem__discount svg {
-  margin-bottom: -2px;
-}
-
 .tariffsItem__img {
   margin-right: 16px;
   margin-top: -4px;
@@ -161,37 +157,6 @@ div.benefits__title {
 .payEnergy__btn svg {
   margin-left: 10px;
   margin-top: -2px;
-}
-
-.payEnergy__info {
-  width: 100%;
-  text-align: center;
-  font-family: "MacPaw Fixel";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 18px;
-  font-feature-settings: "tnum" on, "lnum" on;
-  color: #ffffff;
-  opacity: 0.5;
-}
-
-.tariffsItem__discount {
-  height: 25px;
-  box-sizing: border-box;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 21px;
-  text-align: center;
-  margin-top: -3px;
-  background: linear-gradient(
-      0deg,
-      rgba(33, 33, 33, 0.05),
-      rgba(33, 33, 33, 0.05)
-    ),
-    linear-gradient(109.37deg, #fcc63a 0%, #8bf54d 100%);
-  border-radius: 9999px;
-  padding: 2px 9px;
 }
 
 .payEnergy .gradient-round {
@@ -247,9 +212,5 @@ div.benefits__title {
     flex-direction: column;
     gap: 4px;
     align-items: flex-end;
-  }
-
-  .tariffsItem__discount {
-    order: 2;
   }
 }

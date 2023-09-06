@@ -18,22 +18,6 @@
   padding: 50px 16px;
 }
 
-.ArtVoted::-webkit-scrollbar {
-  width: 5px;
-  background-color: #00000000;
-}
-
-.ArtVoted::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #b0e822;
-}
-
-.ArtVoted::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  background-color: #00000000;
-}
-
 .ArtVoted__input input {
   color: #ffffff;
   width: 100%;

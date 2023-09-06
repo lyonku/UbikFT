@@ -8,22 +8,6 @@
   background-color: black !important;
 }
 
-.Contest::-webkit-scrollbar {
-  width: 5px;
-  background-color: #00000000;
-}
-
-.Contest::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #b0e822;
-}
-
-.Contest::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  background-color: #00000000;
-}
-
 .Contest__wrap {
   position: relative;
   z-index: 3;
@@ -327,22 +311,6 @@ a.underline {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.InfoPopout::-webkit-scrollbar {
-  width: 5px;
-  background-color: #00000000;
-}
-
-.InfoPopout::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #b0e822;
-}
-
-.InfoPopout::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  background-color: #00000000;
-}
-
 .approveContest img {
   width: 24px;
 }
@@ -361,10 +329,6 @@ a.underline {
   text-align: center;
   font-size: 22px;
   margin-bottom: 10px;
-}
-
-.Contest__btn {
-  margin-bottom: 24px;
 }
 
 .ContestWorks__count {
@@ -421,14 +385,6 @@ a.underline {
   font-weight: 600;
   font-size: 17px;
   font-feature-settings: "tnum" on, "lnum" on;
-}
-
-.ContestWork__profile_prompt {
-  padding: 2px;
-  -webkit-line-clamp: 2;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .ContestWork__controls {
@@ -488,28 +444,10 @@ a.underline {
   width: 100% !important;
 }
 
-.ContestWork__profile_prompt {
-  padding: 4px 8px;
-  cursor: pointer;
-}
-
-.ContestWork__profile_prompt:hover {
-  opacity: 1;
-  border-radius: 12px;
-  background-color: #1a1a1a;
-}
-
 .ContestWork__profile_text {
   flex-direction: column;
   display: flex;
   justify-content: center;
-}
-
-.ContestWork__winner {
-  right: 16px;
-  top: 16px;
-  position: absolute;
-  width: 50px;
 }
 
 .ContestWork {
@@ -546,11 +484,6 @@ a.underline {
   margin-bottom: -2px;
 }
 
-.ContestPrize__plug {
-  max-width: 48px;
-  width: 100%;
-}
-
 .ContestWork__profile_img {
   user-select: none;
 }
@@ -572,17 +505,6 @@ a.underline {
 .ContestsItemPrize__title {
   flex-wrap: wrap;
   white-space: pre-wrap;
-}
-
-.ContestPrize__winner {
-  align-items: center;
-  display: flex;
-  gap: 16px;
-}
-
-.ContestPrize__winner img {
-  width: 48px;
-  height: 48px;
 }
 
 .promptCopy {
@@ -681,10 +603,6 @@ a.underline {
 
 .ContestPrize__img img {
   margin-top: -18px;
-}
-.total_prize {
-  width: 48px;
-  height: 48px;
 }
 
 .ContestWork__profile_img img {

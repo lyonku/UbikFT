@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "MacPaw Fixel";
+  src: url("./assets/fonts/MacPawFixelText-Regular.woff2") format("woff2"),
+    /* Modern Browsers */ url("./assets/fonts/MacPawFixelText-Regular.otf")
+      format("opentype"); /* Safari, Android, iOS */
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}

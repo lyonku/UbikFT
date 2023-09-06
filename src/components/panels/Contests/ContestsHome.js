@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import ContestsFilters from "./components/ContestsFilters";
 import { Panel } from "@vkontakte/vkui";
 import { MainContext } from "components/shared/providers/MainProvider";
 import ContestItem from "./components/ContestItem";
