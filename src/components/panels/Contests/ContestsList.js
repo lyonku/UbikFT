@@ -1,26 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 
 import { Panel } from "@vkontakte/vkui";
-import { MainContext } from "components/shared/providers/MainProvider";
 import ContestItem from "./components/ContestItem";
 import profile__emptyImg from "assets/img/profile__emptyImg.svg";
 
 import ContestsControls from "./components/ContestsControls";
 import Filters from "components/common/Filters";
+import { MainContext, ContestsContext } from "components/shared/providers";
 
-function ContestHome({ id }) {
-  const { router, activeFilter, setActiveFilter, userData, contests } =
-    useContext(MainContext);
+function ContestList({ id }) {
+  const { router, userData } = useContext(MainContext);
+  const { activeContestsFilter, setActiveContestsFilter, contests } =
+    useContext(ContestsContext);
   const [isEmpty, setIsEmpty] = useState(true);
 
-  const handleChangeFilter = (e) => {
-    setActiveFilter(e.target.id);
-  };
-
   useEffect(() => {
-    let item = contests?.find((item) => activeFilter.includes(item.type));
+    let item = contests?.find((item) =>
+      activeContestsFilter.includes(item.type)
+    );
     setIsEmpty(item?.id ? false : true);
-  }, [activeFilter, contests]);
+  }, [activeContestsFilter, contests]);
 
   const filtersData = [
     { id: "workAcceptance", text: "Прием работ" },
@@ -39,12 +38,12 @@ function ContestHome({ id }) {
           <div className="Contests__body">
             <Filters
               data={filtersData}
-              currentFilter={activeFilter}
-              setCurrentFilter={setActiveFilter}
+              currentFilter={activeContestsFilter}
+              setCurrentFilter={setActiveContestsFilter}
             />
             <div className="Contests__items">
               {contests?.map((item, index) => {
-                if (activeFilter.includes(item.type)) {
+                if (activeContestsFilter.includes(item.type)) {
                   return <ContestItem data={item} key={index} />;
                 }
               })}
@@ -62,4 +61,4 @@ function ContestHome({ id }) {
   );
 }
 
-export default ContestHome;
+export default ContestList;

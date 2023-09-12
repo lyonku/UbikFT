@@ -8,10 +8,10 @@ import StyleSelectionBody from "./components/StyleSelection/StyleSelectionBody";
 import StyleSelectionCreateBtn from "./components/StyleSelection/StyleSelectionCreateBtn";
 import { Panel } from "@vkontakte/vkui";
 
-import { MainContext } from "components/shared/providers";
+import { GenerateContext, MainContext } from "components/shared/providers";
 
 const StyleSelection = ({ id }) => {
-  const { modePro } = useContext(MainContext);
+  const { modePro } = useContext(GenerateContext);
 
   const [error, setError] = useState(false);
   const scrollToTopRef = useRef(null); // создаем ref

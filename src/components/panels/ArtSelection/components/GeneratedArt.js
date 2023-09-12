@@ -1,17 +1,26 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 
 import ShareSvg from "components/common/svgs/shareSvg";
-import { MainContext, PopoutContext } from "components/shared/providers";
+import {
+  GenerateContext,
+  MainContext,
+  PopoutContext,
+} from "components/shared/providers";
 import { Carousel } from "antd";
 import { Icon12Chevron } from "@vkontakte/icons";
 
 const GeneratedArt = () => {
-  const { setCurrentImg, currentImg, notify } = useContext(MainContext);
+  const { notify } = useContext(MainContext);
+  const { setCurrentImg, currentImg } = useContext(GenerateContext);
   const { handleContestSelectPopout, handleShowSharePopout } =
     useContext(PopoutContext);
   const ref = useRef();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [artInContest, setArtInContest] = useState(false);
+
+  useEffect(() => {
+    onChange(0);
+  }, []);
 
   const onChange = (currentSlide) => {
     setCurrentSlide(currentSlide);

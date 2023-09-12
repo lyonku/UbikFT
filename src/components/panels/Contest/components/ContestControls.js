@@ -2,12 +2,12 @@ import backBtn from "assets/img/back-btn.svg";
 import checkMark from "assets/img/check-mark.svg";
 import EnergySvg from "components/common/svgs/energySvg";
 import HeartSvg from "components/common/svgs/heartSvg";
-import { MainContext } from "components/shared/providers";
+import { ContestsContext, MainContext } from "components/shared/providers";
 import { useContext } from "react";
 
 function ContestControls() {
-  const { router, userData, activeContest, approveContest, exitPage } =
-    useContext(MainContext);
+  const { router, userData, exitPage } = useContext(MainContext);
+  const { approveContest, activeContest } = useContext(ContestsContext);
 
   return (
     <div className="Contest__controls Header__controls">

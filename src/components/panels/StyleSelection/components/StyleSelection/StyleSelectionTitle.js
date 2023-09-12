@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import examples from "components/panels/StyleSelection/inputExamples.json";
 import InquiryForm from "../Inquiry/InquiryForm";
-import { MainContext } from "components/shared/providers";
+import { GenerateContext, MainContext } from "components/shared/providers";
 
 function StyleSelectionTitle({ error }) {
-  const { setInputValue } = useContext(MainContext);
+  const { setInputValue } = useContext(GenerateContext);
 
   const [example, setExample] = useState(false);
 

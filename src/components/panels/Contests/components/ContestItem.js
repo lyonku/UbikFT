@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import ContestPrizes from "components/panels/Contest/components/ContestPrizes";
-import { MainContext, PopoutContext } from "components/shared/providers";
+import {
+  ContestsContext,
+  MainContext,
+  PopoutContext,
+} from "components/shared/providers";
 
 function ContestItem({ data }) {
-  const { router, setActiveContest } = useContext(MainContext);
+  const { router } = useContext(MainContext);
+  const { setActiveContest } = useContext(ContestsContext);
   const { handleInfoPopout } = useContext(PopoutContext);
 
   const handleEventInfoPopout = (event) => {

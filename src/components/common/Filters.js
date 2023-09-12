@@ -2,8 +2,11 @@ import { useEffect } from "react";
 
 function Filters({ data, currentFilter, setCurrentFilter }) {
   useEffect(() => {
-    setCurrentFilter(data[0].id);
+    if (!currentFilter) {
+      setCurrentFilter(data[0].id);
+    }
   }, []);
+
   return (
     <div className="Filters">
       {data.map((item, index) => {

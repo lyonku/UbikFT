@@ -1,13 +1,14 @@
 import React, { useContext, useRef, useState } from "react";
 import { useClickAway } from "react-use";
-import { MainContext } from "components/shared/providers";
+import { ContestsContext, MainContext } from "components/shared/providers";
 
 import closeImg from "assets/img/close-btn.svg";
 import InquiryTextarea from "./InquiryTextarea";
 
 function ArtComplaint({ art_id, contest_id, user_id }) {
   const ref = useRef(null);
-  const { router, sendArtComplaint } = useContext(MainContext);
+  const { router } = useContext(MainContext);
+  const { sendArtComplaint } = useContext(ContestsContext);
 
   const [text, setText] = useState("");
 

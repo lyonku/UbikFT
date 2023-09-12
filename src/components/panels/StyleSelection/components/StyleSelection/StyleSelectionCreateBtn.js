@@ -1,9 +1,13 @@
 import EnergySvg from "components/common/svgs/energySvg";
-import { MainContext, PopoutContext } from "components/shared/providers";
+import {
+  GenerateContext,
+  MainContext,
+  PopoutContext,
+} from "components/shared/providers";
 import { useContext } from "react";
 
 function StyleSelectionCreateBtn({ setError, handleScrollToTop }) {
-  const { inputValue, chosenStyles, modePro } = useContext(MainContext);
+  const { inputValue, chosenStyles, modePro } = useContext(GenerateContext);
   const { handleSetArtCountPopout } = useContext(PopoutContext);
 
   return (

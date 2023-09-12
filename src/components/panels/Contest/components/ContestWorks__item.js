@@ -2,13 +2,17 @@ import ShareSvg from "components/common/svgs/shareSvg";
 import LikeSvg from "components/common/svgs/LikeSvg";
 import warningMark from "assets/img/warningMark.svg";
 
-import { MainContext, PopoutContext } from "components/shared/providers";
+import {
+  ContestsContext,
+  MainContext,
+  PopoutContext,
+} from "components/shared/providers";
 import { useContext, useState } from "react";
 import ArtControls from "components/common/ArtControls";
 
 function ContestWorks__item({ data, index }) {
-  const { router, activeContest, setArtVoted, fetchedUser, artRef } =
-    useContext(MainContext);
+  const { router, fetchedUser, artRef } = useContext(MainContext);
+  const { setArtVoted, activeContest } = useContext(ContestsContext);
   const {
     handleSendLikePopout,
     handleShowSharePopout,

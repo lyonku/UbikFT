@@ -1,4 +1,8 @@
-import { MainContext, PopoutContext } from "components/shared/providers";
+import {
+  ContestsContext,
+  MainContext,
+  PopoutContext,
+} from "components/shared/providers";
 import { useContext, useState } from "react";
 import deleteSvg from "assets/img/profile__delete.svg";
 import download from "assets/img/download.svg";
@@ -13,7 +17,8 @@ function ArtControls({
   isComplaint = false,
   isDelete = false,
 }) {
-  const { deleteContestArt, downloadArt } = useContext(MainContext);
+  const { downloadArt } = useContext(MainContext);
+  const { deleteContestArt } = useContext(ContestsContext);
   const { handleArtComplaint } = useContext(PopoutContext);
   const [shown, setShown] = useState(false);
 

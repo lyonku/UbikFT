@@ -1,10 +1,9 @@
-import { MainContext } from "components/shared/providers";
+import { ContestsContext, MainContext } from "components/shared/providers";
 import { useContext, useEffect, useState } from "react";
 
 function ContestPrizes({ activeContest }) {
   const [time, setTime] = useState("");
-  const { updateContestTime, updateContest, handleGetContestArts } =
-    useContext(MainContext);
+  const { updateContestTime, updateContest } = useContext(ContestsContext);
 
   useEffect(() => {
     setTime(updateContestTime(+activeContest[activeContest.type + "Date"]));
@@ -59,7 +58,7 @@ function ContestPrizes({ activeContest }) {
                         index == 0 && "first"
                       }`}
                     >
-                      {item.winner?.name + " " + item.winner?.name}
+                      {item.winner?.name + " " + item.winner?.surname}
                     </div>
                   ) : (
                     ""

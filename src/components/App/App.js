@@ -10,6 +10,8 @@ import {
 import "@vkontakte/vkui/dist/vkui.css";
 
 import {
+  ContestsContextProvider,
+  GenerateContextProvider,
   MainContextProvider,
   PopoutContext,
   PopoutContextProvider,
@@ -30,27 +32,34 @@ const App = (props) => {
   return (
     <MainContextProvider router={props.router}>
       <PopoutContextProvider router={props.router}>
-        <ConfigProvider isWebView>
-          <SplitLayout popout={props.router.popout}>
-            <Snackbar />
-            {/* <ServerCrash /> */}
-            <SplitCol>
-              <AppRoot scroll="contain">
-                <Epic
-                  activeStory={props.router.activeView}
-                  tabbar={<MainTabbar activeStory={props.router.activeView} />}
-                >
-                  <Main id="main" />
-                  <Contests id="contests" />
-                  <Profile id="profile" />
-                  <PayEnergy id="payEnergy" />
-                  <Rating id="Rating" />
-                  <ArtVoted id="ArtVoted" />
-                </Epic>
-              </AppRoot>
-            </SplitCol>
-          </SplitLayout>
-        </ConfigProvider>
+        <GenerateContextProvider router={props.router}>
+          <ContestsContextProvider>
+            <ConfigProvider isWebView>
+              <SplitLayout popout={props.router.popout}>
+                <Snackbar />
+                <ServerCrash />
+                <SplitCol>
+                  <AppRoot scroll="contain">
+                    <Epic
+                      activeStory={props.router.activeView}
+                      tabbar={
+                        <MainTabbar activeStory={props.router.activeView} />
+                      }
+                    >
+                      <Main id="main" />
+
+                      <Contests id="contests" />
+                      <Profile id="profile" />
+                      <PayEnergy id="payEnergy" />
+                      <Rating id="Rating" />
+                      <ArtVoted id="ArtVoted" />
+                    </Epic>
+                  </AppRoot>
+                </SplitCol>
+              </SplitLayout>
+            </ConfigProvider>
+          </ContestsContextProvider>
+        </GenerateContextProvider>
       </PopoutContextProvider>
     </MainContextProvider>
   );

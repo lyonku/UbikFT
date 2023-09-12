@@ -4,7 +4,7 @@ import { Panel } from "@vkontakte/vkui";
 import "./Contest.css";
 
 import useInfiniteScroll from "components/shared/hooks/useInfiniteScroll";
-import { MainContext } from "components/shared/providers";
+import { ContestsContext, MainContext } from "components/shared/providers";
 
 import ContestPrizes from "./components/ContestPrizes";
 import ContestControls from "./components/ContestControls";
@@ -13,14 +13,14 @@ import ContestWorks from "./components/ContestWorks";
 import Filters from "components/common/Filters";
 
 const Contest = ({ id }) => {
+  const { router, fetchedUser } = useContext(MainContext);
   const {
-    router,
+    handleInitContests,
     activeContest,
-    fetchedUser,
     handleGetContestArts,
     updateContest,
-    handleInitContests,
-  } = useContext(MainContext);
+  } = useContext(ContestsContext);
+
   const [currentFilter, setCurrentFilter] = useState();
 
   const filtersData = [
@@ -37,6 +37,8 @@ const Contest = ({ id }) => {
   useEffect(() => {
     let mass = window.location.hash.split("/");
     if (!activeContest.works && fetchedUser?.id) {
+      console.log(fetchedUser?.id);
+
       handleGetContestArts(null, null, null, mass.at(-1));
     }
   }, [updateContest, fetchedUser]);
@@ -55,7 +57,7 @@ const Contest = ({ id }) => {
         className="Contest"
         style={{
           background: `linear-gradient(180deg, rgba(10, 10, 10, 0) 0%, #0A0A0A 50%), url(${
-            activeContest.img
+            activeContest?.img
           }) center top ${-50}px / contain no-repeat`,
         }}
       >
@@ -66,7 +68,7 @@ const Contest = ({ id }) => {
               <div className="ContestItem__body">
                 <ContestItem__header activeContest={activeContest} />
                 <ContestPrizes activeContest={activeContest} />
-                {activeContest.type !== "ended" && (
+                {activeContest?.type !== "ended" && (
                   <Filters
                     data={filtersData}
                     currentFilter={currentFilter}

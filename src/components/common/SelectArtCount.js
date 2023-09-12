@@ -2,12 +2,13 @@ import React, { useContext, useRef, useState, useEffect } from "react";
 import EnergySvg from "components/common/svgs/energySvg";
 import { useClickAway } from "react-use";
 
-import { MainContext } from "components/shared/providers";
+import { GenerateContext, MainContext } from "components/shared/providers";
 
 function SelectArtCount() {
   const ref = useRef(null);
   const inputRef = useRef(null);
-  const { router, handleArtGenerate } = useContext(MainContext);
+  const { router } = useContext(MainContext);
+  const { handleArtGenerate } = useContext(GenerateContext);
   const [artCount, setArtCount] = useState(1);
   const [width, setWidth] = useState(0);
 
@@ -77,7 +78,7 @@ function SelectArtCount() {
         className="ArtCount__btn btn"
         onClick={() => {
           router.toBack();
-          handleArtGenerate(artCount);
+          handleArtGenerate(+artCount);
         }}
       >
         Создать арт <div className="createBtn__delimetr"></div>

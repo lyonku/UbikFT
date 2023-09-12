@@ -1,10 +1,10 @@
 import data from "data.json";
 import { HorizontalScroll } from "@vkontakte/vkui";
 import StylesItem from "./StylesItem";
-import { MainContext } from "components/shared/providers";
+import { GenerateContext, MainContext } from "components/shared/providers";
 import { useContext } from "react";
 function StyleSelectionBody({ error }) {
-  const { chosenStyles, setChosenStyles } = useContext(MainContext);
+  const { chosenStyles, setChosenStyles } = useContext(GenerateContext);
 
   return (
     <div className={`styleSelection__body`}>

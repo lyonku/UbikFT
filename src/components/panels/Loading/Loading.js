@@ -6,10 +6,13 @@ import background from "assets/img/loading__background.png";
 import { MainContext } from "components/shared/providers/MainProvider";
 import LoadingMain from "./components/LoadingMain";
 import LoadingError from "./components/LoadingError";
+import { GenerateContext, PopoutContext } from "components/shared/providers";
 
 const Loading = ({ id }) => {
-  const { currentImg, error, handleArtGenerate, router } =
-    useContext(MainContext);
+  const { router } = useContext(MainContext);
+  const { currentImg, generationError } = useContext(GenerateContext);
+  const { handleSetArtCountPopout } = useContext(PopoutContext);
+
   useEffect(() => {
     if (currentImg) {
       const img = new Image();
@@ -29,8 +32,11 @@ const Loading = ({ id }) => {
         <div className="Loading__background_blackoutdown"></div>
         <div className="Loading__background_blackoutup"></div>
         <div className="Loading__background_glow"></div>
-        {error ? (
-          <LoadingError handleArtGenerate={handleArtGenerate} router={router} />
+        {generationError ? (
+          <LoadingError
+            handleSetArtCountPopout={handleSetArtCountPopout}
+            router={router}
+          />
         ) : (
           <LoadingMain />
         )}

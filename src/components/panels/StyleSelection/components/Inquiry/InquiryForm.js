@@ -3,6 +3,7 @@ import refresh from "assets/img/prompt-refresh.svg";
 import { Slider } from "@vkontakte/vkui";
 import { MainContext } from "components/shared/providers/MainProvider";
 import InquiryTextarea from "components/common/InquiryTextarea";
+import { ContestsContext, GenerateContext } from "components/shared/providers";
 
 function InquiryForm({ handleExample, example, randomizeExample, error }) {
   const {
@@ -12,7 +13,7 @@ function InquiryForm({ handleExample, example, randomizeExample, error }) {
     setGuidanceScale,
     inputValue,
     setInputValue,
-  } = useContext(MainContext);
+  } = useContext(GenerateContext);
 
   return (
     <div className="inquiry__form">

@@ -1,12 +1,13 @@
 import React, { useContext, useRef } from "react";
 import { useClickAway } from "react-use";
-import { MainContext } from "components/shared/providers";
+import { GenerateContext, MainContext } from "components/shared/providers";
 
 import closeImg from "assets/img/close-btn.svg";
 
 function promptCopy({ prompt, seed, styles, pro }) {
   const ref = useRef(null);
-  const { router, handleCopyPrompt } = useContext(MainContext);
+  const { router } = useContext(MainContext);
+  const { handleCopyPrompt } = useContext(GenerateContext);
 
   useClickAway(
     ref,

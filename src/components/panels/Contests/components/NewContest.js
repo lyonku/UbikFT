@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Panel } from "@vkontakte/vkui";
-import { MainContext } from "components/shared/providers";
+import { ContestsContext, MainContext } from "components/shared/providers";
 
 import ContestControls from "components/panels/Contest/components/ContestControls";
 import {
@@ -12,8 +12,8 @@ import { DatePicker, Button, Form, Input, Space, Upload } from "antd";
 import TextArea from "antd/es/input/TextArea";
 
 function NewContest({ id }) {
-  const { router, userData, handleInitContests, notify } =
-    useContext(MainContext);
+  const { router, userData, notify } = useContext(MainContext);
+  const { handleInitContests } = useContext(ContestsContext);
   const [contestName, setContestName] = useState("");
   const [contestDesc, setContestDesc] = useState("");
   const [img, setImg] = useState();

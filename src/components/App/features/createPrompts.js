@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-async function createPrompts(chosenStyles, vk_user_id, inputValue) {
+async function createPrompts(chosenStyles, inputValue) {
   // Объявляем константы
   let totalPositiveText = [];
   let totalNegativeText = [];
@@ -16,11 +16,6 @@ async function createPrompts(chosenStyles, vk_user_id, inputValue) {
         weight: -1,
       },
     ],
-    style_preset: "",
-    cfg_scale: 7,
-    samples: 1,
-    seed: 0,
-    vk_user_id: vk_user_id,
   };
   totalPositiveText.push(inputValue);
 
@@ -62,7 +57,7 @@ async function createPrompts(chosenStyles, vk_user_id, inputValue) {
       for (const item of value) {
         totalPositiveText = [
           ...totalPositiveText,
-          `in style of [[${item.sub_title}]]`,
+          `in style of ${item.sub_title}`,
           ...item.positivePrompt.split(", "),
         ];
         totalNegativeText = [
@@ -89,6 +84,7 @@ async function createPrompts(chosenStyles, vk_user_id, inputValue) {
   config.text_prompts[0].text = uniquePositiveText.join(", ");
   config.text_prompts[1].text = uniqueNegativeText2.join(", ");
   config.text_prompts[1].weight = -1;
+
   return config;
 }
 

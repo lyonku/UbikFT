@@ -5,12 +5,12 @@ import { useClickAway } from "react-use";
 import { MainContext } from "components/shared/providers/MainProvider";
 import LikeSvg from "components/common/svgs/LikeSvg";
 import HeartSvg from "components/common/svgs/heartSvg";
+import { ContestsContext } from "components/shared/providers";
 
 function PayConfirm({ art_id, vk_user_id }) {
   const ref = useRef(null);
-  const { router, userData, addLike, handleGetContestArts } =
-    useContext(MainContext);
-
+  const { router, userData } = useContext(MainContext);
+  const { addLike, handleGetContestArts } = useContext(ContestsContext);
   useClickAway(
     ref,
     () => {

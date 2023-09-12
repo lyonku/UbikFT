@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import profile__emptyImg from "assets/img/profile__emptyImg.svg";
 import ContestWorks__item from "./ContestWorks__item";
-import { MainContext } from "components/shared/providers";
+import { ContestsContext, MainContext } from "components/shared/providers";
 
 function ContestWorks({ currentFilter }) {
-  const { activeContest, fetchedUser } = useContext(MainContext);
-
+  const { fetchedUser } = useContext(MainContext);
+  const { activeContest } = useContext(ContestsContext);
+  console.log(activeContest);
   return (
     <div className="ContestWorks">
       <div className="ContestWorks__title title_h3-24px">

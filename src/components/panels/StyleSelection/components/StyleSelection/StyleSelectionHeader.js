@@ -1,12 +1,12 @@
 import EnergySvg from "components/common/svgs/energySvg";
 import HeartSvg from "components/common/svgs/heartSvg";
 import { Switch } from "@vkontakte/vkui";
-import { MainContext } from "components/shared/providers";
+import { GenerateContext, MainContext } from "components/shared/providers";
 import { useContext } from "react";
 
 function StyleSelectionHeader() {
-  const { router, modePro, handleChangeModePro, userData } =
-    useContext(MainContext);
+  const { router, userData } = useContext(MainContext);
+  const { modePro, handleChangeModePro } = useContext(GenerateContext);
 
   return (
     <div className="styleSelection__header">

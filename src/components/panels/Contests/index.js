@@ -1,1 +1,1 @@
-export { default } from "./Contests";
+export { default } from "./Contests.js";

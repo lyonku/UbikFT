@@ -1,20 +1,17 @@
 import React, { useContext, useRef } from "react";
 import { useClickAway } from "react-use";
 
-import { MainContext, PopoutContext } from "components/shared/providers/";
+import {
+  ContestsContext,
+  MainContext,
+  PopoutContext,
+} from "components/shared/providers/";
 
 function ContestSelect({ art_id }) {
   const ref = useRef(null);
-  const {
-    router,
-    contests,
-    handleGetArts,
-    addArtToContest,
-    handleGetContestArts,
-    setActiveContest,
-  } = useContext(MainContext);
-
-  const { notify } = useContext(PopoutContext);
+  const { router, handleGetArts } = useContext(MainContext);
+  const { contests, setActiveContest, handleGetContestArts, addArtToContest } =
+    useContext(ContestsContext);
 
   useClickAway(
     ref,

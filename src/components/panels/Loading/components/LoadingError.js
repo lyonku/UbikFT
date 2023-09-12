@@ -1,6 +1,6 @@
 import closeBtn from "assets/img/close-btn.svg";
 
-function LoadingError({ handleArtGenerate, router }) {
+function LoadingError({ handleSetArtCountPopout, router }) {
   return (
     <div className="Loading__wrap">
       <div className="Header__controls">
@@ -19,7 +19,7 @@ function LoadingError({ handleArtGenerate, router }) {
           className="Loading__errorBtn"
           onClick={() => {
             router.toBack();
-            handleArtGenerate();
+            handleSetArtCountPopout();
           }}
         >
           Повторить попытку

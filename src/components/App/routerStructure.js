@@ -22,8 +22,8 @@ const structure = [
     hash: "contests",
     panels: [
       {
-        id: "contestsHome",
-        hash: "/contestsHome",
+        id: "contestsList",
+        hash: "/contestsList",
       },
       {
         id: "contest",

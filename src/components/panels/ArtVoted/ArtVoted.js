@@ -1,14 +1,14 @@
 import React, { useState, useContext } from "react";
 import "./ArtVoted.css";
-import personalData from "./personalData.json";
 
-import { MainContext } from "components/shared/providers";
+import { ContestsContext, MainContext } from "components/shared/providers";
 import closeBtn from "assets/img/close-btn.svg";
 import search from "assets/img/search.svg";
 import LikeSvg from "components/common/svgs/LikeSvg";
 
 const ArtVoted = () => {
-  const { router, artVoted } = useContext(MainContext);
+  const { router } = useContext(MainContext);
+  const { artVoted } = useContext(ContestsContext);
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
