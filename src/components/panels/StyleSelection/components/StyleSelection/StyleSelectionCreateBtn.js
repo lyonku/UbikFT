@@ -8,6 +8,7 @@ import { useContext } from "react";
 
 function StyleSelectionCreateBtn({ setError, handleScrollToTop }) {
   const { inputValue, chosenStyles, modePro } = useContext(GenerateContext);
+  const { setNotificationVibration } = useContext(MainContext);
   const { handleSetArtCountPopout } = useContext(PopoutContext);
 
   return (
@@ -18,6 +19,7 @@ function StyleSelectionCreateBtn({ setError, handleScrollToTop }) {
           ? () => handleSetArtCountPopout()
           : () => {
               handleScrollToTop();
+              setNotificationVibration("warning");
               setError(true);
               setTimeout(() => {
                 setError(false);
@@ -26,7 +28,7 @@ function StyleSelectionCreateBtn({ setError, handleScrollToTop }) {
       }
     >
       Создать арт <div className="createBtn__delimetr"></div>
-      <EnergySvg width={"18px"} height={"18px"} color="#FFFFFF" /> 15
+      <EnergySvg width={"18px"} height={"18px"} color="#FFFFFF" /> 10
     </div>
   );
 }

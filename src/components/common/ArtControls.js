@@ -1,4 +1,5 @@
 import {
+  AdminContext,
   ContestsContext,
   MainContext,
   PopoutContext,
@@ -17,13 +18,13 @@ function ArtControls({
   isComplaint = false,
   isDelete = false,
 }) {
-  const { downloadArt } = useContext(MainContext);
-  const { deleteContestArt } = useContext(ContestsContext);
-  const { handleArtComplaint } = useContext(PopoutContext);
+  const { downloadArt, isAdmin } = useContext(MainContext);
+  const { handleArtComplaint, handleDeleteContestArt } =
+    useContext(PopoutContext);
   const [shown, setShown] = useState(false);
 
   return (
-    <div className="Art__controls">
+    <div className="Art__controls darkBlock">
       <Popover
         placement="bottom-end"
         className="ContestWork__menu"
@@ -39,7 +40,6 @@ function ArtControls({
                   handleArtComplaint({
                     user_id: data.vk_user_id,
                     art_id: art.art_id,
-                    contest_id: art.contest,
                   });
                   setShown(false);
                 }}
@@ -48,12 +48,11 @@ function ArtControls({
                 <span>Пожаловаться</span>
               </div>
             )}
-            {isDelete && (
+            {isDelete && isAdmin && (
               <div
                 className="ContestWork__menu_btn"
                 onClick={() =>
-                  deleteContestArt({
-                    contest_id: art.contest,
+                  handleDeleteContestArt({
                     user_id: data.vk_user_id,
                     art_id: art.art_id,
                   })
@@ -66,7 +65,7 @@ function ArtControls({
             {isDownload && (
               <div
                 className="ContestWork__menu_btn"
-                onClick={() => downloadArt(art.imagesLink, art.prompt)}
+                onClick={() => downloadArt(art.artLink, art.prompt)}
               >
                 <img src={download} />
                 <span>Скачать</span>

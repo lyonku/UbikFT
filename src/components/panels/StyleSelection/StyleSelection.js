@@ -8,7 +8,7 @@ import StyleSelectionBody from "./components/StyleSelection/StyleSelectionBody";
 import StyleSelectionCreateBtn from "./components/StyleSelection/StyleSelectionCreateBtn";
 import { Panel } from "@vkontakte/vkui";
 
-import { GenerateContext, MainContext } from "components/shared/providers";
+import { GenerateContext, PopoutContext } from "components/shared/providers";
 
 const StyleSelection = ({ id }) => {
   const { modePro } = useContext(GenerateContext);

@@ -1,9 +1,8 @@
 import React, { useState, useContext } from "react";
 import refresh from "assets/img/prompt-refresh.svg";
 import { Slider } from "@vkontakte/vkui";
-import { MainContext } from "components/shared/providers/MainProvider";
 import InquiryTextarea from "components/common/InquiryTextarea";
-import { ContestsContext, GenerateContext } from "components/shared/providers";
+import { MainContext, GenerateContext } from "components/shared/providers";
 
 function InquiryForm({ handleExample, example, randomizeExample, error }) {
   const {
@@ -48,7 +47,9 @@ function InquiryForm({ handleExample, example, randomizeExample, error }) {
               max={30}
               value={Number(guidanceScale)}
               aria-labelledby="with-step"
-              onChange={(e) => setGuidanceScale(e)}
+              onChange={(e) => {
+                setGuidanceScale(e);
+              }}
               className="inquiryPrompt__slider"
             />
           </div>

@@ -1,79 +1,88 @@
 const structure = [
   {
-    id: "main",
-    hash: "main",
-    panels: [
-      {
-        id: "styleSelection",
-        hash: "/styleSelection",
-      },
-      {
-        id: "artSelection",
-        hash: "/artSelection",
-      },
-      {
-        id: "loading",
-        hash: "/loading",
-      },
-    ],
+    path: "/",
+    panel: "styleSelection",
+    view: "main",
   },
   {
-    id: "contests",
-    hash: "contests",
-    panels: [
-      {
-        id: "contestsList",
-        hash: "/contestsList",
-      },
-      {
-        id: "contest",
-        hash: "/contest",
-      },
-      {
-        id: "newContest",
-        hash: "/newContest",
-      },
-    ],
+    path: "/main",
+    panel: "styleSelection",
+    view: "main",
   },
   {
-    id: "profile",
-    hash: "profile",
-    panels: [
-      {
-        id: "profile",
-        hash: "/profile",
-      },
-    ],
+    path: "/artSelection",
+    panel: "artSelection",
+    view: "main",
   },
   {
-    id: "payEnergy",
-    hash: "payEnergy",
-    panels: [
-      {
-        id: "payEnergy",
-        hash: "/payEnergy",
-      },
-    ],
+    path: "/loading",
+    panel: "loading",
+    view: "main",
   },
   {
-    id: "Rating",
-    hash: "Rating",
-    panels: [
-      {
-        id: "Rating",
-        hash: "/Rating",
-      },
-    ],
+    path: "/contests",
+    panel: "contestsList",
+    view: "contests",
   },
   {
-    id: "ArtVoted",
-    hash: "ArtVoted",
-    panels: [
-      {
-        id: "ArtVoted",
-        hash: "/ArtVoted",
-      },
-    ],
+    path: "/contests/contest",
+    panel: "contest",
+    view: "contests",
+  },
+  {
+    path: "/contests/contest/:contest_id",
+    panel: "contest",
+    view: "contests",
+  },
+  {
+    path: "/contests/contest/:contest_id/:art_id",
+    panel: "contest",
+    view: "contests",
+  },
+  {
+    path: "/profile",
+    panel: "profile",
+    view: "profile",
+  },
+  {
+    path: "/rating/",
+    panel: "assignment",
+    view: "rating",
+  },
+  {
+    path: "/rating/assignment",
+    panel: "assignment",
+    view: "rating",
+  },
+  {
+    path: "/rating/users",
+    panel: "users",
+    view: "rating",
+  },
+  {
+    path: "/store",
+    panel: "store",
+    view: "store",
+  },
+  {
+    path: "/artVoted",
+    panel: "artVoted",
+    view: "artVoted",
+  },
+  {
+    path: "/admin",
+    panel: "home",
+    view: "admin",
+  },
+  {
+    path: "/newContest",
+    panel: "newContest",
+    view: "admin",
+  },
+  {
+    path: "/complaints",
+    panel: "complaints",
+    view: "admin",
   },
 ];
 

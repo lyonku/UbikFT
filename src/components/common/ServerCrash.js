@@ -1,3 +1,4 @@
+import { PanelSpinner, Spinner } from "@vkontakte/vkui";
 import { MainContext } from "components/shared/providers";
 import { useContext } from "react";
 
@@ -7,7 +8,7 @@ function ServerCrash() {
   return (
     <div className={`ServerCrash ${serverCrash && "active"}`}>
       <div className="ServerCrash__title">
-        Сервер перезагружается! <br /> повторите позже
+        <Spinner size="large" style={{ color: "#fff" }} />
       </div>
     </div>
   );

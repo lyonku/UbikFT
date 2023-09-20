@@ -1,66 +1,69 @@
-import ShareSvg from "components/common/svgs/shareSvg";
-import LikeSvg from "components/common/svgs/LikeSvg";
-import warningMark from "assets/img/warningMark.svg";
-
+import { useContext, useState } from "react";
 import {
   ContestsContext,
   MainContext,
   PopoutContext,
 } from "components/shared/providers";
-import { useContext, useState } from "react";
+
 import ArtControls from "components/common/ArtControls";
+import ShareSvg from "components/common/svgs/shareSvg";
+
+import LikeSvg from "components/common/svgs/LikeSvg";
+import { useParams } from "@vkontakte/vk-mini-apps-router";
 
 function ContestWorks__item({ data, index }) {
-  const { router, fetchedUser, artRef } = useContext(MainContext);
-  const { setArtVoted, activeContest } = useContext(ContestsContext);
+  const { go, fetchedUser } = useContext(MainContext);
+  const { setArtVoted, activeContest, artRef } = useContext(ContestsContext);
   const {
     handleSendLikePopout,
     handleShowSharePopout,
     handlePromptCopyPopout,
-    handleShowComplaints,
   } = useContext(PopoutContext);
 
-  const isLiked = data?.likes?.personLikes?.find(
+  const isArtLiked = !!data?.likes?.personLikes?.find(
     (item) => item.vk_user_id === fetchedUser.id
   );
-  let isLikedContest = activeContest?.globalLikes?.find(
+  let isLikeSet = !!activeContest?.globalLikes?.find(
     (item) => item.vk_user_id === fetchedUser.id
   );
 
   let isEnded =
     activeContest.type == "ended" || activeContest.type == "pre-ended";
-  let mass = window.location.hash.split("/");
+  let isTypeVote = activeContest.type == "vote";
+  let isTypeVoteOrEnd = activeContest.type !== "workAcceptance";
+
+  const addLike = () => {
+    if (isTypeVote) {
+      handleSendLikePopout({
+        art_id: data.art.art_id,
+        liked_user_id: data.vk_user_id,
+        isLikeSet: isLikeSet,
+        isArtLiked: isArtLiked,
+      });
+    }
+  };
+
+  const params = useParams();
+  const art_id = params.art_id;
 
   return (
     <div
       className="ContestWork"
-      ref={data.art.art_id == mass.at(-1) ? artRef : null}
+      ref={data.art.art_id == art_id ? artRef : null}
     >
       <div className="ContestWork__img_wrap">
-        <img src={data.art.imagesLink} className="ContestWork__img" />
-        {data.complaint?.length >= 1 && (
-          <div
-            className="ContestWork__complaint"
-            onClick={() => handleShowComplaints(data.complaint)}
-          >
-            <img src={warningMark} />
-            <span>Жалобы</span>
-          </div>
-        )}
+        <img src={data.art.artLink} className="ContestWork__img" />
+        <ArtControls
+          data={data}
+          art={data.art}
+          isComplaint={true}
+          isDelete={true}
+          isDownload={true}
+        />
+        {isTypeVoteOrEnd && <div className="numeration">{index}</div>}
       </div>
-      <ArtControls
-        data={data}
-        art={data.art}
-        isComplaint={true}
-        isDelete={true}
-        isDownload={true}
-      />
       <div className="ContestWork__footer">
         <div className="ContestWork__profile">
-          {activeContest.type !== "workAcceptance" && (
-            <div className="numeration">{index}</div>
-          )}
-
           <div className="ContestWork__profile_img">
             <img src={data.photo} />
           </div>
@@ -68,26 +71,18 @@ function ContestWorks__item({ data, index }) {
             <div className="ContestWork__profile_name">
               {data.firstName + " " + data.lastName}
             </div>
-            {(activeContest.type == "vote" || isEnded) && (
-              <>
-                <div
-                  className="Prompt text_gray"
-                  onClick={() => {
-                    handlePromptCopyPopout(
-                      data.art.prompt,
-                      data.art.styles,
-                      data.art.isPro,
-                      data.art.seed
-                    );
-                  }}
-                >
-                  <span className="Prompt__text">
-                    {data.art.isPro && <span className="modeProHint">pro</span>}
-                    {data.art.prompt}
-                  </span>
-                  {/* <span className="text_accented"> Подробнее</span> */}
-                </div>
-              </>
+            {isTypeVoteOrEnd && (
+              <div
+                className="Prompt text_gray"
+                onClick={() => {
+                  handlePromptCopyPopout(data.art);
+                }}
+              >
+                <span className="Prompt__text">
+                  {data.art.isPro && <span className="modeProHint">pro</span>}
+                  {data.art.prompt}
+                </span>
+              </div>
             )}
           </div>
         </div>
@@ -98,35 +93,24 @@ function ContestWorks__item({ data, index }) {
           >
             <ShareSvg color={"#fff"} />
           </div>
-          {(activeContest.type == "vote" || isEnded) && (
-            <>
+          {isTypeVoteOrEnd && (
+            <div className="ContestWork__like_wrap">
               <div
-                className={`ContestWork__like ${
-                  (isEnded || isLikedContest || isLiked) && "ended"
-                }`}
-                onClick={() => {
-                  activeContest.type === "vote" &&
-                    !isLiked &&
-                    !isLikedContest &&
-                    handleSendLikePopout({
-                      art_id: data.art.art_id,
-                      vk_user_id: data.vk_user_id,
-                    });
-                }}
+                className={`ContestWork__like  ${isEnded && "ended"}`}
+                onClick={addLike}
               >
-                <LikeSvg full={isEnded || isLiked ? "true" : "false"} />
+                <LikeSvg full={isArtLiked.toString()} />
               </div>
-
               <div
                 className={`ContestWork__likeCount ${isEnded && "ended"}`}
                 onClick={() => {
-                  router.toView("ArtVoted");
+                  go("/artVoted");
                   setArtVoted(data.likes);
                 }}
               >
                 <span>{data.likes.total}</span>
               </div>
-            </>
+            </div>
           )}
         </div>
       </div>

@@ -41,25 +41,19 @@ function ContestPrizes({ activeContest }) {
             <div key={index}>
               <div className="ContestPrize__item">
                 <div className="ContestPrize__place">
-                  <div
-                    className={`ContestPrize__place_num ${
-                      index == 0 && "first"
-                    }`}
-                  >
-                    {index + 1}
-                  </div>
+                  <div className={`ContestPrize__place_num `}>{index + 1}</div>
                   <div className="ContestPrize__place_text">место</div>
                 </div>
                 <img src={item.img} className="ContestPrize__img" />
                 <div className="ContestPrize__text">
                   {item.winner.vk_user_id ? (
-                    <div
-                      className={`ContestPrize__profileName ${
-                        index == 0 && "first"
-                      }`}
+                    <a
+                      className={`ContestPrize__profileName first`}
+                      href={`https://vk.com/id${item.winner.vk_user_id}`}
+                      target="_blank"
                     >
                       {item.winner?.name + " " + item.winner?.surname}
-                    </div>
+                    </a>
                   ) : (
                     ""
                   )}

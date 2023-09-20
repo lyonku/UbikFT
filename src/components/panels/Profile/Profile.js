@@ -6,34 +6,49 @@ import { MainContext } from "components/shared/providers/MainProvider";
 import profile__emptyImg from "assets/img/profile__emptyImg.svg";
 
 import Filters from "components/common/Filters";
-import ProfileControls from "./components/ProfileControls";
 import ProfileArt from "./components/ProfileArt";
 import useInfiniteScroll from "components/shared/hooks/useInfiniteScroll";
+import { useGetPanelForView } from "@vkontakte/vk-mini-apps-router";
+import HeaderControls from "components/common/HeaderControls";
 
 const Profile = ({ id }) => {
-  const { fetchedUser, router, userData, artsData, handleGetArts } =
-    useContext(MainContext);
+  const activePanel = useGetPanelForView(id);
+  const {
+    fetchedUser,
+    contestsArtsData,
+    artsData,
+    handleGetArts,
+    handleGetContestsArts,
+  } = useContext(MainContext);
   const [currentFilter, setCurrentFilter] = useState();
   const filtersData = [
     { id: "New", text: "Недавние работы" },
     { id: "Contest", text: "Конкурсные работы" },
   ];
 
+  const isContestArts = contestsArtsData.arts?.length >= 1;
+  const isArts = artsData?.arts?.length >= 1;
+  const isFilterContest = currentFilter == "Contest";
+  const isFilterNew = currentFilter == "New";
+
   useInfiniteScroll({
-    сurrentPage: artsData.currentPage,
-    func: handleGetArts,
-    maxPages: artsData.maxPages,
+    сurrentPage: isFilterContest
+      ? contestsArtsData.currentPage
+      : artsData.currentPage,
+    func: isFilterContest ? handleGetContestsArts : handleGetArts,
+    maxPages: isFilterContest ? contestsArtsData.maxPages : artsData.maxPages,
     className: ".Profile",
   });
-  const isContest = artsData?.imgs?.find((item) => item.contest !== "");
 
   return (
-    <View id={id} activePanel={router.activePanel}>
+    <View id={id} activePanel={activePanel}>
       <Panel id="profile">
         <div className="Profile">
           <div className="gradient-round"></div>
           <div className="Profile__wrap">
-            <ProfileControls userData={userData} router={router} />
+            <div className="Profile__controls">
+              <HeaderControls />
+            </div>
             <div className="Profile__body">
               <div className="Profile__title">
                 <img src={fetchedUser?.photo_100} className="Profile__avatar" />
@@ -66,29 +81,35 @@ const Profile = ({ id }) => {
                     стене.
                   </div>
                 )}
-                {!artsData.imgs ||
-                artsData.imgs?.length < 1 ||
-                (currentFilter == "Contest" && !isContest) ? (
+                {(!isContestArts && isFilterContest) ||
+                (!isArts && isFilterNew) ? (
                   <div className="ProfileArts__item_empty ProfileArts__item">
                     <img src={profile__emptyImg} />
-                    {currentFilter != "Contest"
+                    {isFilterContest
                       ? "Тут будут ваши арты"
                       : "Вы еще не отправляли работы на конкурс"}
                   </div>
                 ) : (
                   <div className="ProfileArts__items">
-                    {artsData.imgs?.map((item, index) => {
-                      if (currentFilter != "Contest" || item.contest) {
-                        return <ProfileArt item={item} key={index} />;
-                      }
-                    })}
+                    {currentFilter !== "Contest"
+                      ? artsData.arts?.map((item, index) => {
+                          return <ProfileArt item={item} key={index} />;
+                        })
+                      : contestsArtsData.arts?.map((item, index) => {
+                          return (
+                            <ProfileArt
+                              item={item}
+                              key={index}
+                              inContest={true}
+                            />
+                          );
+                        })}
                   </div>
                 )}
               </div>
             </div>
           </div>
         </div>
-        <div className={`overlay ${router.popout && "open"}`}></div>
       </Panel>
     </View>
   );

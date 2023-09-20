@@ -1,13 +1,13 @@
 import closeBtn from "assets/img/close-btn.svg";
 
-function LoadingError({ handleSetArtCountPopout, router }) {
+function LoadingError({ handleSetArtCountPopout, goReplace, goBack }) {
   return (
     <div className="Loading__wrap">
       <div className="Header__controls">
         <div
           className="payEnergy__closeBtn closeBtn Loading__close"
           onClick={() => {
-            router.toBack();
+            goReplace("/main");
           }}
         >
           <img src={closeBtn} />
@@ -18,8 +18,7 @@ function LoadingError({ handleSetArtCountPopout, router }) {
         <div
           className="Loading__errorBtn"
           onClick={() => {
-            router.toBack();
-            handleSetArtCountPopout();
+            handleSetArtCountPopout({ from: "loadingError" });
           }}
         >
           Повторить попытку

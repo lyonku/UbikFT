@@ -2,6 +2,7 @@ import { createContext, useState, useEffect, useContext } from "react";
 import { post } from "utils/api";
 import { MainContext } from "./MainProvider";
 import createPrompts from "components/App/features/createPrompts";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 export const GenerateContext = createContext();
 
@@ -13,13 +14,14 @@ export const GenerateContextProvider = ({ children, router }) => {
   const [modePro, setModePro] = useState(false);
 
   const [chosenStyles, setChosenStyles] = useState({});
-  const [currentImg, setCurrentImg] = useState();
+  const [currentImg, setCurrentImg] = useState([]);
 
   const [generation, setGeneration] = useState(false);
   const [generationError, setGenerationError] = useState();
 
-  const { handleGetArts, handleInitUser, fetchedUser } =
+  const { handleGetArts, handleInitUser, fetchedUser, notify } =
     useContext(MainContext);
+  const routeNavigator = useRouteNavigator();
 
   // Mass for input values in pro mode
   const inquiryMass = [
@@ -48,9 +50,9 @@ export const GenerateContextProvider = ({ children, router }) => {
 
   // Generate art start
   const handleArtGenerate = async (count) => {
+    setGeneration(true);
     setGenerationError(false);
-
-    router.toPanel("loading");
+    routeNavigator.push("/loading");
 
     const config = {
       text_prompts: [
@@ -67,7 +69,10 @@ export const GenerateContextProvider = ({ children, router }) => {
       samples: count,
       style_preset: "",
       seed: modePro ? +inputValueSeed : 0,
-      vk_user_id: fetchedUser.id, // DELETE
+      rawPrompt: inputValue,
+      rawNegativePrompt: inputValueNegative,
+      isPro: modePro,
+      styles: chosenStyles,
     };
 
     if (!generation) {
@@ -86,6 +91,9 @@ export const GenerateContextProvider = ({ children, router }) => {
       if (data?.arts) {
         setCurrentImg(data.arts);
       }
+      setGeneration(false);
+      handleGetArts();
+      handleInitUser();
     } else {
       notify({ text: "Генерация уже идёт!", type: "error" });
     }
@@ -99,48 +107,53 @@ export const GenerateContextProvider = ({ children, router }) => {
       text: inputValue,
     });
 
-    const translateData = response.translations[0].text;
-
-    if (translateData === null) {
+    if (!response.isOk) {
       notify({
         text: "Сервис перевода недоступен",
         type: "error",
       });
       return;
     }
+
+    const translateData = response.data.translations[0].text;
+
     return translateData;
   }
 
   // Function for generating images
   async function generateArt(data = {}) {
-    setGeneration(true);
     const response = await post(`/generate`, data);
-    if (response.arts) {
-      setGeneration(false);
-      handleGetArts();
-      handleInitUser();
-    } else {
-      if (response == "Недостаточно энергии") {
-        router.toBack();
+
+    if (!response.isOk) {
+      if (response.message === "Недостаточно энергии") {
+        routeNavigator.back();
       } else {
-        setError(true);
+        setGenerationError(true);
       }
       notify({
-        text: response ?? "Сервис генерации недоступен",
+        text: response.message ?? "Сервис генерации недоступен",
         type: "error",
       });
+      setGeneration(false);
+      return;
     }
-    return response;
+
+    return response.data;
   }
 
   // Generate art end
 
-  const handleCopyPrompt = (text, style, pro) => {
-    setModePro(pro ? true : false);
-    setChosenStyles(style);
-    setInputValue(text);
-    router.toBack();
-    router.toView("main");
+  const handleCopyPrompt = (props) => {
+    setModePro(props.isPro);
+    setInputValue(props.prompt);
+    if (props.isPro) {
+      setInputValueNegative(props.negativePrompt);
+      setInputValueSeed(props.seed);
+      setGuidanceScale(props.cfg_scale);
+    } else {
+      setChosenStyles(props.styles);
+    }
+    routeNavigator.push("/");
   };
 
   const handleChangeModePro = () => {
@@ -157,6 +170,8 @@ export const GenerateContextProvider = ({ children, router }) => {
         chosenStyles,
         generationError,
         currentImg,
+        generation,
+        setCurrentImg,
         setChosenStyles,
         handleArtGenerate,
         setGuidanceScale,

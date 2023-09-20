@@ -8,6 +8,7 @@
   justify-content: center;
   background-color: black !important;
   position: relative;
+  color: #fff;
 }
 
 .Rating__body {
@@ -237,6 +238,7 @@
 }
 
 .RatingProfile__rating {
+  color: #fff;
   width: 100%;
   gap: 16px;
   max-width: 100px;

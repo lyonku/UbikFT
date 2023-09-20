@@ -6,6 +6,7 @@
   justify-content: center;
   width: 100%;
   height: 100vh;
+  color: #ffffff;
 }
 
 .Profile__wrap {
@@ -144,6 +145,7 @@ div.shareBtn {
 }
 
 .ProfileArt__body_img {
+  max-width: 450px;
   border-radius: 24px;
 }
 

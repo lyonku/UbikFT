@@ -6,7 +6,7 @@ import { ContestsContext, MainContext } from "components/shared/providers";
 function ContestWorks({ currentFilter }) {
   const { fetchedUser } = useContext(MainContext);
   const { activeContest } = useContext(ContestsContext);
-  console.log(activeContest);
+
   return (
     <div className="ContestWorks">
       <div className="ContestWorks__title title_h3-24px">

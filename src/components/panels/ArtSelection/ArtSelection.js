@@ -1,12 +1,19 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./ArtSelection.css";
 
 import GeneratedArt from "./components/GeneratedArt";
 import ArtSelectionControls from "./components/ArtSelectionControls";
-import { MainContext, PopoutContext } from "components/shared/providers";
+import { GenerateContext, MainContext } from "components/shared/providers";
 
 const ArtSelection = () => {
-  const { router } = useContext(MainContext);
+  const { goReplace } = useContext(MainContext);
+  const { currentImg, generation } = useContext(GenerateContext);
+
+  useEffect(() => {
+    if (currentImg.length < 1 && !generation) {
+      goReplace("/main");
+    }
+  }, [currentImg]);
 
   return (
     <div className="ArtSelection">
@@ -14,7 +21,6 @@ const ArtSelection = () => {
       <div className="ArtSelection__wrap">
         <ArtSelectionControls />
         <GeneratedArt />
-        <div className={`overlay ${router.popout && "open"}`}></div>
       </div>
     </div>
   );

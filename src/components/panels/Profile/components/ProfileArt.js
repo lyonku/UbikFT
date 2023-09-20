@@ -4,29 +4,23 @@ import ShareSvg from "components/common/svgs/shareSvg";
 
 import { MainContext, PopoutContext } from "components/shared/providers";
 import ArtControls from "components/common/ArtControls";
+import { Spinner } from "@vkontakte/vkui";
 
-function ProfileArt({ item }) {
-  const { router, deleteArt } = useContext(MainContext);
+function ProfileArt({ item, inContest = false }) {
+  const { deleteArt, artDeleting } = useContext(MainContext);
   const {
     handlePromptCopyPopout,
     handleShowSharePopout,
     handleContestSelectPopout,
   } = useContext(PopoutContext);
 
-  const handleDeleteArt = () => {
-    let startIndex = item.imagesLink.lastIndexOf("/") + 1;
-    let endIndex = item.imagesLink.lastIndexOf(".");
-    let imageId = item.imagesLink.substring(startIndex, endIndex);
-    deleteArt(imageId);
-  };
-
   return (
     <div className={`ProfileArt `}>
       <div className="ProfileArt__body">
-        <img className="ProfileArt__body_img" src={item.imagesLink} />
-        {!item.contest && (
+        <img className="ProfileArt__body_img" src={item.artLink} />
+        {!inContest && (
           <div
-            className="ProfileArt__controls transparentBlock"
+            className="ProfileArt__controls transparentBlock darkBlock"
             onClick={() => handleContestSelectPopout({ art_id: item.art_id })}
           >
             Отправить на конкурс
@@ -34,36 +28,33 @@ function ProfileArt({ item }) {
         )}
         <ArtControls art={item} isDownload={true} />
       </div>
-
       <div className="Prompt__contols">
         <div
           className="Prompt text_gray"
-          onClick={() =>
-            handlePromptCopyPopout(
-              item.prompt,
-              item.styles,
-              item.isPro,
-              item.seed
-            )
-          }
+          onClick={() => handlePromptCopyPopout(item)}
         >
           <span className="Prompt__text">
             {item.isPro && <span className="modeProHint">pro</span>}
             {item.prompt}
           </span>
-          {/* <span className="text_accented">Подробнее</span> */}
         </div>
-
         <div className="promptControls">
-          {!item.contest && (
+          {!inContest && (
             <div
               className="ProfileArt__delete roundBtn"
-              onClick={handleDeleteArt}
+              onClick={() => {
+                if (!artDeleting) {
+                  deleteArt(item.art_id);
+                }
+              }}
             >
-              <img src={profile__delete} />
+              {artDeleting ? (
+                <Spinner size="regular" style={{ color: "#fff" }} />
+              ) : (
+                <img src={profile__delete} />
+              )}
             </div>
           )}
-
           <div
             className="shareBtn roundBtn"
             onClick={() => handleShowSharePopout(item)}

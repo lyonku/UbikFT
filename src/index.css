@@ -10,13 +10,10 @@
 }
 
 * {
+  /* color: #ffffff; */
   font-weight: 600;
   font-family: "MacPaw Fixel";
   font-style: normal;
-}
-
-div {
-  color: #ffffff;
 }
 
 .vkui {
@@ -24,6 +21,8 @@ div {
 }
 
 body {
+  padding: 0;
+  margin: 0;
   /* overflow: hidden; */
 }
 
@@ -115,6 +114,28 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
+.darkBlock {
+  z-index: 2;
+  user-select: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(2px);
+  font-weight: 400;
+  border-radius: 99px;
+}
+
+.darkBlock:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.darkBlock:active {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .roundBtn_blur {
   cursor: pointer;
   display: flex;
@@ -180,13 +201,13 @@ body {
   background: #b0e822;
 }
 
-.slick-dots.slick-dots-bottom {
+/* .slick-dots.slick-dots-bottom {
   z-index: 10 !important;
 }
 
 :where(.css-12jzuas).ant-carousel .slick-dots-bottom {
   bottom: auto !important;
-}
+} */
 
 .ComplaintsList__controls {
   display: flex;
@@ -376,7 +397,6 @@ body {
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(2px);
   border-radius: 24px;
 }
@@ -404,6 +424,7 @@ body {
 }
 
 .Prompt__text {
+  font-weight: 500;
   -webkit-line-clamp: 2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -446,7 +467,7 @@ body {
 }
 
 .Notification.open {
-  z-index: 999;
+  z-index: 2;
   opacity: 1;
   transform: scale(1);
 }
@@ -549,13 +570,49 @@ div.Notification__btn span {
   margin-top: -2px;
 }
 
-/* Изменить !! */
+.vkuiPopoutWrapper__overlay {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(5px);
+}
 
-.PayConfirm {
-  z-index: 100;
+.NotFoundPage {
+  z-index: 99;
+  position: relative;
+  overflow: none;
   display: flex;
   flex-direction: column;
-  position: absolute;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  gap: 20px;
+  background-color: black;
+  box-sizing: border-box;
+  padding: 50px 32px 100px 32px;
+}
+
+.NotFoundPage__title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.NotFoundPage__text {
+  color: #fff;
+  max-width: 450px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.NotFoundPage__btn {
+  margin-top: 30px;
+  max-width: 300px;
+}
+
+.PayConfirm {
+  display: flex;
+  flex-direction: column;
   bottom: 0;
   max-width: 490px;
   width: 100%;
@@ -564,12 +621,6 @@ div.Notification__btn span {
   background: #131313;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 32px 32px 0px 0px;
-}
-
-.PayConfirm__background.open {
-  transition: 0.5s;
-  opacity: 1;
-  z-index: 28;
 }
 
 .PayConfirm__list {
@@ -591,13 +642,14 @@ div.Notification__btn span {
 
 .PayConfirm__listTitle {
   line-height: 100%;
-  text-align: center;
   font-size: 16px;
   font-weight: 500;
+  margin-bottom: -2px;
 }
 
 .PayConfirm__listMarker {
-  width: 8px;
+  width: 100%;
+  max-width: 8px;
   height: 8px;
   background-color: var(--main, #b0e822);
   border-radius: 100%;
@@ -610,6 +662,16 @@ div.Notification__btn span {
 }
 
 div.PayConfirm__title {
+  text-align: center;
+  line-height: 114.5%;
+  font-weight: 700;
+  font-size: 32px;
+  font-feature-settings: "ss04" on;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.ArtCount__title {
   text-align: center;
   line-height: 114.5%;
   font-weight: 700;
@@ -734,6 +796,24 @@ div.PayConfirm__title {
   mask-composite: exclude;
 }
 
+.outOfEnergy {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.outOfEnergy__img {
+  max-width: 170px;
+  max-height: 170px;
+  height: 100%;
+}
+
+.outOfEnergy__img_wrap {
+  height: 170px;
+  margin-top: -55px;
+  margin-bottom: -30px;
+}
+
 .PayConfirm__btn {
   user-select: none;
   cursor: pointer;
@@ -778,4 +858,141 @@ div.PayConfirm__title {
   border-radius: 100px;
   width: 55px;
   height: 5px;
+}
+
+.Modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+.ModalWrap {
+  color: #fff;
+  max-height: 500px;
+  align-self: center;
+  box-sizing: border-box;
+  padding: 24px;
+  bottom: auto;
+  height: auto;
+  opacity: 0;
+  z-index: 2;
+  transition: 0.3s all;
+  max-width: 488px;
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  background: #131313;
+  border-radius: 24px;
+  transform: scale(0.2) !important;
+}
+
+.ModalWrap.open {
+  opacity: 1;
+  transform: scale(1) !important;
+}
+
+.ModalWrap__header span {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 114.5%;
+
+  font-feature-settings: "ss04" on;
+  color: #ffffff;
+}
+
+.ModalWrap__header {
+  width: 100%;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ModalWrap__btn {
+  border-radius: 100%;
+}
+
+.ModalWrap__body {
+  padding-right: 10px;
+  margin-left: 10px;
+  max-height: 400px;
+  overflow: auto;
+  width: 100%;
+}
+
+textarea {
+  color: #fff !important;
+}
+
+.DeleteContestArt__btns {
+  display: flex;
+  gap: 10px;
+}
+
+div.DeleteContestArt__btn.cancel {
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 54px;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 23px;
+  text-align: center;
+  background-color: rgb(175, 35, 35) !important;
+}
+div.DeleteContestArt__btn.cancel:hover {
+  background-color: rgb(175, 35, 35) !important;
+}
+
+.SwipeModalWrap {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  max-width: 490px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  background: #131313;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 32px 32px 0px 0px;
+  transition: 0.3s all;
+  transform: translateY(550px);
+}
+
+.SwipeModalWrap.open {
+  z-index: 28;
+  transform: translateY(0px);
+}
+
+.SwipeModalWrap__header {
+  margin-bottom: 31px;
+  align-self: center;
+  background: #ffffff;
+  mix-blend-mode: normal;
+  opacity: 0.9;
+  border-radius: 100px;
+  width: 55px;
+  height: 5px;
+}
+
+.SwipeModalWrap__body {
+  max-height: 500px;
+  width: 100%;
+  overflow-y: auto;
+  padding-right: 5px;
 }

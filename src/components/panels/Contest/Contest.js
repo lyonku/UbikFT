@@ -11,16 +11,20 @@ import ContestControls from "./components/ContestControls";
 import ContestItem__header from "./components/ContestItem__header";
 import ContestWorks from "./components/ContestWorks";
 import Filters from "components/common/Filters";
+import {
+  useFirstPageCheck,
+  useParams,
+  useSearchParams,
+} from "@vkontakte/vk-mini-apps-router";
 
 const Contest = ({ id }) => {
-  const { router, fetchedUser } = useContext(MainContext);
-  const {
-    handleInitContests,
-    activeContest,
-    handleGetContestArts,
-    updateContest,
-  } = useContext(ContestsContext);
-
+  const params = useParams();
+  const contest_id = params.contest_id;
+  const art_id = params.art_id;
+  const { fetchedUser, goBack, goReplace, notify } = useContext(MainContext);
+  const { contests, activeContest, handleGetContestWorks, updateContest } =
+    useContext(ContestsContext);
+  const isFirstPage = useFirstPageCheck();
   const [currentFilter, setCurrentFilter] = useState();
 
   const filtersData = [
@@ -29,35 +33,55 @@ const Contest = ({ id }) => {
   ];
 
   useEffect(() => {
-    if (updateContest) {
-      handleInitContests();
+    if (!contest_id && activeContest.id) {
+      isFirstPage ? goReplace("/contests") : goBack();
+      return;
     }
-  }, [updateContest]);
+    if (contests.length >= 1) {
+      let isIdFound = contests.some((item) => item.id == contest_id);
+      if (!isIdFound) {
+        goReplace("/contests");
+        notify({ text: "Конкурса не существует", type: "error" });
+        return;
+      }
+    }
+  }, [contests]);
+
+  // useEffect(() => {
+  //   if (updateContest && contest_id) {
+  //     handleInitContests();
+  //   }
+  // }, [updateContest]);
 
   useEffect(() => {
     let mass = window.location.hash.split("/");
-    if (!activeContest.works && fetchedUser?.id) {
-      console.log(fetchedUser?.id);
-
-      handleGetContestArts(null, null, null, mass.at(-1));
+    if (
+      !activeContest.works &&
+      fetchedUser?.id &&
+      (!contest_id || activeContest.id)
+    ) {
+      if (art_id) {
+        handleGetContestWorks(null, null, null, art_id);
+      } else {
+        handleGetContestWorks();
+      }
     }
   }, [updateContest, fetchedUser]);
 
   useInfiniteScroll({
     сurrentPage: activeContest.currentPage ?? 1,
-    func: handleGetContestArts,
+    func: handleGetContestWorks,
     maxPages: activeContest.maxPages,
     className: ".Contest",
   });
 
   return (
     <Panel id={id}>
-      <div className={`overlay ${router.popout && "open"}`}></div>
       <div
         className="Contest"
         style={{
           background: `linear-gradient(180deg, rgba(10, 10, 10, 0) 0%, #0A0A0A 50%), url(${
-            activeContest?.img
+            activeContest?.backgroundLink
           }) center top ${-50}px / contain no-repeat`,
         }}
       >

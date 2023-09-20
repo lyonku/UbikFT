@@ -5,9 +5,10 @@ import {
   MainContext,
   PopoutContext,
 } from "components/shared/providers";
+import { useSearchParams } from "@vkontakte/vk-mini-apps-router";
 
 function ContestItem({ data }) {
-  const { router } = useContext(MainContext);
+  const { go } = useContext(MainContext);
   const { setActiveContest } = useContext(ContestsContext);
   const { handleInfoPopout } = useContext(PopoutContext);
 
@@ -17,15 +18,15 @@ function ContestItem({ data }) {
   };
 
   const navigateToContestPanel = () => {
-    router.toPanel("contest");
     setActiveContest(data);
+    go(`contest/${data.id}`);
   };
 
   return (
     <div
       className="ContestsItem"
       style={{
-        background: `linear-gradient(180deg, rgba(10, 10, 10, 0) 0%, #0A0A0A 100%), no-repeat center/cover url(${data.img})`,
+        background: `linear-gradient(180deg, rgba(10, 10, 10, 0) 0%, #0A0A0A 100%), no-repeat center/cover url(${data.backgroundLink})`,
       }}
       onClick={() => {
         navigateToContestPanel();
@@ -34,7 +35,7 @@ function ContestItem({ data }) {
       <div className="ContestsItem__wrap">
         <div className="ContestsItem__header">
           <div
-            className="ContestsItem__rules transparentBlock"
+            className="ContestsItem__rules transparentBlock darkBlock"
             onClick={handleEventInfoPopout}
           >
             Правила

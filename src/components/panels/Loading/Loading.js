@@ -9,18 +9,21 @@ import LoadingError from "./components/LoadingError";
 import { GenerateContext, PopoutContext } from "components/shared/providers";
 
 const Loading = ({ id }) => {
-  const { router } = useContext(MainContext);
-  const { currentImg, generationError } = useContext(GenerateContext);
+  const { goReplace, goBack } = useContext(MainContext);
+  const { currentImg, generationError, generation } =
+    useContext(GenerateContext);
   const { handleSetArtCountPopout } = useContext(PopoutContext);
 
   useEffect(() => {
-    if (currentImg) {
-      const img = new Image();
-      img.src = currentImg;
-      router.toBack();
-      router.toPanel("artSelection");
+    if (currentImg.length >= 1 && generation && !generationError) {
+      goReplace("/artSelection");
+    } else {
+      if (!generation) {
+        goReplace("/main");
+      }
     }
   }, [currentImg]);
+
   return (
     <Panel id={id}>
       <div
@@ -35,7 +38,8 @@ const Loading = ({ id }) => {
         {generationError ? (
           <LoadingError
             handleSetArtCountPopout={handleSetArtCountPopout}
-            router={router}
+            goReplace={goReplace}
+            goBack={goBack}
           />
         ) : (
           <LoadingMain />

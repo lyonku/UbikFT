@@ -36,7 +36,7 @@ function InquiryTextarea({ error, value, setValue, placeholder }) {
           setValue("");
           handleInputFocus();
         }}
-        className={`inquiry__clearBtn ${value.length >= 1 && "displayed"}`}
+        className={`inquiry__clearBtn ${value?.length >= 1 && "displayed"}`}
       />
     </div>
   );

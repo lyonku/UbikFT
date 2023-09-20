@@ -1,5 +1,4 @@
-import { createContext, useState, useEffect } from "react";
-import { PopoutWrapper } from "@vkontakte/vkui";
+import { createContext, useState, useEffect, useContext } from "react";
 import ContestSelect from "components/panels/ArtSelection/components/ContestSelect";
 import PayConfirm from "components/panels/Contest/components/PayConfirm";
 import ShareWorkAlert from "components/common/ShareWorkAlert";
@@ -7,76 +6,101 @@ import PromptCopy from "components/common/promptCopy";
 import InfoPopout from "components/common/infoPopout";
 import SelectArtCount from "components/common/SelectArtCount";
 import ArtComplaint from "components/common/ArtComplaint";
-import ComplaintsList from "components/common/ComplaintsList";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import ModalWrap from "components/common/ModalWrap";
+import SwipeModalWrap from "components/common/SwipeModalWrap";
+import OutOfEnergy from "components/common/OutOfEnergy";
+import { MainContext } from "./MainProvider";
+import DeleteContestArt from "components/common/DeleteContestArt";
 
 export const PopoutContext = createContext();
 
-export const PopoutContextProvider = ({ children, router }) => {
-  const handleSendLikePopout = ({ art_id, vk_user_id }) => {
-    router.toPopout(
-      <PopoutWrapper alignY="center" alignX="center">
-        <PayConfirm art_id={art_id} vk_user_id={vk_user_id} />
-      </PopoutWrapper>
+export const PopoutContextProvider = ({ children }) => {
+  const routeNavigator = useRouteNavigator();
+  const { userData, setNotificationVibration } = useContext(MainContext);
+
+  const handleSendLikePopout = (props) => {
+    routeNavigator.showPopout(
+      <SwipeModalWrap>
+        <PayConfirm
+          art_id={props.art_id}
+          liked_user_id={props.liked_user_id}
+          isLikeSet={props.isLikeSet}
+          isArtLiked={props.isArtLiked}
+        />
+      </SwipeModalWrap>
     );
   };
 
-  const handleSetArtCountPopout = () => {
-    router.toPopout(
-      <PopoutWrapper alignY="center" alignX="center">
-        <SelectArtCount />
-      </PopoutWrapper>
+  const handleSetArtCountPopout = (props) => {
+    if (userData.energy == 0) {
+      setNotificationVibration("error");
+    }
+
+    routeNavigator.showPopout(
+      <SwipeModalWrap>
+        {userData.energy == 0 ? (
+          <OutOfEnergy />
+        ) : (
+          <SelectArtCount from={props?.from} />
+        )}
+      </SwipeModalWrap>
     );
   };
 
   const handleShowSharePopout = (art) => {
-    router.toPopout(
-      <PopoutWrapper alignY="center" alignX="center">
+    routeNavigator.showPopout(
+      <ModalWrap title="Поделится работой">
         <ShareWorkAlert art={art} />
-      </PopoutWrapper>
+      </ModalWrap>
     );
   };
 
   const handleContestSelectPopout = ({ art_id }) => {
-    router.toPopout(
-      <PopoutWrapper alignY="center" alignX="center">
+    routeNavigator.showPopout(
+      <SwipeModalWrap>
         <ContestSelect art_id={art_id} />
-      </PopoutWrapper>
+      </SwipeModalWrap>
     );
   };
 
   const handleInfoPopout = () => {
-    router.toPopout(
-      <PopoutWrapper alignY="center" alignX="center">
+    routeNavigator.showPopout(
+      <ModalWrap title="Правила использования сервиса">
         <InfoPopout />
-      </PopoutWrapper>
+      </ModalWrap>
     );
   };
 
-  const handlePromptCopyPopout = (prompt, styles, pro, seed) => {
-    router.toPopout(
-      <PopoutWrapper alignY="center" alignX="center">
-        <PromptCopy prompt={prompt} styles={styles} pro={pro} seed={seed} />
-      </PopoutWrapper>
+  const handleDeleteContestArt = ({ art_id, contest_id, user_id }) => {
+    routeNavigator.showPopout(
+      <ModalWrap title="Вы уверены что хотите удалить арт из конкурса?">
+        <DeleteContestArt
+          art_id={art_id}
+          contest_id={contest_id}
+          user_id={user_id}
+        />
+      </ModalWrap>
     );
   };
 
-  const handleShowComplaints = (mass) => {
-    router.toPopout(
-      <PopoutWrapper alignY="center" alignX="center">
-        <ComplaintsList mass={mass} />
-      </PopoutWrapper>
+  const handlePromptCopyPopout = (data) => {
+    routeNavigator.showPopout(
+      <ModalWrap title="Параметры:">
+        <PromptCopy data={data} />
+      </ModalWrap>
     );
   };
 
   const handleArtComplaint = ({ art_id, contest_id, user_id }) => {
-    router.toPopout(
-      <PopoutWrapper alignY="center" alignX="center">
+    routeNavigator.showPopout(
+      <ModalWrap title="Отправьте свою жалобу на работу, мы готовы вас выслушать">
         <ArtComplaint
           art_id={art_id}
           contest_id={contest_id}
           user_id={user_id}
         />
-      </PopoutWrapper>
+      </ModalWrap>
     );
   };
 
@@ -90,7 +114,7 @@ export const PopoutContextProvider = ({ children, router }) => {
         handlePromptCopyPopout,
         handleSetArtCountPopout,
         handleArtComplaint,
-        handleShowComplaints,
+        handleDeleteContestArt,
       }}
     >
       {children}

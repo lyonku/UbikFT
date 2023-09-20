@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.20a77e9f.css",
-    "main.js": "/static/js/main.e4b15d07.js",
+    "main.css": "/static/css/main.9f2877a6.css",
+    "main.js": "/static/js/main.1c654be9.js",
     "static/media/loading__background.png": "/static/media/loading__background.8db84f724ce51633a0dd.png",
     "static/media/payEnergy__background.png": "/static/media/payEnergy__background.47326c0d69d909a6cecb.png",
+    "static/media/outOfEnergyImg.png": "/static/media/outOfEnergyImg.6e685869d7a8197b31cc.png",
     "static/media/MacPawFixelText-Regular.otf": "/static/media/MacPawFixelText-Regular.75d44f06aa78a75b45a2.otf",
     "static/media/MacPawFixelText-Regular.woff2": "/static/media/MacPawFixelText-Regular.615b696311567a1434b9.woff2",
     "static/media/profile__emptyImg.svg": "/static/media/profile__emptyImg.66feaa14079716411da37455739e3280.svg",
@@ -21,11 +22,11 @@
     "static/media/search.svg": "/static/media/search.b51b1449979e3b8e9b1e0a21ad7718af.svg",
     "static/media/download.svg": "/static/media/download.e6950a3253a93f4c19c5f8df661f0792.svg",
     "static/media/addToWall.svg": "/static/media/addToWall.90f6d605243e9961da8297afc39653a2.svg",
-    "main.20a77e9f.css.map": "/static/css/main.20a77e9f.css.map",
-    "main.e4b15d07.js.map": "/static/js/main.e4b15d07.js.map"
+    "main.9f2877a6.css.map": "/static/css/main.9f2877a6.css.map",
+    "main.1c654be9.js.map": "/static/js/main.1c654be9.js.map"
   },
   "entrypoints": [
-    "static/css/main.20a77e9f.css",
-    "static/js/main.e4b15d07.js"
+    "static/css/main.9f2877a6.css",
+    "static/js/main.1c654be9.js"
   ]
 }

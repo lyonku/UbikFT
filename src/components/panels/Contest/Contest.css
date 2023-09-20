@@ -9,6 +9,7 @@
 }
 
 .Contest__wrap {
+  color: #fff;
   position: relative;
   z-index: 3;
   width: 100%;
@@ -108,8 +109,12 @@ div.Contest__controls {
 }
 
 .ContestPrize__profileName {
+  text-decoration: none;
   font-size: 15px;
   font-weight: 600;
+}
+.ContestPrize__profileName:hover {
+  color: var(--main, #92c01d);
 }
 
 .ContestPrize__prizeName {
@@ -133,6 +138,7 @@ div.Contest__controls {
 }
 
 .ContestWork__menu_wrap {
+  color: var(--white, #fff);
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -316,6 +322,8 @@ a.underline {
 }
 
 .InfoPopout__list {
+  padding-left: 20px;
+  margin: 0;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -369,9 +377,10 @@ a.underline {
 
 .ContestWork__footer {
   display: flex;
+  align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .ContestWork__profile {
@@ -395,6 +404,12 @@ a.underline {
   align-items: center;
 }
 
+.ContestWork__like_wrap {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
 .ContestWork__like {
   width: 100%;
   max-width: 40px;
@@ -406,6 +421,7 @@ a.underline {
   align-items: center;
   padding: 0 8px;
   border-radius: 100%;
+  backdrop-filter: blur(2px);
 }
 
 .ContestWork__like:hover {
@@ -456,7 +472,6 @@ a.underline {
 
 .ContestWork__img_wrap {
   position: relative;
-  margin-bottom: 12px;
 }
 
 .ContestWork__complaint {
@@ -509,6 +524,7 @@ a.underline {
 
 .promptCopy {
   width: 100%;
+  opacity: 0;
   z-index: 3;
   margin: 20px;
   max-width: 400px;
@@ -518,6 +534,13 @@ a.underline {
   border-radius: 16px;
   background: #131313;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: 0.3s all;
+  transform: scale(0.2);
+}
+
+.promptCopy.open {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .promptCopy__title {
@@ -526,11 +549,13 @@ a.underline {
 }
 
 .promptCopy__controls {
-  cursor: pointer;
   margin-bottom: 20px;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+}
+.promptCopy__controls img {
+  cursor: pointer;
 }
 
 .promptCopy__body {

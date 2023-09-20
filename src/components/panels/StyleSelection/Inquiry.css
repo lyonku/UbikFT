@@ -81,6 +81,7 @@ div.inquiry__inputExample {
 }
 
 .inquiry__inputExample img {
+  user-select: none;
   cursor: pointer;
   width: 20px;
 }

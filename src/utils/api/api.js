@@ -2,23 +2,26 @@ const BASE_URL = "https://ubiq.top";
 
 // Launch parametrs
 const PARAM = window.location.href;
-const TOTAL_PARAMS = PARAM.slice(PARAM.indexOf("vk_access"));
+
+const TOTAL_PARAMS =
+  PARAM.indexOf("#/") == -1
+    ? PARAM.slice(PARAM.indexOf("?") + 1)
+    : PARAM.slice(PARAM.indexOf("?") + 1, PARAM.indexOf("#/"));
 
 export const get = async (url, params = "") => {
   try {
     const response = await fetch(`${BASE_URL}${url}?${TOTAL_PARAMS}${params}`, {
       method: "GET",
+
       // headers: {
       //   'Content-Type': 'application/json',
       // },
     });
 
     const data = await response.json();
-
     if (!response.ok) {
-      throw new Error(data);
+      console.error(data.message);
     }
-
     return data;
   } catch (error) {
     return error.message;
@@ -38,7 +41,7 @@ export const post = async (url, data = {}) => {
     const responseData = await response.json();
 
     if (!response.ok) {
-      throw new Error(data);
+      console.error(responseData.message);
     }
 
     return responseData;

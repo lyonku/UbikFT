@@ -5,9 +5,10 @@ import { ContestsContext, MainContext } from "components/shared/providers";
 import closeBtn from "assets/img/close-btn.svg";
 import search from "assets/img/search.svg";
 import LikeSvg from "components/common/svgs/LikeSvg";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 const ArtVoted = () => {
-  const { router } = useContext(MainContext);
+  const { goBack } = useContext(MainContext);
   const { artVoted } = useContext(ContestsContext);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -19,7 +20,7 @@ const ArtVoted = () => {
           <div
             className="ArtVoted__closeBtn closeBtn"
             onClick={() => {
-              router.toBack();
+              goBack();
             }}
           >
             <img src={closeBtn} />
@@ -58,7 +59,7 @@ const ArtVoted = () => {
                     {person.name + " " + person.surname}
                   </div>
                   <div className="ArtVotedProfile__ArtVoted">
-                    <LikeSvg width={"32px"} height={"32px"} full="true" />
+                    <LikeSvg width={"32px"} height={"32px"} full={"true"} />
                     <div className="ArtVotedProfile__ArtVotedCount">
                       {person.postedLike}
                     </div>

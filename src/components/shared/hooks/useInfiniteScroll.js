@@ -5,6 +5,10 @@ const useInfiniteScroll = ({ сurrentPage, func, className, maxPages }) => {
   const [fetching, setFetching] = useState(false);
 
   useEffect(() => {
+    setPage(сurrentPage);
+  }, [сurrentPage]);
+
+  useEffect(() => {
     if (fetching) {
       func(page)
         .then(() => {
@@ -20,13 +24,14 @@ const useInfiniteScroll = ({ сurrentPage, func, className, maxPages }) => {
     return () => {
       element.removeEventListener("scroll", checkPosition);
     };
-  }, [page, maxPages]);
+  }, [page, maxPages, сurrentPage]);
 
   const checkPosition = () => {
     const element = document.querySelector(className);
     const scrollPosition = element.scrollTop;
     const maxScrollHeight = element.scrollHeight - element.clientHeight;
-    if (maxScrollHeight - scrollPosition < 100 && page < maxPages) {
+
+    if (maxScrollHeight - scrollPosition < 100 && сurrentPage < maxPages) {
       setFetching(true);
     }
   };

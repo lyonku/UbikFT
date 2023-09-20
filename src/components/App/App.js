@@ -1,5 +1,4 @@
 import React, { useState, useMemo, useContext, useEffect } from "react";
-import { withRouter } from "@reyzitwo/react-router-vkminiapps";
 import {
   AppRoot,
   ConfigProvider,
@@ -10,10 +9,10 @@ import {
 import "@vkontakte/vkui/dist/vkui.css";
 
 import {
+  AdminContextProvider,
   ContestsContextProvider,
   GenerateContextProvider,
   MainContextProvider,
-  PopoutContext,
   PopoutContextProvider,
 } from "components/shared/providers";
 
@@ -26,38 +25,44 @@ import PayEnergy from "components/panels/PayEnergy/";
 import Rating from "components/panels/Rating/";
 import ArtVoted from "components/panels/ArtVoted/ArtVoted";
 import Snackbar from "./Snackbar";
-import ServerCrash from "components/common/ServerCrash";
+import Admin from "components/panels/Admin";
+
+import {
+  useActiveVkuiLocation,
+  usePopout,
+} from "@vkontakte/vk-mini-apps-router";
 
 const App = (props) => {
+  const { view } = useActiveVkuiLocation();
+  const routerPopout = usePopout();
+
   return (
-    <MainContextProvider router={props.router}>
-      <PopoutContextProvider router={props.router}>
-        <GenerateContextProvider router={props.router}>
+    <MainContextProvider>
+      <PopoutContextProvider>
+        <GenerateContextProvider>
           <ContestsContextProvider>
-            <ConfigProvider isWebView>
-              <SplitLayout popout={props.router.popout}>
+            <AdminContextProvider>
+              <SplitLayout popout={routerPopout}>
                 <Snackbar />
-                <ServerCrash />
+                {/* <ServerCrash /> */}
                 <SplitCol>
                   <AppRoot scroll="contain">
                     <Epic
-                      activeStory={props.router.activeView}
-                      tabbar={
-                        <MainTabbar activeStory={props.router.activeView} />
-                      }
+                      activeStory={view}
+                      tabbar={<MainTabbar activeStory={view} />}
                     >
                       <Main id="main" />
-
                       <Contests id="contests" />
                       <Profile id="profile" />
-                      <PayEnergy id="payEnergy" />
-                      <Rating id="Rating" />
-                      <ArtVoted id="ArtVoted" />
+                      <PayEnergy id="store" />
+                      <Rating id="rating" />
+                      <ArtVoted id="artVoted" />
+                      <Admin id="admin" />
                     </Epic>
                   </AppRoot>
                 </SplitCol>
               </SplitLayout>
-            </ConfigProvider>
+            </AdminContextProvider>
           </ContestsContextProvider>
         </GenerateContextProvider>
       </PopoutContextProvider>
@@ -65,4 +70,4 @@ const App = (props) => {
   );
 };
 
-export default withRouter(App);
+export default App;

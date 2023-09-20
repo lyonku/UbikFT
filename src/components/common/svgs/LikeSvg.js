@@ -4,21 +4,23 @@ const FULL =
 const BORDER =
   "M16.483 3.208A6.017 6.017 0 0 1 22.5 9.214c0 3.234-1.186 4.777-6.489 8.967l-2.723 2.113a2.1 2.1 0 0 1-2.576 0L7.99 18.181C2.686 13.99 1.5 12.448 1.5 9.214a6.016 6.016 0 0 1 6.017-6.006 6.258 6.258 0 0 1 4.346 1.785L12 5.12l.136-.128a6.258 6.258 0 0 1 4.348-1.785Zm-5.26 4.007.056.053a1.05 1.05 0 0 0 1.442 0l.057-.054c.924-.872 1.901-1.795 3.157-1.967A4.017 4.017 0 0 1 20.5 9.215c0 1.284-.212 2.04-.871 2.944-.775 1.061-2.183 2.338-4.851 4.447l-2.717 2.108a.1.1 0 0 1-.122 0l-2.717-2.108c-2.669-2.109-4.076-3.386-4.85-4.447-.66-.903-.872-1.66-.872-2.944a4.017 4.017 0 0 1 4.564-3.968c1.256.172 2.234 1.095 3.158 1.968Z";
 
-const LikeSvg = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={props.width ?? 24}
-    height={props.width ?? 24}
-    viewBox="0 0 24 24"
-    fill="none"
-    {...props}
-  >
-    <path
-      fill="#D73B3B"
-      fillRule="evenodd"
-      d={props.full == "true" ? FULL : BORDER}
-      clipRule="evenodd"
-    />
-  </svg>
-);
+const LikeSvg = (props) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={props.width ?? 24}
+      height={props.width ?? 24}
+      viewBox="0 0 24 24"
+      fill="none"
+      {...props}
+    >
+      <path
+        fill="#D73B3B"
+        fillRule="evenodd"
+        d={props.full === "true" ? FULL : BORDER}
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+};
 export default LikeSvg;

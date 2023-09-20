@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./PayEnergy.css";
 
 import closeBtn from "assets/img/close-btn.svg";
@@ -8,11 +8,19 @@ import background from "assets/img/payEnergy__background.png";
 import EnergySvg from "components/common/svgs/energySvg";
 
 import { MainContext } from "components/shared/providers/MainProvider";
+import { useFirstPageCheck } from "@vkontakte/vk-mini-apps-router";
 
 const PayEnergy = () => {
-  const { router, buySubscribe, payment } = useContext(MainContext);
+  const { buySubscribe, payment, goBack, goReplace } = useContext(MainContext);
   const [activeTariff, setActiveTariff] = useState(payment[0]?.item);
   const plural = require("plural-ru");
+  const isFirstPage = useFirstPageCheck();
+
+  useEffect(() => {
+    if (!activeTariff) {
+      setActiveTariff(payment[0]?.item);
+    }
+  }, [payment]);
 
   const handleTariff = (e) => {
     if (!e.target.id) {
@@ -40,7 +48,7 @@ const PayEnergy = () => {
           <div
             className="payEnergy__closeBtn closeBtn"
             onClick={() => {
-              router.toBack();
+              isFirstPage ? goReplace("/") : goBack();
             }}
           >
             <img src={closeBtn} />

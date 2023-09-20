@@ -9,16 +9,18 @@ import Filters from "components/common/Filters";
 import { MainContext, ContestsContext } from "components/shared/providers";
 
 function ContestList({ id }) {
-  const { router, userData } = useContext(MainContext);
+  const { go, userData } = useContext(MainContext);
   const { activeContestsFilter, setActiveContestsFilter, contests } =
     useContext(ContestsContext);
   const [isEmpty, setIsEmpty] = useState(true);
 
   useEffect(() => {
-    let item = contests?.find((item) =>
-      activeContestsFilter.includes(item.type)
-    );
-    setIsEmpty(item?.id ? false : true);
+    if (contests.length >= 1) {
+      let item = contests?.find((item) =>
+        activeContestsFilter.includes(item.type)
+      );
+      setIsEmpty(item?.id ? false : true);
+    }
   }, [activeContestsFilter, contests]);
 
   const filtersData = [
@@ -31,10 +33,8 @@ function ContestList({ id }) {
     <Panel id={id}>
       <div className="Contests">
         <div className="gradient-round"></div>
-        <div className={`overlay ${router.popout && "open"}`}></div>
         <div className="Contests__wrap">
-          <ContestsControls router={router} userData={userData} />
-
+          <ContestsControls />
           <div className="Contests__body">
             <Filters
               data={filtersData}

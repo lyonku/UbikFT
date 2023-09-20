@@ -4,35 +4,33 @@ import HeartSvg from "components/common/svgs/heartSvg";
 import EnergySvg from "components/common/svgs/energySvg";
 import EditSvg from "components/common/svgs/editSvg";
 import RefreshBtn from "components/common/svgs/refreshSvg";
-import { MainContext, PopoutContext } from "components/shared/providers";
+import {
+  GenerateContext,
+  MainContext,
+  PopoutContext,
+} from "components/shared/providers";
 import { useContext } from "react";
+import HeaderControls from "components/common/HeaderControls";
 
 function ArtSelectionControls() {
-  const { router, userData, exitPage } = useContext(MainContext);
+  const { go } = useContext(MainContext);
+  const { setCurrentImg } = useContext(GenerateContext);
   const { handleSetArtCountPopout } = useContext(PopoutContext);
 
   return (
     <div className="ArtSelection__controls">
       <div className="styleSelection__header_rightSide">
-        <div
-          className="styleSelection__rating smallBtn-text"
-          onClick={() => router.toView("Rating")}
-        >
-          <HeartSvg width={"32px"} height={"32px"} />
-          {userData.rating ?? "..."}
-        </div>
-        <div
-          className="ArtSelection__energy smallBtn-text"
-          onClick={() => router.toView("payEnergy")}
-        >
-          <EnergySvg width={"32px"} height={"32px"} />
-          {userData.energy ?? "..."}
-        </div>
+        <HeaderControls />
       </div>
       <div className="ArtSelection__firstControls">
         <div
           className="ArtSelection__edit smallBtn-text"
-          onClick={() => exitPage("artSelection")}
+          onClick={() => {
+            go("/");
+            setTimeout(() => {
+              setCurrentImg([]);
+            }, 100);
+          }}
         >
           <EditSvg color="#b2e723" />
         </div>

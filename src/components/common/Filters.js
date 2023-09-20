@@ -1,8 +1,13 @@
 import { useEffect } from "react";
 
-function Filters({ data, currentFilter, setCurrentFilter }) {
+function Filters({
+  data,
+  currentFilter,
+  defaultFilter = true,
+  setCurrentFilter,
+}) {
   useEffect(() => {
-    if (!currentFilter) {
+    if (!currentFilter && defaultFilter) {
       setCurrentFilter(data[0].id);
     }
   }, []);
