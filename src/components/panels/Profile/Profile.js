@@ -85,7 +85,7 @@ const Profile = ({ id }) => {
                 (!isArts && isFilterNew) ? (
                   <div className="ProfileArts__item_empty ProfileArts__item">
                     <img src={profile__emptyImg} />
-                    {isFilterContest
+                    {!isFilterContest
                       ? "Тут будут ваши арты"
                       : "Вы еще не отправляли работы на конкурс"}
                   </div>

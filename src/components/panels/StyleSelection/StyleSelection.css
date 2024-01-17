@@ -40,6 +40,10 @@ textarea.inquiry__input {
   color: #757575;
 }
 
+.iphone .styleSelection__wrap {
+  padding-top: 100px;
+}
+
 .styleSelection__wrap {
   position: relative;
   z-index: 2;
@@ -208,7 +212,7 @@ textarea.inquiry__input {
   text-align: center;
   max-width: 256px;
   position: fixed;
-  bottom: 95px;
+  bottom: 85px;
   height: 55px;
 }
 

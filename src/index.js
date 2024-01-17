@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import bridge from "@vkontakte/vk-bridge";
 import App from "./components/App/App";
 
-import Router from "@reyzitwo/react-router-vkminiapps";
 import structure from "components/App/routerStructure";
 
 import "./index.css";

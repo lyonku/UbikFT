@@ -8,7 +8,9 @@
   background-color: black;
   color: #ffffff;
 }
-
+.iphone .Contests__wrap {
+  padding-top: 100px;
+}
 .Contests__wrap {
   position: relative;
   z-index: 3;
@@ -41,8 +43,14 @@ div.Contests__controls {
   gap: 16px;
 }
 
+.iphone .ContestsItem {
+  min-height: 400px;
+  aspect-ratio: auto;
+}
+
 .ContestsItem {
   cursor: pointer;
+  height: 100%;
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 24px;
@@ -53,6 +61,7 @@ a.underline:hover {
 }
 
 .ContestsItem__wrap {
+  min-height: inherit;
   height: 100%;
   display: flex;
   flex-direction: column;

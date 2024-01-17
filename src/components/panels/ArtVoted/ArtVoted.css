@@ -10,6 +10,10 @@
   position: relative;
 }
 
+.iphone .ArtVoted__body {
+  padding-top: 100px;
+}
+
 .ArtVoted__body {
   user-select: none;
   z-index: 1;

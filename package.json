@@ -33,6 +33,7 @@
     "react-blurhash": "^0.3.0",
     "react-circular-progressbar": "^2.1.0",
     "react-dom": "^17.0.2",
+    "react-loader-spinner": "^5.4.5",
     "react-router-dom": "^6.10.0",
     "react-use": "^17.4.0",
     "swiper": "^10.2.0"
@@ -59,5 +60,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "./"
 }

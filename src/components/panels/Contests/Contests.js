@@ -29,7 +29,9 @@ const Contests = ({ id }) => {
     <View
       id={id}
       activePanel={activePanel}
-      onSwipeBack={() => routeNavigator.back()}
+      onSwipeBack={() => {
+        routeNavigator.back();
+      }}
       history={panelsHistory}
     >
       <ContestsList id="contestsList" />

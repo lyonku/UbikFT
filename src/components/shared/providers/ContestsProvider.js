@@ -20,6 +20,9 @@ export const ContestsContextProvider = ({ children }) => {
   const { notify, fetchedUser } = useContext(MainContext);
   const { currentImg, setCurrentImg } = useContext(GenerateContext);
   const routeNavigator = useRouteNavigator();
+  const [artToContestLoading, setArtToContestLoading] = useState({
+    loading: false,
+  });
 
   const params = useParams();
 
@@ -33,16 +36,17 @@ export const ContestsContextProvider = ({ children }) => {
       if (
         activeContest.artPosition != 0 &&
         !artRef.current &&
-        page != activeContest.currentPage
+        page != activeContest.worksPosition.currentPage
       ) {
         handleGetContestWorks(
-          activeContest.currentPage,
+          activeContest.worksPosition.currentPage,
           params.contest_id,
           null,
           params.art_id
         );
       }
-      if (artRef.current) {
+      if (artRef.current && activeContest.artPosition != 0) {
+        console.log(activeContest);
         scrollToMyRef();
       }
     } else {
@@ -80,7 +84,7 @@ export const ContestsContextProvider = ({ children }) => {
       return;
     }
 
-    notify({ text: "Жалоба отправлена", type: "standart" });
+    notify({ text: "Жалоба отправлена", type: "success" });
   };
 
   // Method for adding like to work
@@ -98,7 +102,7 @@ export const ContestsContextProvider = ({ children }) => {
       return;
     }
 
-    notify({ text: "Лайк выставлен", type: "standart" });
+    notify({ text: "Лайк выставлен", type: "success" });
     routeNavigator.hidePopout();
     let copy = Object.assign(activeContest, {});
     copy.globalLikes.push({ vk_user_id: fetchedUser.id });
@@ -126,7 +130,7 @@ export const ContestsContextProvider = ({ children }) => {
     setContests(response.data);
   };
 
-  // Method for get art in contest
+  // Method for get arts in contest
   const handleGetContestWorks = async (page, contest_id, contest, art_id) => {
     const params = `&currentPage=${page ? page + 1 : 1}&contest_id=${
       activeContest.id ?? contest_id
@@ -148,13 +152,45 @@ export const ContestsContextProvider = ({ children }) => {
     } else {
       copy.works = response.data.works;
     }
+    copy.worksPosition = {};
+    copy.worksPosition.currentPage = response.data.currentPage;
+    copy.worksPosition.worksCount = response.data.worksCount;
+    copy.worksPosition.maxPages = response.data.maxPages;
 
-    copy.currentPage = response.data.currentPage;
-    copy.worksCount = response.data.worksCount;
-    copy.myWorksCount = response.data.myWorksCount;
-    copy.maxPages = response.data.maxPages;
-    copy.currentPosition = response.data.currentPosition;
     copy.artPosition = response.data.artPosition ?? null;
+
+    setActiveContest(copy);
+
+    return copy;
+  };
+
+  // Method for get my arts in contest
+  const handleGetMyContestWorks = async (page, contest_id, contest, art_id) => {
+    const params = `&currentPage=${page ? page + 1 : 1}&contest_id=${
+      activeContest.id ?? contest_id
+    }`;
+
+    const response = await get("/getMyContestWorks", params);
+
+    if (!response.isOk) {
+      notify({
+        text: "Ошибка при получении конкурсных работ",
+        type: "error",
+      });
+      return;
+    }
+
+    const copy = { ...(contest ?? activeContest) };
+
+    if (page) {
+      copy.myWorks = [...copy.myWorks, ...response.data.works];
+    } else {
+      copy.myWorks = response.data.works;
+    }
+    copy.myWorksPosition = {};
+    copy.myWorksPosition.currentPage = response.data.currentPage;
+    copy.myWorksPosition.myWorksCount = response.data.myWorksCount;
+    copy.myWorksPosition.maxPages = response.data.maxPages;
 
     setActiveContest(copy);
 
@@ -163,11 +199,11 @@ export const ContestsContextProvider = ({ children }) => {
 
   // Method for adding generated art to contest
   const addArtToContest = async (contest_id, art_id) => {
+    setArtToContestLoading({ contest_id, loading: true });
     const data = {
-      contest_id: contest_id,
-      art_id: art_id,
+      contest_id,
+      art_id,
     };
-
     const response = await post(`/artToContest`, data);
 
     if (!response.isOk) {
@@ -175,10 +211,11 @@ export const ContestsContextProvider = ({ children }) => {
         text: error.message ?? "Ошибка при добавлении арта",
         type: "error",
       });
+      setArtToContestLoading({ loading: false });
       return;
     }
 
-    notify({ text: "Арт отправлен на конкурс", type: "standart" });
+    notify({ text: "Арт отправлен на конкурс", type: "success" });
     if (currentImg) {
       let copy = [...currentImg];
       for (const item of copy) {
@@ -189,6 +226,7 @@ export const ContestsContextProvider = ({ children }) => {
       }
       setCurrentImg(copy);
     }
+    setArtToContestLoading({ loading: false });
 
     return response;
   };
@@ -232,6 +270,7 @@ export const ContestsContextProvider = ({ children }) => {
         artVoted,
         contests,
         artRef,
+        artToContestLoading,
         setActiveContestsFilter,
         handleInitContests,
         updateContestTime,
@@ -241,6 +280,7 @@ export const ContestsContextProvider = ({ children }) => {
         addArtToContest,
         addLike,
         setArtVoted,
+        handleGetMyContestWorks,
       }}
     >
       {children}

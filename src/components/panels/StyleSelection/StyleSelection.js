@@ -11,7 +11,7 @@ import { Panel } from "@vkontakte/vkui";
 import { GenerateContext, PopoutContext } from "components/shared/providers";
 
 const StyleSelection = ({ id }) => {
-  const { modePro } = useContext(GenerateContext);
+  const { modePro, currentImg, setCurrentImg } = useContext(GenerateContext);
 
   const [error, setError] = useState(false);
   const scrollToTopRef = useRef(null); // создаем ref
@@ -19,6 +19,12 @@ const StyleSelection = ({ id }) => {
   function handleScrollToTop() {
     scrollToTopRef.current.scrollTo({ top: 0, behavior: "smooth" });
   }
+
+  useEffect(() => {
+    if (currentImg.length >= 1) {
+      setCurrentImg([]);
+    }
+  }, []);
 
   return (
     <Panel id={id}>

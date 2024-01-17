@@ -7,7 +7,9 @@
   align-items: center;
   background-color: black !important;
 }
-
+.iphone .Contest__wrap {
+  padding-top: 100px;
+}
 .Contest__wrap {
   color: #fff;
   position: relative;
@@ -390,12 +392,16 @@ a.underline {
 }
 
 .ContestWork__profile_name {
+  text-decoration: none;
+  color: #fff;
   padding: 0 8px;
   font-weight: 600;
   font-size: 17px;
   font-feature-settings: "tnum" on, "lnum" on;
 }
-
+.ContestWork__profile_name:hover {
+  opacity: 0.8;
+}
 .ContestWork__controls {
   box-sizing: border-box;
   gap: 5px;

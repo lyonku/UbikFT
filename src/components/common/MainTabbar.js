@@ -16,7 +16,7 @@ function MainTabbar({ activeStory }) {
 
   const onStoryChange = (e) => {
     let src = e.currentTarget.dataset.story;
-    if (activeContest.id && src == "contests") {
+    if (activeContest?.id && src == "contests") {
       src += `/contest/${activeContest.id}`;
     }
     if (currentImg.length >= 1 && src === "main") {

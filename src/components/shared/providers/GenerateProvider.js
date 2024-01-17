@@ -6,7 +6,7 @@ import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 export const GenerateContext = createContext();
 
-export const GenerateContextProvider = ({ children, router }) => {
+export const GenerateContextProvider = ({ children }) => {
   const [inputValue, setInputValue] = useState("");
   const [inputValueNegative, setInputValueNegative] = useState("");
   const [inputValueSeed, setInputValueSeed] = useState();
@@ -19,7 +19,7 @@ export const GenerateContextProvider = ({ children, router }) => {
   const [generation, setGeneration] = useState(false);
   const [generationError, setGenerationError] = useState();
 
-  const { handleGetArts, handleInitUser, fetchedUser, notify } =
+  const { handleGetArts, handleInitUser, doRecommend, notify } =
     useContext(MainContext);
   const routeNavigator = useRouteNavigator();
 
@@ -94,6 +94,9 @@ export const GenerateContextProvider = ({ children, router }) => {
       setGeneration(false);
       handleGetArts();
       handleInitUser();
+      setTimeout(() => {
+        doRecommend();
+      }, 3000);
     } else {
       notify({ text: "Генерация уже идёт!", type: "error" });
     }

@@ -5,10 +5,12 @@ import {
   MainContext,
   PopoutContext,
 } from "components/shared/providers/";
+import { Spinner } from "@vkontakte/vkui";
 
 function ContestSelect({ art_id }) {
-  const { go, handleGetArts, handleInitUser } = useContext(MainContext);
-  const { contests, setActiveContest, handleGetContestWorks, addArtToContest } =
+  const { go, handleGetArts, handleGetContestsArts, handleInitUser } =
+    useContext(MainContext);
+  const { contests, setActiveContest, addArtToContest, artToContestLoading } =
     useContext(ContestsContext);
 
   const sendArtToContest = (item) => {
@@ -16,6 +18,7 @@ function ContestSelect({ art_id }) {
       go(`/contests/contest/${item.id}`);
       setActiveContest(item);
       handleGetArts();
+      handleGetContestsArts();
       handleInitUser();
     });
   };
@@ -40,9 +43,23 @@ function ContestSelect({ art_id }) {
               </div>
               <div
                 className="ContestSelectItem__btn btn"
-                onClick={() => sendArtToContest(item)}
+                onClick={() => {
+                  if (!artToContestLoading.loading) {
+                    sendArtToContest(item);
+                  }
+                }}
               >
-                Отправить на конкурс
+                {artToContestLoading?.contest_id == item.id && (
+                  <Spinner
+                    size="regular"
+                    style={{
+                      width: "auto",
+                      color: "#fff",
+                      marginRight: "10px",
+                    }}
+                  />
+                )}
+                <span> Отправить на конкурс</span>
               </div>
             </div>
           );

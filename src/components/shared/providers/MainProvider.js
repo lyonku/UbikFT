@@ -7,9 +7,12 @@ import {
 } from "@vkontakte/vk-mini-apps-router";
 import { get, post } from "utils/api";
 
+import checkMark from "assets/img/checkMark.svg";
+import errorMark from "assets/img/errorMark.svg";
+
 export const MainContext = createContext();
 
-export const MainContextProvider = ({ children, router }) => {
+export const MainContextProvider = ({ children, api }) => {
   const [fetchedUser, setUser] = useState(null);
   const routeNavigator = useRouteNavigator();
   const isFirstPage = useFirstPageCheck();
@@ -26,8 +29,9 @@ export const MainContextProvider = ({ children, router }) => {
   const [artDeleting, setArtDeleting] = useState(false);
 
   const queryParameters = new URLSearchParams(window.location.search);
-  const vk_user_id = queryParameters.get("vk_user_id");
   const vk_platform = queryParameters.get("vk_platform");
+  const vk_user_id = queryParameters.get("vk_user_id");
+  const vk_is_favorite = queryParameters.get("vk_is_favorite");
   const admins = [264304967, 278522734, 600727087];
   const isAdmin = admins.find((item) => item == vk_user_id);
 
@@ -39,6 +43,9 @@ export const MainContextProvider = ({ children, router }) => {
     fetchData();
     handleInitUser();
     handleInitEnergy();
+    if (vk_is_favorite == 0) {
+      addToFavorites();
+    }
   }, []);
 
   useEffect(() => {
@@ -62,13 +69,18 @@ export const MainContextProvider = ({ children, router }) => {
   };
 
   // Method for calling snackbar
-  const notify = ({ text, type }) => {
-    if (snackbar) return;
-    setNotificationVibration(type == "error" ? "error" : "success");
-    setSnackbar(<Notify text={text} type={type} />);
-    setTimeout(() => {
-      setSnackbar(null);
-    }, 5000);
+  const notify = ({ text, type, placement = "bottomLeft" }) => {
+    api[type]({
+      message: text,
+
+      placement,
+      duration: 4,
+      className: "Notification",
+      style: {
+        color: "#fff",
+      },
+      icon: <img src={type == "error" ? errorMark : checkMark} />,
+    });
   };
 
   // Method for init user in vk
@@ -97,7 +109,7 @@ export const MainContextProvider = ({ children, router }) => {
 
     if (!response.isOk) {
       setServerCrash(true);
-      notify({ text: "Ошибка при инициализации пользователя", type: "error" });
+      notify({ text: response.message, type: "error" });
       return;
     }
 
@@ -118,8 +130,8 @@ export const MainContextProvider = ({ children, router }) => {
     }
 
     const copy = Object.assign({}, response.data);
-    if (page) {
-      copy.arts = [...artsData.arts].concat(response.data.arts);
+    if (page && response?.data) {
+      copy.arts = [...artsData.arts].concat(response?.data?.arts);
     }
     setArtsData(copy);
 
@@ -137,7 +149,7 @@ export const MainContextProvider = ({ children, router }) => {
     }
 
     const copy = Object.assign({}, response.data);
-    if (page) {
+    if (page && response?.data) {
       copy.arts = [...contestsArtsData.arts].concat(response.data.arts);
     }
     setContestsArtsData(copy);
@@ -175,7 +187,7 @@ export const MainContextProvider = ({ children, router }) => {
 
   // Method for delete art
   const deleteArt = async (hash) => {
-    setArtDeleting(true);
+    // setArtDeleting(true);
     const data = {
       art_id: hash,
     };
@@ -190,7 +202,7 @@ export const MainContextProvider = ({ children, router }) => {
       setArtDeleting(false);
       return;
     } else {
-      notify({ text: "Арт удалён", type: "standart" });
+      notify({ text: "Арт удалён", type: "success" });
     }
 
     const copy = Object.assign({}, artsData);
@@ -335,6 +347,34 @@ export const MainContextProvider = ({ children, router }) => {
     return result;
   };
 
+  const addToFavorites = () => {
+    bridge
+      .send("VKWebAppAddToFavorites")
+      .then((data) => {
+        if (data.result) {
+          // Мини-приложение или игра добавлены в избранное
+        }
+      })
+      .catch((error) => {
+        // Ошибка
+        console.log(error);
+      });
+  };
+
+  const doRecommend = () => {
+    bridge
+      .send("VKWebAppRecommend")
+      .then((data) => {
+        if (data.result) {
+          // Мини-приложение порекомендовано
+        }
+      })
+      .catch((error) => {
+        // Ошибка
+        console.log(error);
+      });
+  };
+
   const sendImgToVK = async ({ art, type }) => {
     setShareArtLoading(true);
     const access_token = await getAccesToken();
@@ -372,7 +412,7 @@ export const MainContextProvider = ({ children, router }) => {
           // Оплата голосами прошла успешно
           handleInitUser();
           isFirstPage ? goReplace("/") : goBack();
-          notify({ text: "Оплата успешно прошла", type: "standart" });
+          notify({ text: "Оплата успешно прошла", type: "success" });
         }
       })
       .catch((error) => {
@@ -390,11 +430,10 @@ export const MainContextProvider = ({ children, router }) => {
       })
       .then((data) => {
         if (data.result) {
-          console.log(data);
+          isFirstPage ? goReplace("/") : goBack();
         }
       })
       .catch((error) => {
-        notify({ text: "Не удалось поделится", type: "error" });
         console.log(error);
       });
   }
@@ -421,7 +460,6 @@ export const MainContextProvider = ({ children, router }) => {
         userData,
         artsData,
         fetchedUser,
-        router,
         snackbar,
         usersRating,
         payment,
@@ -446,6 +484,7 @@ export const MainContextProvider = ({ children, router }) => {
         setNotificationVibration,
         handleGetContestsArts,
         setShareArtLoading,
+        doRecommend,
       }}
     >
       {children}

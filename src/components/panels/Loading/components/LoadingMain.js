@@ -1,4 +1,7 @@
 import RoundLoader from "components/common/roundLoader";
+import { Oval } from "react-loader-spinner";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
 
 function LoadingMain() {
   return (

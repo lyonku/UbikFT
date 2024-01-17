@@ -68,9 +68,14 @@ function ContestWorks__item({ data, index }) {
             <img src={data.photo} />
           </div>
           <div className="ContestWork__profile_text">
-            <div className="ContestWork__profile_name">
+            <a
+              className="ContestWork__profile_name"
+              key={index}
+              href={`https://vk.com/id${data.vk_user_id}`}
+              target="_blank"
+            >
               {data.firstName + " " + data.lastName}
-            </div>
+            </a>
             {isTypeVoteOrEnd && (
               <div
                 className="Prompt text_gray"

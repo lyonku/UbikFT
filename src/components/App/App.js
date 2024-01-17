@@ -1,12 +1,7 @@
 import React, { useState, useMemo, useContext, useEffect } from "react";
-import {
-  AppRoot,
-  ConfigProvider,
-  Epic,
-  SplitLayout,
-  SplitCol,
-} from "@vkontakte/vkui";
+import { AppRoot, Epic, SplitLayout, SplitCol } from "@vkontakte/vkui";
 import "@vkontakte/vkui/dist/vkui.css";
+import { notification } from "antd";
 
 import {
   AdminContextProvider,
@@ -33,34 +28,45 @@ import {
 } from "@vkontakte/vk-mini-apps-router";
 
 const App = (props) => {
+  const [api, contextHolder] = notification.useNotification();
   const { view } = useActiveVkuiLocation();
   const routerPopout = usePopout();
+  const queryParameters = new URLSearchParams(window.location.search);
+  const vk_platform = queryParameters.get("vk_platform");
 
   return (
-    <MainContextProvider>
+    <MainContextProvider api={api}>
       <PopoutContextProvider>
         <GenerateContextProvider>
           <ContestsContextProvider>
             <AdminContextProvider>
               <SplitLayout popout={routerPopout}>
-                <Snackbar />
-                {/* <ServerCrash /> */}
-                <SplitCol>
-                  <AppRoot scroll="contain">
-                    <Epic
-                      activeStory={view}
-                      tabbar={<MainTabbar activeStory={view} />}
+                <>
+                  {contextHolder}
+                  {/* <Snackbar /> */}
+                  {/* <ServerCrash /> */}
+                  <SplitCol>
+                    <AppRoot
+                      scroll="contain"
+                      className={`${
+                        vk_platform == "mobile_iphone" ? "iphone" : ""
+                      }`}
                     >
-                      <Main id="main" />
-                      <Contests id="contests" />
-                      <Profile id="profile" />
-                      <PayEnergy id="store" />
-                      <Rating id="rating" />
-                      <ArtVoted id="artVoted" />
-                      <Admin id="admin" />
-                    </Epic>
-                  </AppRoot>
-                </SplitCol>
+                      <Epic
+                        activeStory={view}
+                        tabbar={<MainTabbar activeStory={view} />}
+                      >
+                        <Main id="main" />
+                        <Contests id="contests" />
+                        <Profile id="profile" />
+                        <PayEnergy id="store" />
+                        <Rating id="rating" />
+                        <ArtVoted id="artVoted" />
+                        <Admin id="admin" />
+                      </Epic>
+                    </AppRoot>
+                  </SplitCol>
+                </>
               </SplitLayout>
             </AdminContextProvider>
           </ContestsContextProvider>

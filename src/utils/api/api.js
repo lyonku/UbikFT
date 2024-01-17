@@ -1,4 +1,7 @@
-const BASE_URL = "https://ubiq.top";
+const queryParameters = new URLSearchParams(window.location.search);
+const vk_platform = queryParameters.get("vk_platform");
+const BASE_URL =
+  vk_platform == "mobile_iphone" ? "vkcors://ubiq.top" : "https://ubiq.top";
 
 // Launch parametrs
 const PARAM = window.location.href;

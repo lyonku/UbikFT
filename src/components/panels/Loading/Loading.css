@@ -21,6 +21,10 @@
   z-index: 5;
 }
 
+.iphone .Loading__wrap {
+  padding-top: 100px;
+}
+
 .Loading__wrap {
   z-index: 999;
   box-sizing: border-box;

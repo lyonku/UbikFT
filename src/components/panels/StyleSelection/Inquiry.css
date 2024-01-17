@@ -144,5 +144,6 @@ div.inquiry__inputExample {
 
 .inquiry__hint {
   text-align: center;
+  line-height: 18px;
   margin-bottom: 30px;
 }

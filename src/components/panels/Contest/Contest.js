@@ -22,8 +22,13 @@ const Contest = ({ id }) => {
   const contest_id = params.contest_id;
   const art_id = params.art_id;
   const { fetchedUser, goBack, goReplace, notify } = useContext(MainContext);
-  const { contests, activeContest, handleGetContestWorks, updateContest } =
-    useContext(ContestsContext);
+  const {
+    contests,
+    activeContest,
+    handleGetContestWorks,
+    updateContest,
+    handleGetMyContestWorks,
+  } = useContext(ContestsContext);
   const isFirstPage = useFirstPageCheck();
   const [currentFilter, setCurrentFilter] = useState();
 
@@ -63,15 +68,24 @@ const Contest = ({ id }) => {
       if (art_id) {
         handleGetContestWorks(null, null, null, art_id);
       } else {
-        handleGetContestWorks();
+        handleGetContestWorks().then((res) => {
+          handleGetMyContestWorks(null, null, res, null);
+        });
       }
     }
   }, [updateContest, fetchedUser]);
 
   useInfiniteScroll({
-    сurrentPage: activeContest.currentPage ?? 1,
-    func: handleGetContestWorks,
-    maxPages: activeContest.maxPages,
+    сurrentPage:
+      currentFilter == "My"
+        ? activeContest?.myWorksPosition?.currentPage
+        : activeContest?.worksPosition?.currentPage ?? 1,
+    func:
+      currentFilter == "My" ? handleGetMyContestWorks : handleGetContestWorks,
+    maxPages:
+      currentFilter == "My"
+        ? activeContest?.myWorksPosition?.maxPages
+        : activeContest?.worksPosition?.maxPages,
     className: ".Contest",
   });
 

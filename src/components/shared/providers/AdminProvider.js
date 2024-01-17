@@ -26,7 +26,7 @@ export const AdminContextProvider = ({ children }) => {
       return;
     }
 
-    notify({ text: "Конкурс завершён", type: "standart" });
+    notify({ text: "Конкурс завершён", type: "success" });
     handleInitContests();
   };
 
@@ -62,7 +62,7 @@ export const AdminContextProvider = ({ children }) => {
       });
       return;
     }
-    notify({ text: "Арт удалён", type: "standart" });
+    notify({ text: "Арт удалён", type: "success" });
     return response;
   };
 
@@ -82,7 +82,7 @@ export const AdminContextProvider = ({ children }) => {
       return;
     }
     handleInitContests();
-    notify({ text: "Конкурс удалён", type: "standart" });
+    notify({ text: "Конкурс удалён", type: "success" });
     return response;
   };
 
@@ -98,7 +98,7 @@ export const AdminContextProvider = ({ children }) => {
       return;
     }
     handleInitContests();
-    notify({ text: "Конкурс изменён", type: "standart" });
+    notify({ text: "Конкурс изменён", type: "success" });
     goBack();
   };
 
@@ -113,7 +113,7 @@ export const AdminContextProvider = ({ children }) => {
       return;
     }
     handleInitContests();
-    notify({ text: "Конкурс создан", type: "standart" });
+    notify({ text: "Конкурс создан", type: "success" });
     goBack();
   };
 

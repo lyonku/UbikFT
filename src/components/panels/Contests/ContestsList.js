@@ -9,9 +9,14 @@ import Filters from "components/common/Filters";
 import { MainContext, ContestsContext } from "components/shared/providers";
 
 function ContestList({ id }) {
-  const { go, userData } = useContext(MainContext);
-  const { activeContestsFilter, setActiveContestsFilter, contests } =
-    useContext(ContestsContext);
+  const { go } = useContext(MainContext);
+  const {
+    activeContestsFilter,
+    setActiveContestsFilter,
+    contests,
+    activeContest,
+    setActiveContest,
+  } = useContext(ContestsContext);
   const [isEmpty, setIsEmpty] = useState(true);
 
   useEffect(() => {
@@ -28,6 +33,12 @@ function ContestList({ id }) {
     { id: "vote", text: "Голосование" },
     { id: "ended, pre-ended", text: "Закончилось" },
   ];
+
+  useEffect(() => {
+    if (activeContest.id) {
+      setActiveContest({});
+    }
+  }, []);
 
   return (
     <Panel id={id}>
